@@ -1,0 +1,2 @@
+Main-Class: org.tribblix.illuminate.Illuminate
+Class-Path: jingle.jar jumble.jar jkstat.jar jproc.jar jcommon-1.0.21.jar jfreechart-1.0.17.jar swing-worker-1.2.jar

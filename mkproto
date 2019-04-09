@@ -1,0 +1,91 @@
+#!/bin/sh
+#
+# generate a prototype file for input to pkgmk
+#
+# feed to pkgmk like so:
+#  pkgmk -d /tmp -f tt -r `pwd` TRIBilluminate
+#
+
+JARDIR=usr/share/illuminate
+LIBDIR=usr/lib
+OWNER="root bin"
+SYSOWNER="root sys"
+JLIB="libkstat_jni.so"
+JPLIB="libproc_jni.so"
+
+MYARCH=$1
+PKGTYPE="standalone"
+
+echo "i pkginfo=./pkginfo.${MYARCH}"
+
+if [ "X$2" = "Xdeps" ]; then
+  JFCVERS="1.0.17"
+  JFCPKGVER="1017"
+  PKGTYPE="withdeps"
+cat > depend <<EOF
+P TRIBjfreechart-${JFCPKGVER}
+P TRIBjkstat
+P TRIBjproc
+EOF
+  echo "i depend=./depend"
+fi
+
+if [ "X$PKGTYPE" = "Xstandalone" ]; then
+case $MYARCH in
+i386)
+	echo "f none /${LIBDIR}/${JLIB}=lib/i386/${JLIB} 0755 ${OWNER}"
+	echo "f none /${LIBDIR}/amd64/${JLIB}=lib/amd64/${JLIB} 0755 ${OWNER}"
+	echo "f none /${LIBDIR}/${JPLIB}=lib/i386/${JPLIB} 0755 ${OWNER}"
+	echo "f none /${LIBDIR}/amd64/${JPLIB}=lib/amd64/${JPLIB} 0755 ${OWNER}"
+	;;
+sparc)
+	echo "f none /${LIBDIR}/${JLIB}=lib/sparc/${JLIB} 0755 ${OWNER}"
+	echo "f none /${LIBDIR}/sparcv9/${JLIB}=lib/sparcv9/${JLIB} 0755 ${OWNER}"
+	echo "f none /${LIBDIR}/${JPLIB}=lib/sparc/${JPLIB} 0755 ${OWNER}"
+	echo "f none /${LIBDIR}/sparcv9/${JPLIB}=lib/sparcv9/${JPLIB} 0755 ${OWNER}"
+	;;
+esac
+fi
+
+echo "f none /usr/bin/illuminate=illuminate.installed 0755 ${OWNER}"
+echo "d none /usr/share 0755 ${SYSOWNER}"
+echo "d none /usr/share/illuminate 0755 ${OWNER}"
+echo "d none /usr/share/man 0755 ${OWNER}"
+echo "f none /usr/share/man/man1/illuminate.1=man1/illuminate.1 0644 ${OWNER}"
+echo "f none /usr/share/illuminate/README=./README 0644 ${OWNER}"
+
+echo "f none /usr/share/applications/illuminate.desktop=./illuminate.desktop 0644 ${OWNER}"
+echo "f none /usr/share/pixmaps/illuminate.png=./pixmaps/illuminate.png 0644 ${OWNER}"
+
+#
+# if depending on installed packages, then:
+#   jcommon jfreechart come from TRIBjfreechart-###
+#
+if [ "X$PKGTYPE" = "Xstandalone" ]; then
+  for path in lib/java/*
+  do
+	pname=`basename $path`
+	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
+  done
+else
+  for path in lib/java/jcommon* lib/java/jfreechart*
+  do
+	pname=`basename $path`
+	echo "s none /${JARDIR}/${pname}=../jfreechart-${JFCVERS}/${pname}"
+  done
+  for path in lib/java/jingle.jar lib/java/jksta* lib/java/jstripchart.jar lib/java/jumble.jar lib/java/org-json.jar
+  do
+	pname=`basename $path`
+	echo "s none /${JARDIR}/${pname}=../jkstat/${pname}"
+  done
+  for path in lib/java/jproc*jar
+  do
+	pname=`basename $path`
+	echo "s none /${JARDIR}/${pname}=../jproc/${pname}"
+  done
+  for path in lib/java/illuminate.jar
+  do
+	pname=`basename $path`
+	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
+  done
+fi

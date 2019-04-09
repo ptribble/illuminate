@@ -1,0 +1,61 @@
+Things To Do:
+
+Zones
+  Add a net widget for exclusive-ip zones
+    It's halfway implemented
+    Need to pass the kstat and jkstat through somehow
+    Handle potential multiple interfaces
+
+Could handle man pages from the file list
+And other file types too
+
+java -cp lib/java/illuminate.jar org.tribblix.illuminate.helpers.ManViewer zfs.1m
+
+Make a standalone man viewer
+
+Faulty zfs pools should be marked in red
+Need a way to filter displayed output. Could use that to toggle
+zfs snapshots on or off, or disabled services
+
+The tree cell renderers don't actually do tooltips
+(It's not obvious they should, fix the comment.)
+Or give SysItem a tooltip method (that ought to be dynamic)
+
+Views aren't dynamic and don't refresh - for example if a zone is added
+or removed or changes state (or reboots, as zoneid changes)
+
+Update arcstat
+
+Update freechart
+
+Network view - relationship between physical interfaces, vnics, aggregations
+  and what they're connected to
+
+Replace pixmaps (and their names)
+
+The zone information could add a link to the relevant brand man page
+
+Command output could add a link to the relevant man page
+
+SMF - use jna (like haplo does)
+
+cfgadm
+
+top: jkstat + jproc; graphical charts and sparks for summaries; add
+zone/user/whatever aggregation
+
+ZFS: need to display snapshots
+
+Should Mnttab be singleton?
+Would make it easier to query from any context without having to
+pass around.
+
+Mnttab should update itself to allow for mount and unmount activity
+
+Save historical kstat data so that the charts don't start blank
+each time?
+
+Threaded cores and individual threads should show their fragment of the
+psrinfo output
+
+Threads and cores should say what their parent is

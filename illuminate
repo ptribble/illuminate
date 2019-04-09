@@ -1,0 +1,158 @@
+#!/bin/sh
+#
+# run illuminate
+#
+
+SVDIR=`dirname $0`
+LIBDIR=${SVDIR}/lib
+ARCHLIBDIR=${LIBDIR}/`/usr/bin/uname -p`
+ARCHLIBDIR_32=${LIBDIR}/`/usr/bin/uname -p`
+ARCHLIBDIR_64=${LIBDIR}/`/usr/bin/isainfo -k`
+ARCHLIBDIR="${ARCHLIBDIR_32}"
+JARLIBDIR=${LIBDIR}/java
+JAVA=java
+
+#
+# if installed then the locations change
+#
+INSTALLED=false
+if [ "$INSTALLED" = "true" ]; then
+    ARCHLIBDIR=/usr/lib
+    ARCHLIBDIR_64=/usr/lib/64
+    JARLIBDIR=/usr/share/illuminate
+fi
+
+#
+# attempt to use a 64-bit version if possible
+#
+if [ -f "${ARCHLIBDIR_64}/libproc_jni.so" ]; then
+    if [ "${ARCHLIBDIR}" != "${ARCHLIBDIR_64}" ]; then
+	ARCHLIBDIR="${ARCHLIBDIR_64}"
+	JFLAGS="-d64"
+    fi
+fi
+
+#
+# need to give java more memory to handle contents file parsing
+#
+EXTRAMEMFLAGS="-Xmx512m"
+
+case $# in
+0)
+	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} ${EXTRAMEMFLAGS} -jar ${JARLIBDIR}/illuminate.jar
+	exit 0
+	;;
+esac
+
+SVJAR=${JARLIBDIR}/illuminate.jar
+JCJAR=${JARLIBDIR}/jcommon-1.0.21.jar
+JFJAR=${JARLIBDIR}/jfreechart-1.0.17.jar
+JINGLEJAR=${JARLIBDIR}/jingle.jar
+JUMBLEJAR=${JARLIBDIR}/jumble.jar
+JKJAR=${JARLIBDIR}/jkstat.jar
+JPJAR=${JARLIBDIR}/jproc.jar
+SWJAR=${JARLIBDIR}/swing-worker-1.2.jar
+
+BASEJARS=${SVJAR}:${JINGLEJAR}:${JUMBLEJAR}
+ALLJARS=${JCJAR}:${JFJAR}:${JINGLEJAR}:${JUMBLEJAR}:${JKJAR}:${JPJAR}:${SWJAR}
+PKGJARS=${BASEJARS}:${SWJAR}
+
+case $1 in
+
+services)
+    shift
+    LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -cp ${BASEJARS} org.tribblix.illuminate.MultiView services
+    exit 0
+    ;;
+
+explorer)
+    shift
+    LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${JFLAGS} -cp ${SVJAR}:${ALLJARS} org.tribblix.illuminate.MultiView explorer
+    exit 0
+    ;;
+
+information)
+    shift
+    $JAVA -cp ${BASEJARS} org.tribblix.illuminate.MultiView information
+    exit 0
+    ;;
+
+cpustate)
+    LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA -cp ${SVJAR}:${ALLJARS} org.tribblix.illuminate.explorer.JCpuState $*
+    exit 0
+    ;;
+
+fsstat)
+    LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA -cp ${SVJAR}:${ALLJARS} org.tribblix.illuminate.explorer.JFSstat
+    exit 0
+    ;;
+
+arcstat)
+    LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA -cp ${SVJAR}:${ALLJARS} org.tribblix.illuminate.explorer.ArcStat
+    exit 0
+    ;;
+
+software)
+    shift
+    $JAVA ${EXTRAMEMFLAGS} -cp ${SVJAR}:${ALLJARS} org.tribblix.illuminate.MultiView software $*
+    exit 0
+    ;;
+
+man)
+    shift
+    case $1 in
+	*.*)
+	    exec $JAVA -cp ${SVJAR} org.tribblix.illuminate.helpers.ManViewer $1
+	    ;;
+	*)
+	    NMAN=`man -l $1 | head -1 | awk '{print $1}' | sed -e 's:(:.:' -e 's:)::'`
+	    if [ -n "$NMAN" ]; then
+		exec $JAVA -cp ${SVJAR} org.tribblix.illuminate.helpers.ManViewer $NMAN
+	    else
+		echo "Usage: $0 man manpage.section"
+		exit 1
+	    fi
+	    ;;
+    esac
+    ;;
+
+#
+# the following are undocumented
+#
+check)
+    shift
+    $JAVA ${EXTRAMEMFLAGS} -cp ${PKGJARS} org.tribblix.illuminate.pkgview.PkgCheck $*
+    exit 0
+    ;;
+
+missingpackages)
+    shift
+    $JAVA -cp ${PKGJARS} org.tribblix.illuminate.pkgview.MissingPackages $*
+    exit 0
+    ;;
+
+packagesizes)
+    shift
+    $JAVA -cp ${PKGJARS} org.tribblix.illuminate.pkgview.PackageSizes $*
+    exit 0
+    ;;
+
+overlaysizes)
+    shift
+    $JAVA -cp ${PKGJARS} org.tribblix.illuminate.pkgview.OverlaySizes $*
+    exit 0
+    ;;
+
+esac
+
+cat <<EOF
+Usage: $0 [subcommand]
+  Available subcommands:
+services - show SMF services
+explorer - show system explorer view
+information - show system information
+software - show installed packages
+cpustate [ chart | vertical ] - show the enhanced jcpustate demo
+fsstat - show the jfsstat demo
+arcstat - display zfs arc statistics
+EOF

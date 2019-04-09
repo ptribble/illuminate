@@ -1,0 +1,99 @@
+#!/bin/sh
+#
+# build illuminate
+#
+
+SVDIR=`dirname $0`
+LIBDIR=${SVDIR}/lib
+JARLIBDIR=${LIBDIR}/java
+JAVA=java
+
+XFLAGS="-Xlint -Xlint:-serial -Xlint:-rawtypes"
+
+
+SVJAR=${JARLIBDIR}/illuminate.jar
+JCJAR=${JARLIBDIR}/jcommon-1.0.21.jar
+JFJAR=${JARLIBDIR}/jfreechart-1.0.17.jar
+JINGLEJAR=${JARLIBDIR}/jingle.jar
+JUMBLEJAR=${JARLIBDIR}/jumble.jar
+JKJAR=${JARLIBDIR}/jkstat.jar
+JPJAR=${JARLIBDIR}/jproc.jar
+SWJAR=${JARLIBDIR}/swing-worker-1.2.jar
+
+BUILDJARS=${JINGLEJAR}:${JUMBLEJAR}:${JKJAR}:${JPJAR}:${SWJAR}
+
+PATH=/usr/jdk/instances/jdk1.8.0/bin:$PATH
+export PATH
+
+#
+# run
+# ./build pmd
+# to use this, these checks should always pass, it's a regression if
+# any warnings appear. Of course, you must have pmd in your path
+#
+PMDCHECKS="imports,typeresolution,coupling,clone,finalizers,sunsecure,unusedcode,migrating,strictexception,braces"
+#
+# new PMD version has rulesets
+# notes:
+# coupling - produces a lot of noise, skipped for now
+#
+PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception braces"
+PMDCATRULES="security"
+
+case $# in
+0)
+	if [ -x /opt/onbld/bin/jstyle ]; then
+	    /opt/onbld/bin/jstyle `find org/tribblix -name '*.java'`
+	fi
+	javac ${XFLAGS} -classpath .:${BUILDJARS} `find org/tribblix -name '*.java'`
+	jar -cmf illuminate.manifest ${SVJAR} images/*.png pixmaps/* properties/*.properties help/*.html help/CDDL.txt `find org/tribblix -name '*.class'`
+	exit 0
+	;;
+esac
+
+case $1 in
+
+doc|-doc)
+	rm -fr javadoc
+	mkdir javadoc
+	javadoc -d javadoc org.tribblix.illuminate org.tribblix..illuminate.helpers org.tribblix..illuminate.explorer
+	;;
+
+clean|-clean)
+	rm -f `find org/tribblix -name '*.class'`
+	rm -f `find . -type f -name '*~'`
+	rm -fr javadoc
+	;;
+
+pmd|-pmd)
+	RULESETS=""
+	for RULE in $PMDRULES
+	do
+	    RULESETS="${RULESETS},rulesets/java/${RULE}.xml"
+	done
+	for RULE in $PMDCATRULES
+	do
+	    RULESETS="${RULESETS},category/java/${RULE}.xml"
+	done
+	RULESETS=`echo $RULESETS|sed s:,::`
+	pmd -d org -R $RULESETS -version 1.5 -auxclasspath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
+	exit 0
+	;;
+
+packages)
+	cat illuminate | sed s:INSTALLED=false:INSTALLED=true: > illuminate.installed
+	./mkproto i386 $2 > prototype.i386
+	./mkproto sparc $2 > prototype.sparc
+	pkgmk -d /tmp -f prototype.i386 -r `pwd` TRIBilluminate
+	pkgtrans -s /tmp /tmp/TRIBilluminate-i386.pkg TRIBilluminate
+	rm -fr /tmp/TRIBilluminate
+	pkgmk -d /tmp -f prototype.sparc -r `pwd` TRIBilluminate
+	pkgtrans -s /tmp /tmp/TRIBilluminate-sparc.pkg TRIBilluminate
+	rm -fr /tmp/TRIBilluminate
+	ls -l /tmp/TRIBilluminate-sparc.pkg /tmp/TRIBilluminate-i386.pkg
+	rm prototype.i386 prototype.sparc
+	rm illuminate.installed
+	rm -f depend
+	exit 0
+	;;
+esac

@@ -1,0 +1,10 @@
+[Desktop Entry]
+Encoding=UTF-8
+Version=1.0
+Name=illuminate
+Comment=illumos information viewer
+Exec=illuminate
+Icon=illuminate
+Terminal=false
+Type=Application
+Categories=System;Utility;
