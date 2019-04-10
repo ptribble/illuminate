@@ -28,16 +28,11 @@ export PATH
 #
 # run
 # ./build pmd
-# to use this, these checks should always pass, it's a regression if
-# any warnings appear. Of course, you must have pmd in your path
-#
-PMDCHECKS="imports,typeresolution,coupling,clone,finalizers,sunsecure,unusedcode,migrating,strictexception,braces"
+# to use this, you must have pmd in your path
 #
 # new PMD version has rulesets
-# notes:
-# coupling - produces a lot of noise, skipped for now
 #
-PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception braces"
+PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception"
 PMDCATRULES="security"
 
 case $# in
