@@ -33,12 +33,12 @@ public class Illuminate extends JFrame implements ActionListener {
 
 	JMenuBar jm = new JMenuBar();
 
-	jtp.add(IlluminateResources.getString("ILLUMINATE.SERV.TEXT"),
-		new SmfPanel());
-	jtp.add(IlluminateResources.getString("ILLUMINATE.INFO.TEXT"),
-		new InfoPanel());
 	jtp.add(IlluminateResources.getString("ILLUMINATE.EXPL.TEXT"),
 		new SysPanel());
+	jtp.add(IlluminateResources.getString("ILLUMINATE.INFO.TEXT"),
+		new InfoPanel());
+	jtp.add(IlluminateResources.getString("ILLUMINATE.SERV.TEXT"),
+		new SmfPanel());
 	jtp.add(IlluminateResources.getString("ILLUMINATE.SOFT.TEXT"),
 		new InstalledSoftwarePanel("/"));
 
