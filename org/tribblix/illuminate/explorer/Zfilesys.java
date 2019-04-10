@@ -146,7 +146,7 @@ public class Zfilesys {
     /**
      * Return the String representation of this ZFS filesystem, its name.
      *
-     * @return the name of ths dataset
+     * @return the name of this dataset
      */
     @Override
     public String toString() {

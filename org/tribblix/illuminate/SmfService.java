@@ -184,7 +184,7 @@ public class SmfService implements Comparable<SmfService> {
      *
      * @param ss the SmfService to compare with this SmfService
      *
-     * @return whether the given SmfService is greater than or less than ths
+     * @return whether the given SmfService is greater than or less than this
      * SmfService
      */
     public int compareTo(SmfService ss) {
