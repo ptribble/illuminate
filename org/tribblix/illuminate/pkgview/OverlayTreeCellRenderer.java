@@ -37,9 +37,7 @@ public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
     private static ImageIcon noneIcon;
     private static ImageIcon selectedIcon;
     private static ImageIcon partIcon;
-    private static ImageIcon forcedIcon;
-    private static ImageIcon partforcedIcon;
-    private static ImageIcon selectedpartforcedIcon;
+    private static ImageIcon warnIcon;
 
     public OverlayTreeCellRenderer() {
 	initIcons();
@@ -75,9 +73,17 @@ public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
 		Overlay ovl = (Overlay) o;
 		setToolTipText(ovl.getDescription());
 		if (ovl.isInstalled()) {
-		    setIcon(selectedIcon);
+		    if (ovl.isComplete()) {
+			setIcon(selectedIcon);
+		    } else {
+			setIcon(warnIcon);
+		    }
 		} else {
-		    setIcon(noneIcon);
+		    if (ovl.isComplete()) {
+			setIcon(partIcon);
+		    } else {
+			setIcon(noneIcon);
+		    }
 		}
 	    } else {
 		setToolTipText(null);
@@ -94,10 +100,7 @@ public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
 	noneIcon = createImageIcon("/images/none.png");
 	selectedIcon = createImageIcon("/images/selected.png");
 	partIcon = createImageIcon("/images/part.png");
-	forcedIcon = createImageIcon("/images/forced.png");
-	partforcedIcon = createImageIcon("/images/partforced.png");
-	selectedpartforcedIcon =
-	    createImageIcon("/images/selectedpartforced.png");
+	warnIcon = createImageIcon("/images/warn.png");
     }
 
     /*
