@@ -100,10 +100,4 @@ public class OverlayPanel extends JPanel {
     public void showDetailedView() {
 	pip.showDetailedView();
     }
-
-    public void reset() {
-	currentPackage = null;
-	tree.clearSelection();
-	pip.reset();
-    }
 }

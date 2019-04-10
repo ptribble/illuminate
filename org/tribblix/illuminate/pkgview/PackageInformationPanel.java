@@ -278,15 +278,4 @@ public class PackageInformationPanel extends JTabbedPane {
     public void showDetailedView() {
 	cp = ContentsParser.getInstance(altroot);
     }
-
-    /**
-     * Reset the info panel to a blank state.
-     */
-    public void reset() {
-	setSelectedIndex(0);
-	infoOnly("");
-	if (showfiles) {
-	    tp_files.setText("");
-	}
-    }
 }
