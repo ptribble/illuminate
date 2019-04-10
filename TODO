@@ -6,12 +6,16 @@ Zones
     Need to pass the kstat and jkstat through somehow
     Handle potential multiple interfaces
 
+Duplicate class InfoPanel - at top-level and in explorer
+
+Contents tab should be disabled for overlays
+
+Overlay information tab should give completeness and installed status
+
+Information tab - refresh button on the toolbar?
+
 Could handle man pages from the file list
 And other file types too
-
-java -cp lib/java/illuminate.jar org.tribblix.illuminate.helpers.ManViewer zfs.1m
-
-Make a standalone man viewer
 
 Faulty zfs pools should be marked in red
 Need a way to filter displayed output. Could use that to toggle
@@ -31,11 +35,7 @@ Update freechart
 Network view - relationship between physical interfaces, vnics, aggregations
   and what they're connected to
 
-Replace pixmaps (and their names)
-
 The zone information could add a link to the relevant brand man page
-
-Command output could add a link to the relevant man page
 
 SMF - use jna (like haplo does)
 

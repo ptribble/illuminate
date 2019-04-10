@@ -35,6 +35,7 @@ public class InfoCommand {
     private String text;
     private String cmd;
     private String fullcmd;
+    private String manpage;
 
     /**
      * Create an informational command.
@@ -57,6 +58,24 @@ public class InfoCommand {
 	this.text = text;
 	this.cmd = cmd;
 	fullcmd = (args == null) ? cmd : cmd + " " + args;
+    }
+
+    /**
+     * Set the manpage for this command
+     *
+     * @param manpage the manpage, with section appended
+     */
+    public void setManpage(String manpage) {
+	this.manpage = manpage;
+    }
+
+    /**
+     * Get the manpage for this command, if any
+     *
+     * @retrun the manpage, with section appended
+     */
+    public String getManpage() {
+	return manpage;
     }
 
     /**
@@ -97,17 +116,17 @@ public class InfoCommand {
     }
 
     /**
-     * Return a html formatted table representing the output of this command.
+     * Return a html String representing this command, suitable
+     * for putting on a label or button.
      *
-     * @return a String in html format representing the command output
+     * @return a html String representing the command
      */
-    public String infoTable() {
+    public String infoLabel() {
 	StringBuilder sb = new StringBuilder();
+	sb.append("<html>");
 	sb.append(IlluminateResources.getString("INFO.OUTPUT.TEXT"));
-	sb.append(" <b>").append(fullcmd);
-	sb.append("</b>\n<hr>\n<pre>");
-	sb.append(getOutput());
-	sb.append("</pre>");
+	sb.append(": <b>").append(fullcmd);
+	sb.append("</b></html>");
 	return sb.toString();
     }
 }

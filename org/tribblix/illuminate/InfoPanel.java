@@ -25,6 +25,7 @@ package org.tribblix.illuminate;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
+import org.tribblix.illuminate.helpers.ManFrame;
 import uk.co.petertribble.jingle.JingleTextPane;
 
 /**
@@ -32,9 +33,12 @@ import uk.co.petertribble.jingle.JingleTextPane;
  * can be shown on the left and a panel showing the informational output on
  * the right.
  */
-public class InfoPanel extends JPanel {
+public class InfoPanel extends JPanel implements ActionListener {
 
     private JingleTextPane tp;
+    private JLabel jcl;
+    private JButton jmb;
+    private InfoCommand currentCmd;
 
     /**
      * Display an information panel.
@@ -46,19 +50,45 @@ public class InfoPanel extends JPanel {
 	ilist.addMouseListener(mouseListener);
 	ilist.addKeyListener(keyListener);
 
+	JPanel jp = new JPanel(new BorderLayout());
+	JToolBar jtb = new JToolBar();
+	jtb.setFloatable(false);
+	jtb.setRollover(true);
+	jtb.setLayout(new BorderLayout());
+	jcl = new JLabel(IlluminateResources.getString("INFO.OUTPUT.TEXT"));
+	jtb.add(jcl, BorderLayout.LINE_START);
+	jtb.addSeparator();
+	jmb = new JButton(IlluminateResources.getString("ILLUMINATE.MAN.TEXT"));
+	jmb.setEnabled(false);
+	jmb.addActionListener(this);
+	jtb.add(jmb, BorderLayout.LINE_END);
+	jp.add(jtb, BorderLayout.PAGE_START);
 	tp = new JingleTextPane();
+	jp.add(new JScrollPane(tp), BorderLayout.CENTER);
+
 	JSplitPane psplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
-		new JScrollPane(ilist), new JScrollPane(tp));
+		new JScrollPane(ilist), jp);
 	psplit.setOneTouchExpandable(true);
 	psplit.setDividerLocation(150);
 	add(psplit);
     }
 
     private void setInfo(InfoCommand ic) {
+	currentCmd = ic;
+	jcl.setText(ic.infoLabel());
+	jmb.setEnabled(ic.getManpage() != null);
 	Cursor c = getCursor();
 	setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-	tp.setText(ic.infoTable());
+	tp.setText("<pre>" + ic.getOutput() + "</pre>");
 	setCursor(c);
+    }
+
+    private void showMan() {
+	if (currentCmd != null) {
+	    if (currentCmd.getManpage() != null) {
+		new ManFrame(currentCmd.getManpage());
+	    }
+	}
     }
 
     MouseListener mouseListener = new MouseAdapter() {
@@ -79,4 +109,10 @@ public class InfoPanel extends JPanel {
 	    }
 	}
     };
+
+    public void actionPerformed(ActionEvent e) {
+	if (e.getSource() == jmb) {
+	    showMan();
+	}
+    }
 }

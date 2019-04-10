@@ -37,68 +37,123 @@ public class InfoCommandList extends Vector <InfoCommand> {
      */
     public InfoCommandList() {
 	// add all the possible commands here
-	addCommand(IlluminateResources.getString("INFO.BEADM"),
+	InfoCommand ic =
+	    new InfoCommand(IlluminateResources.getString("INFO.BEADM"),
 		"/usr/sbin/beadm", "list");
-	addCommand(IlluminateResources.getString("INFO.CORE"),
+	ic.setManpage("beadm.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.CORE"),
 		"/usr/bin/coreadm");
-	addCommand(IlluminateResources.getString("INFO.DF"),
+	ic.setManpage("coreadm.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.DF"),
 		"/usr/sbin/df", "-kl");
-	addCommand(IlluminateResources.getString("INFO.IOSTAT"),
+	ic.setManpage("df.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.IOSTAT"),
 		"/usr/bin/iostat", "-En");
-	addCommand(IlluminateResources.getString("INFO.HOSTID"),
+	ic.setManpage("iostat.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.HOSTID"),
 		"/usr/bin/hostid");
-	addCommand(IlluminateResources.getString("INFO.IFCONFIG"),
+	ic.setManpage("hostid.1");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.IFCONFIG"),
 		"/usr/sbin/ifconfig", "-a");
-	addCommand(IlluminateResources.getString("INFO.INETADM"),
+	ic.setManpage("ifconfig.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.INETADM"),
 		"/usr/sbin/inetadm");
-	addCommand(IlluminateResources.getString("INFO.ISA"),
+	ic.setManpage("inetadm.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.ISA"),
 		"/usr/bin/isainfo", "-v");
-	addCommand(IlluminateResources.getString("INFO.MOD"),
+	ic.setManpage("isainfo.1");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.MOD"),
 		"/usr/sbin/modinfo");
-	addCommand(IlluminateResources.getString("INFO.NSCD"),
+	ic.setManpage("modinfo.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.NSCD"),
 		"/usr/sbin/nscd", "-g");
-	addCommand(IlluminateResources.getString("INFO.NTP"),
+	ic.setManpage("nscd.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.NTP"),
 		"/usr/sbin/ntpq", "-p");
-	addCommand(IlluminateResources.getString("INFO.PKGS"),
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.PKGS"),
 		"/usr/bin/pkginfo");
-	addCommand(IlluminateResources.getString("INFO.EEPROM"),
+	ic.setManpage("pkginfo.1");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.EEPROM"),
 		"/usr/sbin/eeprom");
-	addCommand(IlluminateResources.getString("INFO.PRTCONF"),
+	ic.setManpage("eeprom.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.PRTCONF"),
 		"/usr/sbin/prtconf");
-	addCommand(IlluminateResources.getString("INFO.PRTDIAG"),
+	ic.setManpage("prtconf.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.PRTDIAG"),
 		"/usr/sbin/prtdiag");
-	addCommand(IlluminateResources.getString("INFO.PRTFRU"),
+	ic.setManpage("prtdiag.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.PRTFRU"),
 		"/usr/sbin/prtfru");
-	addCommand(IlluminateResources.getString("INFO.PRTPICL"),
+	ic.setManpage("prtfru.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.PRTPICL"),
 		"/usr/sbin/prtpicl");
-	addCommand(IlluminateResources.getString("INFO.PSRINFO"),
+	ic.setManpage("prtpicl.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.PSRINFO"),
 		"/usr/sbin/psrinfo", "-v");
-	addCommand(IlluminateResources.getString("INFO.ROUTE"),
+	ic.setManpage("psrinfo.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.ROUTE"),
 		"/sbin/routeadm");
-	addCommand(IlluminateResources.getString("INFO.RPC"),
+	ic.setManpage("routeadm.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.RPC"),
 		"/usr/bin/rpcinfo", "-s");
-	addCommand(IlluminateResources.getString("INFO.SHARE"),
+	ic.setManpage("rpcinfo.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.SHARE"),
 		"/usr/sbin/share");
-	addCommand(IlluminateResources.getString("INFO.SMBIOS"),
+	ic.setManpage("share.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.SMBIOS"),
 		"/usr/sbin/smbios");
-	addCommand(IlluminateResources.getString("INFO.SWAP"),
+	ic.setManpage("smbios.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.SWAP"),
 		"/usr/sbin/swap", "-lh");
-	addCommand(IlluminateResources.getString("INFO.UNAME"),
+	ic.setManpage("swap.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.UNAME"),
 		"/usr/bin/uname", "-a");
-	addCommand(IlluminateResources.getString("INFO.UP"), "/usr/bin/uptime");
-	addCommand(IlluminateResources.getString("INFO.ZPOOL"),
+	ic.setManpage("uname.1");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.UP"),
+		"/usr/bin/uptime");
+	ic.setManpage("uptime.1");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.ZPOOL"),
 		"/usr/sbin/zpool", "status");
-	addCommand(IlluminateResources.getString("INFO.ZFS"),
+	ic.setManpage("zpool.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.ZFS"),
 		"/usr/sbin/zfs", "list");
-	addCommand(IlluminateResources.getString("INFO.ZONES"),
+	ic.setManpage("zfs.1m");
+	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.ZONES"),
 		"/usr/sbin/zoneadm", "list -icv");
+	ic.setManpage("zoneadm.1m");
+	addCommand(ic);
     }
 
-    private void addCommand(String text, String cmd) {
-	addCommand(text, cmd, (String) null);
-    }
-
-    private void addCommand(String text, String cmd, String args) {
-	add(new InfoCommand(text, cmd, args));
+    private void addCommand(InfoCommand ic) {
+	if (ic.exists()) {
+	    add(ic);
+	}
     }
 }
