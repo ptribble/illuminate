@@ -44,7 +44,8 @@ import java.util.Locale;
  *
  * @author Peter C. Tribble (peter.tribble@gmail.com)
  */
-public class ManPane extends JEditorPane implements ActionListener, HyperlinkListener {
+public class ManPane extends JEditorPane
+		implements ActionListener, HyperlinkListener {
 
     /*
      * navigation controls
@@ -68,7 +69,7 @@ public class ManPane extends JEditorPane implements ActionListener, HyperlinkLis
      * This is hard-coded, unfortunately
      */
     private static final String[] manpath = { "/usr/share/man",
-					      "/usr/gnu/share/man" };
+					"/usr/gnu/share/man" };
 
     /**
      * Create a Scrollable panel containing the text of a man page
@@ -103,7 +104,8 @@ public class ManPane extends JEditorPane implements ActionListener, HyperlinkLis
     private void showMan(File f) {
 	if (f != null) {
 	    String m = f.toString();
-	    RunCommand rc = new RunCommand("/usr/bin/mandoc -T html -O man='%N.%S' " + m);
+	    RunCommand rc =
+		new RunCommand("/usr/bin/mandoc -T html -O man='%N.%S' " + m);
 	    jep.setText(rc.getOut());
 	    jep.setMargin(new Insets(5, 5, 5, 5));
 	    jep.setCaretPosition(0);
@@ -141,7 +143,7 @@ public class ManPane extends JEditorPane implements ActionListener, HyperlinkLis
 	/*
 	 * The Hyperlink event is quoted, so dequote
 	 */
-	m = m.replaceAll("'","");
+	m = m.replaceAll("'", "");
 	/*
 	 * First split off the section
 	 */

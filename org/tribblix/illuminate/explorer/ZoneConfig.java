@@ -59,7 +59,8 @@ public class ZoneConfig {
      * Populate the ZoneEntry map;
      */
     private void parse_zones() {
-	InfoCommand ic = new InfoCommand("ZL", "/usr/sbin/zoneadm", "list -icp");
+	InfoCommand ic =
+	    new InfoCommand("ZL", "/usr/sbin/zoneadm", "list -icp");
 	if (ic.exists()) {
 	    for (String line : ic.getOutput().split("\n")) {
 		String[] lentries = line.split(":");
