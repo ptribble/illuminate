@@ -37,7 +37,6 @@ public class Zfilesys {
 
     private String name;
     private Map <String, String> propmap;
-    private boolean readprops;
     private Set <Zfilesys> children;
     private Set <Zfilesys> snapshots;
 
@@ -49,26 +48,8 @@ public class Zfilesys {
      */
     public Zfilesys(String name) {
 	this.name = name;
-	propmap = new HashMap <String, String> ();
 	children = new HashSet <Zfilesys> ();
 	snapshots = new HashSet <Zfilesys> ();
-    }
-
-    /*
-     * This assumes we're just interested in the property name and its value.
-     * If we want to track the source, then we'll need to define a property
-     * object.
-     */
-    private void setProperties() {
-	readprops = true;
-	InfoCommand ic = new InfoCommand("ZP", "/usr/sbin/zfs",
-						"get -Hp all " + name);
-	if (ic.exists()) {
-	    for (String line : ic.getOutput().split("\n")) {
-		String[] ds = line.split("\\s+");
-		propmap.put(ds[1], ds[2]);
-	    }
-	}
     }
 
     /**
@@ -83,11 +64,19 @@ public class Zfilesys {
     /**
      * Return the entire property map.
      *
-     * @return a Map containg the properties of this Zfilesys
+     * @return a Map containing the properties of this Zfilesys
      */
     public Map <String, String> getProperties() {
-	if (!readprops) {
-	    setProperties();
+	if (propmap == null) {
+	    propmap = new HashMap <String, String> ();
+	    InfoCommand ic = new InfoCommand("ZP", "/usr/sbin/zfs",
+						"get -Hp all " + name);
+	    if (ic.exists()) {
+		for (String line : ic.getOutput().split("\n")) {
+		    String[] ds = line.split("\\s+");
+		    propmap.put(ds[1], ds[2]);
+		}
+	    }
 	}
 	return propmap;
     }
