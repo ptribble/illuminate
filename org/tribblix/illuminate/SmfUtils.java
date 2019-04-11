@@ -70,18 +70,6 @@ public class SmfUtils {
 	return services;
     }
 
-    /*
-     * Used by the jsp pages.
-     */
-    /**
-     * Get a Set of Strings representing all current status values.
-     *
-     * @return a Set of all current statusses
-     */
-    public Set <String> getStatusses() {
-	return statusMap.keySet();
-    }
-
     /**
      * Get a Set of all services in the given status.
      *
@@ -91,20 +79,6 @@ public class SmfUtils {
      */
     public Set <SmfService> getServices(String status) {
 	return statusMap.get(status);
-    }
-
-    /*
-     * Used by the jsp pages.
-     */
-    /**
-     * Get the SmfService of the given name.
-     *
-     * @param s the name of the service
-     *
-     * @return the SmfService of the given name
-     */
-    public SmfService getService(String s) {
-	return serviceMap.get(s);
     }
 
     /**
