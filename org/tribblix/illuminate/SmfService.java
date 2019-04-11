@@ -25,8 +25,8 @@ package org.tribblix.illuminate;
 import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
-
 import org.tribblix.illuminate.helpers.RunCommand;
+import uk.co.petertribble.jumble.JumbleFile;
 
 /**
  * SmfService - describes an SMF service.
@@ -197,6 +197,79 @@ public class SmfService implements Comparable<SmfService> {
 	    }
 	}
 	return props.get(s);
+    }
+
+    /**
+     * Produce an html formatted table containing dependency information for
+     * this service.
+     *
+     * @return  an html formatted table containing dependency information for
+     * the given service
+     */
+    public String getDepInfo() {
+	if ("legacy_run".equals(status)) {
+	    return null;
+	}
+	StringBuilder sb = new StringBuilder();
+	sb.append("<h3>").append(getName()).append("</h3>");
+	sb.append("<p bgcolor=\"#cccccc\">");
+	sb.append("<b>Services this service depends on</b></p>");
+	sb.append("<pre>").append(getDependencies()).append("</pre>");
+	sb.append("<p bgcolor=\"#cccccc\">");
+	sb.append("<b>Services that depend on this service</b></p>");
+	sb.append("<pre>").append(getDependents()).append("</pre>");
+	return sb.toString();
+    }
+
+    /**
+     * Produce an html formatted table describing this service.
+     *
+     * @return an html formatted table describing tis service
+     */
+    public String getHtmlInfo() {
+	if ("legacy_run".equals(status)) {
+	    StringBuilder sb = new StringBuilder();
+	    File fl = getScriptFile();
+	    sb.append("<p bgcolor=\"#cccccc\"><b>");
+	    if (fl == null) {
+		sb.append("This is an unknown legacy script.</b></p>");
+	    } else {
+		sb.append("This is a legacy script, file name ");
+		sb.append(fl.getPath());
+		sb.append("</b></p><pre>\n\n\nScript Contents:\n\n");
+		sb.append(JumbleFile.getStringContents(fl));
+		sb.append("</pre>\n");
+	    }
+	    return sb.toString();
+	} else {
+	    return "<pre>" + getExplanation() + "</pre>";
+	}
+    }
+
+    /*
+     * The legacy FMRIs are constructed from the actual filenames, but
+     * modified. In particular, any "." is replaced by "_". So we look for the
+     * original by trying to substitute back the other way. If it works we
+     * return the File, and if we run out of substitutions and still can't
+     * find a file, return null.
+     */
+    private File getScriptFile() {
+	// start with the FMRI, strip the leading svc: off
+	String s = fmri.substring(4);
+	String script = s.replaceFirst("_", ".");
+	File f = new File(script);
+	if (f.exists()) {
+	    return f;
+	}
+	while (!script.equals(s)) {
+	    s = script;
+	    script = s.replaceFirst("_", ".");
+	    f = new File(script);
+	    if (f.exists()) {
+		return f;
+	    }
+	}
+	return null;
     }
 
     /**

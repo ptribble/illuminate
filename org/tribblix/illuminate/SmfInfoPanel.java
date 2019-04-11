@@ -45,7 +45,6 @@ public class SmfInfoPanel extends JPanel {
     private JingleTextPane tpl;
     private JingleTextPane dtp;
     private JTabbedPane jtp;
-    private SmfUtils smfutil;
     private JProc jproc;
     private JProcessFilter jpf;
     private JPinfoTable jpi;
@@ -53,11 +52,8 @@ public class SmfInfoPanel extends JPanel {
 
     /**
      * Display an smf information panel.
-     *
-     * @param smfutil  a SmfUtils object
      */
-    public SmfInfoPanel(SmfUtils smfutil) {
-	this.smfutil = smfutil;
+    public SmfInfoPanel() {
 	setLayout(new BorderLayout());
 	jtp = new JTabbedPane();
 	add(jtp);
@@ -108,8 +104,8 @@ public class SmfInfoPanel extends JPanel {
      * @param svc  The SmfService to show information on.
      */
     public void setInfo(SmfService svc) {
-	tp.setText(smfutil.getHtmlInfo(svc));
-	setDep(smfutil.getDepInfo(svc));
+	tp.setText(svc.getHtmlInfo());
+	setDep(svc.getDepInfo());
 	setLog(svc.getLog());
 	// FIXME bug no contract is -1, but the table interprets -1
 	// as no filtering

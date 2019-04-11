@@ -23,9 +23,7 @@
 package org.tribblix.illuminate;
 
 import java.util.*;
-import java.io.File;
 import org.tribblix.illuminate.helpers.RunCommand;
-import uk.co.petertribble.jumble.JumbleFile;
 
 /**
  * SmfUtils - shows available SMF services.
@@ -79,83 +77,5 @@ public class SmfUtils {
      */
     public Set <SmfService> getServices(String status) {
 	return statusMap.get(status);
-    }
-
-    /**
-     * Produce an html formatted table describing the given service.
-     *
-     * @param svc the service to describe
-     *
-     * @return an html formatted table describing the given service
-     */
-    public String getHtmlInfo(SmfService svc) {
-	String status = svc.getStatus();
-	if ("legacy_run".equals(status)) {
-	    StringBuilder sb = new StringBuilder();
-	    File fl = getScriptFile(svc);
-	    sb.append("<p bgcolor=\"#cccccc\"><b>");
-	    if (fl == null) {
-		sb.append("This is an unknown legacy script.</b></p>");
-	    } else {
-		sb.append("This is a legacy script, file name ");
-		sb.append(fl.getPath());
-		sb.append("</b></p><pre>\n\n\nScript Contents:\n\n");
-		sb.append(JumbleFile.getStringContents(fl));
-		sb.append("</pre>\n");
-	    }
-	    return sb.toString();
-	} else {
-	    return "<pre>" + svc.getExplanation() + "</pre>";
-	}
-    }
-
-    /**
-     * Produce an html formatted table containing dependency information for
-     * the given service.
-     *
-     * @param svc the service to display dependency information for
-     *
-     * @return  an html formatted table containing dependency information for
-     * the given service
-     */
-    public String getDepInfo(SmfService svc) {
-	if ("legacy_run".equals(svc.getStatus())) {
-	    return null;
-	}
-	StringBuilder sb = new StringBuilder();
-	sb.append("<h3>").append(svc.getName()).append("</h3>");
-	sb.append("<p bgcolor=\"#cccccc\">");
-	sb.append("<b>Services this service depends on</b></p>");
-	sb.append("<pre>").append(svc.getDependencies()).append("</pre>");
-	sb.append("<p bgcolor=\"#cccccc\">");
-	sb.append("<b>Services that depend on this service</b></p>");
-	sb.append("<pre>").append(svc.getDependents()).append("</pre>");
-	return sb.toString();
-    }
-
-    /*
-     * The legacy FMRIs are constructed from the actual filenames, but
-     * modified. In particular, any "." is replaced by "_". So we look for the
-     * original by trying to substitute back the other way. If it works we
-     * return the File, and if we run out of substitutions and still can't
-     * find a file, return null.
-     */
-    private File getScriptFile(SmfService svc) {
-	// start with the FMRI, strip the leading svc: off
-	String s = svc.getFMRI().substring(4);
-	String script = s.replaceFirst("_", ".");
-	File f = new File(script);
-	if (f.exists()) {
-	    return f;
-	}
-	while (!script.equals(s)) {
-	    s = script;
-	    script = s.replaceFirst("_", ".");
-	    f = new File(script);
-	    if (f.exists()) {
-		return f;
-	    }
-	}
-	return null;
     }
 }

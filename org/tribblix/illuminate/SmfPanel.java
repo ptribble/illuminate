@@ -68,7 +68,7 @@ public class SmfPanel extends JPanel {
 	jtp.add(IlluminateResources.getString("SMF.TREE"),
 		new JScrollPane(ptree));
 
-	sip = new SmfInfoPanel(smfutil);
+	sip = new SmfInfoPanel();
 
 	JSplitPane psplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
 		jtp, sip);
