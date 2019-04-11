@@ -19,10 +19,6 @@ Faulty zfs pools should be marked in red
 Need a way to filter displayed output. Could use that to toggle
 zfs snapshots on or off, or disabled services
 
-The tree cell renderers don't actually do tooltips
-(It's not obvious they should, fix the comment.)
-Or give SysItem a tooltip method (that ought to be dynamic)
-
 Views aren't dynamic and don't refresh - for example if a zone is added
 or removed or changes state (or reboots, as zoneid changes)
 

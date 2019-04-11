@@ -22,6 +22,7 @@
 
 package org.tribblix.illuminate;
 
+import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
 
@@ -45,9 +46,9 @@ public class SmfService implements Comparable<SmfService> {
     private Map <String, String> props;
 
     /**
-     * Create a new SmsService object.
+     * Create a new SmfService object.
      *
-     * @param fmri the name of this SMF service
+     * @param fmri the FMRI of this SMF service
      * @param status the current status of this service
      */
     public SmfService(String fmri, String status) {
@@ -151,20 +152,38 @@ public class SmfService implements Comparable<SmfService> {
     }
 
     /**
+     * Get the name of this service, for display purposes
+     *
+     * @return the human readable name of this service
+     */
+    public String getName() {
+	return getProperty("name");
+    }
+
+    /**
+     * Return the log file for this service, if it exists. If the log
+     * file doesn't exist, return null.
+     *
+     * @return a File referring to the log file for this service, if it
+     * exists, else null.
+     */
+    public File getLog() {
+	String logfile = getProperty("logfile");
+	if (logfile != null) {
+	    File fl = new File(logfile);
+	    if (fl.exists()) {
+		return fl;
+	    }
+	}
+	return null;
+    }
+
+    /*
      * Get the value of the given property. This is based on the output of
      * svcs -l broken into keys and values. This is only valid for unique
      * keys, so you can't get dependency information this way.
-     *
-     * @param s the name of the property to retrieve
-     *
-     * @return the value of the named property
      */
-    public String getProperty(String s) {
-	initProperties();
-	return props.get(s);
-    }
-
-    private void initProperties() {
+    private String getProperty(String s) {
 	if (props == null) {
 	    props = new HashMap <String, String> ();
 	    /*
@@ -177,6 +196,7 @@ public class SmfService implements Comparable<SmfService> {
 		}
 	    }
 	}
+	return props.get(s);
     }
 
     /**

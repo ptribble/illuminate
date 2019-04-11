@@ -110,7 +110,7 @@ public class SmfInfoPanel extends JPanel {
     public void setInfo(SmfService svc) {
 	tp.setText(smfutil.getHtmlInfo(svc));
 	setDep(smfutil.getDepInfo(svc));
-	setLog(smfutil.getLog(svc));
+	setLog(svc.getLog());
 	// FIXME bug no contract is -1, but the table interprets -1
 	// as no filtering
 	jpi.setContract(svc.getContract());

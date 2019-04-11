@@ -38,10 +38,7 @@ import java.net.URL;
 public class SmfTreeCellRenderer extends DefaultTreeCellRenderer {
 
     private static ImageIcon failIcon;
-    // private static ImageIcon warnIcon;
-    // private static ImageIcon unknownIcon;
     private static ImageIcon okIcon;
-    // may need icons for legacy and disabled
 
     /**
      * Create an SmfTreeCellRenderer.
@@ -70,6 +67,14 @@ public class SmfTreeCellRenderer extends DefaultTreeCellRenderer {
 	    if ("maintenance".equals(stn.getStatus())) {
 		setIcon(failIcon);
 	    }
+	    SmfService ss = (SmfService) stn.getUserObject();
+	    if (ss != null) {
+		setToolTipText(ss.getName());
+	    } else {
+		setToolTipText(null);
+	    }
+	} else {
+	    setToolTipText(null);
 	}
 	return this;
     }
@@ -80,8 +85,6 @@ public class SmfTreeCellRenderer extends DefaultTreeCellRenderer {
      */
     private void initIcons() {
 	failIcon = createImageIcon("/images/fail.png");
-	// warnIcon = createImageIcon("/images/warn.png");
-	// unknownIcon = createImageIcon("/images/unknown.png");
 	okIcon = createImageIcon("/images/ok.png");
     }
 

@@ -36,7 +36,7 @@ public class SmfTreeNode extends DefaultMutableTreeNode {
     private String node;
 
     /**
-     * A node in a tree of SMF services.
+     * A leaf node in a tree of SMF services.
      *
      * @param svc The SmfService represented by this SmfTreeNode
      * @param node The display name of this SmfTreeNode
@@ -47,7 +47,7 @@ public class SmfTreeNode extends DefaultMutableTreeNode {
     }
 
     /**
-     * A node in a tree of SMF services.
+     * An intermediate node in a tree of SMF services.
      *
      * @param node The display name of this SmfTreeNode
      */

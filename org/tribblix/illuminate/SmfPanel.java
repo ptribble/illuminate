@@ -49,6 +49,7 @@ public class SmfPanel extends JPanel {
 	plist.addKeyListener(keyListener);
 
 	final SmfTree ptree = new SmfTree(smfutil);
+	ToolTipManager.sharedInstance().registerComponent(ptree);
 	ptree.addTreeSelectionListener(new TreeSelectionListener() {
 	    public void valueChanged(TreeSelectionEvent e) {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode)

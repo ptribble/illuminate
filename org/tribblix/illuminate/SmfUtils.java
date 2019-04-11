@@ -149,7 +149,7 @@ public class SmfUtils {
 	    return null;
 	}
 	StringBuilder sb = new StringBuilder();
-	sb.append("<h3>").append(svc.getProperty("name")).append("</h3>");
+	sb.append("<h3>").append(svc.getName()).append("</h3>");
 	sb.append("<p bgcolor=\"#cccccc\">");
 	sb.append("<b>Services this service depends on</b></p>");
 	sb.append("<pre>").append(svc.getDependencies()).append("</pre>");
@@ -157,26 +157,6 @@ public class SmfUtils {
 	sb.append("<b>Services that depend on this service</b></p>");
 	sb.append("<pre>").append(svc.getDependents()).append("</pre>");
 	return sb.toString();
-    }
-
-    /**
-     * Return the log file for the given service, if it exists. If the log
-     * file doesn't exist, return null.
-     *
-     * @param svc the SmfService to return the log file for
-     *
-     * @return a File referring to the log file for the given service, if it
-     * exists, else null.
-     */
-    public File getLog(SmfService svc) {
-	String logfile = svc.getProperty("logfile");
-	if (logfile != null) {
-	    File fl = new File(logfile);
-	    if (fl.exists()) {
-		return fl;
-	    }
-	}
-	return null;
     }
 
     /*
