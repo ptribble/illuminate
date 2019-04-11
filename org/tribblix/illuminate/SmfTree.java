@@ -39,14 +39,14 @@ public class SmfTree extends JTree {
     /**
      * Display a tree of SMF services.
      *
-     * @param smfutil An SmfUtil object
+     * @param sslist An SmfServiceList
      */
-    public SmfTree(SmfUtils smfutil) {
+    public SmfTree(SmfServiceList sslist) {
 	DefaultMutableTreeNode root = new DefaultMutableTreeNode(
 				IlluminateResources.getString("SMF.SERVICES"));
 
 	// build up the tree
-	for (SmfService svc : smfutil.getServices()) {
+	for (SmfService svc : sslist) {
 	    addService(svc, root);
 	}
 

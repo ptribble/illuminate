@@ -22,60 +22,24 @@
 
 package org.tribblix.illuminate;
 
-import java.util.*;
+import java.util.StringTokenizer;
+import java.util.Vector;
 import org.tribblix.illuminate.helpers.RunCommand;
 
 /**
- * SmfUtils - shows available SMF services.
+ * SmfServiceList - a list of all SMF services.
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfUtils {
+public class SmfServiceList extends Vector <SmfService> {
 
-    private Set <SmfService> services;
-    private Map <String, SmfService> serviceMap;
-    private Map <String, Set <SmfService>> statusMap;
-
-    public SmfUtils() {
-	services = new TreeSet <SmfService> ();
-	serviceMap = new HashMap <String, SmfService> ();
-	statusMap = new LinkedHashMap <String, Set <SmfService>> ();
-
+    public SmfServiceList() {
 	RunCommand svcs = new RunCommand("/usr/bin/svcs -aH");
 	// parse the svcs output to get the service name and status
 	StringTokenizer st = new StringTokenizer(svcs.getOut(), "\n");
 	while (st.hasMoreTokens()) {
 	    String[] ds = st.nextToken().split("\\s+", 3);
-	    SmfService serv = new SmfService(ds[2], ds[0]);
-	    serviceMap.put(ds[2], serv);
-	    services.add(serv);
-
-	    Set <SmfService> statset = statusMap.get(ds[0]);
-	    if (statset == null) {
-		statset = new TreeSet <SmfService> ();
-		statusMap.put(ds[0], statset);
-	    }
-	    statset.add(serv);
+	    add(new SmfService(ds[2], ds[0]));
 	}
-    }
-
-    /**
-     * Get all services.
-     *
-     * @return the Set of all services
-     */
-    public Set <SmfService> getServices() {
-	return services;
-    }
-
-    /**
-     * Get a Set of all services in the given status.
-     *
-     * @param status the status to return services for
-     *
-     * @return the Set of SmfServices in the given status
-     */
-    public Set <SmfService> getServices(String status) {
-	return statusMap.get(status);
     }
 }

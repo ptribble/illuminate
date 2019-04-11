@@ -22,8 +22,8 @@
 
 package org.tribblix.illuminate;
 
+import java.awt.event.MouseEvent;
 import javax.swing.JList;
-import javax.swing.DefaultListModel;
 
 /**
  * SmfList - shows SMF services in a JList.
@@ -35,14 +35,25 @@ public class SmfList extends JList <SmfService> {
     /**
      * Display a list of SMF services.
      *
-     * @param smfutil An SmfUtils object
+     * @param sslist An SmfServiceList
      */
-    public SmfList(SmfUtils smfutil) {
-	DefaultListModel<SmfService> model = new DefaultListModel<SmfService>();
-	for (SmfService svc : smfutil.getServices()) {
-	    model.addElement(svc);
-	}
-	setModel(model);
+    public SmfList(SmfServiceList sslist) {
+	super(sslist);
 	setCellRenderer(new SmfListCellRenderer());
+    }
+
+    /**
+     * Return a tooltip containing the command that will be run.
+     *
+     * @param me the MouseEvent that generates the tooltip
+     *
+     * @return the tooltip for the command
+     */
+    public String getToolTipText(MouseEvent me) {
+	Object o = this.getModel().getElementAt(locationToIndex(me.getPoint()));
+	if (o instanceof SmfService) {
+	    return ((SmfService) o).getName();
+	}
+	return null;
     }
 }

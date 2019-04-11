@@ -43,12 +43,12 @@ public class SmfPanel extends JPanel {
     public SmfPanel() {
 	setLayout(new BorderLayout());
 
-	SmfUtils smfutil = new SmfUtils();
-	SmfList plist = new SmfList(smfutil);
+	SmfServiceList sslist = new SmfServiceList();
+	SmfList plist = new SmfList(sslist);
 	plist.addMouseListener(mouseListener);
 	plist.addKeyListener(keyListener);
 
-	final SmfTree ptree = new SmfTree(smfutil);
+	final SmfTree ptree = new SmfTree(sslist);
 	ToolTipManager.sharedInstance().registerComponent(ptree);
 	ptree.addTreeSelectionListener(new TreeSelectionListener() {
 	    public void valueChanged(TreeSelectionEvent e) {
