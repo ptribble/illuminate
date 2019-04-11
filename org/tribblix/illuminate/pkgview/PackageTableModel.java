@@ -47,7 +47,7 @@ public class PackageTableModel extends AbstractTableModel {
      * @param plist a PkgList
      */
     public PackageTableModel(PkgList plist) {
-	pkgs = new ArrayList <SVR4Package> (plist.getPackages());
+	pkgs = new ArrayList <SVR4Package> (plist);
     }
 
     public int getColumnCount() {

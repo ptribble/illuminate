@@ -38,13 +38,13 @@ public class PackageSizes {
 	    altroot = args[1];
 	}
 	ContentsParser cp = ContentsParser.getInstance(altroot);
-	for (SVR4Package pkg :  new PkgList(altroot).getPackages()) {
-	    ContentsPackage cc = cp.getPackage(pkg.getName());
+	for (String pkg :  (new PkgList(altroot)).getPackageNames()) {
+	    ContentsPackage cc = cp.getPackage(pkg);
 	    if (cc == null) {
-		System.out.println("0 | 0 | " + pkg.getName());
+		System.out.println("0 | 0 | " + pkg);
 	    } else {
 		System.out.println(cc.spaceUsed() + " | " + cc.numEntries()
-				+ " | " + pkg.getName());
+				+ " | " + pkg);
 	    }
 	}
     }

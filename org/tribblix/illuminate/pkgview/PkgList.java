@@ -31,9 +31,8 @@ import java.util.*;
  * @author Peter Tribble
  * @version 2.0
  */
-public class PkgList {
+public class PkgList extends TreeSet <SVR4Package> {
 
-    private Set <SVR4Package> pkglist;
     private Map <String, SVR4Package> pkgMap;
     private Map <String, Set <SVR4Package>> revDependencies;
 
@@ -48,7 +47,6 @@ public class PkgList {
      */
     public PkgList(String altroot) {
 	pkgMap = new HashMap <String, SVR4Package> ();
-	pkglist = new TreeSet <SVR4Package> ();
 
 	File pkgrootf = new File(altroot + SVR4Package.PKG_ROOT);
 
@@ -58,14 +56,10 @@ public class PkgList {
 		!f.getName().equals("locale") &&
 		(new File(f, "pkginfo")).exists()) {
 		SVR4Package sp = new SVR4Package(altroot, f.getName());
-		pkglist.add(sp);
+		add(sp);
 		pkgMap.put(sp.getName(), sp);
 	    }
 	}
-    }
-
-    public Set <SVR4Package> getPackages() {
-	return pkglist;
     }
 
     public Set <String> getPackageNames() {
@@ -86,7 +80,7 @@ public class PkgList {
      */
     public void createRevDependencies() {
 	revDependencies = new HashMap <String, Set <SVR4Package>> ();
-	for (SVR4Package pkg : pkglist) {
+	for (SVR4Package pkg : this) {
 	    for (String pkgdep : pkg.getDependencySet()) {
 		Set <SVR4Package> revSet = revDependencies.get(pkgdep);
 		if (revSet == null) {
@@ -100,7 +94,7 @@ public class PkgList {
 	 * Now we've built the tree, tell the packages what their
 	 * dependants are.
 	 */
-	for (SVR4Package pkg : pkglist) {
+	for (SVR4Package pkg : this) {
 	    pkg.setDependantSet(revDependencies.get(pkg.getName()));
 	}
     }

@@ -47,14 +47,14 @@ public class MissingPackages {
 	 * of their dependencies.
 	 */
 	Set <String> deps = new TreeSet <String> ();
-	for (SVR4Package pkg : plist.getPackages()) {
+	for (SVR4Package pkg : plist) {
 	    deps.addAll(pkg.getDependencySet());
 	}
 	/*
 	 * Remove the installed packages from the list, this should give
 	 * the set of unsatisfied dependencies.
 	 */
-	for (SVR4Package pkg : plist.getPackages()) {
+	for (SVR4Package pkg : plist) {
 	    deps.remove(pkg.getName());
 	}
 	/*
