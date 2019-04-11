@@ -40,24 +40,26 @@ public class Overlay implements Comparable<Overlay> {
     private File ovrootf;
 
     private String altroot;
-    private String oname;
+    private String name;
     private String description;
     private String oversion;
     private Set <Overlay> overlays;
     private Set <SVR4Package> packages;
+    private Set <String> services;
 
     /**
      * Create an Overlay object. To be useful, you must call populate().
      *
      * @param altroot  An alternate root directory for this OS image
-     * @param oname  The name of this Overlay.
+     * @param name  The name of this Overlay.
      */
-    public Overlay(String altroot, String oname) {
+    public Overlay(String altroot, String name) {
 	this.altroot = altroot;
 	ovrootf = new File(altroot + OVL_ROOT);
-	this.oname = oname;
+	this.name = name;
 	packages = new TreeSet <SVR4Package> ();
 	overlays = new TreeSet <Overlay> ();
+	services = new TreeSet <String> ();
     }
 
     /**
@@ -69,7 +71,7 @@ public class Overlay implements Comparable<Overlay> {
     }
 
     private void parseOVL(OverlayList ovlist) {
-	File f = new File(ovrootf, oname + ".ovl");
+	File f = new File(ovrootf, name + ".ovl");
 	for (String line : JumbleFile.getLines(f)) {
 	    String[] ds = line.split("=", 2);
 	    if (ds[0].equals("VERSION")) {
@@ -84,12 +86,14 @@ public class Overlay implements Comparable<Overlay> {
 		} else {
 		    overlays.add(ovl);
 		}
+	    } else if (ds[0].equals("SERVICES")) {
+		services.add(ds[1]);
 	    }
 	}
     }
 
     private void parsePKGS(PkgList plist) {
-	File f = new File(ovrootf, oname + ".pkgs");
+	File f = new File(ovrootf, name + ".pkgs");
 	for (String line : JumbleFile.getLines(f)) {
 	    SVR4Package pkg = plist.getPackage(line);
 	    packages.add(pkg == null ? new SVR4Package(altroot, line) : pkg);
@@ -101,26 +105,33 @@ public class Overlay implements Comparable<Overlay> {
     }
 
     public String toString() {
-	return oname;
+	return name;
     }
 
     public String getVersion() {
 	return oversion;
     }
 
-    public String getOverlayName() {
-	return oname;
+    public String getName() {
+	return name;
     }
 
     /**
-     * Returns all the overlays that are required
-     * by this Overlay.
+     * Returns all the overlays required by this Overlay.
      *
-     * @return A Set of the overlays required
-     * by this Overlay.
+     * @return A Set of the overlays required by this Overlay.
      */
     public Set <Overlay> getOverlays() {
 	return overlays;
+    }
+
+    /**
+     * Returns all the services controlled by this Overlay.
+     *
+     * @return A Set of the services controlled by this Overlay.
+     */
+    public Set <String> getServices() {
+	return services;
     }
 
     /**
@@ -130,7 +141,7 @@ public class Overlay implements Comparable<Overlay> {
      */
     public boolean isInstalled() {
 	File f = new File(ovrootf, "installed");
-	File f2 = new File(f, oname);
+	File f2 = new File(f, name);
 	return f2.exists();
     }
 
@@ -197,7 +208,7 @@ public class Overlay implements Comparable<Overlay> {
      */
     public boolean containsOverlay(Overlay ovl) {
 	return (overlays.contains(ovl)) ? true :
-	    containsOverlay(ovl.getOverlayName());
+	    containsOverlay(ovl.getName());
     }
 
     /**
@@ -207,7 +218,7 @@ public class Overlay implements Comparable<Overlay> {
     public boolean containsOverlay(String oname) {
 	// check if any names match
 	for (Overlay ovl : overlays) {
-	    if (ovl.getOverlayName().equals(oname)) {
+	    if (ovl.getName().equals(oname)) {
 		return true;
 	    }
 	}
@@ -274,6 +285,6 @@ public class Overlay implements Comparable<Overlay> {
      * For Comparable.
      */
     public int compareTo(Overlay ovl) {
-	return oname.compareTo(ovl.getOverlayName());
+	return name.compareTo(ovl.getName());
     }
 }

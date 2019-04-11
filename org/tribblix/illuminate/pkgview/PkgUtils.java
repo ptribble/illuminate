@@ -92,7 +92,7 @@ public class PkgUtils {
 	StringBuilder sb = new StringBuilder();
 	headRow(sb, PkgResources.getString("PKGUTILS.PROPERTY"),
 			PkgResources.getString("PKGUTILS.VALUE"));
-	addRow(sb, "Name", ovl.getOverlayName());
+	addRow(sb, "Name", ovl.getName());
 	addRow(sb, "Description", ovl.getDescription());
 	addRow(sb, "Version", ovl.getVersion());
 	return wrapTable(sb);
@@ -107,7 +107,7 @@ public class PkgUtils {
 	StringBuilder sb = new StringBuilder();
 	headRow2(sb, "This Overlay depends on");
 	for (Overlay o : ovl.getOverlays()) {
-	    addRow(sb, o.getOverlayName(), o.getDescription());
+	    addRow(sb, o.getName(), o.getDescription());
 	}
 	return wrapTable(sb);
     }

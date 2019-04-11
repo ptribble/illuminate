@@ -82,10 +82,6 @@ public class OverlayList {
 	return ovlist;
     }
 
-    public Set <String> getOverlayNames() {
-	return new TreeSet <String> (ovMap.keySet());
-    }
-
     public Overlay getOverlay(String name) {
 	return ovMap.get(name);
     }

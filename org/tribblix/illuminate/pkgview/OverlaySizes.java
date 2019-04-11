@@ -42,10 +42,10 @@ public class OverlaySizes {
 	for (Overlay ovl : new OverlayList(altroot, plist).getOverlays()) {
 	    ContentsPackage cc = cp.getOverlay(ovl);
 	    if (cc == null) {
-		System.out.println("0 | 0 | " + ovl.getOverlayName());
+		System.out.println("0 | 0 | " + ovl.getName());
 	    } else {
 		System.out.println(cc.spaceUsed() + " | " + cc.numEntries()
-			+ " | " + ovl.getOverlayName()
+			+ " | " + ovl.getName()
 			+ " | " + ovl.getDescription());
 	    }
 	}

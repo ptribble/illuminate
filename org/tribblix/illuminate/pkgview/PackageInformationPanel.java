@@ -116,7 +116,7 @@ public class PackageInformationPanel extends JTabbedPane {
 	PkgUtils.headRow2(sb, title);
 	if (ovls != null) {
 	    for (Overlay ovl : ovls) {
-		PkgUtils.addRow(sb, ovl.getOverlayName(), ovl.getDescription());
+		PkgUtils.addRow(sb, ovl.getName(), ovl.getDescription());
 	    }
 	}
 	return PkgUtils.wrapTable(sb);
