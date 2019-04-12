@@ -1,3 +1,5 @@
+Update jkstat to fix the KSTAT_DATA_CHAR bug
+
 SMF tree has tooltips
 
 Explorer view is the default view
