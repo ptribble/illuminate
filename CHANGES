@@ -1,3 +1,5 @@
+Add a net widget for exclusive-ip zones
+
 Update jkstat to fix the KSTAT_DATA_CHAR bug
 
 SMF tree has tooltips

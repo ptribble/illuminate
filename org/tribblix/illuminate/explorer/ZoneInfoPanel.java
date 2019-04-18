@@ -22,8 +22,20 @@
 
 package org.tribblix.illuminate.explorer;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 import org.tribblix.illuminate.InfoCommand;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.gui.AccessoryNetPanel;
+import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
+import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
+import uk.co.petertribble.jkstat.gui.SparkRateAccessory;
 
 /**
  * ZoneInfoPanel - shows Zone information.
@@ -32,13 +44,20 @@ import org.tribblix.illuminate.InfoCommand;
  */
 public class ZoneInfoPanel extends InfoPanel {
 
+    private JKstat jkstat;
+    private KstatAccessorySet kas;
+    private List <KstatAccessoryPanel> kaplist;
+
     /**
      * Display a zone information panel.
      *
      * @param hi The item to display
+     * @param jkstat A JKstat object
      */
-    public ZoneInfoPanel(SysItem hi) {
+    public ZoneInfoPanel(SysItem hi, JKstat jkstat) {
 	super(hi);
+	this.jkstat = jkstat;
+	kaplist = new ArrayList <KstatAccessoryPanel> ();
 
 	if (hi.getType() == SysItem.ZONE_CONTAINER) {
 	    displaySummary();
@@ -51,6 +70,12 @@ public class ZoneInfoPanel extends InfoPanel {
 	}
 
 	validate();
+	kas = new KstatAccessorySet(kaplist, 1);
+    }
+
+    @Override
+    public void stopLoop() {
+	kas.stopLoop();
     }
 
     /*
@@ -83,9 +108,41 @@ public class ZoneInfoPanel extends InfoPanel {
      */
     private void displayZoneNet() {
 	ZoneEntry ze = (ZoneEntry) hi.getAttribute("zoneentry");
-	jvp.add(new JLabel("Zone Network"));
+	@SuppressWarnings("unchecked")
+	Map <String, Kstat> netMap =
+	    (Map <String, Kstat>) hi.getAttribute("netmap");
 	for (ZoneNet znet : ze.getNetworks()) {
-	    addText(znet.getPhysical());
+	    Kstat ks = netMap.get(znet.getPhysical());
+	    if (ks == null) {
+		addText("Interface " + znet.getPhysical());
+	    } else {
+		// outer panel
+		JPanel opanel = new JPanel();
+		opanel.setLayout(new BoxLayout(opanel, BoxLayout.PAGE_AXIS));
+
+		// regular network accessory
+		AccessoryNetPanel acp = new AccessoryNetPanel(ks, 5, jkstat);
+		kaplist.add(acp);
+		opanel.add(acp);
+
+		// panel for row of sparkcharts
+		JPanel npanel = new JPanel();
+		npanel.add(new JLabel("In: "));
+		SparkRateAccessory kap =
+		    new SparkRateAccessory(ks, -1, jkstat, "rbytes64");
+		kap.enableTips("Current kb/s in:", 1.0/1024.0);
+		npanel.add(kap);
+		kaplist.add(kap);
+		npanel.add(new JLabel("  Out: "));
+		kap = new SparkRateAccessory(ks, -1, jkstat, "obytes64");
+		kap.enableTips("Current kb/s out:", 1.0/1024.0);
+		npanel.add(kap);
+		kaplist.add(kap);
+		opanel.add(npanel);
+		opanel.setBorder(BorderFactory.createTitledBorder
+				 ("Interface " + ks.getName()));
+		jvp.add(opanel);
+	    }
 	}
     }
 }

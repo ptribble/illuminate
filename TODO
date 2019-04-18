@@ -1,11 +1,5 @@
 Things To Do:
 
-Zones
-  Add a net widget for exclusive-ip zones
-    It's halfway implemented
-    Need to pass the kstat and jkstat through somehow
-    Handle potential multiple interfaces
-
 Duplicate class InfoPanel - at top-level and in explorer
 
 Overlay information tab should give completeness and installed status

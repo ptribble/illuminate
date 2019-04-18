@@ -36,6 +36,7 @@ import org.tribblix.illuminate.IlluminateResources;
  */
 public class SysTree extends JTree {
 
+    private Map <String, Kstat> netMap;
     private JKstat jkstat;
 
     /**
@@ -55,6 +56,7 @@ public class SysTree extends JTree {
      */
     public SysTree(JKstat jkstat, String title) {
 	this.jkstat = jkstat;
+	netMap = new HashMap <String, Kstat> ();
 
 	DefaultMutableTreeNode root = new SysTreeNode(
 					new SysItem(SysItem.HOST), title);
@@ -207,6 +209,7 @@ public class SysTree extends JTree {
 	    SysItem hi = new SysItem(SysItem.NET_INTERFACE);
 	    hi.setKstat(ks);
 	    htn.add(new SysTreeNode(hi, ks.getName()));
+	    netMap.put(ks.getName(), ks);
 	}
 
 	// add network protocols
@@ -347,6 +350,7 @@ public class SysTree extends JTree {
 	    if (ze.isExclusiveIP()) {
 		zitem = new SysItem(SysItem.ZONE_NET);
 		zitem.addAttribute("zoneentry", ze);
+		zitem.addAttribute("netmap", netMap);
 		SysTreeNode zntn = new SysTreeNode(zitem,
 				IlluminateResources.getString("HARD.NETWORK"));
 		ztn.add(zntn);
