@@ -1,3 +1,5 @@
+Version 0.2
+
 Add a net widget for exclusive-ip zones
 
 Update jkstat to fix the KSTAT_DATA_CHAR bug
