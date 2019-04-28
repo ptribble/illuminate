@@ -19,8 +19,6 @@ Update freechart
 Network view - relationship between physical interfaces, vnics, aggregations
   and what they're connected to
 
-The zone information could add a link to the relevant brand man page
-
 SMF - use jna (like haplo does)
 
 cfgadm

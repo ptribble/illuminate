@@ -22,14 +22,14 @@
 
 package org.tribblix.illuminate.explorer;
 
+import java.awt.BorderLayout;
+import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
+import javax.swing.*;
 import org.tribblix.illuminate.InfoCommand;
+import org.tribblix.illuminate.helpers.ManFrame;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.gui.AccessoryNetPanel;
@@ -42,11 +42,12 @@ import uk.co.petertribble.jkstat.gui.SparkRateAccessory;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ZoneInfoPanel extends InfoPanel {
+public class ZoneInfoPanel extends InfoPanel implements ActionListener {
 
     private JKstat jkstat;
     private KstatAccessorySet kas;
     private List <KstatAccessoryPanel> kaplist;
+    private JButton jmb;
 
     /**
      * Display a zone information panel.
@@ -92,7 +93,20 @@ public class ZoneInfoPanel extends InfoPanel {
      */
     private void displayZone() {
 	ZoneEntry ze = (ZoneEntry) hi.getAttribute("zoneentry");
-	jvp.add(new JLabel("Details of "+ze.getState()+" zone "+ze.getName()));
+	JToolBar jtb = new JToolBar();
+	jtb.setFloatable(false);
+	jtb.setRollover(true);
+	jtb.setLayout(new BorderLayout());
+	jtb.add(new JLabel("Details of "+ze.getState()+" zone "+ze.getName()),
+		BorderLayout.LINE_START);
+	jtb.addSeparator();
+	jmb = new JButton("About " + ze.getBrand() + " zones");
+	jmb.setEnabled(true);
+	jmb.setName(ze.getBrand() + ".5");
+	jmb.addActionListener(this);
+	jtb.add(jmb, BorderLayout.LINE_END);
+
+	jvp.add(jtb);
 	addText(ze.getConfig());
     }
 
@@ -143,6 +157,12 @@ public class ZoneInfoPanel extends InfoPanel {
 				 ("Interface " + ks.getName()));
 		jvp.add(opanel);
 	    }
+	}
+    }
+
+    public void actionPerformed(ActionEvent e) {
+	if (e.getSource() == jmb) {
+	    new ManFrame(jmb.getName());
 	}
     }
 }
