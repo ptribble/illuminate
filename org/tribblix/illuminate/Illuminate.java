@@ -36,7 +36,7 @@ public class Illuminate extends JFrame implements ActionListener {
 	jtp.add(IlluminateResources.getString("ILLUMINATE.EXPL.TEXT"),
 		new SysPanel());
 	jtp.add(IlluminateResources.getString("ILLUMINATE.INFO.TEXT"),
-		new InfoPanel());
+		new InfoCommandPanel());
 	jtp.add(IlluminateResources.getString("ILLUMINATE.SERV.TEXT"),
 		new SmfPanel());
 	jtp.add(IlluminateResources.getString("ILLUMINATE.SOFT.TEXT"),

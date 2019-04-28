@@ -33,7 +33,7 @@ import uk.co.petertribble.jingle.JingleTextPane;
  * can be shown on the left and a panel showing the informational output on
  * the right.
  */
-public class InfoPanel extends JPanel implements ActionListener {
+public class InfoCommandPanel extends JPanel implements ActionListener {
 
     private JingleTextPane tp;
     private JLabel jcl;
@@ -43,7 +43,7 @@ public class InfoPanel extends JPanel implements ActionListener {
     /**
      * Display an information panel.
      */
-    public InfoPanel() {
+    public InfoCommandPanel() {
 	setLayout(new BorderLayout());
 
 	JList <InfoCommand> ilist = new InfoJList(new InfoCommandList());

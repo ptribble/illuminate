@@ -99,7 +99,7 @@ public class MultiView extends JFrame implements ActionListener {
 	if (args[0].equals("information")) {
 	    new MultiView("ILLUMINATE.INFO.TEXT", "HELP.ABOUT.INFO",
 			"help/infoview.html", "pixmaps/solinfo.png",
-			new InfoPanel());
+			new InfoCommandPanel());
 	} else if (args[0].equals("explorer")) {
 	    new MultiView("ILLUMINATE.EXPL.TEXT", "HELP.ABOUT.EXPL",
 			"help/explorer.html", "pixmaps/solexpl.png",
