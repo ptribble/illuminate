@@ -89,13 +89,28 @@ public class PkgUtils {
     }
 
     static public String infoTable(Overlay ovl) {
+	StringBuilder sbh = new StringBuilder();
+	sbh.append("Overlay " + ovl.getName());
+	if (ovl.isInstalled()) {
+	    if (ovl.isComplete()) {
+		sbh.append(" is installed and complete.");
+	    } else {
+		sbh.append(" is marked as installed but incomplete.");
+	    }
+	} else {
+	    if (ovl.isComplete()) {
+		sbh.append(" is complete but not marked as installed.");
+	    } else {
+		sbh.append(" is uninstalled and incomplete.");
+	    }
+	}
 	StringBuilder sb = new StringBuilder();
 	headRow(sb, PkgResources.getString("PKGUTILS.PROPERTY"),
 			PkgResources.getString("PKGUTILS.VALUE"));
 	addRow(sb, "Name", ovl.getName());
 	addRow(sb, "Description", ovl.getDescription());
 	addRow(sb, "Version", ovl.getVersion());
-	return wrapTable(sb);
+	return sbh.toString() + wrapTable(sb);
     }
 
     static public String dependencyTable(SVR4Package pkg) {
