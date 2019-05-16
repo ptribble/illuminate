@@ -257,10 +257,9 @@ public class Mnttab {
      */
     public List <String> getFSforFstype(String ftype) {
 	List <String> v = new ArrayList <String> ();
-	for (String s : fstypemap.keySet()) {
-	    String t = fstypemap.get(s);
-	    if (t.equals(ftype)) {
-		v.add(s);
+	for (Map.Entry<String, String> entry : fstypemap.entrySet()) {
+	    if (entry.getValue().equals(ftype)) {
+		v.add(entry.getKey());
 	    }
 	}
 	return v;
@@ -275,10 +274,9 @@ public class Mnttab {
      */
     public List <String> getIDforFstype(String ftype) {
 	List <String> v = new ArrayList <String> ();
-	for (String s : fstypemap.keySet()) {
-	    String t = fstypemap.get(s);
-	    if (t.equals(ftype)) {
-		String dev = devmap.get(s);
+	for (Map.Entry<String, String> entry : fstypemap.entrySet()) {
+	    if (entry.getValue().equals(ftype)) {
+		String dev = devmap.get(entry.getKey());
 		if (!v.contains(dev)) {
 		    v.add(dev);
 		}

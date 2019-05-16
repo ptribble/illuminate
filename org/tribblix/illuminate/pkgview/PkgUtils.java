@@ -74,9 +74,10 @@ public class PkgUtils {
 	}
 	headRow(sb, PkgResources.getString("PKGUTILS.PROPERTY"),
 			PkgResources.getString("PKGUTILS.VALUE"));
-	for (String s : infomap.keySet()) {
-	    String v = infomap.get(s);
+	for (Map.Entry<String, String> entry : infomap.entrySet()) {
+	    String v = entry.getValue();
 	    if (!"".equals(v)) {
+		String s = entry.getKey();
 		if ("ZAP_URL".equals(s)) {
 		    addRow(sb, s, "<a href=\"" + v + "\">" + v +"</a>");
 		} else {
