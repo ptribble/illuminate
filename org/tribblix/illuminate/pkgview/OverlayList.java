@@ -52,15 +52,17 @@ public class OverlayList {
 	ovlexists = ovrootf.exists();
 
 	// first create a list of empty overlays
-	for (File f : ovrootf.listFiles()) {
-	    if (f.getName().endsWith(".ovl")) {
-		String fname = f.getName();
-		String rootname = fname.substring(0, fname.length()-4);
-		File f2 = new File(ovrootf, rootname + ".pkgs");
-		if (f2.exists()) {
-		    Overlay ovl = new Overlay(altroot, rootname);
-		    ovlist.add(ovl);
-		    ovMap.put(rootname, ovl);
+	if (ovlexists) {
+	    for (File f : ovrootf.listFiles()) {
+		if (f.getName().endsWith(".ovl")) {
+		    String fname = f.getName();
+		    String rootname = fname.substring(0, fname.length()-4);
+		    File f2 = new File(ovrootf, rootname + ".pkgs");
+		    if (f2.exists()) {
+			Overlay ovl = new Overlay(altroot, rootname);
+			ovlist.add(ovl);
+			ovMap.put(rootname, ovl);
+		    }
 		}
 	    }
 	}
