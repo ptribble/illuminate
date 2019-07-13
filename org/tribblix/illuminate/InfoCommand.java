@@ -72,7 +72,7 @@ public class InfoCommand {
     /**
      * Get the manpage for this command, if any
      *
-     * @retrun the manpage, with section appended
+     * @return the manpage, with section appended
      */
     public String getManpage() {
 	return manpage;
