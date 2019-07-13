@@ -102,6 +102,8 @@ public class ZoneConfig {
     /**
      * Return the ZoneEntry for the given zone
      *
+     * @param zname The name of the zone of interest
+     *
      * @return the named zone's ZoneEntry
      */
     public ZoneEntry getZoneEntry(String zname) {

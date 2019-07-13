@@ -73,6 +73,8 @@ public class ManPane extends JEditorPane
 
     /**
      * Create a Scrollable panel containing the text of a man page
+     *
+     * @param m The name of the man page
      */
     public ManPane(String m) {
 	setLayout(new BorderLayout());

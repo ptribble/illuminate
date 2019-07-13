@@ -21,11 +21,12 @@ public class MultiView extends JFrame implements ActionListener {
     private String helpfile;
 
     /**
-     * Create a new View.
+     * Create a new MultiView.
      *
      * @param stitle a String to use as the window title
      * @param hlabel a String to use for the help menu button
      * @param helpfile a String naming the help file to use
+     * @param mypixmap a String naming the application icon to use
      * @param panel The panel to display
      */
     public MultiView(String stitle, String hlabel, String helpfile,

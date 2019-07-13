@@ -57,7 +57,9 @@ public class ZoneEntry {
     }
 
     /**
-     * Return the zone's configuration
+     * Return the zone's configuration.
+     *
+     * @return The output of zonecfg info for this zone
      */
     public String getConfig() {
 	InfoCommand ic = new
@@ -95,7 +97,7 @@ public class ZoneEntry {
     /**
      * Return if the zone is running.
      *
-     * @return true if the zone is in the running state
+     * @return true if this zone is in the running state
      */
     public boolean isRunning() {
 	return "running".equals(zstate);
@@ -156,7 +158,9 @@ public class ZoneEntry {
     }
 
     /**
-     * Return a Set of zone tetwork configurations
+     * Return a Set of zone network configurations
+     *
+     * @return A Set of ZoneNet entries, one for each interface
      */
     public Set <ZoneNet> getNetworks() {
 	if (netconfig == null) {
