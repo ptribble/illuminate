@@ -51,7 +51,7 @@ case $1 in
 doc|-doc)
 	rm -fr javadoc
 	mkdir javadoc
-	javadoc -d javadoc org.tribblix.illuminate org.tribblix..illuminate.helpers org.tribblix..illuminate.explorer
+	env CLASSPATH=.:${JKJAR}:${JPJAR}:${SWJAR} javadoc -d javadoc org.tribblix.illuminate org.tribblix.illuminate.helpers org.tribblix.illuminate.explorer
 	;;
 
 clean|-clean)
