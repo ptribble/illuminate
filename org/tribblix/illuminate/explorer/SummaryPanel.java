@@ -23,11 +23,8 @@
 package org.tribblix.illuminate.explorer;
 
 import javax.swing.*;
-import java.awt.Color;
-import java.awt.BorderLayout;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatFilter;
-import uk.co.petertribble.jkstat.api.KstatAggregate;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
@@ -97,40 +94,8 @@ public class SummaryPanel extends InfoPanel {
 	}
 	addText(sb.toString());
 	addLoadAccessory();
-	addCpuAccessory(kss);
+        jvp.add(new CpuStatePanel(jkstat));
 	addNetAccessory();
-    }
-
-    /*
-     * Add an accessory aggregated over cores if we can.
-     */
-    private void addCpuAccessory(Set <Kstat> kss) {
-	if (!kss.isEmpty()) {
-	    KstatAggregate ksa = new KstatAggregate(jkstat, kss, "");
-	    KstatAccessoryPanel kap = new AggregateCpuChart(ksa, -1, jkstat);
-	    kaplist.add(kap);
-	    JPanel cpanel = new JPanel(new BorderLayout());
-	    cpanel.add(kap);
-	    JPanel lpanel = new JPanel();
-	    lpanel.setLayout(new BoxLayout(lpanel, BoxLayout.PAGE_AXIS));
-	    lpanel.add(Box.createVerticalGlue());
-	    JLabel lab1 = new JLabel("idle");
-	    lab1.setForeground(Color.BLUE);
-	    lpanel.add(lab1);
-	    JLabel lab2 = new JLabel("user");
-	    lab2.setForeground(Color.GREEN);
-	    lpanel.add(lab2);
-	    JLabel lab3 = new JLabel("kernel");
-	    lab3.setForeground(Color.YELLOW);
-	    lpanel.setBackground(Color.BLACK);
-	    lpanel.add(lab3);
-	    lpanel.add(Box.createVerticalGlue());
-	    lpanel.setBorder(BorderFactory.createEmptyBorder(2, 6, 2, 6));
-	    cpanel.add(lpanel, BorderLayout.EAST);
-	    cpanel.setBorder(BorderFactory.createTitledBorder(
-						"Aggregate CPU activity"));
-	    jvp.add(cpanel);
-	}
     }
 
     /*
