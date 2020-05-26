@@ -22,12 +22,16 @@
 
 package org.tribblix.illuminate;
 
+import java.awt.Component;
 import javax.swing.*;
 import javax.swing.event.ChangeListener;
 import javax.swing.event.ChangeEvent;
+import java.awt.event.*;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import java.io.File;
+import java.util.Map;
+import org.tribblix.illuminate.helpers.ManFrame;
 import uk.co.petertribble.jingle.JingleTextPane;
 import uk.co.petertribble.jproc.api.JProc;
 import uk.co.petertribble.jproc.api.JProcessFilter;
@@ -39,7 +43,7 @@ import uk.co.petertribble.jumble.JumbleFile;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfInfoPanel extends JPanel {
+public class SmfInfoPanel extends JPanel  implements ActionListener {
 
     private JingleTextPane tp;
     private JingleTextPane tpl;
@@ -49,6 +53,7 @@ public class SmfInfoPanel extends JPanel {
     private JProcessFilter jpf;
     private JPinfoTable jpi;
     private File logfile;
+    private JPanel manButtonPanel;
 
     /**
      * Display an smf information panel.
@@ -68,10 +73,25 @@ public class SmfInfoPanel extends JPanel {
 	jpi.removeColumn("PROJ");
 	jpi.removeColumn("ppid");
 
+	/*
+	 * The Status tab has:
+	 * a top panel with text and manpage buttons to the right
+	 * a top-like process display below it
+	 */
+	JPanel spanel = new JPanel(new BorderLayout());
+	JPanel manpanel = new JPanel(new BorderLayout());
+	manButtonPanel = new JPanel();
+	manButtonPanel.setLayout(
+		new BoxLayout(manButtonPanel, BoxLayout.PAGE_AXIS));
+	manpanel.add(new JLabel("MAN", JLabel.CENTER), BorderLayout.PAGE_START);
+	manpanel.add(manButtonPanel, BorderLayout.CENTER);
+
 	tp = new JingleTextPane();
+	spanel.add(new JScrollPane(tp), BorderLayout.CENTER);
+	spanel.add(manpanel, BorderLayout.LINE_END);
 
 	JSplitPane jsp = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-		new JScrollPane(tp), new JScrollPane(jpi));
+		spanel, new JScrollPane(jpi));
 	jsp.setOneTouchExpandable(true);
 	jsp.setDividerLocation(180);
 
@@ -105,11 +125,25 @@ public class SmfInfoPanel extends JPanel {
      */
     public void setInfo(SmfService svc) {
 	tp.setText(svc.getHtmlInfo());
+	setManButtons(svc);
 	setDep(svc.getDepInfo());
 	setLog(svc.getLog());
 	// FIXME bug no contract is -1, but the table interprets -1
 	// as no filtering
 	jpi.setContract(svc.getContract());
+    }
+
+    private void setManButtons(SmfService svc) {
+	Map <String, String> manmap = svc.getManPages();
+	manButtonPanel.removeAll();
+	for (String s : manmap.keySet()) {
+	    JButton jb = new JButton(s);
+	    jb.setName(manmap.get(s));
+	    jb.addActionListener(this);
+	    jb.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    manButtonPanel.add(jb);
+	}
+	manButtonPanel.revalidate();
     }
 
     private void setDep(String s) {
@@ -144,5 +178,12 @@ public class SmfInfoPanel extends JPanel {
 	sb.append("</pre>\n");
 	tpl.setText(sb.toString());
 	setCursor(c);
+    }
+
+    public void actionPerformed(ActionEvent e) {
+	if (e.getSource() instanceof JButton) {
+	    JButton jb = (JButton) e.getSource();
+	    new ManFrame(jb.getName());
+	}
     }
 }
