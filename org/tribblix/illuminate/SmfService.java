@@ -44,6 +44,7 @@ public class SmfService implements Comparable<SmfService> {
     private String fmri;
     private String status;
     private Map <String, String> props;
+    private Map <String, String> manpages;
 
     /**
      * Create a new SmfService object.
@@ -104,7 +105,11 @@ public class SmfService implements Comparable<SmfService> {
      * @return an explanation of why this service isn't running
      */
     public String getExplanation() {
-	return getSVCS("-xv");
+	String explanation = getSVCS("-xv");
+	if (manpages == null) {
+	    parseManpages(explanation);
+	}
+	return explanation;
     }
 
     /**
@@ -158,6 +163,40 @@ public class SmfService implements Comparable<SmfService> {
      */
     public String getName() {
 	return getProperty("name");
+    }
+
+    /**
+     * Get the set of man pages for this service. This is a map with the man
+     * page name as the key and the filename (qualified with the section) as
+     * the value
+     *
+     * @return the human readable name of this service
+     */
+    public Map<String, String> getManPages() {
+	if (manpages == null) {
+	    parseManpages(getExplanation());
+	}
+	return manpages;
+    }
+
+    /*
+     * Strip the manpages out of the output, which looks like:
+     *
+     * See: man -M /usr/share/man -s 5 smf
+     *
+     * This is done automatically and saved if the explanation is
+     * requested, to avoid having to call getExplanation() repeatedly
+     */
+    private void parseManpages(String explanation) {
+	manpages = new HashMap <String, String> ();
+	for (String line : explanation.split("\n")) {
+	    String[] ds = line.trim().split("\\s+", 7);
+	    if (ds.length == 7) {
+		if("man".equals(ds[1])) {
+		    manpages.put(ds[6], ds[6] + "." + ds[5]);
+		}
+	    }
+	}
     }
 
     /**
