@@ -91,7 +91,7 @@ public class SummaryPanel extends InfoPanel {
 	}
 	addText(sb.toString());
 	addLoadAccessory();
-        jvp.add(new CpuStatePanel(jkstat));
+        addComponent(new CpuStatePanel(jkstat));
 	addNetAccessory();
     }
 
@@ -122,7 +122,7 @@ public class SummaryPanel extends InfoPanel {
 	    kaplist.add(kap);
 	    npanel.setBorder(BorderFactory.createTitledBorder
 				  (iflabel + ks.getName()));
-	    jvp.add(npanel);
+	    addComponent(npanel);
 	}
     }
 
@@ -146,7 +146,7 @@ public class SummaryPanel extends InfoPanel {
 	lpanel.add(kap);
 	kaplist.add(kap);
 	lpanel.setBorder(BorderFactory.createTitledBorder("Load Average"));
-	jvp.add(lpanel);
+	addComponent(lpanel);
 
 	// process count
 	JPanel ppanel = new JPanel();
@@ -156,6 +156,6 @@ public class SummaryPanel extends InfoPanel {
 	ppanel.add(kap);
 	kaplist.add(kap);
 	ppanel.setBorder(BorderFactory.createTitledBorder("Processes"));
-	jvp.add(ppanel);
+	addComponent(ppanel);
     }
 }

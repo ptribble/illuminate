@@ -196,6 +196,6 @@ public class DiskInfoPanel extends InfoPanel {
      */
     private void addAccessory() {
 	acp = new AccessoryIOPanel(ks, 5, jkstat);
-	jvp.add(acp);
+	addComponent(acp);
     }
 }

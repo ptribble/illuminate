@@ -106,7 +106,7 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
 	jmb.addActionListener(this);
 	jtb.add(jmb, BorderLayout.LINE_END);
 
-	jvp.add(jtb);
+	addComponent(jtb);
 	addText(ze.getConfig());
     }
 
@@ -114,7 +114,7 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
      * Show Zone processes
      */
     private void displayZoneProc() {
-	jvp.add(new ProcessInfoPanel(hi));
+	addComponent(new ProcessInfoPanel(hi));
     }
 
     /*
@@ -155,7 +155,7 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
 		opanel.add(npanel);
 		opanel.setBorder(BorderFactory.createTitledBorder
 				 ("Interface " + ks.getName()));
-		jvp.add(opanel);
+		addComponent(opanel);
 	    }
 	}
     }

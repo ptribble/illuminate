@@ -172,10 +172,10 @@ public class CpuInfoPanel extends InfoPanel {
 	    JPanel jp = new JPanel(new BorderLayout());
 	    jp.add(kap);
 	    jp.setBorder(BorderFactory.createTitledBorder("CPU activity"));
-	    jvp.add(jp);
-	    kbc  = new KstatAreaChart(jkstat, ksc, mystats, true);
+	    addComponent(jp);
+	    kbc = new KstatAreaChart(jkstat, ksc, mystats, true);
 	    kbc.setColors(mycolors);
-	    jvp.add(new ChartPanel(kbc.getChart()));
+	    addComponent(new ChartPanel(kbc.getChart()));
 	}
     }
 
@@ -211,9 +211,9 @@ public class CpuInfoPanel extends InfoPanel {
 	jp.add(kap);
 	jp.setBorder(BorderFactory.createTitledBorder(
 						"Aggregate CPU activity"));
-	jvp.add(jp);
+	addComponent(jp);
 	kbc = new KstatAggregateAreaChart(jkstat, ksa, mystats, true);
 	kbc.setColors(mycolors);
-	jvp.add(new ChartPanel(kbc.getChart()));
+	addComponent(new ChartPanel(kbc.getChart()));
     }
 }

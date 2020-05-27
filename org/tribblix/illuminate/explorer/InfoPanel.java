@@ -45,10 +45,10 @@ public class InfoPanel extends JPanel {
      */
     protected SysItem hi;
 
-    /**
+    /*
      * The panel into which the item display is placed.
      */
-    protected JingleVPanel jvp;
+    private JingleVPanel jvp;
 
     /**
      * Create an information panel. Subclasses should call super()
@@ -81,6 +81,15 @@ public class InfoPanel extends JPanel {
 	JLabel jl = new JLabel(text);
 	jl.setAlignmentX(Component.CENTER_ALIGNMENT);
 	jvp.add(jl);
+    }
+
+    /**
+     * Add a JComponent
+     *
+     * @param jc The JComponent to add
+     */
+    protected void addComponent(JComponent jc) {
+	jvp.add(jc);
     }
 
     /**

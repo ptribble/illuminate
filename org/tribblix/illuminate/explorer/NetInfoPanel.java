@@ -186,9 +186,9 @@ public class NetInfoPanel extends InfoPanel {
      */
     private void addAccessory(Kstat ks) {
 	acp = new AccessoryNetPanel(ks, 5, jkstat);
-	jvp.add(acp);
+	addComponent(acp);
 	List <String> statistics = Arrays.asList("rbytes64", "obytes64");
 	kbc = new KstatChart(jkstat, ks, statistics, true);
-	jvp.add(new ChartPanel(kbc.getChart()));
+	addComponent(new ChartPanel(kbc.getChart()));
     }
 }
