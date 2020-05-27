@@ -22,7 +22,6 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.*;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.gui.AccessoryNetPanel;
 import uk.co.petertribble.jkstat.gui.KstatTable;
@@ -178,7 +177,7 @@ public class NetInfoPanel extends InfoPanel {
     private void displayProto(String proto) {
 	addLabel("Network protocol: " + proto);
 	kt = new KstatTable(proto, "0", proto, 5, jkstat);
-	jvp.add(new JScrollPane(kt));
+	addScrollPane(kt);
     }
 
     /*

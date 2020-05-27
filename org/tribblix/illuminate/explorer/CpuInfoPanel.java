@@ -114,7 +114,7 @@ public class CpuInfoPanel extends InfoPanel {
 	}
 	addText(sb.toString());
 	mptable = new MPstatTable(jkstat, 5);
-	jvp.add(new JScrollPane(mptable));
+	addScrollPane(mptable);
     }
 
     /*

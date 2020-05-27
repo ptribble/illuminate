@@ -22,7 +22,6 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.*;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.demo.JKmemPanel;
 import org.tribblix.illuminate.InfoCommand;
@@ -89,7 +88,7 @@ public class MemoryInfoPanel extends InfoPanel {
     private void displayArc() {
 	addLabel("ZFS ARC statistics");
 	arcPanel = new ArcStatPanel(jkstat, 5);
-	jvp.add(new JScrollPane(arcPanel));
+	addScrollPane(arcPanel);
     }
 
     /*
@@ -98,6 +97,6 @@ public class MemoryInfoPanel extends InfoPanel {
     private void displayKmem() {
 	addLabel("Kernel memory allocation");
 	kmPanel = new JKmemPanel(jkstat, 5);
-	jvp.add(new JScrollPane(kmPanel));
+	addScrollPane(kmPanel);
     }
 }

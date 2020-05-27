@@ -22,8 +22,6 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.JLabel;
-import javax.swing.JScrollPane;
 import uk.co.petertribble.jproc.gui.JPinfoTable;
 import uk.co.petertribble.jproc.api.JProc;
 import uk.co.petertribble.jproc.api.JProcessSet;
@@ -84,6 +82,6 @@ public class ProcessInfoPanel extends InfoPanel {
 	    jpip.setZone(ze.getZoneid());
 	    jpip.removeColumn("ZONE");
 	}
-	jvp.add(new JScrollPane(jpip));
+	addScrollPane(jpip);
     }
 }

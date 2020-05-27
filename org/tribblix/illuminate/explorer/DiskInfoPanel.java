@@ -22,7 +22,6 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.*;
 import java.util.Set;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.gui.AccessoryIOPanel;
@@ -106,7 +105,7 @@ public class DiskInfoPanel extends InfoPanel {
 	// ignore usba statistics
 	ksf.addNegativeFilter("usba:::");
 	iot = new IOstatTable(new KstatSet(jkstat, ksf), 5, jkstat);
-	jvp.add(new JScrollPane(iot));
+	addScrollPane(iot);
     }
 
     /*
@@ -179,7 +178,7 @@ public class DiskInfoPanel extends InfoPanel {
 	if (ksd != null) {
 	    kt = new KstatTable(ks.getModule() + "err", ks.getInstance(),
 				ks.getName() + ",err", -1, jkstat);
-	    jvp.add(new JScrollPane(kt));
+	    addScrollPane(kt);
 	}
 	// wouldn't life be simple if names were consistent?
 	ksd = jkstat.getKstat(ks.getModule() + "error", ks.getInst(),
@@ -187,7 +186,7 @@ public class DiskInfoPanel extends InfoPanel {
 	if (ksd != null) {
 	    kt = new KstatTable(ks.getModule() + "error", ks.getInstance(),
 				ks.getName() + ",error", -1, jkstat);
-	    jvp.add(new JScrollPane(kt));
+	    addScrollPane(kt);
 	}
     }
 

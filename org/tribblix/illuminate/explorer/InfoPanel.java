@@ -22,6 +22,7 @@
 
 package org.tribblix.illuminate.explorer;
 
+import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -83,13 +84,22 @@ public class InfoPanel extends JPanel {
     }
 
     /**
+     * Add a component wrapped in a JScrollPane
+     *
+     * @param jc The JComponent to add
+     */
+    protected void addScrollPane(JComponent jc) {
+	jvp.add(new JScrollPane(jc));
+    }
+
+    /**
      * Add the output from a command in a scrollable text window.
      *
      * @param ic The InfoCommand to display the output of
      */
     protected void addText(InfoCommand ic) {
 	if (ic.exists()) {
-	    jvp.add(new JScrollPane(new SysCmdPanel(ic)));
+	    addScrollPane(new SysCmdPanel(ic));
 	}
     }
 
@@ -99,7 +109,7 @@ public class InfoPanel extends JPanel {
      * @param ct The CommandTableModel to display the output of
      */
     protected void addText(CommandTableModel ct) {
-	jvp.add(new JScrollPane(new JTable(ct)));
+	addScrollPane(new JTable(ct));
     }
 
     /**
@@ -108,6 +118,6 @@ public class InfoPanel extends JPanel {
      * @param s The text to display
      */
     protected void addText(String s) {
-	jvp.add(new JScrollPane(new SysCmdPanel(s)));
+        addScrollPane(new SysCmdPanel(s));
     }
 }

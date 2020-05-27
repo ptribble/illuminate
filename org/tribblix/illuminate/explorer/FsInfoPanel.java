@@ -114,7 +114,7 @@ public class FsInfoPanel extends InfoPanel {
 	jzp.add(jt.getTableHeader());
 	jzp.add(jt);
 
-	jvp.add(new JScrollPane(jzp));
+	addScrollPane(jzp);
     }
 
     /*
@@ -123,7 +123,7 @@ public class FsInfoPanel extends InfoPanel {
     private void displayFS() {
 	addLabel("Filesystem statistics");
 	fsPanel = new JFSstatPanel(jkstat, 5);
-	jvp.add(new JScrollPane(fsPanel));
+	addScrollPane(fsPanel);
     }
 
     /*
