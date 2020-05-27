@@ -77,14 +77,11 @@ public class SummaryPanel extends InfoPanel {
      */
     private void displaySummary() {
 	ProcessorTree proctree = new ProcessorTree(jkstat);
-	jvp.add(new JLabel("Processor Summary"));
+	addLabel("Processor Summary");
 
-	if (proctree.numChips() == 1) {
-	    jvp.add(new JLabel("System contains 1 chip"));
-	} else {
-	    jvp.add(new JLabel("System contains " + proctree.numChips()
-					+ " chips"));
-	}
+        addLabel((proctree.numChips() == 1) ?
+		"System contains 1 chip" :
+		"System contains " + proctree.numChips() + " chips");
 
 	StringBuilder sb = new StringBuilder();
 	Set <Kstat> kss = new HashSet <Kstat> ();

@@ -22,11 +22,13 @@
 
 package org.tribblix.illuminate.explorer;
 
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
+import java.awt.Component;
 import uk.co.petertribble.jingle.JingleVPanel;
 import org.tribblix.illuminate.InfoCommand;
 
@@ -67,6 +69,17 @@ public class InfoPanel extends JPanel {
      * Stop the panel updating.
      */
     public void stopLoop() {
+    }
+
+    /**
+     * Add a centered JLabel with the given text.
+     *
+     * @param text The text to place on the label
+     */
+    protected void addLabel(String text) {
+	JLabel jl = new JLabel(text);
+	jl.setAlignmentX(Component.CENTER_ALIGNMENT);
+	jvp.add(jl);
     }
 
     /**

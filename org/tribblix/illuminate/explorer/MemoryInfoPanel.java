@@ -78,7 +78,7 @@ public class MemoryInfoPanel extends InfoPanel {
      * Top level summary. just swap
      */
     private void displaySummary() {
-	jvp.add(new JLabel("Memory Summary"));
+	addLabel("Memory Summary");
 	addText(new CommandTableModel(
 			new InfoCommand("swap", "/usr/sbin/swap", "-l")));
     }
@@ -87,7 +87,7 @@ public class MemoryInfoPanel extends InfoPanel {
      * ZFS arc stats
      */
     private void displayArc() {
-	jvp.add(new JLabel("ZFS ARC statistics"));
+	addLabel("ZFS ARC statistics");
 	arcPanel = new ArcStatPanel(jkstat, 5);
 	jvp.add(new JScrollPane(arcPanel));
     }
@@ -96,7 +96,7 @@ public class MemoryInfoPanel extends InfoPanel {
      * kmem allocation statistics
      */
     private void displayKmem() {
-	jvp.add(new JLabel("Kernel memory allocation"));
+	addLabel("Kernel memory allocation");
 	kmPanel = new JKmemPanel(jkstat, 5);
 	jvp.add(new JScrollPane(kmPanel));
     }

@@ -130,7 +130,7 @@ public class NetInfoPanel extends InfoPanel {
      * Top level summary.
      */
     private void displaySummary() {
-	jvp.add(new JLabel("Interfaces: Output from ifconfig -a"));
+	addLabel("Interfaces: Output from ifconfig -a");
 
 	addText(new InfoCommand("IF", "/usr/sbin/ifconfig", "-a"));
     }
@@ -139,7 +139,7 @@ public class NetInfoPanel extends InfoPanel {
      * netstat
      */
     private void displayNetstat() {
-	jvp.add(new JLabel("Output from netstat -an"));
+	addLabel("Output from netstat -an");
 
 	addText(new InfoCommand("IF", "/usr/bin/netstat", "-an"));
     }
@@ -148,7 +148,7 @@ public class NetInfoPanel extends InfoPanel {
      * dladm
      */
     private void displayDladm(String dltype) {
-	jvp.add(new JLabel("Output from dladm show-"+dltype));
+	addLabel("Output from dladm show-"+dltype);
 
 	addText(new InfoCommand("IF", "/usr/sbin/dladm", "show-"+dltype));
     }
@@ -157,7 +157,7 @@ public class NetInfoPanel extends InfoPanel {
      * ipadm
      */
     private void displayIpadm(String iptype) {
-	jvp.add(new JLabel("Output from ipadm show-"+iptype));
+	addLabel("Output from ipadm show-"+iptype);
 
 	addText(new InfoCommand("IF", "/usr/sbin/ipadm", "show-"+iptype));
     }
@@ -167,7 +167,7 @@ public class NetInfoPanel extends InfoPanel {
      */
     private void displayInterface(Kstat ks) {
 	if (ks != null) {
-	    jvp.add(new JLabel("Details of Network Interface " + ks.getName()));
+	    addLabel("Details of Network Interface " + ks.getName());
 	    addAccessory(ks);
 	}
     }
@@ -176,7 +176,7 @@ public class NetInfoPanel extends InfoPanel {
      * Generic protocol handler.
      */
     private void displayProto(String proto) {
-	jvp.add(new JLabel("Network protocol: " + proto));
+	addLabel("Network protocol: " + proto);
 	kt = new KstatTable(proto, "0", proto, 5, jkstat);
 	jvp.add(new JScrollPane(kt));
     }

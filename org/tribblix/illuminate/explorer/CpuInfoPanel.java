@@ -104,12 +104,9 @@ public class CpuInfoPanel extends InfoPanel {
      * Top level summary. This ought to be a variant on psrinfo.
      */
     private void displaySummary() {
-	if (proctree.numChips() == 1) {
-	    jvp.add(new JLabel("System contains 1 chip"));
-	} else {
-	    jvp.add(new JLabel("System contains " + proctree.numChips()
-					+ " chips"));
-	}
+        addLabel((proctree.numChips() == 1) ?
+		"System contains 1 chip" :
+		"System contains " + proctree.numChips() + " chips");
 
 	StringBuilder sb = new StringBuilder();
 	for (Long l : proctree.getChips()) {
@@ -130,7 +127,7 @@ public class CpuInfoPanel extends InfoPanel {
      */
     private void displayChip() {
 	Long l = (Long) hi.getAttribute("chip");
-	jvp.add(new JLabel("Details of processor " + l));
+	addLabel("Details of processor " + l);
 	addText(proctree.chipDetails(l));
 	if (proctree.isMulticore()) {
 	    addChipAccessory();
@@ -143,8 +140,8 @@ public class CpuInfoPanel extends InfoPanel {
      * A processor core.
      */
     private void displayCore() {
-	jvp.add(new JLabel("Details of processor core "
-		+ hi.getAttribute("core")));
+	addLabel("Details of processor core "
+		+ hi.getAttribute("core"));
 	if (proctree.isThreaded()) {
 	    // FIXME psrinfo fragment here
 	    addCoreAccessory();
@@ -158,8 +155,8 @@ public class CpuInfoPanel extends InfoPanel {
      * A processor thread.
      */
     private void displayThread() {
-	jvp.add(new JLabel("Details of processor thread "
-		+ hi.getAttribute("thread")));
+	addLabel("Details of processor thread "
+		+ hi.getAttribute("thread"));
 	// FIXME psrinfo fragment here
 	addAccessory();
     }

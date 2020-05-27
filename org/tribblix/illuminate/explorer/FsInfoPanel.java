@@ -81,7 +81,7 @@ public class FsInfoPanel extends InfoPanel {
      * specify the number of columns.
      */
     private void displaySummary() {
-	jvp.add(new JLabel("Filesystem Usage Summary"));
+	addLabel("Filesystem Usage Summary");
 	addText(new CommandTableModel(
 			new InfoCommand("df", "/usr/sbin/df", "-h"), 6));
     }
@@ -90,7 +90,7 @@ public class FsInfoPanel extends InfoPanel {
      * Top level summary. just zpool status
      */
     private void displayZSummary() {
-	jvp.add(new JLabel("ZFS Pool Summary"));
+	addLabel("ZFS Pool Summary");
 	addText(new CommandTableModel(
 			new InfoCommand("zp", "/usr/sbin/zpool", "list")));
     }
@@ -100,7 +100,7 @@ public class FsInfoPanel extends InfoPanel {
      */
     private void displayZpool() {
 	Zpool zp = (Zpool) hi.getAttribute("zpool");
-	jvp.add(new JLabel("Details of ZFS pool " + zp.getName()));
+	addLabel("Details of ZFS pool " + zp.getName());
 	JPanel jzp = new JPanel();
 	jzp.setLayout(new BoxLayout(jzp, BoxLayout.PAGE_AXIS));
 
@@ -121,7 +121,7 @@ public class FsInfoPanel extends InfoPanel {
      * fsstat
      */
     private void displayFS() {
-	jvp.add(new JLabel("Filesystem statistics"));
+	addLabel("Filesystem statistics");
 	fsPanel = new JFSstatPanel(jkstat, 5);
 	jvp.add(new JScrollPane(fsPanel));
     }
@@ -135,7 +135,7 @@ public class FsInfoPanel extends InfoPanel {
      */
     private void displayZFS() {
 	Zfilesys zfs = (Zfilesys) hi.getAttribute("zfs");
-	jvp.add(new JLabel("ZFS Filesystem properties for " + zfs.getName()));
+	addLabel("ZFS Filesystem properties for " + zfs.getName());
 	InfoCommand ic = new InfoCommand("zf", "/usr/sbin/zfs",
 		"get -o name,property,source,value all " + zfs.getName());
 	addText(new CommandTableModel(ic, 4));

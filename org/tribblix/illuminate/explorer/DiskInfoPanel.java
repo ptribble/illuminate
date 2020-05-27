@@ -90,9 +90,9 @@ public class DiskInfoPanel extends InfoPanel {
      * Top level summary.
      */
     private void displaySummary() {
-	jvp.add(new JLabel("Disk Summary"));
+	addLabel("Disk Summary");
 	Integer nd = (Integer) hi.getAttribute("ndisks");
-	jvp.add(new JLabel("System contains " + nd + " disks"));
+	addLabel("System contains " + nd + " disks");
 	addText(new InfoCommand("IO", "/usr/bin/iostat", "-En"));
     }
 
@@ -100,7 +100,7 @@ public class DiskInfoPanel extends InfoPanel {
      * IO table
      */
     private void displayIO() {
-	jvp.add(new JLabel("I/O statistics"));
+	addLabel("I/O statistics");
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.setFilterType(KstatType.KSTAT_TYPE_IO);
 	// ignore usba statistics
@@ -114,7 +114,7 @@ public class DiskInfoPanel extends InfoPanel {
      */
     private void displayDisk() {
 	if (ks != null) {
-	    jvp.add(new JLabel("Details of Disk " + ks.getName()));
+	    addLabel("Details of Disk " + ks.getName());
 	    displayAka();
 	    addAccessory();
 	    addDiskInfo();
@@ -127,8 +127,7 @@ public class DiskInfoPanel extends InfoPanel {
     private void displayPartition() {
 	if (ks != null) {
 	    String[] ds = ks.getName().split(",", 2);
-	    jvp.add(new JLabel("Details of partition " + ds[1] + " on disk "
-						+ ds[0]));
+	    addLabel("Details of partition " + ds[1] + " on disk " + ds[0]);
 	    displayAka();
 	    addAccessory();
 	}
@@ -145,11 +144,11 @@ public class DiskInfoPanel extends InfoPanel {
 	if (salt == null) {
 	    String devname = devpath.getDiskName(ks.getName());
 	    if (devname != null) {
-		jvp.add(new JLabel("Also known as " + devname));
+		addLabel("Also known as " + devname);
 		showAka(devname, zconfig);
 	    }
 	} else {
-	    jvp.add(new JLabel("Also known as " + salt));
+	    addLabel("Also known as " + salt);
 	    for (String devname : salt) {
 		showAka(devname, zconfig);
 	    }
@@ -159,13 +158,13 @@ public class DiskInfoPanel extends InfoPanel {
     private void showAka(String devname, ZFSconfig zconfig) {
 	for (Zpool pool : zconfig.pools()) {
 	    if (pool.contains(devname)) {
-		jvp.add(new JLabel("Part of ZFS pool " + pool.getName()));
+		addLabel("Part of ZFS pool " + pool.getName());
 	    }
 	}
 	String fs = mnttab.getFs("/dev/dsk/" + devname);
 	if (fs != null) {
-	    jvp.add(new JLabel("Mounted as a " + mnttab.getFsType(fs) +
-			" file system at " + fs));
+	    addLabel("Mounted as a " + mnttab.getFsType(fs) +
+			" file system at " + fs);
 	}
 	// FIXME check swap devices
     }

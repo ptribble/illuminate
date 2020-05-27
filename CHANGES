@@ -1,3 +1,8 @@
+Centralize label code in the explorer view, and center the labels.
+
+The services display has buttons for the man pages associated with a given
+service.
+
 Use a fancy cpustate gadget to show activity on the front screen, as it's
 much nicer than the chart we had before.
 

@@ -23,6 +23,7 @@
 package org.tribblix.illuminate.explorer;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.event.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -83,7 +84,9 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
      * Top level summary. List of Zones.
      */
     private void displaySummary() {
-	jvp.add(new JLabel("Zone Summary"));
+	JLabel jl = new JLabel("Zone Summary");
+	jl.setAlignmentX(Component.CENTER_ALIGNMENT);
+	jvp.add(jl);
 	addText(new CommandTableModel(new InfoCommand("za", "/usr/sbin/zoneadm",
 					"list -icv")));
     }

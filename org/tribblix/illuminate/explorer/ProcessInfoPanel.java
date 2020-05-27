@@ -66,11 +66,9 @@ public class ProcessInfoPanel extends InfoPanel {
      */
     private void displaySummary() {
 	ZoneEntry ze = (ZoneEntry) hi.getAttribute("zoneentry");
-	if (ze == null) {
-	    jvp.add(new JLabel("Running Processes"));
-	} else {
-	    jvp.add(new JLabel("Processes in zone "+ze.getName()));
-	}
+	addLabel((ze == null) ?
+		"Running Processes" :
+		"Processes in zone "+ze.getName());
 	JProc jproc = new JProc();
 	jpip = new JPinfoTable(jproc, new JProcessFilter(), 5);
 	jpip.removeColumn("CT");
