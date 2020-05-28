@@ -42,6 +42,10 @@ public class InfoCommandList extends Vector <InfoCommand> {
 		"/usr/sbin/beadm", "list");
 	ic.setManpage("beadm.1m");
 	addCommand(ic);
+	ic = new InfoCommand(IlluminateResources.getString("INFO.CFGADM"),
+		"/usr/sbin/cfgadm");
+	ic.setManpage("cfgadm.1m");
+	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.CORE"),
 		"/usr/bin/coreadm");
 	ic.setManpage("coreadm.1m");

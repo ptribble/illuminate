@@ -21,8 +21,6 @@ Network view - relationship between physical interfaces, vnics, aggregations
 
 SMF - use jna (like haplo does)
 
-cfgadm
-
 top: jkstat + jproc; graphical charts and sparks for summaries; add
 zone/user/whatever aggregation
 
