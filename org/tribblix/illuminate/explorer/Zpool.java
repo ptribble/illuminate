@@ -43,7 +43,7 @@ public class Zpool {
     private Set <String> zdevices;
 
     /**
-     * Create a Zpool object represnting a ZFS pool.
+     * Create a Zpool object representing a ZFS pool.
      *
      * @param name The name of the pool.
      */

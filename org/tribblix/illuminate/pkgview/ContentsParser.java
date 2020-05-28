@@ -82,7 +82,7 @@ public class ContentsParser {
      *  - just reading every line, 0.9s
      *  - just parsing every line, 1.5s, so the parsing adds 0.6s
      *  - populating the fileHash adds about 1s
-     *  - poulating the pkgHash and its contents adds another 1s
+     *  - populating the pkgHash and its contents adds another 1s
      *
      * So the actual parse is pretty quick - it's populating the maps
      * that really adds to the cost.

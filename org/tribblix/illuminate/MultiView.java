@@ -93,7 +93,7 @@ public class MultiView extends JFrame implements ActionListener {
     /**
      * Create a new view from the command line.
      *
-     * @param args command line arguments, the first argument representinmg
+     * @param args command line arguments, the first argument representing
      * the view to show.
      */
     public static void main(String args[]) {

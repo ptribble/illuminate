@@ -226,7 +226,7 @@ public class SmfService implements Comparable<SmfService> {
 	if (props == null) {
 	    props = new HashMap <String, String> ();
 	    /*
-	     * Properties aren't supported for legacy sevices.
+	     * Properties aren't supported for legacy services.
 	     */
 	    if (!fmri.startsWith("lrc:")) {
 		for (String line : getSVCS("-l").split("\n")) {

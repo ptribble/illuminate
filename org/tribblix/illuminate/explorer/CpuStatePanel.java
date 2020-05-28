@@ -207,7 +207,7 @@ public class CpuStatePanel extends JPanel implements ActionListener {
 
     /*
      * Put a set of kstats into a panel: line of vertical accessories
-     * above a line of lables.
+     * above a line of labels.
      */
     private JPanel multiPanel(Set <Kstat> kss) {
 	JPanel ppanl = new JPanel(new SpringLayout());

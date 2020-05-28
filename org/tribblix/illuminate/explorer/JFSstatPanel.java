@@ -90,7 +90,7 @@ public class JFSstatPanel extends JPanel {
     /**
      * Determine whether the aggregates of filesystem types are shown.
      *
-     * @param b true if the aggreagtes by filesystem type should be shown.
+     * @param b true if the aggregates by filesystem type should be shown.
      */
     public void showAggregates(boolean b) {
 	ftm.showAggregates(b);
