@@ -40,6 +40,8 @@ public class ContentsFileTree extends JTree {
 
     /**
      * Create a JTree representing local files and directories.
+     *
+     * @param altroot the root of the file system
      */
     public ContentsFileTree(String altroot) {
 	ContentsFileTreeNode rootNode = new ContentsFileTreeNode(

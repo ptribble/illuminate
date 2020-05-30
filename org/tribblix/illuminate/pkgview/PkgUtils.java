@@ -37,6 +37,10 @@ public class PkgUtils {
 
     /**
      * Returns the pkginfo file as a html table.
+     *
+     * @param pkg the package to display
+     *
+     * @return a nicley formatted version of the pkginfo file
      */
     static public String infoTable(SVR4Package pkg) {
 	StringBuilder sb = new StringBuilder();
@@ -89,6 +93,13 @@ public class PkgUtils {
 	return wrapTable(sb);
     }
 
+    /**
+     * Describe an overlay
+     *
+     * @param ovl the overlay to describe
+     *
+     * @return a formateed table describing the given overlay
+     */
     static public String infoTable(Overlay ovl) {
 	StringBuilder sbh = new StringBuilder();
 	sbh.append("Overlay " + ovl.getName());

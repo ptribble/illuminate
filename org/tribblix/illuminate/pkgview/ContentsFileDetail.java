@@ -200,6 +200,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * Return whether this entry is shared amongst packages. This is determined
      * by whether the number of packages that own this entry is one
      * or more than one.
+     *
+     * @return true if this entry is shared by multiple packages
      */
     public boolean isShared() {
 	return (pkglist.size() != 1);
@@ -209,6 +211,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * Return whether this entry is a directory. Which means that it
      * would be of type d or x (x denotes a directory that is exclusive
      * to a package).
+     *
+     * @return true if this entry is a directory
      */
     public boolean isDirectory() {
 	return ("d".equals(ftype) || "x".equals(ftype));
@@ -218,6 +222,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * Return whether this entry is a regular file, which means that it
      * would be of type f or v or e. As a result, it will have a size,
      * checksum, and modification time
+     *
+     * @return true if this entry is a regular file
      */
     public boolean isRegular() {
 	return ("e".equals(ftype) || "f".equals(ftype) || "v".equals(ftype));
@@ -227,6 +233,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * Return whether this entry is editable, which means that it would be of
      * type v or e. As a result, size, checksum, and modification may differ
      * from the installed values.
+     *
+     * @return true if this entry is an editable file
      */
     public boolean isEditable() {
 	return ("e".equals(ftype) || "v".equals(ftype));
@@ -235,6 +243,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
     /**
      * Return whether this entry is a hard link to another file.
      * This is denoted by it being of type l.
+     *
+     * @return true if this entry is a hard link
      */
     public boolean isHardLink() {
 	return "l".equals(ftype);
@@ -243,6 +253,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
     /**
      * Return whether this entry is a soft link to another file.
      * This is denoted by it being of type s.
+     *
+     * @return true if this entry is a soft link
      */
     public boolean isSymLink() {
 	return "s".equals(ftype);
@@ -252,6 +264,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * Return whether this entry is a link to another file.
      * This is denoted by it being of type l (hard link) or
      * type s (symbolic link).
+     *
+     * @return true if this entry is a hard or soft link
      */
     public boolean isLink() {
 	return ("l".equals(ftype) || "s".equals(ftype));
@@ -261,6 +275,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * Return whether this entry is a device file.
      * This is denoted by it being of type b (block device) or
      * type c (character device).
+     *
+     * @return true if this entry is a device file
      */
     public boolean isDevice() {
 	return ("b".equals(ftype) || "c".equals(ftype));
@@ -268,6 +284,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
 
     /**
      * Return the basic type of this entry as a descriptive String.
+     *
+     * @return the basic type of this entry as a descriptive String
      */
     public String getBasicType() {
 	String t;
@@ -291,6 +309,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
 
     /**
      * Return the type of this entry as a descriptive String.
+     *
+     * @return the type of this entry as a descriptive String
      */
     public String getDescriptiveType() {
 	String t;

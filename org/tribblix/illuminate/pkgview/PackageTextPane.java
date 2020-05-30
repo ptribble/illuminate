@@ -48,6 +48,8 @@ public class PackageTextPane extends JEditorPane implements HyperlinkListener {
 
     /**
      * Create a Scrollable panel containing Text
+     *
+     * @param content_type the desired content type of the panel
      */
     public PackageTextPane(String content_type) {
 	super();

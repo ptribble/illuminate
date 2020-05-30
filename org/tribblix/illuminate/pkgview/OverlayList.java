@@ -43,6 +43,7 @@ public class OverlayList {
      * There should be a .ovl file and a .pkgs file for each overlay
      *
      * @param altroot  An alternate root directory for this OS image
+     * @param plist a PkgList object
      */
     public OverlayList(String altroot, PkgList plist) {
 	ovMap = new HashMap <String, Overlay> ();
@@ -75,6 +76,8 @@ public class OverlayList {
 
     /**
      * Return whether overlays exist in the current system.
+     *
+     * @return true if the current system uses overlays
      */
     public boolean exists() {
 	return ovlexists;
@@ -90,6 +93,10 @@ public class OverlayList {
 
     /**
      * Return the overlay(s) that contain (require) the given overlay.
+     *
+     * @param ovl the overlay of interest
+     *
+     * @return the Set of overlays requiring the given overlay
      */
     public Set <Overlay> containingOverlays(Overlay ovl) {
 	Set <Overlay> h = new TreeSet <Overlay> ();
@@ -103,6 +110,10 @@ public class OverlayList {
 
     /**
      * Return the overlay(s) that contain the given package.
+     *
+     * @param pkg the package of interest
+     *
+     * @return the Set of overlays containing the given package
      */
     public Set <Overlay> containingOverlays(SVR4Package pkg) {
 	Set <Overlay> h = new TreeSet <Overlay> ();
@@ -115,7 +126,11 @@ public class OverlayList {
     }
 
     /**
-     * Return the overlay(s) that contain the given package.
+     * Return the overlay(s) that contain the given packages.
+     *
+     * @param pkglist the list of packages of interest
+     *
+     * @return the Set of overlays containing the given packages
      */
     public Set <Overlay> containingOverlays(
 				List <SVR4Package> pkglist) {

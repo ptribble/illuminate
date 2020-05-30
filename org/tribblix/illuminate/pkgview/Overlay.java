@@ -64,6 +64,9 @@ public class Overlay implements Comparable<Overlay> {
 
     /**
      * Populate the data structures.
+     *
+     * @param plist a PkgList object
+     * @param ovlist an OverlayList object
      */
     public void populate(PkgList plist, OverlayList ovlist) {
 	parseOVL(ovlist);
@@ -167,6 +170,8 @@ public class Overlay implements Comparable<Overlay> {
 
     /**
      * Returns a Set of required overlays that are not installed
+     *
+     * @return a Set of required overlays that are not installed
      */
     public Set <Overlay> missingOverlays() {
 	Set <Overlay> omiss = new TreeSet <Overlay> ();
@@ -180,6 +185,9 @@ public class Overlay implements Comparable<Overlay> {
 
     /**
      * Returns a Set of member packages that are not installed
+     *
+     * @return a Set of the packages contained in this Overlay that are
+     * not currently installed
      */
     public Set <SVR4Package> missingPackages() {
 	Set <SVR4Package> pmiss = new TreeSet <SVR4Package> ();
@@ -205,6 +213,10 @@ public class Overlay implements Comparable<Overlay> {
     /**
      * Gets whether this overlay explicitly requires the specified
      * overlay.
+     *
+     * @param ovl the overlay of interest
+     *
+     * @return true if the given overlay is required by this overlay
      */
     public boolean containsOverlay(Overlay ovl) {
 	return (overlays.contains(ovl)) ? true :
@@ -214,6 +226,10 @@ public class Overlay implements Comparable<Overlay> {
     /**
      * Gets whether this overlay explicitly requires the specified
      * overlay.
+     *
+     * @param oname the name of the overlay of interest
+     *
+     * @return true if the given overlay is required by this overlay
      */
     public boolean containsOverlay(String oname) {
 	// check if any names match
@@ -228,6 +244,10 @@ public class Overlay implements Comparable<Overlay> {
     /**
      * Gets whether this overlay explicitly contains the specified
      * package.
+     *
+     * @param p the package of interest
+     *
+     * @return true if the given package is contained in this overlay
      */
     public boolean containsPackage(SVR4Package p) {
 	return (packages.contains(p)) ? true : containsPackage(p.getName());
@@ -236,6 +256,10 @@ public class Overlay implements Comparable<Overlay> {
     /**
      * Gets whether this overlay explicitly contains the specified
      * package.
+     *
+     * @param pname the name of the package of interest
+     *
+     * @return true if the given package is contained in this overlay
      */
     public boolean containsPackage(String pname) {
 	// check if any names match
@@ -250,6 +274,11 @@ public class Overlay implements Comparable<Overlay> {
     /**
      * Gets whether this overlay contains the specified package,
      * either explicitly or implicitly via requires.
+     *
+     * @param p the package of interest
+     *
+     * @return true if the given package is contained in this overlay or
+     * in its dependencies
      */
     public boolean includesPackage(SVR4Package p) {
 	if (containsPackage(p)) {
@@ -267,6 +296,11 @@ public class Overlay implements Comparable<Overlay> {
     /**
      * Gets whether this overlay contains the specified package,
      * either explicitly or implicitly via requires.
+     *
+     * @param pname the name of the package of interest
+     *
+     * @return true if the given package is contained in this overlay or
+     * in its dependencies
      */
     public boolean includesPackage(String pname) {
 	if (containsPackage(pname)) {

@@ -59,6 +59,8 @@ public class SVR4Package implements Comparable<SVR4Package> {
 
     /**
      * Return the name of this package.
+     *
+     * @return the name of this package
      */
     public String getName() {
 	return name;
@@ -66,6 +68,8 @@ public class SVR4Package implements Comparable<SVR4Package> {
 
     /**
      * The name of this package.
+     *
+     * @return the name of this package
      */
     public String toString() {
 	return name;
@@ -120,7 +124,9 @@ public class SVR4Package implements Comparable<SVR4Package> {
     }
 
     /**
-     * Return the Set of package names that this package is dependent on.
+     * Return the Set of package names that this package depends on.
+     *
+     * @return the Set of package names this package depends on
      */
     public Set <String> getDependencySet() {
 	if (dependson == null) {
@@ -132,6 +138,9 @@ public class SVR4Package implements Comparable<SVR4Package> {
     /**
      * Return the Set of package names that this package declares to be
      * dependent on it.
+     *
+     * @return the Set of package names this package declares to be
+     * dependent on it
      */
     public Set <String> getRDependencySet() {
 	if (rdepends == null) {
@@ -142,6 +151,9 @@ public class SVR4Package implements Comparable<SVR4Package> {
 
     /**
      * Return the Set of package names that this package is incompatible with.
+     *
+     * @return the Set of package names this package declares to be
+     * incompatible with it
      */
     public Set <String> getIncompatibleSet() {
 	if (incompatibles == null) {
@@ -154,6 +166,8 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * Define the set of packages that are dependant on this package.
      *
      * @see #getDependantSet
+     *
+     * @param depSet the Set of dependant packages
      */
     public void setDependantSet(Set <SVR4Package> depSet) {
 	this.depSet = depSet;
@@ -163,6 +177,8 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * Return the set of packages that are dependant on this package.
      *
      * @see #setDependantSet
+     *
+     * @return the Set of dependant packages
      */
     public Set <SVR4Package> getDependantSet() {
 	return depSet;
@@ -170,6 +186,8 @@ public class SVR4Package implements Comparable<SVR4Package> {
 
     /**
      * Parse the pkginfo file.
+     *
+     * @return the content of the pkginfo file as a Map
      */
     public Map <String, String> infoMap() {
 	if (infomap == null) {
@@ -199,6 +217,8 @@ public class SVR4Package implements Comparable<SVR4Package> {
     /**
      * Returns whether this package is installed, by seeing whether the
      * directory corresponding to its name exists.
+     *
+     * @return true if this package is installed
      */
     public boolean isInstalled() {
 	return new File(pkgrootf, name).exists();

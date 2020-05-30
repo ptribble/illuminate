@@ -43,7 +43,8 @@ public class InstalledFilesPanel extends JPanel {
     /**
      * Create a new InstalledFilesPanel.
      *
-     * @param ovlist A list of overlays
+     * @param altroot the root of the file system
+     * @param ovlist a list of overlays
      */
     public InstalledFilesPanel(String altroot, OverlayList ovlist) {
 	setLayout(new BorderLayout());

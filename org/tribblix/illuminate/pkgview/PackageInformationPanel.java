@@ -51,6 +51,9 @@ public class PackageInformationPanel extends JTabbedPane {
 
     /**
      * Create a default PackageInformationPanel showing the default tabs.
+     *
+     * @param altroot the root of the file system
+     * @param ovlist an OverlayList object
      */
     public PackageInformationPanel(String altroot, OverlayList ovlist) {
 	this(altroot, ovlist, true);
@@ -58,6 +61,10 @@ public class PackageInformationPanel extends JTabbedPane {
 
     /**
      * Create a PackageInformationPanel showing the specified tabs.
+     *
+     * @param altroot the root of the file system
+     * @param ovlist an OverlayList object
+     * @param showdependencies a boolean determining if dependencies are shown
      */
     public PackageInformationPanel(String altroot, OverlayList ovlist,
 			   boolean showdependencies) {
@@ -221,6 +228,8 @@ public class PackageInformationPanel extends JTabbedPane {
 
     /**
      * Show the reverse dependency tab.
+     *
+     * @param pkg the package to show
      */
     public void showRevDependencies(SVR4Package pkg) {
 	add(PkgResources.getString("PKG.DEPENDANTS"),

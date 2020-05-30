@@ -152,6 +152,8 @@ public class ContentsPackage {
 
     /**
      * Return a Set of ContentsFileDetail objects, sorted by path name.
+     *
+     * @return a Set of ContentsFileDetail objects, sorted by path name
      */
     public Set <ContentsFileDetail> getDetails() {
 	return new TreeSet <ContentsFileDetail> (fileset);

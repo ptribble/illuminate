@@ -48,7 +48,8 @@ public class PkgCheck {
     /**
      * Check integrity.
      *
-     * @param arguments, a list of package, overlay, or file names
+     * @param altroot an alternate root of the package tree
+     * @param args a list of package, overlay, or file names
      */
     public PkgCheck(String altroot, String[] args) {
 	this.altroot = altroot;
