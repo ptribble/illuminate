@@ -1,3 +1,5 @@
+Use the JDK SwingWorker
+
 Centralize label code in the explorer view, and center the labels.
 
 The services display has buttons for the man pages associated with a given

@@ -18,9 +18,8 @@ JINGLEJAR=${JARLIBDIR}/jingle.jar
 JUMBLEJAR=${JARLIBDIR}/jumble.jar
 JKJAR=${JARLIBDIR}/jkstat.jar
 JPJAR=${JARLIBDIR}/jproc.jar
-SWJAR=${JARLIBDIR}/swing-worker-1.2.jar
 
-BUILDJARS=${JINGLEJAR}:${JUMBLEJAR}:${JKJAR}:${JPJAR}:${SWJAR}
+BUILDJARS=${JINGLEJAR}:${JUMBLEJAR}:${JKJAR}:${JPJAR}
 
 PATH=/usr/jdk/instances/jdk1.8.0/bin:$PATH
 export PATH
@@ -51,7 +50,7 @@ case $1 in
 doc|-doc)
 	rm -fr javadoc
 	mkdir javadoc
-	env CLASSPATH=.:${JKJAR}:${JPJAR}:${SWJAR} javadoc -d javadoc org.tribblix.illuminate org.tribblix.illuminate.helpers org.tribblix.illuminate.explorer
+	env CLASSPATH=.:${JKJAR}:${JPJAR} javadoc -d javadoc org.tribblix.illuminate org.tribblix.illuminate.helpers org.tribblix.illuminate.explorer
 	;;
 
 clean|-clean)

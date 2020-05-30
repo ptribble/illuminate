@@ -23,7 +23,7 @@
 package org.tribblix.illuminate.pkgview;
 
 import javax.swing.JTabbedPane;
-import org.jdesktop.swingworker.SwingWorker;
+import javax.swing.SwingWorker;
 
 /**
  * Generates a view of the software installed on a system. The display
