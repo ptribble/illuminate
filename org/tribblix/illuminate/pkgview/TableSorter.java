@@ -396,7 +396,6 @@ public class TableSorter extends AbstractTableModel {
             // Something happened to the data that may invalidate the row order.
             clearSortingState();
             fireTableDataChanged();
-            return;
         }
     }
 
@@ -424,7 +423,7 @@ public class TableSorter extends AbstractTableModel {
 		JTable table = h.getTable();
 		TableModel tableModel = table.getModel();
 		Class columnType = tableModel.getColumnClass(column);
-		if ((columnType != null) &&
+		if (columnType != null &&
 			Number.class.isAssignableFrom(columnType)) {
 		    // Time should also be descending, but a raw Date is
 		    // not usually loaded into a table as-is. Whatever

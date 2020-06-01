@@ -204,7 +204,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is shared by multiple packages
      */
     public boolean isShared() {
-	return (pkglist.size() != 1);
+	return pkglist.size() != 1;
     }
 
     /**
@@ -215,7 +215,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is a directory
      */
     public boolean isDirectory() {
-	return ("d".equals(ftype) || "x".equals(ftype));
+	return "d".equals(ftype) || "x".equals(ftype);
     }
 
     /**
@@ -226,7 +226,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is a regular file
      */
     public boolean isRegular() {
-	return ("e".equals(ftype) || "f".equals(ftype) || "v".equals(ftype));
+	return "e".equals(ftype) || "f".equals(ftype) || "v".equals(ftype);
     }
 
     /**
@@ -237,7 +237,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is an editable file
      */
     public boolean isEditable() {
-	return ("e".equals(ftype) || "v".equals(ftype));
+	return "e".equals(ftype) || "v".equals(ftype);
     }
 
     /**
@@ -268,7 +268,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is a hard or soft link
      */
     public boolean isLink() {
-	return ("l".equals(ftype) || "s".equals(ftype));
+	return "l".equals(ftype) || "s".equals(ftype);
     }
 
     /**
@@ -279,7 +279,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is a device file
      */
     public boolean isDevice() {
-	return ("b".equals(ftype) || "c".equals(ftype));
+	return "b".equals(ftype) || "c".equals(ftype);
     }
 
     /**

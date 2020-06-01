@@ -295,14 +295,14 @@ public class FsstatTableModel extends AbstractTableModel
 	String dev3 = mnttab.getFSforDevice(dev2);
 
 	// first check if we should ignore it
-	if (((filtermask & MASK_IGNORE) != 0) && (dev3 != null) &&
-	    (mnttab.getIgnore(dev3))) {
+	if ((filtermask & MASK_IGNORE) != 0 && dev3 != null &&
+	    mnttab.getIgnore(dev3)) {
 	    doadd = false;
 	}
 
 	// check if ignoring all aggregates
 	// aggregates aren't mounted so dev3 is null
-	if (doadd && ((filtermask & MASK_ALLAGGR) != 0) && (dev3 == null)) {
+	if (doadd && (filtermask & MASK_ALLAGGR) != 0 && dev3 == null) {
 	    doadd = false;
 	}
 
@@ -311,7 +311,7 @@ public class FsstatTableModel extends AbstractTableModel
 
 	// filter on fstype
 	// FIXME need to populate the showfstypes list
-	if (doadd && ((filtermask & MASK_BYTYPE) != 0) && (dev3 != null)) {
+	if (doadd && (filtermask & MASK_BYTYPE) != 0 && dev3 != null) {
 	    doadd = showfstypes.contains(mnttab.getFsType(dev3));
 	}
 

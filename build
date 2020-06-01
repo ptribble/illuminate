@@ -31,7 +31,7 @@ export PATH
 #
 # new PMD version has rulesets
 #
-PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception"
+PMDRULES="imports typeresolution clone finalizers sunsecure unusedcode braces migrating strictexception unnecessary"
 PMDCATRULES="security"
 
 case $# in

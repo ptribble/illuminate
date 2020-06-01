@@ -34,7 +34,7 @@ public class OverlaySizes {
      */
     public static void main(String[] args) {
 	String altroot = "/";
-	if ((args.length == 2) && ("-R".equals(args[0]))) {
+	if (args.length == 2 && "-R".equals(args[0])) {
 	    altroot = args[1];
 	}
 	PkgList plist = new PkgList(altroot);

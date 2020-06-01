@@ -290,7 +290,7 @@ public class PkgCheck {
 	if (args.length == 0) {
 	    usage();
 	}
-	if ((args.length > 2) && ("-R".equals(args[0]))) {
+	if (args.length > 2 && "-R".equals(args[0])) {
 	    new PkgCheck(args[1], Arrays.copyOfRange(args, 2, args.length));
 	} else {
 	    new PkgCheck("/", args);

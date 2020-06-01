@@ -111,7 +111,7 @@ public class MultiView extends JFrame implements ActionListener {
 			new SmfPanel());
 	} else if (args[0].equals("software")) {
 	    String altroot = "/";
-	    if ((args.length == 3) && ("-R".equals(args[1]))) {
+	    if (args.length == 3 && "-R".equals(args[1])) {
 		altroot = args[2];
 	    }
 	    new MultiView("ILLUMINATE.SOFT.TEXT", "HELP.ABOUT.SOFT",

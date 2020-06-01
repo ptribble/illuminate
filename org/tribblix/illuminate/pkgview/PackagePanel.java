@@ -62,8 +62,8 @@ public class PackagePanel extends JPanel {
 	ptable.getSelectionModel().addListSelectionListener(
 		new ListSelectionListener() {
 	    public void valueChanged(ListSelectionEvent e) {
-		if ((e.getSource() instanceof DefaultListSelectionModel)
-			&& (!e.getValueIsAdjusting())) {
+		if (e.getSource() instanceof DefaultListSelectionModel
+			&& !e.getValueIsAdjusting()) {
 		    int irow = ptable.getSelectedRow();
 		    if (irow >= 0) {
 			// sorted table, need to convert the index

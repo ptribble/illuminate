@@ -102,7 +102,7 @@ public class InfoCommand {
      * @return true if the command exists
      */
     public boolean exists() {
-	return (new File(cmd)).exists();
+	return new File(cmd).exists();
     }
 
     /**
@@ -111,7 +111,7 @@ public class InfoCommand {
      * @return The output from running this command
      */
     public String getOutput() {
-	return (exists()) ? (new RunCommand(fullcmd)).getOut() :
+	return exists() ? new RunCommand(fullcmd).getOut() :
 	    "Command not found";
     }
 

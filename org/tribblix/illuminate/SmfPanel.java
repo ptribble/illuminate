@@ -55,7 +55,7 @@ public class SmfPanel extends JPanel {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode)
 		    ptree.getLastSelectedPathComponent();
 
-		if ((node != null) && node.isLeaf()) {
+		if (node != null && node.isLeaf()) {
 		    setInfo((SmfService) node.getUserObject());
 		}
 	    }

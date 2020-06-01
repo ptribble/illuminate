@@ -267,7 +267,7 @@ public class PkgUtils {
 	StringBuilder sb = new StringBuilder();
 	double dspace = (double) space;
 	int iscale = 0;
-	while ((dspace > 1024.0) && (iscale < 3)) {
+	while (dspace > 1024.0 && iscale < 3) {
 	    iscale++;
 	    dspace /= 1024.0;
 	}

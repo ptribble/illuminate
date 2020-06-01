@@ -34,11 +34,11 @@ public class PackageSizes {
      */
     public static void main(String[] args) {
 	String altroot = "/";
-	if ((args.length == 2) && ("-R".equals(args[0]))) {
+	if (args.length == 2 && "-R".equals(args[0])) {
 	    altroot = args[1];
 	}
 	ContentsParser cp = ContentsParser.getInstance(altroot);
-	for (String pkg :  (new PkgList(altroot)).getPackageNames()) {
+	for (String pkg :  new PkgList(altroot).getPackageNames()) {
 	    ContentsPackage cc = cp.getPackage(pkg);
 	    if (cc == null) {
 		System.out.println("0 | 0 | " + pkg);
