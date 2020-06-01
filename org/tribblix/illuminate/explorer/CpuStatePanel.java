@@ -64,7 +64,6 @@ public class CpuStatePanel extends JPanel implements ActionListener {
     // localised via properties
     private String chipText;
     private String coreText;
-    private String cpuText;
     private String cpuLabel;
     private String cpuChartLabel;
     private int fontScale;
@@ -98,7 +97,7 @@ public class CpuStatePanel extends JPanel implements ActionListener {
 	// create localized labels
 	chipText = IlluminateResources.getString("CPUSTATE.CHIP") + " ";
 	coreText = IlluminateResources.getString("CPUSTATE.CORE") + " ";
-	cpuText = IlluminateResources.getString("CPUSTATE.CPU") + " ";
+	String cpuText = IlluminateResources.getString("CPUSTATE.CPU") + " ";
 
 	// change the labels depending on structure
 	if (proctree.isMulticore()) {

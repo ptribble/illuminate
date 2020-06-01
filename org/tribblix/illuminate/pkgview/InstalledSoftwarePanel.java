@@ -42,12 +42,11 @@ public class InstalledSoftwarePanel extends JTabbedPane {
     private PackagePanel ipp;
     private OverlayPanel ovp;
     private InstalledFilesPanel ifp;
-    private OverlayList ovlist;
 
     public InstalledSoftwarePanel(String altroot) {
 	this.altroot = altroot;
 	plist = new PkgList(altroot);
-	ovlist = new OverlayList(altroot, plist);
+	OverlayList ovlist = new OverlayList(altroot, plist);
 
 	ipp = new PackagePanel(altroot, plist, ovlist);
 	add(PkgResources.getString("PKG.LIST"), ipp);

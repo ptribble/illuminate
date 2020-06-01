@@ -43,14 +43,12 @@ import uk.co.petertribble.jumble.JumbleFile;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfInfoPanel extends JPanel  implements ActionListener {
+public class SmfInfoPanel extends JPanel implements ActionListener {
 
     private JingleTextPane tp;
     private JingleTextPane tpl;
     private JingleTextPane dtp;
     private JTabbedPane jtp;
-    private JProc jproc;
-    private JProcessFilter jpf;
     private JPinfoTable jpi;
     private File logfile;
     private JPanel manButtonPanel;
@@ -63,8 +61,8 @@ public class SmfInfoPanel extends JPanel  implements ActionListener {
 	jtp = new JTabbedPane();
 	add(jtp);
 
-	jproc = new JProc();
-	jpf = new JProcessFilter();
+	JProc jproc = new JProc();
+	JProcessFilter jpf = new JProcessFilter();
 	jpi = new JPinfoTable(jproc, jpf, 1);
 	jpi.setContract(0);
 	jpi.removeColumn("CT");

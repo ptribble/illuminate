@@ -108,22 +108,6 @@ public class ArcStatPanel extends JPanel implements ActionListener {
     private long n_demand_md_misses;
     private long n_pf_data_misses;
     private long n_pf_md_misses;
-    // changes
-    private long d_arc_hits;
-    private long d_arc_misses;
-    private long d_mfu_hits;
-    private long d_mru_hits;
-    private long d_mfu_ghost_hits;
-    private long d_mru_ghost_hits;
-    private long d_anon_hits;
-    private long d_demand_data_hits;
-    private long d_demand_md_hits;
-    private long d_pf_data_hits;
-    private long d_pf_md_hits;
-    private long d_demand_data_misses;
-    private long d_demand_md_misses;
-    private long d_pf_data_misses;
-    private long d_pf_md_misses;
 
     private int p_d_arc_hit;
     private int p_d_demand_hit;
@@ -336,21 +320,21 @@ public class ArcStatPanel extends JPanel implements ActionListener {
 	mfu_size_label.setText(Long.toString(mfu_size/mb) + " MB");
 
 	// create deltas
-	d_arc_hits = n_arc_hits - arc_hits;
-	d_arc_misses = n_arc_misses - arc_misses;
-	d_mfu_hits = n_mfu_hits - mfu_hits;
-	d_mru_hits = n_mru_hits - mru_hits;
-	d_mfu_ghost_hits = n_mfu_ghost_hits - mfu_ghost_hits;
-	d_mru_ghost_hits = n_mru_ghost_hits - mru_ghost_hits;
-	d_anon_hits = n_anon_hits - anon_hits;
-	d_demand_data_hits = n_demand_data_hits - demand_data_hits;
-	d_demand_md_hits = n_demand_md_hits - demand_md_hits;
-	d_pf_data_hits = n_pf_data_hits - pf_data_hits;
-	d_pf_md_hits = n_pf_md_hits - pf_md_hits;
-	d_demand_data_misses = n_demand_data_misses - demand_data_misses;
-	d_demand_md_misses = n_demand_md_misses - demand_md_misses;
-	d_pf_data_misses = n_pf_data_misses - pf_data_misses;
-	d_pf_md_misses = n_pf_md_misses - pf_md_misses;
+	long d_arc_hits = n_arc_hits - arc_hits;
+	long d_arc_misses = n_arc_misses - arc_misses;
+	long d_mfu_hits = n_mfu_hits - mfu_hits;
+	long d_mru_hits = n_mru_hits - mru_hits;
+	long d_mfu_ghost_hits = n_mfu_ghost_hits - mfu_ghost_hits;
+	long d_mru_ghost_hits = n_mru_ghost_hits - mru_ghost_hits;
+	long d_anon_hits = n_anon_hits - anon_hits;
+	long d_demand_data_hits = n_demand_data_hits - demand_data_hits;
+	long d_demand_md_hits = n_demand_md_hits - demand_md_hits;
+	long d_pf_data_hits = n_pf_data_hits - pf_data_hits;
+	long d_pf_md_hits = n_pf_md_hits - pf_md_hits;
+	long d_demand_data_misses = n_demand_data_misses - demand_data_misses;
+	long d_demand_md_misses = n_demand_md_misses - demand_md_misses;
+	long d_pf_data_misses = n_pf_data_misses - pf_data_misses;
+	long d_pf_md_misses = n_pf_md_misses - pf_md_misses;
 
 	// save values
 	arc_hits = n_arc_hits;
