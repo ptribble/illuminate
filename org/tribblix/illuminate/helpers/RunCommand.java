@@ -46,24 +46,22 @@ public class RunCommand {
 	    Process p = Runtime.getRuntime().exec(cmd, (String[]) null,
 						new File("/tmp"));
 
-	    // the api docs say we should buffer all i/o
-	    BufferedReader reader1 =
+	    try (BufferedReader reader1 =
 		new BufferedReader(new InputStreamReader(p.getInputStream()));
-	    BufferedReader reader2 =
-		new BufferedReader(new InputStreamReader(p.getErrorStream()));
+		    BufferedReader reader2 =
+		new BufferedReader(new InputStreamReader(p.getErrorStream()))) {
 
-	    String s;
-	    while ((s = reader1.readLine()) != null) {
-		stdout.append(s).append("\n");
-	    }
-	    while ((s = reader2.readLine()) != null) {
-		stderr.append(s).append("\n");
-	    }
-	    try {
-		p.waitFor();
-	    } catch (InterruptedException ie) {}
-	    reader1.close();
-	    reader2.close();
+		String s;
+		while ((s = reader1.readLine()) != null) {
+		    stdout.append(s).append("\n");
+		}
+		while ((s = reader2.readLine()) != null) {
+		    stderr.append(s).append("\n");
+		}
+		try {
+		    p.waitFor();
+		} catch (InterruptedException ie) {}
+	    } catch (IOException ioe1) {}
 	} catch (IOException ioe) {}
     }
 

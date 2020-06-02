@@ -88,9 +88,8 @@ public class ContentsParser {
      * that really adds to the cost.
      */
     private void parse(String altroot) {
-	try {
-	    BufferedReader in
-		= new BufferedReader(new FileReader(altroot + CONTENTS_FILE));
+	try (BufferedReader in
+		= new BufferedReader(new FileReader(altroot + CONTENTS_FILE))) {
 	    String s = null;
 	    while ((s = in.readLine()) != null) {
 		if (s.startsWith("/")) {
