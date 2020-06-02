@@ -35,7 +35,7 @@ import javax.swing.event.*;
  */
 public class OverlayPanel extends JPanel {
 
-    private final OverlayTree tree;
+    final OverlayTree tree;
     private PackageInformationPanel pip;
     private SVR4Package currentPackage;
 
@@ -81,12 +81,12 @@ public class OverlayPanel extends JPanel {
 	add(psplit);
     }
 
-    private void showOverlay(Overlay ovl) {
+    void showOverlay(Overlay ovl) {
 	currentPackage = null;
 	pip.showOverlay(ovl);
     }
 
-    private void showPkg(SVR4Package pkg) {
+    void showPkg(SVR4Package pkg) {
 	pip.showPkg(pkg);
 	if (pkg.isInstalled()) {
 	    currentPackage = pkg;

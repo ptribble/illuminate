@@ -38,7 +38,7 @@ public class PackagePanel extends JPanel {
 
     private PackageInformationPanel pip;
     private SVR4Package currentPackage;
-    private final JTable ptable;
+    final JTable ptable;
 
     public PackagePanel(String altroot, PkgList plist, OverlayList ovlist) {
 
@@ -75,7 +75,7 @@ public class PackagePanel extends JPanel {
 	});
     }
 
-    private void showPkg(SVR4Package pkg) {
+    void showPkg(SVR4Package pkg) {
 	pip.showPkg(pkg);
 	if (pkg.isInstalled()) {
 	    currentPackage = pkg;

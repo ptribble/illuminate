@@ -72,7 +72,7 @@ public class ContentsFileTree extends JTree {
 
     }
 
-    private void explore(ContentsFileTreeNode node) {
+    void explore(ContentsFileTreeNode node) {
 	Cursor c = getCursor();
 	setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	node.explore();

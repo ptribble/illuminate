@@ -36,12 +36,12 @@ import javax.swing.SwingWorker;
  */
 public class InstalledSoftwarePanel extends JTabbedPane {
 
-    private String altroot;
+    String altroot;
 
-    private PkgList plist;
-    private PackagePanel ipp;
-    private OverlayPanel ovp;
-    private InstalledFilesPanel ifp;
+    PkgList plist;
+    PackagePanel ipp;
+    OverlayPanel ovp;
+    InstalledFilesPanel ifp;
 
     public InstalledSoftwarePanel(String altroot) {
 	this.altroot = altroot;

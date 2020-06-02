@@ -73,7 +73,7 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
 	add(psplit);
     }
 
-    private void setInfo(InfoCommand ic) {
+    void setInfo(InfoCommand ic) {
 	currentCmd = ic;
 	jcl.setText(ic.infoLabel());
 	jmb.setEnabled(ic.getManpage() != null);

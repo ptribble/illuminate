@@ -167,7 +167,7 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
 	}
     }
 
-    private void displayLog() {
+    void displayLog() {
 	Cursor c = getCursor();
 	setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	StringBuilder sb = new StringBuilder();

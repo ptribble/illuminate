@@ -87,7 +87,7 @@ public class SysPanel extends JPanel {
 	add(psplit);
     }
 
-    private void setInfo(Object o) {
+    void setInfo(Object o) {
 	if (o instanceof SysItem) {
 	    Cursor c = getCursor();
 	    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

@@ -73,7 +73,7 @@ public class InstalledFilesPanel extends JPanel {
 	jptree.add(new JScrollPane(cft));
     }
 
-    private void showFile(File f) {
+    void showFile(File f) {
 	pip.showFile(f);
     }
 

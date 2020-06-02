@@ -77,7 +77,7 @@ public class SmfPanel extends JPanel {
 	add(psplit);
     }
 
-    private void setInfo(SmfService svc) {
+    void setInfo(SmfService svc) {
 	Cursor c = getCursor();
 	setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	sip.setInfo(svc);
