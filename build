@@ -70,7 +70,7 @@ pmd|-pmd)
 	    RULESETS="${RULESETS},category/java/${RULE}.xml"
 	done
 	RULESETS=`echo $RULESETS|sed s:,::`
-	pmd -d org -R $RULESETS -version 1.5 -auxclasspath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
+	pmd -d org -R $RULESETS -auxclasspath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
 	exit 0
 	;;
 
