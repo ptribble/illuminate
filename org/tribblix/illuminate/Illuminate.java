@@ -17,11 +17,11 @@ import uk.co.petertribble.jkstat.demo.KstatToolsMenu;
  */
 public class Illuminate extends JFrame implements ActionListener {
 
-    private JMenuItem exitItem;
-    private JMenuItem cloneItem;
-    private JMenuItem closeItem;
-    private JMenuItem helpItem;
-    private JMenuItem licenseItem;
+    private final JMenuItem exitItem;
+    private final JMenuItem cloneItem;
+    private final JMenuItem closeItem;
+    private final JMenuItem helpItem;
+    private final JMenuItem licenseItem;
 
     public Illuminate() {
 	super("Illuminate");

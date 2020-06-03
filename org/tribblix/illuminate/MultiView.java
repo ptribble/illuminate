@@ -15,10 +15,10 @@ import uk.co.petertribble.jingle.JingleInfoFrame;
  */
 public class MultiView extends JFrame implements ActionListener {
 
-    private JMenuItem exitItem;
-    private JMenuItem helpItem;
-    private JMenuItem licenseItem;
-    private String helpfile;
+    private final JMenuItem exitItem;
+    private final JMenuItem helpItem;
+    private final JMenuItem licenseItem;
+    private final String helpfile;
 
     /**
      * Create a new MultiView.

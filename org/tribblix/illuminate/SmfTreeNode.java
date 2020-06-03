@@ -33,7 +33,7 @@ import java.util.*;
 public class SmfTreeNode extends DefaultMutableTreeNode {
 
     private SmfService svc;
-    private String node;
+    private final String node;
 
     /**
      * A leaf node in a tree of SMF services.

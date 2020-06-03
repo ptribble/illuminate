@@ -35,7 +35,8 @@ import java.io.File;
  */
 public class SolToolsMenu extends JMenu implements ActionListener {
 
-    private Map <String, String> toolMap = new HashMap <String, String> ();
+    private final Map <String, String> toolMap =
+	new HashMap <String, String> ();
 
     /**
      * Create a SolToolsMenu.

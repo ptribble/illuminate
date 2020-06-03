@@ -35,7 +35,7 @@ import java.awt.event.*;
  */
 public class SmfPanel extends JPanel {
 
-    private SmfInfoPanel sip;
+    private final SmfInfoPanel sip;
 
     /**
      * Display an smf information panel.

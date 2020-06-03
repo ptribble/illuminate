@@ -41,8 +41,8 @@ public class SmfService implements Comparable<SmfService> {
      * rendering.
      */
 
-    private String fmri;
-    private String status;
+    private final String fmri;
+    private final String status;
     private Map <String, String> props;
     private Map <String, String> manpages;
 

@@ -33,7 +33,7 @@ import java.util.*;
  */
 public class SmfTree extends JTree {
 
-    private Map <String, SmfTreeNode> treeMap
+    private final Map <String, SmfTreeNode> treeMap
 	= new HashMap <String, SmfTreeNode> ();
 
     /**

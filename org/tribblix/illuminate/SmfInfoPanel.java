@@ -45,13 +45,13 @@ import uk.co.petertribble.jumble.JumbleFile;
  */
 public class SmfInfoPanel extends JPanel implements ActionListener {
 
-    private JingleTextPane tp;
-    private JingleTextPane tpl;
-    private JingleTextPane dtp;
-    private JTabbedPane jtp;
-    private JPinfoTable jpi;
+    private final JingleTextPane tp;
+    private final JingleTextPane tpl;
+    private final JingleTextPane dtp;
+    private final JTabbedPane jtp;
+    private final JPinfoTable jpi;
     private File logfile;
-    private JPanel manButtonPanel;
+    private final JPanel manButtonPanel;
 
     /**
      * Display an smf information panel.
