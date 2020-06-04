@@ -146,7 +146,7 @@ public class SysItem {
     }
 
     /**
-     * Set the kstat associated with this item. This is sufficently common
+     * Set the kstat associated with this item. This is sufficiently common
      * usage that it is handled explicitly rather than as an attribute.
      *
      * @see #getKstat

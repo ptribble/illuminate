@@ -98,7 +98,7 @@ public class PkgUtils {
      *
      * @param ovl the overlay to describe
      *
-     * @return a formateed table describing the given overlay
+     * @return a formatted table describing the given overlay
      */
     static public String infoTable(Overlay ovl) {
 	StringBuilder sbh = new StringBuilder();
