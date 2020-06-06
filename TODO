@@ -14,8 +14,6 @@ or removed or changes state (or reboots, as zoneid changes)
 
 Update arcstat
 
-Update freechart
-
 Network view - relationship between physical interfaces, vnics, aggregations
   and what they're connected to
 
