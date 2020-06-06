@@ -36,6 +36,7 @@ import uk.co.petertribble.jkstat.gui.AccessoryNetPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
 import uk.co.petertribble.jkstat.gui.SparkRateAccessory;
+import uk.co.petertribble.jkstat.gui.KstatTable;
 
 /**
  * ZoneInfoPanel - shows Zone information.
@@ -46,6 +47,7 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
 
     private JKstat jkstat;
     private KstatAccessorySet kas;
+    private KstatTable kt;
     private List <KstatAccessoryPanel> kaplist;
     private JButton jmb;
 
@@ -68,6 +70,8 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
 	    displayZoneProc();
 	} else if (hi.getType() == SysItem.ZONE_NET) {
 	    displayZoneNet();
+	} else if (hi.getType() == SysItem.ZONE_KSTAT) {
+	    displayZoneKstat();
 	}
 
 	validate();
@@ -77,6 +81,9 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
     @Override
     public void stopLoop() {
 	kas.stopLoop();
+	if (kt != null) {
+	    kt.stopLoop();
+	}
     }
 
     /*
@@ -115,6 +122,16 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
      */
     private void displayZoneProc() {
 	addComponent(new ProcessInfoPanel(hi));
+    }
+
+    /*
+     * Show Zone kstats
+     */
+    private void displayZoneKstat() {
+	ZoneEntry ze = (ZoneEntry) hi.getAttribute("zoneentry");
+	addLabel("Zone " + ze.getName() + " kstats");
+	kt = new KstatTable(hi.getKstat(), 1, jkstat);
+	addScrollPane(kt);
     }
 
     /*

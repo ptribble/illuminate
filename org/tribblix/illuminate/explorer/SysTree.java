@@ -334,6 +334,7 @@ public class SysTree extends JTree {
 	    stn.add(ztn);
 	    /*
 	     * Only add a process subentry if the zone is running
+	     * Add kstat table if the kstats exist
 	     */
 	    if (ze.isRunning()) {
 		zitem = new SysItem(SysItem.ZONE_PROC);
@@ -341,6 +342,16 @@ public class SysTree extends JTree {
 		SysTreeNode zptn = new SysTreeNode(zitem,
 				IlluminateResources.getString("HARD.PS"));
 		ztn.add(zptn);
+		Kstat ks =
+		    jkstat.getKstat("zones", ze.getZoneid(), ze.getName());
+		if (ks != null) {
+		    zitem  = new SysItem(SysItem.ZONE_KSTAT);
+		    zitem.addAttribute("zoneentry", ze);
+		    zitem.setKstat(ks);
+		    zptn = new SysTreeNode(zitem,
+				IlluminateResources.getString("ZONE.KSTAT"));
+		    ztn.add(zptn);
+		}
 	    } else {
 		zitem.setStatus(SysItem.WARN);
 	    }
