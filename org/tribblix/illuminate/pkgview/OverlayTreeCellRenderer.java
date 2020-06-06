@@ -40,7 +40,10 @@ public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
     private static ImageIcon warnIcon;
 
     public OverlayTreeCellRenderer() {
-	initIcons();
+	noneIcon = createImageIcon("/images/none.png");
+	selectedIcon = createImageIcon("/images/selected.png");
+	partIcon = createImageIcon("/images/part.png");
+	warnIcon = createImageIcon("/images/warn.png");
     }
 
     public Component getTreeCellRendererComponent(
@@ -63,44 +66,21 @@ public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
 	     */
 	    SVR4Package p = (SVR4Package) o;
 	    setToolTipText(p.getDescription());
-	    if (p.isInstalled()) {
-		setIcon(selectedIcon);
-	    } else {
-		setIcon(noneIcon);
-	    }
+	    setIcon(p.isInstalled() ? selectedIcon : noneIcon);
 	} else {
 	    if (o instanceof Overlay) {
 		Overlay ovl = (Overlay) o;
 		setToolTipText(ovl.getDescription());
 		if (ovl.isInstalled()) {
-		    if (ovl.isComplete()) {
-			setIcon(selectedIcon);
-		    } else {
-			setIcon(warnIcon);
-		    }
+		    setIcon(ovl.isComplete() ? selectedIcon : warnIcon);
 		} else {
-		    if (ovl.isComplete()) {
-			setIcon(partIcon);
-		    } else {
-			setIcon(noneIcon);
-		    }
+		    setIcon(ovl.isComplete() ? partIcon : noneIcon);
 		}
 	    } else {
 		setToolTipText(null);
 	    }
 	}
 	return this;
-    }
-
-    /*
-     * Absolute paths, otherwise they get resolved relative to this
-     * class itself which is deep down in the hierarchy.
-     */
-    private void initIcons() {
-	noneIcon = createImageIcon("/images/none.png");
-	selectedIcon = createImageIcon("/images/selected.png");
-	partIcon = createImageIcon("/images/part.png");
-	warnIcon = createImageIcon("/images/warn.png");
     }
 
     /*

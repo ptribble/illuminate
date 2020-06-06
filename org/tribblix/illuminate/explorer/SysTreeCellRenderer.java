@@ -43,7 +43,9 @@ public class SysTreeCellRenderer extends DefaultTreeCellRenderer {
     private static ImageIcon unknownIcon;
 
     public SysTreeCellRenderer() {
-	initIcons();
+	failIcon = createImageIcon("/images/fail.png");
+	warnIcon = createImageIcon("/images/warn.png");
+	unknownIcon = createImageIcon("/images/unknown.png");
     }
 
     public Component getTreeCellRendererComponent(JTree tree,
@@ -79,16 +81,6 @@ public class SysTreeCellRenderer extends DefaultTreeCellRenderer {
 	    }
 	}
 	return this;
-    }
-
-    /*
-     * Absolute paths, otherwise they get resolved relative to this
-     * class itself which is deep down in the hierarchy.
-     */
-    private void initIcons() {
-	failIcon = createImageIcon("/images/fail.png");
-	warnIcon = createImageIcon("/images/warn.png");
-	unknownIcon = createImageIcon("/images/unknown.png");
     }
 
     /*

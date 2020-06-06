@@ -44,7 +44,8 @@ public class SmfTreeCellRenderer extends DefaultTreeCellRenderer {
      * Create an SmfTreeCellRenderer.
      */
     public SmfTreeCellRenderer() {
-	initIcons();
+	failIcon = createImageIcon("/images/fail.png");
+	okIcon = createImageIcon("/images/ok.png");
     }
 
     public Component getTreeCellRendererComponent(JTree tree,
@@ -68,24 +69,11 @@ public class SmfTreeCellRenderer extends DefaultTreeCellRenderer {
 		setIcon(failIcon);
 	    }
 	    SmfService ss = (SmfService) stn.getUserObject();
-	    if (ss != null) {
-		setToolTipText(ss.getName());
-	    } else {
-		setToolTipText(null);
-	    }
+	    setToolTipText(ss == null ? null : ss.getName());
 	} else {
 	    setToolTipText(null);
 	}
 	return this;
-    }
-
-    /*
-     * Absolute paths, otherwise they get resolved relative to this
-     * class itself which is deep down in the hierarchy.
-     */
-    private void initIcons() {
-	failIcon = createImageIcon("/images/fail.png");
-	okIcon = createImageIcon("/images/ok.png");
     }
 
     /*
