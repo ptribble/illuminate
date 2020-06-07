@@ -76,6 +76,34 @@ public class CommandTableModel extends AbstractTableModel {
 	}
     }
 
+    /**
+     * Create a CommandTableModel from the given input. It is assumed
+     * that the input consists of multiple lines, with the first
+     * line containing the headers and subsequent lines containing data.
+     * It is further assumed that all lines contain the same number of
+     * data fields. This form replaces the header from the command
+     * with an user-specified string for finer control.
+     *
+     * @param ic The InfoCommand whose output will be converted to tabular
+     * form
+     * @param hdr the header string to be used
+     * @param colmax The maximum number of columns. Columns beyond this
+     * will be combined.
+     */
+    public CommandTableModel(InfoCommand ic, String hdr, int colmax) {
+	String[] rows = ic.getOutput().split("\n");
+	columnNames = hdr.trim().split("\\s+", colmax);
+	nrows = rows.length - 1;
+	data = new String[nrows][columnNames.length];
+	for (int i = 1; i < rows.length; i++) {
+	    String[] items = rows[i].trim().split("\\s+", colmax);
+	    // and if not the right length?
+	    if (items.length == columnNames.length) {
+		data[i-1] = items;
+	    }
+	}
+    }
+
     public int getColumnCount() {
 	return columnNames.length;
     }

@@ -22,6 +22,7 @@
 
 package org.tribblix.illuminate;
 
+import java.io.File;
 import java.util.Vector;
 
 /**
@@ -85,9 +86,11 @@ public class InfoCommandList extends Vector <InfoCommand> {
 	ic = new InfoCommand(IlluminateResources.getString("INFO.NTP"),
 		"/usr/sbin/ntpq", "-p");
 	addCommand(ic);
-	ic = new InfoCommand(IlluminateResources.getString("INFO.PKGS"),
+	if (!new File("/usr/bin/pkg").exists()) {
+	    ic = new InfoCommand(IlluminateResources.getString("INFO.PKGS"),
 		"/usr/bin/pkginfo");
-	ic.setManpage("pkginfo.1");
+	    ic.setManpage("pkginfo.1");
+	}
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.EEPROM"),
 		"/usr/sbin/eeprom");

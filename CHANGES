@@ -1,3 +1,11 @@
+Show native IPS packaging information if run on an IPS distribution.,
+rather than inappropriate SVR4 information
+
+Only show overlays if they exist
+
+Only show zones in the tree if we're in the global zone and there are some
+non-global zones
+
 Add zone kstats
 
 Version 0.3

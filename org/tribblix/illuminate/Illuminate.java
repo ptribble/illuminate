@@ -3,10 +3,12 @@ package org.tribblix.illuminate;
 import javax.swing.*;
 import java.awt.BorderLayout;
 import java.awt.event.*;
+import java.io.File;
 import uk.co.petertribble.jingle.JingleMultiFrame;
 import uk.co.petertribble.jingle.JingleInfoFrame;
 import org.tribblix.illuminate.explorer.SysPanel;
 import org.tribblix.illuminate.pkgview.InstalledSoftwarePanel;
+import org.tribblix.illuminate.pkgview.IPSSoftwarePanel;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.demo.KstatToolsMenu;
 
@@ -39,8 +41,13 @@ public class Illuminate extends JFrame implements ActionListener {
 		new InfoCommandPanel());
 	jtp.add(IlluminateResources.getString("ILLUMINATE.SERV.TEXT"),
 		new SmfPanel());
-	jtp.add(IlluminateResources.getString("ILLUMINATE.SOFT.TEXT"),
+	if (new File("/usr/bin/pkg").exists()) {
+	    jtp.add(IlluminateResources.getString("ILLUMINATE.SOFT.TEXT"),
+		new IPSSoftwarePanel());
+	} else {
+	    jtp.add(IlluminateResources.getString("ILLUMINATE.SOFT.TEXT"),
 		new InstalledSoftwarePanel("/"));
+	}
 
 	JMenu jme = new JMenu(IlluminateResources.getString("FILE.TEXT"));
 	jme.setMnemonic(KeyEvent.VK_F);
