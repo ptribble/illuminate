@@ -52,7 +52,9 @@ public class InstalledSoftwarePanel extends JTabbedPane {
 	add(PkgResources.getString("PKG.LIST"), ipp);
 
 	ovp = new OverlayPanel(altroot, ovlist);
-	add(PkgResources.getString("PKG.OVP"), ovp);
+	if (ovlist.exists()) {
+	    add(PkgResources.getString("PKG.OVP"), ovp);
+	}
 
 	ifp = new InstalledFilesPanel(altroot, ovlist);
 	add(PkgResources.getString("PKG.FS"), ifp);
