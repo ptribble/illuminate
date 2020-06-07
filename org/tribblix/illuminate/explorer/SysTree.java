@@ -319,13 +319,17 @@ public class SysTree extends JTree {
     }
 
     /*
-     * Add zones
+     * Add zones. Only display the zone tree if we're in the global zone
+     * and there are non-global zones.
      */
     private void addZones(DefaultMutableTreeNode root) {
+	ZoneConfig zc = ZoneConfig.getInstance();
+	if (!zc.isGlobal() || zc.size() == 0) {
+	    return;
+	}
 	SysTreeNode stn = new SysTreeNode(new SysItem(SysItem.ZONE_CONTAINER),
 				IlluminateResources.getString("HARD.ZONES"));
 	root.add(stn);
-	ZoneConfig zc = ZoneConfig.getInstance();
 	for (String zname : zc.names()) {
 	    SysItem zitem = new SysItem(SysItem.ZONE_ZONE);
 	    ZoneEntry ze = zc.getZoneEntry(zname);

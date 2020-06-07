@@ -38,6 +38,7 @@ public class ZoneConfig {
 
     private Set <String> zones;
     private Map <String, ZoneEntry> zmap;
+    private boolean isglobal = false;
 
     private ZoneConfig() {
 	zones = new HashSet <String> ();
@@ -75,7 +76,9 @@ public class ZoneConfig {
 		} catch (NumberFormatException nfe) {
 		    izone = -1;
 		}
-		if (!"global".equals(lentries[1])) {
+		if ("global".equals(lentries[1])) {
+		    isglobal = true;
+		} else {
 		    zones.add(lentries[1]);
 		    zmap.put(lentries[1], new ZoneEntry(
 				izone,
@@ -97,6 +100,26 @@ public class ZoneConfig {
      */
     public Set <String> names() {
 	return zones;
+    }
+
+    /**
+     * Return the number of available zones.
+     *
+     * @return the number of available (non-global) zones
+     */
+    public int size() {
+	return zones.size();
+    }
+
+    /**
+     * Return whether we're running in the global zone. If we're in the global
+     * zone, then there's a zone called global that is not added to the list
+     * of zones.
+     *
+     * @return true if run in the global zone
+     */
+    public boolean isGlobal() {
+	return isglobal;
     }
 
     /**
