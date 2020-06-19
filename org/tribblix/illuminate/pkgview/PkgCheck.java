@@ -111,7 +111,12 @@ public class PkgCheck {
 
     private void doPathNames(Set <String> names) {
 	for (String name : names) {
-	    showFile(cp.getFileDetail(name));
+	    ContentsFileDetail cfd = cp.getFileDetail(name);
+	    if (cfd == null) {
+		System.err.println("ERROR: invalid name " + name);
+	    } else {
+		showFile(cfd);
+	    }
 	}
     }
 
