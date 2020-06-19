@@ -24,7 +24,6 @@ package org.tribblix.illuminate.pkgview;
 
 import java.util.List;
 import java.util.ArrayList;
-import java.util.StringTokenizer;
 
 /**
  * Parse a line of the SVR4 packaging contents file.
@@ -65,7 +64,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * rest according to the type. From contents(4)
      *
      * ftype s: path=rpath s class package
-     * ftype l: path l class package
+     * ftype l: path=rpath l class package
      * ftype d: path d class mode owner group package(s)
      * ftype b: path b class major minor mode owner group package
      * ftype c: path c class major minor mode owner group package
@@ -75,39 +74,38 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * ftype e: path e class mode owner group size cksum modtime package
      */
     private void parseNewStyle(String s) {
-	StringTokenizer st = new StringTokenizer(s, " ");
-	filename = st.nextToken();
-	ftype = st.nextToken();
-	// skip pclass
-	st.nextToken();
+	String[] st = s.split(" ");
+	filename = st[0];
+	ftype = st[1];
+	// skip class, and start counting from here
+	int i = 3;
 	// deal with links first
 	if (isLink()) {
 	    // split the filename into name and link target
 	    String[] ds = filename.split("=", 2);
 	    filename = ds[0];
 	    target = ds[1];
-	    while (st.hasMoreTokens()) {
-		pkglist.add(st.nextToken());
+	    while (i < st.length) {
+		pkglist.add(st[i++]);
 	    }
 	    return;
 	}
 	if (isDevice()) {
 	    // skip major and minor device numbers
-	    st.nextToken();
-	    st.nextToken();
+	    i+=2;
 	}
-	mode = st.nextToken();
-	owner = st.nextToken();
-	group = st.nextToken();
+	mode = st[i++];
+	owner = st[i++];
+	group = st[i++];
 	if (isRegular()) {
-	    size = st.nextToken();
-	    // skip cksum and modtime
-	    st.nextToken();
-	    modtime = st.nextToken();
+	    size = st[i];
+	    // increment, skip cksum
+	    i+=2;
+	    modtime = st[i++];
 	}
 	// anything left is a package
-	while (st.hasMoreTokens()) {
-	    pkglist.add(st.nextToken());
+	while (i < st.length) {
+	    pkglist.add(st[i++]);
 	}
     }
 
