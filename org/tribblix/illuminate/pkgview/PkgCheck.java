@@ -59,7 +59,11 @@ public class PkgCheck {
 	    doOverlays(names, plist);
 	} else if (dopaths || partpaths) {
 	    cp = ContentsParser.getInstance(altroot);
-	    doPathNames(names);
+	    if (dopaths) {
+		doPathNames(names);
+	    } else {
+		doPartPathNames(names);
+	    }
 	} else {
 	    cp = ContentsParser.getInstance(altroot);
 	    for (String pkg : allpkgs ? plist.getPackageNames() : names) {
@@ -116,6 +120,16 @@ public class PkgCheck {
 		System.err.println("ERROR: invalid name " + name);
 	    } else {
 		showFile(cfd);
+	    }
+	}
+    }
+
+    private void doPartPathNames(Set <String> names) {
+	for (String path : cp.getPaths()) {
+	    for (String name : names) {
+		if (path.indexOf(name) > 0) {
+		    showFile(cp.getFileDetail(path));
+		}
 	    }
 	}
     }

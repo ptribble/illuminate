@@ -22,8 +22,9 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 import java.io.*;
 
 /**
@@ -106,6 +107,10 @@ public class ContentsParser {
 		}
 	    }
 	} catch (IOException ioe) {}
+    }
+
+    public Set <String> getPaths() {
+	return fileHash.keySet();
     }
 
     public ContentsFileDetail getFileDetail(String s) {
