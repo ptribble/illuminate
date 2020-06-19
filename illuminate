@@ -23,9 +23,17 @@ fi
 #
 EXTRAMEMFLAGS="-Xmx512m"
 
+#
+# there's a lot of duplication in the contents file - mode, owner, group
+# and package will deduplicate well
+# the G1GC gets a significant performance boost
+#
+#PKGFLAGS="-XX:+UseG1GC -XX:+UseStringDeduplication"
+PKGFLAGS="-XX:+UseG1GC"
+
 case $# in
 0)
-	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${EXTRAMEMFLAGS} -jar ${JARLIBDIR}/illuminate.jar
+	LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA ${PKGFLAGS} ${EXTRAMEMFLAGS} -jar ${JARLIBDIR}/illuminate.jar
 	exit 0
 	;;
 esac
@@ -79,7 +87,7 @@ arcstat)
 
 software)
     shift
-    $JAVA ${EXTRAMEMFLAGS} -cp ${SVJAR}:${ALLJARS} org.tribblix.illuminate.MultiView software $*
+    $JAVA ${PKGFLAGS} ${EXTRAMEMFLAGS} -cp ${SVJAR}:${ALLJARS} org.tribblix.illuminate.MultiView software $*
     exit 0
     ;;
 
@@ -106,7 +114,7 @@ man)
 #
 check)
     shift
-    $JAVA ${EXTRAMEMFLAGS} -cp ${PKGJARS} org.tribblix.illuminate.pkgview.PkgCheck $*
+    $JAVA ${PKGFLAGS} ${EXTRAMEMFLAGS} -cp ${PKGJARS} org.tribblix.illuminate.pkgview.PkgCheck $*
     exit 0
     ;;
 
@@ -118,13 +126,13 @@ missingpackages)
 
 packagesizes)
     shift
-    $JAVA -cp ${PKGJARS} org.tribblix.illuminate.pkgview.PackageSizes $*
+    $JAVA ${PKGFLAGS} -cp ${PKGJARS} org.tribblix.illuminate.pkgview.PackageSizes $*
     exit 0
     ;;
 
 overlaysizes)
     shift
-    $JAVA -cp ${PKGJARS} org.tribblix.illuminate.pkgview.OverlaySizes $*
+    $JAVA ${PKGFLAGS} -cp ${PKGJARS} org.tribblix.illuminate.pkgview.OverlaySizes $*
     exit 0
     ;;
 
