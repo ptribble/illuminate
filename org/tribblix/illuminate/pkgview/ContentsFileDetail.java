@@ -33,7 +33,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
     private String altroot;
 
     private String filename;
-    private String ftype;
+    private char ftype;
     // private String pclass;
     private String owner;
     private String group;
@@ -75,7 +75,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
     private void parseNewStyle(String s) {
 	String[] st = s.split(" ");
 	filename = st[0];
-	ftype = st[1];
+	ftype = st[1].charAt(0);
 	// skip class, and start counting from here
 	int i = 3;
 	// deal with links first
@@ -212,7 +212,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is a directory
      */
     public boolean isDirectory() {
-	return "d".equals(ftype) || "x".equals(ftype);
+	return 'd' == ftype || 'x' == ftype;
     }
 
     /**
@@ -223,7 +223,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is a regular file
      */
     public boolean isRegular() {
-	return "e".equals(ftype) || "f".equals(ftype) || "v".equals(ftype);
+	return 'e' == ftype || 'f' == ftype || 'v' == ftype;
     }
 
     /**
@@ -234,7 +234,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is an editable file
      */
     public boolean isEditable() {
-	return "e".equals(ftype) || "v".equals(ftype);
+	return 'e' == ftype || 'v' == ftype;
     }
 
     /**
@@ -244,7 +244,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is a hard link
      */
     public boolean isHardLink() {
-	return "l".equals(ftype);
+	return 'l' == ftype;
     }
 
     /**
@@ -254,7 +254,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is a soft link
      */
     public boolean isSymLink() {
-	return "s".equals(ftype);
+	return 's' == ftype;
     }
 
     /**
@@ -265,7 +265,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is a hard or soft link
      */
     public boolean isLink() {
-	return "l".equals(ftype) || "s".equals(ftype);
+	return 'l' == ftype || 's' == ftype;
     }
 
     /**
@@ -276,7 +276,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return true if this entry is a device file
      */
     public boolean isDevice() {
-	return "b".equals(ftype) || "c".equals(ftype);
+	return 'b' == ftype || 'c' == ftype;
     }
 
     /**
@@ -292,11 +292,11 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
 	    t = "directory";
 	} else if (isDevice()) {
 	    t = "device file";
-	} else if ("s".equals(ftype)) {
+	} else if ('s' == ftype) {
 	    t = "symbolic link";
-	} else if ("l".equals(ftype)) {
+	} else if ('l' == ftype) {
 	    t = "hard link";
-	} else if ("p".equals(ftype)) {
+	} else if ('p' == ftype) {
 	    t = "named pipe";
 	} else {
 	    t = "file";
@@ -320,27 +320,27 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
 	 * l 3903
 	 * e 182
 	 */
-	if ("f".equals(ftype)) {
+	if ('f' == ftype) {
 	    t = "Regular file.";
-	} else if ("d".equals(ftype)) {
+	} else if ('d' == ftype) {
 	    t = "Directory.";
-	} else if ("s".equals(ftype)) {
+	} else if ('s' == ftype) {
 	    t = "Symbolic link.";
-	} else if ("l".equals(ftype)) {
+	} else if ('l' == ftype) {
 	    t = "Hard linked file.";
-	} else if ("e".equals(ftype)) {
+	} else if ('e' == ftype) {
 	    t = "Editable file.";
-	} else if ("v".equals(ftype)) {
+	} else if ('v' == ftype) {
 	    t = "Volatile file.";
-	} else if ("b".equals(ftype)) {
+	} else if ('b' == ftype) {
 	    t = "Block special device.";
-	} else if ("c".equals(ftype)) {
+	} else if ('c' == ftype) {
 	    t = "Character special device.";
-	} else if ("i".equals(ftype)) {
+	} else if ('i' == ftype) {
 	    t = "Information file.";
-	} else if ("p".equals(ftype)) {
+	} else if ('p' == ftype) {
 	    t = "Named pipe.";
-	} else if ("x".equals(ftype)) {
+	} else if ('x' == ftype) {
 	    t = "Directory exclusive to this package.";
 	} else {
 	    t = "Unknown.";
