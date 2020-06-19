@@ -95,7 +95,7 @@ public class Illuminate extends JFrame implements ActionListener {
 	setJMenuBar(jm);
 
 	setIconImage(new ImageIcon(this.getClass().getClassLoader()
-			.getResource("pixmaps/solview.png")).getImage());
+			.getResource("pixmaps/illuminate.png")).getImage());
 
 	setSize(720, 600);
 	setVisible(true);
