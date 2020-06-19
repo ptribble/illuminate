@@ -199,7 +199,7 @@ public class PkgCheck {
 					cfd.getName() +
 					" confirmed present");
 			}
-			if (f.length() == Long.parseLong(cfd.getSize())) {
+			if (f.length() == cfd.getSize()) {
 			    if (debug) {
 				System.out.println("    File " +
 						cfd.getName() +

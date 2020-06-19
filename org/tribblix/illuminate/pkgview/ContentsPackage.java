@@ -144,7 +144,7 @@ public class ContentsPackage {
 	long l = 0;
 	for (ContentsFileDetail cfd : fileset) {
 	    if (cfd.isRegular()) {
-		l += Long.parseLong(cfd.getSize());
+		l += cfd.getSize();
 	    }
 	}
 	return l;

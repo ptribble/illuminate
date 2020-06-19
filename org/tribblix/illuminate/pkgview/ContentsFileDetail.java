@@ -38,10 +38,9 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
     private String owner;
     private String group;
     private String mode;
-    // stored as String, let consumers do the conversion work
-    private String size;
+    private long size;
     // private String cksum;
-    private String modtime;
+    private long modtime;
     private List <String> pkglist;
     // only valid for links
     private String target;
@@ -98,10 +97,10 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
 	owner = st[i++];
 	group = st[i++];
 	if (isRegular()) {
-	    size = st[i];
+	    size = Long.parseLong(st[i]);
 	    // increment, skip cksum
 	    i+=2;
-	    modtime = st[i++];
+	    modtime = Long.parseLong(st[i++]);
 	}
 	// anything left is a package
 	while (i < st.length) {
@@ -159,7 +158,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      *
      * @return the file size
      */
-    public String getSize() {
+    public long getSize() {
 	return size;
     }
 
@@ -169,7 +168,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return the time the file was last modified
      */
     public long lastModified() {
-	return Long.parseLong(modtime);
+	return modtime;
     }
 
     /**
