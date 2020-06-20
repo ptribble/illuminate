@@ -38,7 +38,7 @@ public class ZoneConfig {
 
     private Set <String> zones;
     private Map <String, ZoneEntry> zmap;
-    private boolean isglobal = false;
+    private boolean isglobal;
 
     private ZoneConfig() {
 	zones = new HashSet <String> ();

@@ -119,7 +119,7 @@ public class PackageInformationPanel extends JTabbedPane {
     }
 
     private String ovlDeps(String title, Set <Overlay> ovls) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(105);
 	PkgUtils.headRow2(sb, title);
 	if (ovls != null) {
 	    for (Overlay ovl : ovls) {
@@ -134,7 +134,7 @@ public class PackageInformationPanel extends JTabbedPane {
     }
 
     private String revDeps(String title, Set <SVR4Package> pkgs) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(93);
 	PkgUtils.headRow(sb, title);
 	if (pkgs != null) {
 	    for (SVR4Package pkg : pkgs) {
@@ -163,7 +163,7 @@ public class PackageInformationPanel extends JTabbedPane {
     }
 
     private String fileDetailTable(ContentsFileDetail cfd) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(400);
 	PkgUtils.headRow2(sb, "Path name: " + cfd.getName());
 	PkgUtils.addRow(sb, "File Type:", cfd.getDescriptiveType());
 	if (cfd.isLink()) {

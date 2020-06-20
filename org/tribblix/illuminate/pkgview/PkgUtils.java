@@ -40,10 +40,10 @@ public class PkgUtils {
      *
      * @param pkg the package to display
      *
-     * @return a nicley formatted version of the pkginfo file
+     * @return a nicely formatted version of the pkginfo file
      */
     static public String infoTable(SVR4Package pkg) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(256);
 	Map <String, String> infomap = pkg.infoMap();
 	// clean out the junk
 	infomap.remove("#FASPACD");
@@ -101,7 +101,9 @@ public class PkgUtils {
      * @return a formatted table describing the given overlay
      */
     static public String infoTable(Overlay ovl) {
-	StringBuilder sbh = new StringBuilder();
+	// the fixed text here varies from 37 to 51 characters
+	// overlay names are between 3 and 20 characters
+	StringBuilder sbh = new StringBuilder(70);
 	sbh.append("Overlay " + ovl.getName());
 	if (ovl.isInstalled()) {
 	    if (ovl.isComplete()) {
@@ -116,7 +118,10 @@ public class PkgUtils {
 		sbh.append(" is uninstalled and incomplete.");
 	    }
 	}
-	StringBuilder sb = new StringBuilder();
+	// the fixed text here is 35 characters
+	// headrow is 45, each addrow is 27, wraptable adds 29
+	// minimum length 200, max 256
+	StringBuilder sb = new StringBuilder(256);
 	headRow(sb, PkgResources.getString("PKGUTILS.PROPERTY"),
 			PkgResources.getString("PKGUTILS.VALUE"));
 	addRow(sb, "Name", ovl.getName());
@@ -131,7 +136,7 @@ public class PkgUtils {
     }
 
     static public String dependencyTable(Overlay ovl) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(128);
 	headRow2(sb, "This Overlay depends on");
 	for (Overlay o : ovl.getOverlays()) {
 	    addRow(sb, o.getName(), o.getDescription());
@@ -140,7 +145,7 @@ public class PkgUtils {
     }
 
     static public String overlayMembers(Overlay ovl) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(256);
 	headRow2(sb, "This Overlay contains the following packages");
 	for (SVR4Package pkg : ovl.getPackages()) {
 	    addRow(sb, pkg.toString(), pkg.getDescription());
@@ -153,7 +158,7 @@ public class PkgUtils {
      */
     static private String dependencyTable(Set <String> depset,
 				Set <String> rdepset, Set <String> idepset) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(256);
 
 	headRow(sb, PkgResources.getString("PKGUTILS.PACKAGE"),
 		PkgResources.getString("PKGUTILS.DEPENDENCY"));
@@ -186,19 +191,19 @@ public class PkgUtils {
     }
 
     static private String doFileList(ContentsPackage cpp) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(80);
 	headRow(sb, PkgResources.getString("PKGUTILS.FILELIST"));
-	StringBuilder sb2 = new StringBuilder();
+	StringBuilder sb2 = new StringBuilder(32);
 	sb2.append("<pre>\n");
 	for (ContentsFileDetail cfd : cpp.getDetails()) {
-	    sb2.append(cfd.getName()).append("\n");
+	    sb2.append(cfd.getName()).append('\n');
 	}
 	sb2.append("</pre>\n");
 	return wrapTable(sb) + sb2;
     }
 
     static private String doDetailTable(ContentsPackage cpp) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(320);
 
 	headRow2(sb, PkgResources.getString("PKGUTILS.DETAILS"));
 	addRow(sb, PkgResources.getString("PKGUTILS.FILES"), cpp.numFiles());
@@ -215,6 +220,7 @@ public class PkgUtils {
     }
 
     static public void headRow(StringBuilder sb, String s1, String s2) {
+	// adds 46 characters to the string
 	sb.append("<tr bgcolor=\"#eeeeee\"><th>");
 	sb.append(s1);
 	sb.append("</th><th>");
@@ -223,24 +229,28 @@ public class PkgUtils {
     }
 
     static public void headRow2(StringBuilder sb, String s) {
+	// adds 49 characters to the string
 	sb.append("<tr bgcolor=\"#eeeeee\"><th colspan=\"2\">");
 	sb.append(s);
 	sb.append("</th></tr>\n");
     }
 
     static public void headRow(StringBuilder sb, String s) {
+	// adds 37 characters to the string
 	sb.append("<tr bgcolor=\"#eeeeee\"><th>");
 	sb.append(s);
 	sb.append("</th></tr>\n");
     }
 
     static public void addRow(StringBuilder sb, String s) {
+	// adds 19 characters to the string
 	sb.append("<tr><td>");
 	sb.append(s);
 	sb.append("</td></tr>\n");
     }
 
     static public void addRow(StringBuilder sb, String s1, long l) {
+	// adds 28 characters to the string
 	sb.append("<tr><td>");
 	sb.append(s1);
 	sb.append("</td><td>");
@@ -249,6 +259,7 @@ public class PkgUtils {
     }
 
     static public void addRow(StringBuilder sb, String s1, String s2) {
+	// adds 28 characters to the string
 	sb.append("<tr><td>");
 	sb.append(s1);
 	sb.append("</td><td>");
@@ -257,6 +268,7 @@ public class PkgUtils {
     }
 
     static public String wrapTable(StringBuilder sb) {
+	// adds 29 characters to the string
 	sb.insert(0, "<table width=\"100%\">");
 	sb.append("</table>\n");
 	return sb.toString();
@@ -272,7 +284,7 @@ public class PkgUtils {
 	    dspace /= 1024.0;
 	}
 	sb.append(df.format(dspace));
-	sb.append(" ");
+	sb.append(' ');
 	switch (iscale) {
 	    case 0:
 		sb.append(PkgResources.getString("PKGUTILS.BYTES"));
@@ -292,7 +304,7 @@ public class PkgUtils {
 
     static public String overlayMembership(SVR4Package pkg,
 		OverlayList ovlist) {
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(80);
 
 	headRow2(sb, PkgResources.getString("PKGUTILS.OVL"));
 	for (Overlay ovl : ovlist.containingOverlays(pkg)) {

@@ -249,7 +249,7 @@ public class SmfService implements Comparable<SmfService> {
 	if ("legacy_run".equals(status)) {
 	    return null;
 	}
-	StringBuilder sb = new StringBuilder();
+	StringBuilder sb = new StringBuilder(200);
 	sb.append("<h3>").append(getName()).append("</h3>");
 	sb.append("<p bgcolor=\"#cccccc\">");
 	sb.append("<b>Services this service depends on</b></p>");
@@ -267,7 +267,7 @@ public class SmfService implements Comparable<SmfService> {
      */
     public String getHtmlInfo() {
 	if ("legacy_run".equals(status)) {
-	    StringBuilder sb = new StringBuilder();
+	    StringBuilder sb = new StringBuilder(70);
 	    File fl = getScriptFile();
 	    sb.append("<p bgcolor=\"#cccccc\"><b>");
 	    if (fl == null) {
