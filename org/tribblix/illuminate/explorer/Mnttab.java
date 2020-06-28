@@ -37,7 +37,7 @@ public class Mnttab {
     private Map <String, String> fsmap;
     private Map <String, String> fstypemap;
     private Map <String, List <String>> optmap;
-    private List <String> fsList;
+    private Set <String> fsList;
     private long modified;
 
     /**
@@ -48,7 +48,7 @@ public class Mnttab {
 	fsmap = new HashMap <String, String> ();
 	fstypemap = new HashMap <String, String> ();
 	optmap = new HashMap <String, List <String>> ();
-	fsList = new ArrayList <String> ();
+	fsList = new HashSet <String> ();
 	update();
     }
 
@@ -184,13 +184,19 @@ public class Mnttab {
     }
 
     /**
-     * Return the first filesystem with the given deviceid.
+     * Return the first filesystem with the given deviceid. Prefers a non-lofs
+     * filesystem if one is available.
      *
      * @param s A device id
      *
      * @return The name of the first filesystem with the given device id
      */
     public String getFSforDevice(String s) {
+	for (String fs : fsList) {
+	    if (!"lofs".equals(getFsType(fs)) && s.equals(getDeviceID(fs))) {
+		return fs;
+	    }
+	}
 	for (String fs : fsList) {
 	    if (s.equals(getDeviceID(fs))) {
 		return fs;
