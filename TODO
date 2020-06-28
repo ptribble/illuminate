@@ -28,8 +28,6 @@ Should Mnttab be singleton?
 Would make it easier to query from any context without having to
 pass around.
 
-Mnttab should update itself to allow for mount and unmount activity
-
 Save historical kstat data so that the charts don't start blank
 each time?
 

@@ -54,7 +54,10 @@ public class Mnttab {
 
     /**
      * Update the list of mount entries. If the mnttab hasn't been modified,
-     * then does nothing, else parses the mnttab completely.
+     * then does nothing, else parses the mnttab completely and adds any new
+     * entries. Old entries are not removed: this class is not designed to be
+     * used to enumerate filesystems but to store their properties, and we
+     * keep old entries in case consumers haven't updated their lists.
      */
     public void update() {
 	File f = new File("/etc/mnttab");
@@ -63,19 +66,14 @@ public class Mnttab {
 	}
 	modified = f.lastModified();
 	for (String line : JumbleFile.getLines(f)) {
-	    StringTokenizer st = new StringTokenizer(line);
-	    String sdev = st.nextToken();
-	    String sname = st.nextToken();
-	    String stype = st.nextToken();
-	    String soptions = st.nextToken();
-	    // ignore timestamp
-	    List <String> vopt = Arrays.asList(soptions.split(","));
+	    // line is: [0]device [1]name [2]type [3]options [4]timestamp
+	    String[] st = line.split("\\s+");
 	    // parsed, add to data structures
-	    devmap.put(sname, sdev);
-	    fsmap.put(sdev, sname);
-	    fstypemap.put(sname, stype);
-	    optmap.put(sname, vopt);
-	    fsList.add(sname);
+	    fsmap.put(st[0], st[1]);
+	    devmap.put(st[1], st[0]);
+	    fstypemap.put(st[1], st[2]);
+	    optmap.put(st[1], Arrays.asList(st[3].split(",")));
+	    fsList.add(st[1]);
 	}
     }
 
