@@ -327,11 +327,12 @@ public class FsstatTableModel extends AbstractTableModel
      * Update the table.
      */
     public void updateKstat() {
-	// FIXME update Mnttab to cope with additions as well
 	/*
 	 * Add any relevant new statistics.
 	 */
 	if (kss.chainupdate() != 0) {
+	    // update mnttab first as the filter uses it
+	    mnttab.update();
 	    for (Kstat ks : kss.getAddedKstats()) {
 		if (ks.getName().startsWith(vop_prefix)) {
 		    ChartableKstat cks = new ChartableKstat(jkstat, ks);
