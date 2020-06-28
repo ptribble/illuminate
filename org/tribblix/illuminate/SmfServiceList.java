@@ -22,7 +22,6 @@
 
 package org.tribblix.illuminate;
 
-import java.util.StringTokenizer;
 import java.util.Vector;
 import org.tribblix.illuminate.helpers.RunCommand;
 
@@ -36,9 +35,8 @@ public class SmfServiceList extends Vector <SmfService> {
     public SmfServiceList() {
 	RunCommand svcs = new RunCommand("/usr/bin/svcs -aH");
 	// parse the svcs output to get the service name and status
-	StringTokenizer st = new StringTokenizer(svcs.getOut(), "\n");
-	while (st.hasMoreTokens()) {
-	    String[] ds = st.nextToken().split("\\s+", 3);
+	for (String s : svcs.getOut().split("\n")) {
+	    String[] ds = s.split("\\s+", 3);
 	    add(new SmfService(ds[2], ds[0]));
 	}
     }
