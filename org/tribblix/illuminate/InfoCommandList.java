@@ -24,6 +24,7 @@ package org.tribblix.illuminate;
 
 import java.io.File;
 import java.util.Vector;
+import org.tribblix.illuminate.explorer.ZoneConfig;
 
 /**
  * InfoCommandList - a List of information commands.
@@ -37,16 +38,19 @@ public class InfoCommandList extends Vector <InfoCommand> {
      * Note that it's actually a Vector.
      */
     public InfoCommandList() {
+	boolean inglobal = ZoneConfig.getInstance().isGlobal();
 	// add all the possible commands here
 	InfoCommand ic =
 	    new InfoCommand(IlluminateResources.getString("INFO.BEADM"),
 		"/usr/sbin/beadm", "list");
 	ic.setManpage("beadm.1m");
 	addCommand(ic);
-	ic = new InfoCommand(IlluminateResources.getString("INFO.CFGADM"),
+	if (inglobal) {
+	    ic = new InfoCommand(IlluminateResources.getString("INFO.CFGADM"),
 		"/usr/sbin/cfgadm");
-	ic.setManpage("cfgadm.1m");
-	addCommand(ic);
+	    ic.setManpage("cfgadm.1m");
+	    addCommand(ic);
+	}
 	ic = new InfoCommand(IlluminateResources.getString("INFO.CORE"),
 		"/usr/bin/coreadm");
 	ic.setManpage("coreadm.1m");
@@ -92,34 +96,36 @@ public class InfoCommandList extends Vector <InfoCommand> {
 	    ic.setManpage("pkginfo.1");
 	}
 	addCommand(ic);
-	ic = new InfoCommand(IlluminateResources.getString("INFO.EEPROM"),
+	if (inglobal) {
+	    ic = new InfoCommand(IlluminateResources.getString("INFO.EEPROM"),
 		"/usr/sbin/eeprom");
-	ic.setManpage("eeprom.1m");
-	addCommand(ic);
-	ic = new InfoCommand(IlluminateResources.getString("INFO.PRTCONF"),
+	    ic.setManpage("eeprom.1m");
+	    addCommand(ic);
+	    ic = new InfoCommand(IlluminateResources.getString("INFO.PRTCONF"),
 		"/usr/sbin/prtconf");
-	ic.setManpage("prtconf.1m");
-	addCommand(ic);
-	ic = new InfoCommand(IlluminateResources.getString("INFO.PRTDIAG"),
+	    ic.setManpage("prtconf.1m");
+	    addCommand(ic);
+	    ic = new InfoCommand(IlluminateResources.getString("INFO.PRTDIAG"),
 		"/usr/sbin/prtdiag");
-	ic.setManpage("prtdiag.1m");
-	addCommand(ic);
-	ic = new InfoCommand(IlluminateResources.getString("INFO.PRTFRU"),
+	    ic.setManpage("prtdiag.1m");
+	    addCommand(ic);
+	    ic = new InfoCommand(IlluminateResources.getString("INFO.PRTFRU"),
 		"/usr/sbin/prtfru");
-	ic.setManpage("prtfru.1m");
-	addCommand(ic);
-	ic = new InfoCommand(IlluminateResources.getString("INFO.PRTPICL"),
+	    ic.setManpage("prtfru.1m");
+	    addCommand(ic);
+	    ic = new InfoCommand(IlluminateResources.getString("INFO.PRTPICL"),
 		"/usr/sbin/prtpicl");
-	ic.setManpage("prtpicl.1m");
-	addCommand(ic);
-	ic = new InfoCommand(IlluminateResources.getString("INFO.PSRINFO"),
+	    ic.setManpage("prtpicl.1m");
+	    addCommand(ic);
+	    ic = new InfoCommand(IlluminateResources.getString("INFO.PSRINFO"),
 		"/usr/sbin/psrinfo", "-v");
-	ic.setManpage("psrinfo.1m");
-	addCommand(ic);
-	ic = new InfoCommand(IlluminateResources.getString("INFO.ROUTE"),
+	    ic.setManpage("psrinfo.1m");
+	    addCommand(ic);
+	    ic = new InfoCommand(IlluminateResources.getString("INFO.ROUTE"),
 		"/sbin/routeadm");
-	ic.setManpage("routeadm.1m");
-	addCommand(ic);
+	    ic.setManpage("routeadm.1m");
+	    addCommand(ic);
+	}
 	ic = new InfoCommand(IlluminateResources.getString("INFO.RPC"),
 		"/usr/bin/rpcinfo", "-s");
 	ic.setManpage("rpcinfo.1m");
@@ -128,10 +134,12 @@ public class InfoCommandList extends Vector <InfoCommand> {
 		"/usr/sbin/share");
 	ic.setManpage("share.1m");
 	addCommand(ic);
-	ic = new InfoCommand(IlluminateResources.getString("INFO.SMBIOS"),
+	if (inglobal) {
+	    ic = new InfoCommand(IlluminateResources.getString("INFO.SMBIOS"),
 		"/usr/sbin/smbios");
-	ic.setManpage("smbios.1m");
-	addCommand(ic);
+	    ic.setManpage("smbios.1m");
+	    addCommand(ic);
+	}
 	ic = new InfoCommand(IlluminateResources.getString("INFO.SWAP"),
 		"/usr/sbin/swap", "-lh");
 	ic.setManpage("swap.1m");

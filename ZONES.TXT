@@ -1,5 +1,0 @@
-Zones confuse illuminate somewhat:
-
-Of the informational commands, prtconf, prtpicl, and prtdiag don't
-work; share is meaningless; there's no local routing; it's pointless
-giving a zone list.
