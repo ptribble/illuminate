@@ -23,6 +23,7 @@
 package org.tribblix.illuminate.explorer;
 
 import uk.co.petertribble.jproc.gui.JPinfoTable;
+import uk.co.petertribble.jproc.gui.ZoneInfoTable;
 import uk.co.petertribble.jproc.api.JProc;
 import uk.co.petertribble.jproc.api.JProcessSet;
 import uk.co.petertribble.jproc.api.JProcessFilter;
@@ -35,6 +36,7 @@ import uk.co.petertribble.jproc.api.JProcessFilter;
 public class ProcessInfoPanel extends InfoPanel {
 
     private JPinfoTable jpip;
+    private ZoneInfoTable zit;
 
     /**
      * Display a Process information panel.
@@ -50,17 +52,25 @@ public class ProcessInfoPanel extends InfoPanel {
 	if (hi.getType() == SysItem.ZONE_PROC) {
 	    displaySummary();
 	}
+	if (hi.getType() == SysItem.ZONE_USAGE) {
+	    displayUsage();
+	}
 
 	validate();
     }
 
     @Override
     public void stopLoop() {
-	jpip.stopLoop();
+	if (jpip != null) {
+	    jpip.stopLoop();
+	}
+	if (zit != null) {
+	    zit.stopLoop();
+	}
     }
 
     /*
-     * Top level summary. List of Processs.
+     * Top level summary. List of Process.
      */
     private void displaySummary() {
 	ZoneEntry ze = (ZoneEntry) hi.getAttribute("zoneentry");
@@ -83,5 +93,14 @@ public class ProcessInfoPanel extends InfoPanel {
 	    jpip.removeColumn("ZONE");
 	}
 	addScrollPane(jpip);
+    }
+
+    /*
+     * Top level summary. Aggregated process usage by zone.
+     */
+    private void displayUsage() {
+	addLabel("Usage by zone");
+        zit = new ZoneInfoTable(new JProc(), new JProcessFilter(), 5);
+	addScrollPane(zit);
     }
 }

@@ -84,6 +84,7 @@ public class SysItem {
     public static final int ZONE_PROC = 603;
     public static final int ZONE_NET = 604;
     public static final int ZONE_KSTAT = 605;
+    public static final int ZONE_USAGE = 606;
 
     public static final int PROCESS_CONTAINER = 701;
 

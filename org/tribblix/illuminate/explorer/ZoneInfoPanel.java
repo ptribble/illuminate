@@ -72,6 +72,8 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
 	    displayZoneNet();
 	} else if (hi.getType() == SysItem.ZONE_KSTAT) {
 	    displayZoneKstat();
+	} else if (hi.getType() == SysItem.ZONE_USAGE) {
+	    displayZoneProc();
 	}
 
 	validate();

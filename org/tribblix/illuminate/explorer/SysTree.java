@@ -330,6 +330,8 @@ public class SysTree extends JTree {
 	SysTreeNode stn = new SysTreeNode(new SysItem(SysItem.ZONE_CONTAINER),
 				IlluminateResources.getString("HARD.ZONES"));
 	root.add(stn);
+	stn.add(new SysTreeNode(new SysItem(SysItem.ZONE_USAGE),
+			IlluminateResources.getString("HARD.ZONEUSAGE")));
 	for (String zname : zc.names()) {
 	    SysItem zitem = new SysItem(SysItem.ZONE_ZONE);
 	    ZoneEntry ze = zc.getZoneEntry(zname);

@@ -125,6 +125,7 @@ public class SysInfoPanel extends JPanel {
 	    case SysItem.ZONE_PROC:
 	    case SysItem.ZONE_NET:
 	    case SysItem.ZONE_KSTAT:
+	    case SysItem.ZONE_USAGE:
 		ip = new ZoneInfoPanel(hi, jkstat);
 		add(ip);
 		break;
