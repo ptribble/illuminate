@@ -29,19 +29,19 @@ import java.util.*;
 import java.io.File;
 
 /**
- * SolToolsMenu - standard toolbar menu for illuminate tools.
+ * IllumosToolsMenu - standard toolbar menu for illuminate tools.
  * @author Peter Tribble
  * @version 1.0
  */
-public class SolToolsMenu extends JMenu implements ActionListener {
+public class IllumosToolsMenu extends JMenu implements ActionListener {
 
     private final Map <String, String> toolMap =
 	new HashMap <String, String> ();
 
     /**
-     * Create a SolToolsMenu.
+     * Create an IllumosToolsMenu.
      */
-    public SolToolsMenu() {
+    public IllumosToolsMenu() {
 	super(IlluminateResources.getString("TOOLS.TEXT"));
 	setMnemonic(KeyEvent.VK_T);
 
@@ -55,9 +55,8 @@ public class SolToolsMenu extends JMenu implements ActionListener {
 
     /*
      * Add a command to the tools menu. It is only added if the executable
-     * exists, and if this tool hasn't been added already. If called multiple
-     * times with different paths, the first location found will be the one
-     * that is used.
+     * exists, and if it hasn't been added already. If called multiple times
+     * with different paths, the first location found will be used.
      */
     private void addItem(String text, String cmd, String args) {
 	if (new File(cmd).exists() &&

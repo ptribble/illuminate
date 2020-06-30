@@ -69,7 +69,7 @@ public class Illuminate extends JFrame implements ActionListener {
 	JingleMultiFrame.register(this, closeItem);
 
 	jm.add(jme);
-	jm.add(new SolToolsMenu());
+	jm.add(new IllumosToolsMenu());
 
 	/*
 	 * Add a menu of Kstat tools
