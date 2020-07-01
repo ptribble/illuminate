@@ -1,3 +1,6 @@
+InfoCommand - getOutputLines() to save consumers from having to split into
+lines.
+
 Remove StringTokenizer
 
 Fixes in Mnttab to allow updating to work properly

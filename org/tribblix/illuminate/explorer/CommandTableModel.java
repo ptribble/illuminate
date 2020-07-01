@@ -63,7 +63,7 @@ public class CommandTableModel extends AbstractTableModel {
      * will be combined.
      */
     public CommandTableModel(InfoCommand ic, int colmax) {
-	String[] rows = ic.getOutput().split("\n");
+	String[] rows = ic.getOutputLines();
 	columnNames = rows[0].trim().split("\\s+", colmax);
 	nrows = rows.length - 1;
 	data = new String[nrows][columnNames.length];
@@ -91,7 +91,7 @@ public class CommandTableModel extends AbstractTableModel {
      * will be combined.
      */
     public CommandTableModel(InfoCommand ic, String hdr, int colmax) {
-	String[] rows = ic.getOutput().split("\n");
+	String[] rows = ic.getOutputLines();
 	columnNames = hdr.trim().split("\\s+", colmax);
 	nrows = rows.length - 1;
 	data = new String[nrows][columnNames.length];

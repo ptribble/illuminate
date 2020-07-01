@@ -72,7 +72,7 @@ public class Zfilesys {
 	    InfoCommand ic = new InfoCommand("ZP", "/usr/sbin/zfs",
 						"get -Hp all " + name);
 	    if (ic.exists()) {
-		for (String line : ic.getOutput().split("\n")) {
+		for (String line : ic.getOutputLines()) {
 		    String[] ds = line.split("\\s+");
 		    propmap.put(ds[1], ds[2]);
 		}

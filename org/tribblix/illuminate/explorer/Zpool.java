@@ -69,7 +69,7 @@ public class Zpool {
 	InfoCommand ic = new InfoCommand("ZP", "/usr/sbin/zpool",
 						"status " + name);
 	if (ic.exists()) {
-	    for (String line : ic.getOutput().split("\n")) {
+	    for (String line : ic.getOutputLines()) {
 		String[] ds = line.trim().split("\\s+");
 		File f = new File("/dev/dsk", ds[0]);
 		if (f.exists() && !f.isDirectory()) {
@@ -88,7 +88,7 @@ public class Zpool {
 	InfoCommand ic = new InfoCommand("ZF", "/usr/sbin/zfs",
 						"list -H -r " + name);
 	if (ic.exists()) {
-	    for (String line : ic.getOutput().split("\n")) {
+	    for (String line : ic.getOutputLines()) {
 		String[] ds = line.split("\\s+");
 		if (ds.length == 5) {
 		    Zfilesys zfs = new Zfilesys(ds[0]);

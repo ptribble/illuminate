@@ -63,7 +63,7 @@ public class ZoneConfig {
 	InfoCommand ic =
 	    new InfoCommand("ZL", "/usr/sbin/zoneadm", "list -icp");
 	if (ic.exists()) {
-	    for (String line : ic.getOutput().split("\n")) {
+	    for (String line : ic.getOutputLines()) {
 		String[] lentries = line.split(":");
 		int izone = 0;
 		/*

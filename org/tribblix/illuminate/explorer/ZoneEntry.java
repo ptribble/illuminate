@@ -181,7 +181,7 @@ public class ZoneEntry {
 	boolean needtosave = false;
 	InfoCommand ic = new
 	    InfoCommand("zc", "/usr/sbin/zonecfg", "-z "+zname+" info net");
-	for (String line : ic.getOutput().split("\n")) {
+	for (String line : ic.getOutputLines()) {
 	    String[] ds = line.trim().split("\\s+", 2);
 	    if (ds[0].startsWith("net:")) {
 		if (needtosave) {

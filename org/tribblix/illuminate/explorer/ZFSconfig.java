@@ -57,7 +57,7 @@ public class ZFSconfig {
     private void parse_zpool() {
 	InfoCommand ic = new InfoCommand("ZL", "/usr/sbin/zpool", "list -H");
 	if (ic.exists()) {
-	    for (String line : ic.getOutput().split("\n")) {
+	    for (String line : ic.getOutputLines()) {
 		String[] ds = line.split("\\s+");
 		if (ds.length > 4) {
 		    zpools.add(new Zpool(ds[0]));
