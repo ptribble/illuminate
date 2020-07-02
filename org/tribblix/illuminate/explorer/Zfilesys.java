@@ -38,24 +38,23 @@ public class Zfilesys {
     private String name;
     private Map <String, String> propmap;
     private Set <Zfilesys> children;
-    private Set <Zfilesys> snapshots;
+    private Set <Zsnapshot> snapshots;
 
     /**
-     * Create a new Zfilesys object, to store details of a ZFS filesystem (or,
-     * more generally, dataset).
+     * Create a new Zfilesys object, to store details of a ZFS filesystem.
      *
-     * @param name the name of the ZFS dataset
+     * @param name the name of the ZFS filesystem
      */
     public Zfilesys(String name) {
 	this.name = name;
 	children = new HashSet <Zfilesys> ();
-	snapshots = new HashSet <Zfilesys> ();
+	snapshots = new HashSet <Zsnapshot> ();
     }
 
     /**
      * Return the name of this filesystem.
      *
-     * @return the name of the dataset described by this Zfilesys
+     * @return the name of the filesystem described by this Zfilesys
      */
     public String getName() {
 	return name;
@@ -93,9 +92,9 @@ public class Zfilesys {
     }
 
     /**
-     * Add a child dataset.
+     * Add a child filesystem.
      *
-     * @param zfs the child dataset to add
+     * @param zfs the child filesystem to add
      */
     public void addChild(Zfilesys zfs) {
 	children.add(zfs);
@@ -106,16 +105,16 @@ public class Zfilesys {
      *
      * @param zfs the snapshot to add
      */
-    public void addSnapshot(Zfilesys zfs) {
+    public void addSnapshot(Zsnapshot zfs) {
 	snapshots.add(zfs);
     }
 
     /**
-     * Get the Set of all child datasets. Note that this class does not create
-     * or manage the dataset relationships, assuming that Zpool does all
-     * the work.
+     * Get the Set of all child filesystems. Note that this class does not
+     * create or manage the dataset relationships, assuming that Zpool does
+     * all the work.
      *
-     * @return the Set of all child datasets
+     * @return the Set of all child filesystems
      */
     public Set <Zfilesys> children() {
 	return children;
@@ -126,16 +125,16 @@ public class Zfilesys {
      * or manage the dataset relationships, assuming that Zpool does all
      * the work.
      *
-     * @return the Set of all child datasets
+     * @return the Set of all snapshots of this volume
      */
-    public Set <Zfilesys> snapshots() {
+    public Set <Zsnapshot> snapshots() {
 	return snapshots;
     }
 
     /**
      * Return the String representation of this ZFS filesystem, its name.
      *
-     * @return the name of this dataset
+     * @return the name of this filesystem
      */
     @Override
     public String toString() {

@@ -37,7 +37,6 @@ public class Zvolume {
 
     private String name;
     private Map <String, String> propmap;
-    private Set <Zvolume> children;
     private Set <Zsnapshot> snapshots;
 
     /**
@@ -47,14 +46,13 @@ public class Zvolume {
      */
     public Zvolume(String name) {
 	this.name = name;
-	children = new HashSet <Zvolume> ();
 	snapshots = new HashSet <Zsnapshot> ();
     }
 
     /**
      * Return the name of this volume.
      *
-     * @return the name of the dataset described by this Zvolume
+     * @return the name of the volume described by this Zvolume
      */
     public String getName() {
 	return name;
@@ -92,32 +90,12 @@ public class Zvolume {
     }
 
     /**
-     * Add a child dataset.
-     *
-     * @param zfs the child dataset to add
-     */
-    public void addChild(Zvolume zfs) {
-	children.add(zfs);
-    }
-
-    /**
      * Add a snapshot.
      *
      * @param zfs the snapshot to add
      */
     public void addSnapshot(Zsnapshot zfs) {
 	snapshots.add(zfs);
-    }
-
-    /**
-     * Get the Set of all child datasets. Note that this class does not create
-     * or manage the dataset relationships, assuming that Zpool does all
-     * the work.
-     *
-     * @return the Set of all child datasets
-     */
-    public Set <Zvolume> children() {
-	return children;
     }
 
     /**
