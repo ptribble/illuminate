@@ -117,6 +117,7 @@ public class SysInfoPanel extends JPanel {
 	    case SysItem.ZFS_CONTAINER:
 	    case SysItem.ZFS_FS:
 	    case SysItem.ZFS_POOL:
+	    case SysItem.ZFS_VOLUME:
 		ip = new FsInfoPanel(hi, jkstat);
 		add(ip);
 		break;

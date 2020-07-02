@@ -56,6 +56,9 @@ public class FsInfoPanel extends InfoPanel {
 	    case SysItem.ZFS_FS:
 		displayZFS();
 		break;
+	    case SysItem.ZFS_VOLUME:
+		displayZVOL();
+		break;
 	    case SysItem.FS_CONTAINER:
 		displaySummary();
 		break;
@@ -139,5 +142,28 @@ public class FsInfoPanel extends InfoPanel {
 	InfoCommand ic = new InfoCommand("zf", "/usr/sbin/zfs",
 		"get -o name,property,source,value all " + zfs.getName());
 	addText(new CommandTableModel(ic, 4));
+    }
+
+    /*
+     * ZFS volume properties
+     *
+     * The readable form of the date has embedded spaces, so the zfs
+     * command reorders the columns so the property goes last and the
+     * table explicitly has 4 columns.
+     */
+    private void displayZVOL() {
+	Zvolume zfs = (Zvolume) hi.getAttribute("zvol");
+	if (zfs == null) {
+	    // comes from the plain label
+	    addLabel("ZFS volumes");
+	    InfoCommand ic = new InfoCommand("zf", "/usr/sbin/zfs",
+		"list -t volume -o name,used,avail,refer");
+	    addText(new CommandTableModel(ic, 4));
+	} else {
+	    addLabel("ZFS volume properties for " + zfs.getName());
+	    InfoCommand ic = new InfoCommand("zf", "/usr/sbin/zfs",
+		"get -o name,property,source,value all " + zfs.getName());
+	    addText(new CommandTableModel(ic, 4));
+	}
     }
 }

@@ -124,7 +124,7 @@ public class Zpool {
      * Walk through the datasets to define relationships.
      *
      * If it contains a / then strip off one level and add it to its parent.
-     * Top-level filesystems are put in the zparents Set.
+     * The pop-level filesystem is recorded separately as the parent.
      */
     private void relate_fs() {
 	for (Zfilesys zfs : zfilesys) {
@@ -137,7 +137,6 @@ public class Zpool {
 	    } else {
 		// no separators, must be top-level
 		zparent = zfs;
-		System.out.println("Adding parent " + zfs.getName());
 	    }
 	}
     }

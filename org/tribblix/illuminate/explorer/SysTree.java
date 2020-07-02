@@ -292,6 +292,7 @@ public class SysTree extends JTree {
 	SysTreeNode ptn = new SysTreeNode(zpitem, zp.getName());
 	stn.add(ptn);
 	addZnode(ptn, zp.getParent());
+	addZvol(ptn, zp);
     }
 
     /*
@@ -305,6 +306,24 @@ public class SysTree extends JTree {
 	stn.add(ztn);
 	for (Zfilesys zfs2 : zfs.children()) {
 	    addZnode(ztn, zfs2);
+	}
+    }
+
+    /*
+     * If there are any volumes in this pool, add them, just as a flat list.
+     */
+    private void addZvol(SysTreeNode stn, Zpool zp) {
+	Set <Zvolume> svol = zp.volumes();
+	if (!svol.isEmpty()) {
+	    SysItem zitem = new SysItem(SysItem.ZFS_VOLUME);
+	    SysTreeNode vtn = new SysTreeNode(zitem,
+				IlluminateResources.getString("HARD.ZVOL"));
+	    stn.add(vtn);
+	    for (Zvolume zvol : svol) {
+		zitem = new SysItem(SysItem.ZFS_VOLUME);
+		zitem.addAttribute("zvol", zvol);
+		vtn.add(new SysTreeNode(zitem, zvol.getName()));
+	    }
 	}
     }
 

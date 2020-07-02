@@ -78,6 +78,7 @@ public class SysItem {
     public static final int ZFS_CONTAINER = 503;
     public static final int ZFS_POOL = 504;
     public static final int ZFS_FS = 505;
+    public static final int ZFS_VOLUME = 506;
 
     public static final int ZONE_CONTAINER = 601;
     public static final int ZONE_ZONE = 602;
