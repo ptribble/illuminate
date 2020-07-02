@@ -38,7 +38,8 @@ public class Zpool {
 
     private String name;
     private Set <Zfilesys> zfilesys;
-    private Set <Zfilesys> zparents;
+    private Set <Zvolume> zvolumes;
+    private Zfilesys zparent;
     private Map <String, Zfilesys> zmap;
     private Set <String> zdevices;
 
@@ -50,7 +51,7 @@ public class Zpool {
     public Zpool(String name) {
 	this.name = name;
 	zfilesys = new HashSet <Zfilesys> ();
-	zparents = new HashSet <Zfilesys> ();
+	zvolumes = new HashSet <Zvolume> ();
 	zmap = new HashMap <String, Zfilesys> ();
 	zdevices = new HashSet <String> ();
 	add_components();
@@ -83,10 +84,12 @@ public class Zpool {
      * Parsing zfs output: format is
      * NAME    USED  AVAIL  REFER  MOUNTPOINT
      * peter  91.5K  1.95G    40K  /peter
+     *
+     * Walk through filesystem and volume lists separately
      */
     private void parse_zfs() {
 	InfoCommand ic = new InfoCommand("ZF", "/usr/sbin/zfs",
-						"list -H -r " + name);
+					"list -H -t filesystem -r " + name);
 	if (ic.exists()) {
 	    for (String line : ic.getOutputLines()) {
 		String[] ds = line.split("\\s+");
@@ -100,33 +103,41 @@ public class Zpool {
 		}
 	    }
 	}
+	ic = new InfoCommand("ZF", "/usr/sbin/zfs",
+					"list -H -t volume -r " + name);
+	if (ic.exists()) {
+	    for (String line : ic.getOutputLines()) {
+		String[] ds = line.split("\\s+");
+		if (ds.length == 5) {
+		    Zvolume zfs = new Zvolume(ds[0]);
+		    zvolumes.add(zfs);
+		    // FIXME zmap.put(ds[0], zfs);
+		} else {
+		    System.out.println("Unable to parse zfs output");
+		    System.out.println(line);
+		}
+	    }
+	}
     }
 
     /*
      * Walk through the datasets to define relationships.
      *
-     * If it contains an @ then it's a snapshot and is added to its parent
-     * else we just strip off one level and add it to the parent. Top-level
-     * filesystems are put in the zparents Set.
+     * If it contains a / then strip off one level and add it to its parent.
+     * Top-level filesystems are put in the zparents Set.
      */
     private void relate_fs() {
 	for (Zfilesys zfs : zfilesys) {
-	    String name = zfs.getName();
-	    int i = name.indexOf('@');
-	    if (i >= 0) {
-		// it's a snapshot
-		Zfilesys zp = zmap.get(name.substring(0, i));
-		zp.addSnapshot(zfs);
+	    String zname = zfs.getName();
+	    // regular dataset
+	    int j = zname.lastIndexOf('/');
+	    if (j >= 0) {
+		Zfilesys zp = zmap.get(zname.substring(0, j));
+		zp.addChild(zfs);
 	    } else {
-		// regular dataset
-		int j = name.lastIndexOf('/');
-		if (j >= 0) {
-		    Zfilesys zp = zmap.get(name.substring(0, j));
-		    zp.addChild(zfs);
-		} else {
-		    // no separators, must be top-level
-		    zparents.add(zfs);
-		}
+		// no separators, must be top-level
+		zparent = zfs;
+		System.out.println("Adding parent " + zfs.getName());
 	    }
 	}
     }
@@ -150,13 +161,22 @@ public class Zpool {
     }
 
     /**
-     * Return the set of parent filesystems. These are the top-level
-     * filesystems, so does not include snapshots or child datasets.
+     * Return the set of known volumes.
      *
-     * @return a Set of top-level ZFS filesystems
+     * @return a Set of all ZFS volumes
      */
-    public Set <Zfilesys> parents() {
-	return zparents;
+    public Set <Zvolume> volumes() {
+	return zvolumes;
+    }
+
+    /**
+     * Return the tope-level filesystem. This will be the filesystem with
+     * the same name as the pool.
+     *
+     * @return the top-level ZFS filesystem
+     */
+    public Zfilesys getParent() {
+	return zparent;
     }
 
     /**

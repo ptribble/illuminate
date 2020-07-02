@@ -291,9 +291,7 @@ public class SysTree extends JTree {
 	zpitem.addAttribute("zpool", zp);
 	SysTreeNode ptn = new SysTreeNode(zpitem, zp.getName());
 	stn.add(ptn);
-	for (Zfilesys zfs : zp.parents()) {
-	    addZnode(ptn, zfs);
-	}
+	addZnode(ptn, zp.getParent());
     }
 
     /*
