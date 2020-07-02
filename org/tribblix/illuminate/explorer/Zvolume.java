@@ -36,6 +36,7 @@ import org.tribblix.illuminate.InfoCommand;
 public class Zvolume {
 
     private String name;
+    private String shortname;
     private Map <String, String> propmap;
     private Set <Zsnapshot> snapshots;
 
@@ -46,7 +47,12 @@ public class Zvolume {
      */
     public Zvolume(String name) {
 	this.name = name;
-	snapshots = new HashSet <Zsnapshot> ();
+	int j = name.lastIndexOf('/');
+	if (j >= 0) {
+	    shortname = name.substring(j+1);
+	} else {
+	    shortname = name;
+	}
     }
 
     /**
@@ -56,6 +62,16 @@ public class Zvolume {
      */
     public String getName() {
 	return name;
+    }
+
+    /**
+     * Return the last component of the name of this volume.
+     *
+     * @return the last component of the name of the volume described by this
+     * Zvolume
+     */
+    public String getShortName() {
+	return shortname;
     }
 
     /**
@@ -90,22 +106,22 @@ public class Zvolume {
     }
 
     /**
-     * Add a snapshot.
-     *
-     * @param zfs the snapshot to add
-     */
-    public void addSnapshot(Zsnapshot zfs) {
-	snapshots.add(zfs);
-    }
-
-    /**
-     * Get the Set of all snapshots. Note that this class does not create
-     * or manage the dataset relationships, assuming that Zpool does all
-     * the work.
+     * Get the Set of all snapshots.
      *
      * @return the Set of all snapshots of this volume
      */
     public Set <Zsnapshot> snapshots() {
+	if (snapshots == null) {
+	    snapshots = new HashSet <Zsnapshot> ();
+	    InfoCommand ic = new InfoCommand("ZF", "/usr/sbin/zfs",
+					"list -H -t snapshot -d 1 -r " + name);
+	    if (ic.exists()) {
+		for (String line : ic.getOutputLines()) {
+		    String[] ds = line.split("\\s+");
+		    snapshots.add(new Zsnapshot(ds[0]));
+		}
+	    }
+	}
 	return snapshots;
     }
 

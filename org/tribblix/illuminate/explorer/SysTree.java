@@ -302,7 +302,7 @@ public class SysTree extends JTree {
     private void addZnode(SysTreeNode stn, Zfilesys zfs) {
 	SysItem zitem = new SysItem(SysItem.ZFS_FS);
 	zitem.addAttribute("zfs", zfs);
-	SysTreeNode ztn = new SysTreeNode(zitem, zfs.getName());
+	SysTreeNode ztn = new SysTreeNode(zitem, zfs.getShortName());
 	stn.add(ztn);
 	for (Zfilesys zfs2 : zfs.children()) {
 	    addZnode(ztn, zfs2);
@@ -322,7 +322,7 @@ public class SysTree extends JTree {
 	    for (Zvolume zvol : svol) {
 		zitem = new SysItem(SysItem.ZFS_VOLUME);
 		zitem.addAttribute("zvol", zvol);
-		vtn.add(new SysTreeNode(zitem, zvol.getName()));
+		vtn.add(new SysTreeNode(zitem, zvol.getShortName()));
 	    }
 	}
     }
