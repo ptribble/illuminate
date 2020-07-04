@@ -64,7 +64,7 @@ public class SmfTree extends JTree {
 	String[] parts = svc.getFMRI().split("[:/]+");
 	StringBuilder sb = new StringBuilder();
 	// first one is special
-	sb.append(parts[0]).append(":");
+	sb.append(parts[0]).append(':');
 	SmfTreeNode stn = treeMap.get(sb.toString());
 	if (stn == null) {
 	    stn = new SmfTreeNode(parts[0]);
@@ -72,7 +72,7 @@ public class SmfTree extends JTree {
 	    root.add(stn);
 	}
 	for (int i = 1; i < parts.length-1; i++) {
-	    sb.append("/").append(parts[i]);
+	    sb.append('/').append(parts[i]);
 	    SmfTreeNode stn2 = treeMap.get(sb.toString());
 	    if (stn2 == null) {
 		stn2 = new SmfTreeNode(parts[i]);

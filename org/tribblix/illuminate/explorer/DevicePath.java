@@ -47,7 +47,7 @@ public class DevicePath {
 
     /*
      * This builds the two primary maps. We look through /dev/dsk for
-     * files of the form c#t#d#s# or c#d#s#, although is practice we
+     * files of the form c#t#d#s# or c#d#s#, although in practice we
      * just look for c*s2. Each is a symlink
      * /dev/dsk/c0t0d0s2 -> ../../devices/pci@0,0/pci-ide@4/ide@0/sd@0,0:c
      * we also parse /etc/path_to_inst which has lines like
@@ -94,7 +94,7 @@ public class DevicePath {
 		String devpath = f.getCanonicalPath();
 		if (devpath.startsWith("/devices/")) {
 		    String s = devpath.substring(8);
-		    int i = s.indexOf(":");
+		    int i = s.indexOf(':');
 		    // p is the device
 		    String p = s.substring(0, i);
 		    if (pMap.containsKey(p)) {

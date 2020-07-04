@@ -135,7 +135,7 @@ public class Mnttab {
 	String sval = null;
 	for (String si : getOptions(sf)) {
 	    if (si.startsWith(s)) {
-		int i = si.indexOf("=");
+		int i = si.indexOf('=');
 		if (i > 0) {
 		    sval = si.substring(i+1);
 		}

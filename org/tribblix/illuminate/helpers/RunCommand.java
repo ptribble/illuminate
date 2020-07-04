@@ -53,10 +53,10 @@ public class RunCommand {
 
 		String s;
 		while ((s = reader1.readLine()) != null) {
-		    stdout.append(s).append("\n");
+		    stdout.append(s).append('\n');
 		}
 		while ((s = reader2.readLine()) != null) {
-		    stderr.append(s).append("\n");
+		    stderr.append(s).append('\n');
 		}
 		try {
 		    p.waitFor();

@@ -93,7 +93,7 @@ public class ContentsParser {
 		= new BufferedReader(new FileReader(altroot + CONTENTS_FILE))) {
 	    String s = null;
 	    while ((s = in.readLine()) != null) {
-		if (s.startsWith("/")) {
+		if (s.charAt(0) == '/') {
 		    ContentsFileDetail cfd = new ContentsFileDetail(altroot, s);
 		    fileHash.put(cfd.getName(), cfd);
 		    for (String pkgname : cfd.getPackageNames()) {
