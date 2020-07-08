@@ -113,11 +113,28 @@ public class DiskInfoPanel extends InfoPanel {
      */
     private void displayDisk() {
 	if (ks != null) {
-	    addLabel("Details of Disk " + ks.getName());
+	    String dname = ks.getName();
+	    if (isPool(dname)) {
+		addLabel("More on pool " + dname);
+	    } else {
+		addLabel("Details of device " + dname);
+	    }
 	    displayAka();
 	    addAccessory();
 	    addDiskInfo();
 	}
+    }
+
+    /*
+     * Is this a zfs pool?
+     */
+    private boolean isPool(String s) {
+	for (Zpool pool : ZFSconfig.getInstance().pools()) {
+	    if (pool.getName().equals(s)) {
+		return true;
+	    }
+	}
+	return false;
     }
 
     /*
