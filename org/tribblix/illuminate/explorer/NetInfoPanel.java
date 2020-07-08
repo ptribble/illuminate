@@ -28,6 +28,7 @@ import uk.co.petertribble.jkstat.gui.KstatTable;
 import uk.co.petertribble.jkstat.gui.KstatBaseChart;
 import uk.co.petertribble.jkstat.gui.KstatChart;
 import org.tribblix.illuminate.InfoCommand;
+import org.tribblix.illuminate.helpers.ManPane;
 import java.util.List;
 import java.util.Arrays;
 import org.jfree.chart.ChartPanel;
@@ -74,6 +75,9 @@ public class NetInfoPanel extends InfoPanel {
 	    case SysItem.NET_CONTAINER:
 		displaySummary();
 		break;
+	    case SysItem.NET_DLADM:
+		displayManual("dladm.1m");
+		break;
 	    case SysItem.NET_DLADM_PHYS:
 		displayDladm("phys");
 		break;
@@ -91,6 +95,9 @@ public class NetInfoPanel extends InfoPanel {
 		break;
 	    case SysItem.NET_DLADM_AGGR:
 		displayDladm("aggr");
+		break;
+	    case SysItem.NET_IPADM:
+		displayManual("ipadm.1m");
 		break;
 	    case SysItem.NET_IPADM_IF:
 		displayIpadm("if");
@@ -178,6 +185,13 @@ public class NetInfoPanel extends InfoPanel {
 	addLabel("Network protocol: " + proto);
 	kt = new KstatTable(proto, "0", proto, 5, jkstat);
 	addScrollPane(kt);
+    }
+
+    /*
+     * Display a man page
+     */
+    private void displayManual(String manpage) {
+	add(new ManPane(manpage));
     }
 
     /*
