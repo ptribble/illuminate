@@ -108,11 +108,7 @@ public class CpuInfoPanel extends InfoPanel {
 		"System contains 1 chip" :
 		"System contains " + proctree.numChips() + " chips");
 
-	StringBuilder sb = new StringBuilder();
-	for (Long l : proctree.getChips()) {
-	    sb.append(proctree.chipDetails(l));
-	}
-	addText(sb.toString());
+	addText(chipDetails());
 	mptable = new MPstatTable(jkstat, 5);
 	addScrollPane(mptable);
     }
@@ -128,7 +124,7 @@ public class CpuInfoPanel extends InfoPanel {
     private void displayChip() {
 	Long l = (Long) hi.getAttribute("chip");
 	addLabel("Details of processor " + l);
-	addText(proctree.chipDetails(l));
+	addText(chipDetails(l));
 	if (proctree.isMulticore()) {
 	    addChipAccessory();
 	} else {
@@ -140,10 +136,15 @@ public class CpuInfoPanel extends InfoPanel {
      * A processor core.
      */
     private void displayCore() {
-	addLabel("Details of processor core "
-		+ hi.getAttribute("core"));
+	Long lcore = (Long) hi.getAttribute("core");
+	Long lchip = (Long) hi.getAttribute("chip");
+	addLabel("Details of core " + lcore
+		+ " on processor " + lchip);
 	if (proctree.isThreaded()) {
-	    // FIXME psrinfo fragment here
+	    JTextArea jt = new JTextArea("Core " + lcore + " has "
+		+ proctree.numThreads(lchip, lcore) + " threads.", 1, 64);
+	    jt.setEditable(false);
+	    addComponent(jt);
 	    addCoreAccessory();
 	} else {
 	    addText(ProcessorTree.details(hi.getKstat()));
@@ -155,9 +156,14 @@ public class CpuInfoPanel extends InfoPanel {
      * A processor thread.
      */
     private void displayThread() {
-	addLabel("Details of processor thread "
-		+ hi.getAttribute("thread"));
-	// FIXME psrinfo fragment here
+	if (proctree.isMulticore()) {
+	    addLabel("Details of thread " + hi.getAttribute("thread")
+		+ " of core " + hi.getAttribute("core")
+		+ " on processor " + hi.getAttribute("chip"));
+	} else {
+	    addLabel("Details of thread " + hi.getAttribute("thread")
+		+ " on processor " + hi.getAttribute("chip"));
+	}
 	addAccessory();
     }
 
@@ -215,5 +221,81 @@ public class CpuInfoPanel extends InfoPanel {
 	kbc = new KstatAggregateAreaChart(jkstat, ksa, mystats, true);
 	kbc.setColors(mycolors);
 	addComponent(new ChartPanel(kbc.getChart()));
+    }
+
+    /*
+     * How many threads per core? If it's the same for all cores, return
+     * that, otherwise -1. This for one chip.
+     */
+    private int threadsPerCore(Long chip) {
+	int imin = 0;
+	int imax = Integer.MAX_VALUE;
+	for (Long l : proctree.getCores(chip)) {
+	    int i = proctree.numThreads(chip, l);
+	    if (i > imin) {
+		imin = i;
+	    }
+	    if (i < imax) {
+		imax = i;
+	    }
+	}
+	return imin == imax ? imax : -1;
+    }
+
+    /*
+     * How many threads per core? If it's the same for all cores, return
+     * that, otherwise -1. This across all chips.
+     */
+    private int threadsPerCore() {
+	int imin = 0;
+	int imax = Integer.MAX_VALUE;
+	for (Long l : proctree.getChips()) {
+	    int i = threadsPerCore(l);
+	    if (i > imin) {
+		imin = i;
+	    }
+	    if (i < imax) {
+		imax = i;
+	    }
+	}
+	return imin == imax ? imax : -1;
+    }
+
+    /*
+     * A prettier version of chipDetails in ProcessorTree, handling the
+     * case where all cores have the same thread count more elegantly.
+     */
+    private String chipDetails() {
+	StringBuilder sb = new StringBuilder();
+	Long ll = 0L;
+	for (Long l : proctree.getChips()) {
+	    sb.append(chipDetails(l, false));
+	    ll = l;
+	}
+	sb.append("    ").append(proctree.getBrand(ll));
+	return sb.toString();
+    }
+
+    private String chipDetails(Long l) {
+	return chipDetails(l, true);
+    }
+
+    private String chipDetails(Long l, boolean brand) {
+	if (threadsPerCore(l) > 1) {
+	    StringBuilder sb = new StringBuilder();
+	    sb.append("Physical processor ").append(l).append(" has ");
+	    if (proctree.numCores(l) == 1) {
+		sb.append("1 core with ");
+	    } else {
+		sb.append(proctree.numCores(l)).append(" cores with ");
+	    }
+	    sb.append(threadsPerCore(l)).append(" threads per core\n");
+	    if (brand) {
+		sb.append("    ").append(proctree.getBrand(l));
+	    }
+	    return sb.toString();
+	} else {
+	    return proctree.chipDetails(l);
+	}
     }
 }

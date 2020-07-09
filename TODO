@@ -1,5 +1,7 @@
 Things To Do:
 
+Refactor ZFS - track what volumes are used for
+
 Information tab - refresh button on the toolbar?
 
 Could handle man pages from the file list
@@ -30,8 +32,3 @@ pass around.
 
 Save historical kstat data so that the charts don't start blank
 each time?
-
-Threaded cores and individual threads should show their fragment of the
-psrinfo output
-
-Threads and cores should say what their parent is
