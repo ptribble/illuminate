@@ -36,7 +36,9 @@ public class Zproperty {
     /**
      * Create a new Zproperty object, to store details of a ZFS property
      *
-     * @param name the name of the ZFS property
+     * @param property the name of the ZFS property
+     * @param value the value of the ZFS property
+     * @param source the source of the ZFS property
      */
     public Zproperty(String property, String value, String source) {
 	this.property = property;
