@@ -64,16 +64,7 @@ public class CommandTableModel extends AbstractTableModel {
      */
     public CommandTableModel(InfoCommand ic, int colmax) {
 	String[] rows = ic.getOutputLines();
-	columnNames = rows[0].trim().split("\\s+", colmax);
-	nrows = rows.length - 1;
-	data = new String[nrows][columnNames.length];
-	for (int i = 1; i < rows.length; i++) {
-	    String[] items = rows[i].trim().split("\\s+", colmax);
-	    // and if not the right length?
-	    if (items.length == columnNames.length) {
-		data[i-1] = items;
-	    }
-	}
+	populateModel(rows, rows[0], colmax);
     }
 
     /**
@@ -91,7 +82,10 @@ public class CommandTableModel extends AbstractTableModel {
      * will be combined.
      */
     public CommandTableModel(InfoCommand ic, String hdr, int colmax) {
-	String[] rows = ic.getOutputLines();
+	populateModel(ic.getOutputLines(), hdr, colmax);
+    }
+
+    private void populateModel(String[] rows, String hdr, int colmax) {
 	columnNames = hdr.trim().split("\\s+", colmax);
 	nrows = rows.length - 1;
 	data = new String[nrows][columnNames.length];
