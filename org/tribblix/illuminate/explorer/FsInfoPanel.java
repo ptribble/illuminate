@@ -112,8 +112,8 @@ public class FsInfoPanel extends InfoPanel {
 	jzp.add(new SysCmdPanel(ic));
 
 	ic = new InfoCommand("zp", "/usr/sbin/zpool",
-					"get all " + zp.getName());
-	JTable jt = new JTable(new CommandTableModel(ic));
+			"get -o property,value,source all " + zp.getName());
+	JTable jt = new JTable(new CommandTableModel(ic, 3));
 	jzp.add(jt.getTableHeader());
 	jzp.add(jt);
 
@@ -134,14 +134,14 @@ public class FsInfoPanel extends InfoPanel {
      *
      * The readable form of the date has embedded spaces, so the zfs
      * command reorders the columns so the property goes last and the
-     * table explicitly has 4 columns.
+     * table explicitly has 3 columns.
      */
     private void displayZFS() {
 	Zfilesys zfs = (Zfilesys) hi.getAttribute("zfs");
 	addLabel("ZFS Filesystem properties for " + zfs.getName());
 	InfoCommand ic = new InfoCommand("zf", "/usr/sbin/zfs",
-		"get -o name,property,source,value all " + zfs.getName());
-	addText(new CommandTableModel(ic, 4));
+		"get -o property,source,value all " + zfs.getName());
+	addText(new CommandTableModel(ic, 3));
     }
 
     /*
@@ -149,7 +149,7 @@ public class FsInfoPanel extends InfoPanel {
      *
      * The readable form of the date has embedded spaces, so the zfs
      * command reorders the columns so the property goes last and the
-     * table explicitly has 4 columns.
+     * table explicitly has 3 columns.
      */
     private void displayZVOL() {
 	Zvolume zfs = (Zvolume) hi.getAttribute("zvol");
@@ -162,8 +162,8 @@ public class FsInfoPanel extends InfoPanel {
 	} else {
 	    addLabel("ZFS volume properties for " + zfs.getName());
 	    InfoCommand ic = new InfoCommand("zf", "/usr/sbin/zfs",
-		"get -o name,property,source,value all " + zfs.getName());
-	    addText(new CommandTableModel(ic, 4));
+		"get -o property,source,value all " + zfs.getName());
+	    addText(new CommandTableModel(ic, 3));
 	}
     }
 }
