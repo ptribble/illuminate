@@ -22,8 +22,6 @@
 
 package org.tribblix.illuminate.explorer;
 
-import java.util.Map;
-import java.util.HashMap;
 import java.util.Set;
 import java.util.HashSet;
 import org.tribblix.illuminate.InfoCommand;
@@ -33,11 +31,9 @@ import org.tribblix.illuminate.InfoCommand;
  * @author Peter Tribble
  * @version 1.0
  */
-public class Zfilesys {
+public class Zfilesys extends Zdataset {
 
-    private String name;
     private String shortname;
-    private Map <String, String> propmap;
     private Set <Zfilesys> children;
     private Set <Zsnapshot> snapshots;
 
@@ -58,15 +54,6 @@ public class Zfilesys {
     }
 
     /**
-     * Return the name of this filesystem.
-     *
-     * @return the name of the filesystem described by this Zfilesys
-     */
-    public String getName() {
-	return name;
-    }
-
-    /**
      * Return the last component of the name of this filesystem.
      *
      * @return the last component of the name of the filesystem described by
@@ -74,37 +61,6 @@ public class Zfilesys {
      */
     public String getShortName() {
 	return shortname;
-    }
-
-    /**
-     * Return the entire property map.
-     *
-     * @return a Map containing the properties of this Zfilesys
-     */
-    public Map <String, String> getProperties() {
-	if (propmap == null) {
-	    propmap = new HashMap <String, String> ();
-	    InfoCommand ic = new InfoCommand("ZP", "/usr/sbin/zfs",
-						"get -Hp all " + name);
-	    if (ic.exists()) {
-		for (String line : ic.getOutputLines()) {
-		    String[] ds = line.split("\\s+");
-		    propmap.put(ds[1], ds[2]);
-		}
-	    }
-	}
-	return propmap;
-    }
-
-    /**
-     * Retrieve the value of the specified property.
-     *
-     * @param key the name of the property to retrieve
-     *
-     * @return the value of the specified property
-     */
-    public String getProperty(String key) {
-	return getProperties().get(key);
     }
 
     /**
@@ -130,7 +86,7 @@ public class Zfilesys {
     /**
      * Get the Set of all snapshots.
      *
-     * @return the Set of all snapshots of this volume
+     * @return the Set of all snapshots of this filesystem
      */
     public Set <Zsnapshot> snapshots() {
 	if (snapshots == null) {
@@ -145,15 +101,5 @@ public class Zfilesys {
 	    }
 	}
 	return snapshots;
-    }
-
-    /**
-     * Return the String representation of this ZFS filesystem, its name.
-     *
-     * @return the name of this filesystem
-     */
-    @Override
-    public String toString() {
-	return name;
     }
 }

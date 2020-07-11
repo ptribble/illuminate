@@ -22,19 +22,12 @@
 
 package org.tribblix.illuminate.explorer;
 
-import java.util.Map;
-import java.util.HashMap;
-import org.tribblix.illuminate.InfoCommand;
-
 /**
  * Zsnapshot - represent a ZFS snapshot.
  * @author Peter Tribble
  * @version 1.0
  */
-public class Zsnapshot {
-
-    private String name;
-    private Map <String, String> propmap;
+public class Zsnapshot extends Zdataset {
 
     /**
      * Create a new Zsnapshot object, to store details of a ZFS snapshot
@@ -43,55 +36,5 @@ public class Zsnapshot {
      */
     public Zsnapshot(String name) {
 	this.name = name;
-    }
-
-    /**
-     * Return the name of this filesystem.
-     *
-     * @return the name of the snapshot described by this Zsnapshot
-     */
-    public String getName() {
-	return name;
-    }
-
-    /**
-     * Return the entire property map.
-     *
-     * @return a Map containing the properties of this Zsnapshot
-     */
-    public Map <String, String> getProperties() {
-	if (propmap == null) {
-	    propmap = new HashMap <String, String> ();
-	    InfoCommand ic = new InfoCommand("ZP", "/usr/sbin/zfs",
-						"get -Hp all " + name);
-	    if (ic.exists()) {
-		for (String line : ic.getOutputLines()) {
-		    String[] ds = line.split("\\s+");
-		    propmap.put(ds[1], ds[2]);
-		}
-	    }
-	}
-	return propmap;
-    }
-
-    /**
-     * Retrieve the value of the specified property.
-     *
-     * @param key the name of the property to retrieve
-     *
-     * @return the value of the specified property
-     */
-    public String getProperty(String key) {
-	return getProperties().get(key);
-    }
-
-    /**
-     * Return the String representation of this ZFS filesystem, its name.
-     *
-     * @return the name of this dataset
-     */
-    @Override
-    public String toString() {
-	return name;
     }
 }
