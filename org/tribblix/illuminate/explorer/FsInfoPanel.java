@@ -139,9 +139,7 @@ public class FsInfoPanel extends InfoPanel {
     private void displayZFS() {
 	Zfilesys zfs = (Zfilesys) hi.getAttribute("zfs");
 	addLabel("ZFS Filesystem properties for " + zfs.getName());
-	InfoCommand ic = new InfoCommand("zf", "/usr/sbin/zfs",
-		"get -o property,source,value all " + zfs.getName());
-	addText(new CommandTableModel(ic, 3));
+	addScrollPane(new JTable(new ZfsTableModel(zfs.getProperties())));
     }
 
     /*
@@ -161,9 +159,7 @@ public class FsInfoPanel extends InfoPanel {
 	    addText(new CommandTableModel(ic, 4));
 	} else {
 	    addLabel("ZFS volume properties for " + zfs.getName());
-	    InfoCommand ic = new InfoCommand("zf", "/usr/sbin/zfs",
-		"get -o property,source,value all " + zfs.getName());
-	    addText(new CommandTableModel(ic, 3));
+	    addScrollPane(new JTable(new ZfsTableModel(zfs.getProperties())));
 	}
     }
 }
