@@ -131,10 +131,6 @@ public class FsInfoPanel extends InfoPanel {
 
     /*
      * ZFS filesystem properties
-     *
-     * The readable form of the date has embedded spaces, so the zfs
-     * command reorders the columns so the property goes last and the
-     * table explicitly has 3 columns.
      */
     private void displayZFS() {
 	Zfilesys zfs = (Zfilesys) hi.getAttribute("zfs");
@@ -144,10 +140,6 @@ public class FsInfoPanel extends InfoPanel {
 
     /*
      * ZFS volume properties
-     *
-     * The readable form of the date has embedded spaces, so the zfs
-     * command reorders the columns so the property goes last and the
-     * table explicitly has 3 columns.
      */
     private void displayZVOL() {
 	Zvolume zfs = (Zvolume) hi.getAttribute("zvol");
