@@ -56,10 +56,10 @@ public class Zdataset {
 	    propset = new HashSet <Zproperty> ();
 	    propmap = new HashMap <String, Zproperty> ();
 	    InfoCommand ic = new InfoCommand("ZP", "/usr/sbin/zfs",
-				"get -o property.value,name -Hp all " + name);
+				"get -o property,value,source -Hp all " + name);
 	    if (ic.exists()) {
 		for (String line : ic.getOutputLines()) {
-		    String[] ds = line.split("\\s+", 3);
+		    String[] ds = line.split("\t", 3);
 		    Zproperty zp = new Zproperty(ds[0], ds[1], ds[2]);
 		    propset.add(zp);
 		    propmap.put(ds[0], zp);
