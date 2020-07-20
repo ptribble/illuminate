@@ -95,7 +95,8 @@ public class FsInfoPanel extends InfoPanel {
     private void displayZSummary() {
 	addLabel("ZFS Pool Summary");
 	addText(new CommandTableModel(
-			new InfoCommand("zp", "/usr/sbin/zpool", "list")));
+			new InfoCommand("zp", "/usr/sbin/zpool",
+			"list -o name,size,alloc,free,cap,dedup,health")));
     }
 
     /*

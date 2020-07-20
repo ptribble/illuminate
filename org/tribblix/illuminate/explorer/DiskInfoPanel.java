@@ -120,8 +120,13 @@ public class DiskInfoPanel extends InfoPanel {
 		addLabel("Details of device " + dname);
 	    }
 	    displayAka();
-	    addAccessory();
+	    if (isPool(dname)) {
+		addText(new CommandTableModel(
+		    new InfoCommand("zp", "/usr/sbin/zpool",
+		    "list -o name,size,alloc,free,cap,dedup,health " + dname)));
+	    }
 	    addDiskInfo();
+	    addAccessory();
 	}
     }
 
