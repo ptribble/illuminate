@@ -98,14 +98,17 @@ public class CommandTableModel extends AbstractTableModel {
 	}
     }
 
+    @Override
     public int getColumnCount() {
 	return columnNames.length;
     }
 
+    @Override
     public int getRowCount() {
 	return nrows;
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
 	return data[row][col];
     }

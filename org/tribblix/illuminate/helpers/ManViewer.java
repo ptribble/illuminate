@@ -37,6 +37,7 @@ public class ManViewer extends JFrame {
     }
 
     class winExit extends WindowAdapter {
+	@Override
 	public void windowClosing(WindowEvent we) {
 	    System.exit(0);
 	}

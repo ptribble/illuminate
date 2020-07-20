@@ -102,6 +102,7 @@ public class JFSstat extends JKdemo implements ActionListener {
 	setVisible(true);
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	super.actionPerformed(e);
 	JMenuItem jmi = (JMenuItem) e.getSource();

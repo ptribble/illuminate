@@ -37,6 +37,7 @@ public class ManFrame extends JFrame {
     }
 
     class winExit extends WindowAdapter {
+	@Override
 	public void windowClosing(WindowEvent we) {
 	    dispose();
 	}

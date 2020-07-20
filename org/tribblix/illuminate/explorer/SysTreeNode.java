@@ -63,6 +63,7 @@ public class SysTreeNode extends DefaultMutableTreeNode
      *
      * @return an int representing the result of the comparison
      */
+    @Override
     public int compareTo(SysTreeNode othernode) {
 	return node.compareTo(othernode.toString());
     }

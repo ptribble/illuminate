@@ -275,6 +275,7 @@ public class CpuStatePanel extends JPanel implements ActionListener {
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	for (int i = 0; i < ncpus; i++) {
 	    if (e.getSource() == aboutCpuItem[i]) {
@@ -305,10 +306,12 @@ public class CpuStatePanel extends JPanel implements ActionListener {
 	    this.popup = popup;
 	}
 
+	@Override
 	public void mousePressed(MouseEvent e) {
 	    showPopup(e);
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent e) {
 	    showPopup(e);
 	}

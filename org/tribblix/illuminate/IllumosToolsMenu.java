@@ -68,6 +68,7 @@ public class IllumosToolsMenu extends JMenu implements ActionListener {
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	new RunInXterm(toolMap.get(((JMenuItem) e.getSource()).getText()));
     }

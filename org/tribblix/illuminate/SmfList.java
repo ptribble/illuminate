@@ -49,6 +49,7 @@ public class SmfList extends JList <SmfService> {
      *
      * @return the tooltip for the command
      */
+    @Override
     public String getToolTipText(MouseEvent me) {
 	Object o = this.getModel().getElementAt(locationToIndex(me.getPoint()));
 	if (o instanceof SmfService) {

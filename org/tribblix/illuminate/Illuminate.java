@@ -102,11 +102,13 @@ public class Illuminate extends JFrame implements ActionListener {
     }
 
     class winExit extends WindowAdapter {
+	@Override
 	public void windowClosing(WindowEvent we) {
 	    JingleMultiFrame.unregister(Illuminate.this);
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == cloneItem) {
 	    new Illuminate();

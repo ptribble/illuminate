@@ -236,6 +236,7 @@ public class FsstatTableModel extends AbstractTableModel
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	updateKstat();
     }
@@ -395,11 +396,13 @@ public class FsstatTableModel extends AbstractTableModel
 	return mnttab.getFstypeList();
     }
 
+    @Override
     public int getColumnCount() {
 	// 1 extra for the device column
 	return columnNames.length + 1;
     }
 
+    @Override
     public int getRowCount() {
 	return fsdata.size();
     }
@@ -409,6 +412,7 @@ public class FsstatTableModel extends AbstractTableModel
 	return (col == columnNames.length) ? "Device" : columnNames[col];
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
 	return (col == columnNames.length) ?
 	    fsnames.get(fsdata.get(row)) :

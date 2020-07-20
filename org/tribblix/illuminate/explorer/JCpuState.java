@@ -521,6 +521,7 @@ public class JCpuState extends JKdemo implements ActionListener {
 	}
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	super.actionPerformed(e);
 	if (e.getSource() == showChipItem) {
@@ -564,10 +565,12 @@ public class JCpuState extends JKdemo implements ActionListener {
 	    this.popup = popup;
 	}
 
+	@Override
 	public void mousePressed(MouseEvent e) {
 	    showPopup(e);
 	}
 
+	@Override
 	public void mouseReleased(MouseEvent e) {
 	    showPopup(e);
 	}

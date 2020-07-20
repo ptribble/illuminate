@@ -110,6 +110,7 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
 	}
     };
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() == jmb) {
 	    showMan();

@@ -178,6 +178,7 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
 	setCursor(c);
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	if (e.getSource() instanceof JButton) {
 	    JButton jb = (JButton) e.getSource();
