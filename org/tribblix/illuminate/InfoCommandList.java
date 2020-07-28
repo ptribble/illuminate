@@ -164,6 +164,12 @@ public class InfoCommandList extends Vector <InfoCommand> {
 		"/usr/sbin/zoneadm", "list -icv");
 	ic.setManpage("zoneadm.1m");
 	addCommand(ic);
+	if (inglobal) {
+	    ic = new InfoCommand(IlluminateResources.getString("INFO.UCODE"),
+		"/usr/sbin/ucodeadm", "-v");
+	    ic.setManpage("ucodeadm.1m");
+	    addCommand(ic);
+	}
     }
 
     private void addCommand(InfoCommand ic) {
