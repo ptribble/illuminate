@@ -51,6 +51,10 @@ public class InfoCommandList extends Vector <InfoCommand> {
 	    ic.setManpage("cfgadm.1m");
 	    addCommand(ic);
 	}
+	ic = new InfoCommand(IlluminateResources.getString("INFO.CONN"),
+		"/usr/bin/connstat");
+	ic.setManpage("connstat.1m");
+	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.CORE"),
 		"/usr/bin/coreadm");
 	ic.setManpage("coreadm.1m");
