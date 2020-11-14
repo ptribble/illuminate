@@ -42,7 +42,7 @@ public class PkgUtils {
      *
      * @return a nicely formatted version of the pkginfo file
      */
-    static public String infoTable(SVR4Package pkg) {
+    static public String infoTable(SVR4Package pkg, ZapConfig zc) {
 	StringBuilder sb = new StringBuilder(256);
 	Map <String, String> infomap = pkg.infoMap();
 	// clean out the junk
@@ -90,6 +90,18 @@ public class PkgUtils {
 	    }
 	}
 
+	if (zc.exists()) {
+	    String cver = zc.currentVersion(pkg.getName());
+	    if (pkg.getVersion().equals(cver)) {
+		addRow(sb, "Update status", "Up to date");
+	    } else {
+		if (cver == null) {
+		    addRow(sb, "Update status", "(Package not in catalog)");
+		} else {
+		    addRow(sb, "Update status", "New version "+ cver +" available");
+		}
+	    }
+	}
 	return wrapTable(sb);
     }
 

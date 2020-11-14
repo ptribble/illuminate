@@ -73,7 +73,6 @@ public class ZapConfig {
      */
     public CatalogPackage getPackage(String name) {
 	for (ZapRepository zr : repoMap.values()) {
-	    System.out.println("Trying " + name + " in " + zr.getName());
 	    CatalogPackage cp = catalogMap.get(zr.getName()).getPackage(name);
 	    if (cp != null) {
 		return cp;

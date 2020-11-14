@@ -46,11 +46,12 @@ public class InstalledFilesPanel extends JPanel {
      * @param altroot the root of the file system
      * @param ovlist a list of overlays
      */
-    public InstalledFilesPanel(String altroot, OverlayList ovlist) {
+    public InstalledFilesPanel(String altroot, OverlayList ovlist,
+			ZapConfig zc) {
 	setLayout(new BorderLayout());
 
 	JPanel jptree = new JPanel(new BorderLayout());
-	pip = new PackageInformationPanel(altroot, ovlist, false);
+	pip = new PackageInformationPanel(altroot, ovlist, zc, false);
 
 	JSplitPane psplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
 		jptree, pip);

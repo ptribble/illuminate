@@ -39,7 +39,7 @@ public class OverlayPanel extends JPanel {
     private PackageInformationPanel pip;
     private SVR4Package currentPackage;
 
-    public OverlayPanel(String altroot, OverlayList ovlist) {
+    public OverlayPanel(String altroot, OverlayList ovlist, ZapConfig zc) {
 	setLayout(new BorderLayout());
 
 	tree = new OverlayTree(ovlist);
@@ -71,7 +71,7 @@ public class OverlayPanel extends JPanel {
 	// end of tree listener
 
 	// tabbed info pane on right
-	pip = new PackageInformationPanel(altroot, ovlist);
+	pip = new PackageInformationPanel(altroot, ovlist, zc);
 
 	// split pane to hold the lot
 	JSplitPane psplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,

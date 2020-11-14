@@ -48,6 +48,7 @@ public class PackageInformationPanel extends JTabbedPane {
     private boolean showfiles;
     private OverlayList ovlist;
     private ContentsParser cp;
+    private ZapConfig zc;
 
     /**
      * Create a default PackageInformationPanel showing the default tabs.
@@ -55,8 +56,9 @@ public class PackageInformationPanel extends JTabbedPane {
      * @param altroot the root of the file system
      * @param ovlist an OverlayList object
      */
-    public PackageInformationPanel(String altroot, OverlayList ovlist) {
-	this(altroot, ovlist, true);
+    public PackageInformationPanel(String altroot, OverlayList ovlist,
+			    ZapConfig zc) {
+	this(altroot, ovlist, zc, true);
     }
 
     /**
@@ -67,9 +69,10 @@ public class PackageInformationPanel extends JTabbedPane {
      * @param showdependencies a boolean determining if dependencies are shown
      */
     public PackageInformationPanel(String altroot, OverlayList ovlist,
-			   boolean showdependencies) {
+			    ZapConfig zc, boolean showdependencies) {
 	this.altroot = altroot;
 	this.ovlist = ovlist;
+	this.zc = zc;
 
 	tp_info = new PackageTextPane();
 	tp_dep = new PackageTextPane();
@@ -90,7 +93,7 @@ public class PackageInformationPanel extends JTabbedPane {
     public void showPkg(SVR4Package pkg) {
 	setOvlTab(PkgResources.getString("PKG.OVERLAYS"));
 	if (pkg.isInstalled()) {
-	    setInfoText(PkgUtils.infoTable(pkg),
+	    setInfoText(PkgUtils.infoTable(pkg, zc),
 		    PkgUtils.dependencyTable(pkg),
 		    revDeps(pkg));
 	} else {

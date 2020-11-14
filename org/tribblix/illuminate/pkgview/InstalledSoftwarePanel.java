@@ -39,24 +39,26 @@ public class InstalledSoftwarePanel extends JTabbedPane {
     String altroot;
 
     PkgList plist;
+    ZapConfig zc;
     PackagePanel ipp;
     OverlayPanel ovp;
     InstalledFilesPanel ifp;
 
     public InstalledSoftwarePanel(String altroot) {
 	this.altroot = altroot;
+	zc = new ZapConfig(altroot);
 	plist = new PkgList(altroot);
 	OverlayList ovlist = new OverlayList(altroot, plist);
 
-	ipp = new PackagePanel(altroot, plist, ovlist);
+	ipp = new PackagePanel(altroot, plist, ovlist, zc);
 	add(PkgResources.getString("PKG.LIST"), ipp);
 
-	ovp = new OverlayPanel(altroot, ovlist);
+	ovp = new OverlayPanel(altroot, ovlist, zc);
 	if (ovlist.exists()) {
 	    add(PkgResources.getString("PKG.OVP"), ovp);
 	}
 
-	ifp = new InstalledFilesPanel(altroot, ovlist);
+	ifp = new InstalledFilesPanel(altroot, ovlist, zc);
 	add(PkgResources.getString("PKG.FS"), ifp);
 
 	(new RevDependencyWorker()).execute();
