@@ -191,10 +191,8 @@ public class SmfService implements Comparable<SmfService> {
 	manpages = new HashMap <String, String> ();
 	for (String line : explanation.split("\n")) {
 	    String[] ds = line.trim().split("\\s+", 7);
-	    if (ds.length == 7) {
-		if("man".equals(ds[1])) {
-		    manpages.put(ds[6], ds[6] + "." + ds[5]);
-		}
+	    if (ds.length == 7 && "man".equals(ds[1])) {
+		manpages.put(ds[6], ds[6] + "." + ds[5]);
 	    }
 	}
     }

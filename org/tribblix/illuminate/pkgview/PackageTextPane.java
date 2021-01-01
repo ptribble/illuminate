@@ -65,28 +65,27 @@ public class PackageTextPane extends JEditorPane implements HyperlinkListener {
     }
 
     public void hyperlinkUpdate(HyperlinkEvent ev) {
-	if (ev.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
-	    if (Desktop.isDesktopSupported()) {
+	if (ev.getEventType() == HyperlinkEvent.EventType.ACTIVATED
+		&& Desktop.isDesktopSupported()) {
+	    try {
+		Desktop.getDesktop().browse(ev.getURL().toURI());
+	    } catch (Exception e) {
 		try {
-		    Desktop.getDesktop().browse(ev.getURL().toURI());
-		} catch (Exception e) {
-		    try {
-			if (browserExe == null) {
-			    for (String b : browsers) {
-				File f = new File("/usr/bin", b);
-				if (f.exists()) {
-				    browserExe = "/usr/bin/" + b;
-				    break;
-				}
+		    if (browserExe == null) {
+			for (String b : browsers) {
+			    File f = new File("/usr/bin", b);
+			    if (f.exists()) {
+				browserExe = "/usr/bin/" + b;
+				break;
 			    }
 			}
-			if (browserExe != null) {
-			    Runtime.getRuntime().exec(new String[]
-				{browserExe, ev.getURL().toString()});
-			}
-		    } catch (IOException e2) {
-			System.out.println(e2);
 		    }
+		    if (browserExe != null) {
+			Runtime.getRuntime().exec(new String[]
+			    {browserExe, ev.getURL().toString()});
+		    }
+		} catch (IOException e2) {
+			System.out.println(e2);
 		}
 	    }
 	}

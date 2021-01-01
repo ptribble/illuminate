@@ -219,8 +219,7 @@ public class Overlay implements Comparable<Overlay> {
      * @return true if the given overlay is required by this overlay
      */
     public boolean containsOverlay(Overlay ovl) {
-	return overlays.contains(ovl) ? true :
-	    containsOverlay(ovl.getName());
+	return overlays.contains(ovl) || containsOverlay(ovl.getName());
     }
 
     /**
@@ -250,7 +249,7 @@ public class Overlay implements Comparable<Overlay> {
      * @return true if the given package is contained in this overlay
      */
     public boolean containsPackage(SVR4Package p) {
-	return packages.contains(p) ? true : containsPackage(p.getName());
+	return packages.contains(p) || containsPackage(p.getName());
     }
 
     /**

@@ -84,10 +84,8 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
     }
 
     private void showMan() {
-	if (currentCmd != null) {
-	    if (currentCmd.getManpage() != null) {
-		new ManFrame(currentCmd.getManpage());
-	    }
+	if (currentCmd != null && currentCmd.getManpage() != null) {
+	    new ManFrame(currentCmd.getManpage());
 	}
     }
 

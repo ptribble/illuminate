@@ -95,9 +95,7 @@ public class SmfTreeNode extends DefaultMutableTreeNode {
 	statusses.remove("disabled");
 	statusses.remove(null);
 	if (statusses.size() == 1) {
-	    for (String s : statusses) {
-		return s;
-	    }
+	    return statusses.stream().findFirst().get();
 	}
 	return null;
     }

@@ -183,28 +183,26 @@ public class ManPane extends JEditorPane
 		/*
 		 * if not a manpage, try as a URL
 		 */
-		if (ev.getURL() != null) {
-		    if (Desktop.isDesktopSupported()) {
+		if (ev.getURL() != null && Desktop.isDesktopSupported()) {
+		    try {
+			Desktop.getDesktop().browse(ev.getURL().toURI());
+		    } catch (Exception e) {
 			try {
-			    Desktop.getDesktop().browse(ev.getURL().toURI());
-			} catch (Exception e) {
-			    try {
-				if (browserExe == null) {
-				    for (String b : browsers) {
-					File f2 = new File("/usr/bin", b);
-					if (f2.exists()) {
-					    browserExe = "/usr/bin/" + b;
-					    break;
-					}
+			    if (browserExe == null) {
+				for (String b : browsers) {
+				    File f2 = new File("/usr/bin", b);
+				    if (f2.exists()) {
+					browserExe = "/usr/bin/" + b;
+					break;
 				    }
 				}
-				if (browserExe != null) {
-				    Runtime.getRuntime().exec(new String[]
-					{browserExe, ev.getURL().toString()});
-				}
-			    } catch (IOException e2) {
-				System.out.println(e2);
 			    }
+			    if (browserExe != null) {
+				Runtime.getRuntime().exec(new String[]
+				    {browserExe, ev.getURL().toString()});
+			    }
+			} catch (IOException e2) {
+			    System.out.println(e2);
 			}
 		    }
 		}
