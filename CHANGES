@@ -7,7 +7,7 @@ Remove StringTokenizer
 
 Fixes in Mnttab to allow updating to work properly
 
-Filesystem statistics view shows new filsystems if they appear
+Filesystem statistics view shows new filesystems if they appear
 
 Show native IPS packaging information if run on an IPS distribution.,
 rather than inappropriate SVR4 information

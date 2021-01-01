@@ -169,7 +169,7 @@ public class Zpool {
     }
 
     /**
-     * Return the tope-level filesystem. This will be the filesystem with
+     * Return the top-level filesystem. This will be the filesystem with
      * the same name as the pool.
      *
      * @return the top-level ZFS filesystem
