@@ -51,13 +51,13 @@ public class ZapRepository {
 	if (f.exists()) {
 	    for (String line : JumbleFile.getLines(f)) {
 		String[] ds = line.split("=", 2);
-		if (ds[0].equals("NAME")) {
+		if ("NAME".equals(ds[0])) {
 		    repoNAME = ds[1];
-		} else if (ds[0].equals("DESC")) {
+		} else if ("DESC".equals(ds[0])) {
 		    repoDESC = ds[1];
-		} else if (ds[0].equals("URL")) {
+		} else if ("URL".equals(ds[0])) {
 		    repoURL = ds[1];
-		} else if (ds[0].equals("SIGNED")) {
+		} else if ("SIGNED".equals(ds[0])) {
 		    repoSIGNED = ds[1];
 		}
 	    }

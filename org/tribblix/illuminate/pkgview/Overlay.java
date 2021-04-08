@@ -77,11 +77,11 @@ public class Overlay implements Comparable<Overlay> {
 	File f = new File(ovrootf, name + ".ovl");
 	for (String line : JumbleFile.getLines(f)) {
 	    String[] ds = line.split("=", 2);
-	    if (ds[0].equals("VERSION")) {
+	    if ("VERSION".equals(ds[0])) {
 		oversion = ds[1];
-	    } else if (ds[0].equals("NAME")) {
+	    } else if ("NAME".equals(ds[0])) {
 		description = ds[1];
-	    } else if (ds[0].equals("REQUIRES")) {
+	    } else if ("REQUIRES".equals(ds[0])) {
 		// use existing overlay rather than a new one if possible
 		Overlay ovl = ovlist.getOverlay(ds[1]);
 		if (ovl == null) {
@@ -89,7 +89,7 @@ public class Overlay implements Comparable<Overlay> {
 		} else {
 		    overlays.add(ovl);
 		}
-	    } else if (ds[0].equals("SERVICES")) {
+	    } else if ("SERVICES".equals(ds[0])) {
 		services.add(ds[1]);
 	    }
 	}

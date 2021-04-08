@@ -99,19 +99,19 @@ public class MultiView extends JFrame implements ActionListener {
      * the view to show.
      */
     public static void main(String args[]) {
-	if (args[0].equals("information")) {
+	if ("information".equals(args[0])) {
 	    new MultiView("ILLUMINATE.INFO.TEXT", "HELP.ABOUT.INFO",
 			"help/infoview.html", "pixmaps/solinfo.png",
 			new InfoCommandPanel());
-	} else if (args[0].equals("explorer")) {
+	} else if ("explorer".equals(args[0])) {
 	    new MultiView("ILLUMINATE.EXPL.TEXT", "HELP.ABOUT.EXPL",
 			"help/explorer.html", "pixmaps/solexpl.png",
 			new SysPanel());
-	} else if (args[0].equals("services")) {
+	} else if ("services".equals(args[0])) {
 	    new MultiView("ILLUMINATE.SERV.TEXT", "HELP.ABOUT.SERV",
 			"help/serviceview.html", "pixmaps/smfview.png",
 			new SmfPanel());
-	} else if (args[0].equals("software")) {
+	} else if ("software".equals(args[0])) {
 	    String altroot = "/";
 	    if (args.length == 3 && "-R".equals(args[1])) {
 		altroot = args[2];

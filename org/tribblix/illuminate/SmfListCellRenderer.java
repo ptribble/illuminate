@@ -57,15 +57,15 @@ public class SmfListCellRenderer extends DefaultListCellRenderer {
     }
 
     private Color getStatusColor(SmfService svc) {
-	if (svc.getStatus().equals("online")) {
+	if ("online".equals(svc.getStatus())) {
 	    return oncolor;
-	} else if (svc.getStatus().equals("offline")) {
+	} else if ("offline".equals(svc.getStatus())) {
 	    return offcolor;
-	} else if (svc.getStatus().equals("legacy_run")) {
+	} else if ("legacy_run".equals(svc.getStatus())) {
 	    return lcolor;
-	} else if (svc.getStatus().equals("disabled")) {
+	} else if ("disabled".equals(svc.getStatus())) {
 	    return dcolor;
-	} else if (svc.getStatus().equals("maintenance")) {
+	} else if ("maintenance".equals(svc.getStatus())) {
 	    return mcolor;
 	}
 	return null;

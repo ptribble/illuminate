@@ -110,13 +110,13 @@ public class SVR4Package implements Comparable<SVR4Package> {
 	for (String s : getDepend()) {
 	    String[] ds = s.split("\\s+", 3);
 	    // Must have at least 2 words
-	    if (ds.length > 1 && (ds[0].equals("P") || ds[0].equals("I") ||
-						ds[0].equals("R"))) {
-		if (ds[0].equals("P")) {
+	    if (ds.length > 1 && ("P".equals(ds[0]) || "I".equals(ds[0]) ||
+						"R".equals(ds[0]))) {
+		if ("P".equals(ds[0])) {
 		    dependson.add(ds[1]);
-		} else if (ds[0].equals("R")) {
+		} else if ("R".equals(ds[0])) {
 		    rdepends.add(ds[1]);
-		} else if (ds[0].equals("I")) {
+		} else if ("I".equals(ds[0])) {
 		    incompatibles.add(ds[1]);
 		}
 	    }

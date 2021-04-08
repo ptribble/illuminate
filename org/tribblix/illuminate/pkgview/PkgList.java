@@ -54,7 +54,7 @@ public class PkgList extends TreeSet <SVR4Package> {
 	    for (File f : pkgrootf.listFiles()) {
 		if (f.isDirectory() &&
 		    !f.isHidden() &&
-		    !f.getName().equals("locale") &&
+		    !"locale".equals(f.getName()) &&
 		    new File(f, "pkginfo").exists()) {
 		    SVR4Package sp = new SVR4Package(altroot, f.getName());
 		    add(sp);
