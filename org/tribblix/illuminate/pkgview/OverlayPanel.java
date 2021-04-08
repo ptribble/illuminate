@@ -54,6 +54,7 @@ public class OverlayPanel extends JPanel {
 
 	// Listen for when the selection changes.
 	tree.addTreeSelectionListener(new TreeSelectionListener() {
+	    @Override
 	    public void valueChanged(TreeSelectionEvent e) {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode)
 		    tree.getLastSelectedPathComponent();

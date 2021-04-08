@@ -107,6 +107,7 @@ public class Overlay implements Comparable<Overlay> {
 	return description;
     }
 
+    @Override
     public String toString() {
 	return name;
     }
@@ -317,6 +318,7 @@ public class Overlay implements Comparable<Overlay> {
     /**
      * For Comparable.
      */
+    @Override
     public int compareTo(Overlay ovl) {
 	return name.compareTo(ovl.getName());
     }

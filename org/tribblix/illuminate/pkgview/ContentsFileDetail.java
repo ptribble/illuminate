@@ -351,6 +351,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
     /**
      * For Comparable.
      */
+    @Override
     public int compareTo(ContentsFileDetail cfd) {
 	return filename.compareTo(cfd.getName());
     }

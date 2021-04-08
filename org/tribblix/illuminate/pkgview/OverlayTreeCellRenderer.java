@@ -46,6 +46,7 @@ public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
 	warnIcon = createImageIcon("/images/warn.png");
     }
 
+    @Override
     public Component getTreeCellRendererComponent(
 						  JTree tree,
 						  Object value,

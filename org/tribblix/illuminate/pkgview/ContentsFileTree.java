@@ -55,8 +55,10 @@ public class ContentsFileTree extends JTree {
 	    (TreeSelectionModel.SINGLE_TREE_SELECTION);
 
 	addTreeExpansionListener(new TreeExpansionListener() {
+	    @Override
 	    public void treeCollapsed(TreeExpansionEvent e) {
 	    }
+	    @Override
 	    public void treeExpanded(TreeExpansionEvent e) {
 		TreePath path = e.getPath();
 		if (path != null) {

@@ -47,14 +47,17 @@ public class ZfsTableModel extends AbstractTableModel {
 	zprops = props.toArray(new Zproperty[0]);
     }
 
+    @Override
     public int getColumnCount() {
 	return columnNames.length;
     }
 
+    @Override
     public int getRowCount() {
 	return nrows;
     }
 
+    @Override
     public Object getValueAt(int row, int col) {
 	Zproperty zp = zprops[row];
 	if (col == 0) {

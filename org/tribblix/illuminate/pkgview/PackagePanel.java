@@ -62,6 +62,7 @@ public class PackagePanel extends JPanel {
 
 	ptable.getSelectionModel().addListSelectionListener(
 		new ListSelectionListener() {
+	    @Override
 	    public void valueChanged(ListSelectionEvent e) {
 		if (e.getSource() instanceof DefaultListSelectionModel
 			&& !e.getValueIsAdjusting()) {

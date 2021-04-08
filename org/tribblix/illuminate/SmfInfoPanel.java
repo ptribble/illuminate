@@ -107,6 +107,7 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
 	 * selected, the logfile is automatically displayed.
 	 */
 	jtp.addChangeListener(new ChangeListener() {
+	    @Override
 	    public void stateChanged(ChangeEvent ce) {
 		JTabbedPane jtpc = (JTabbedPane) ce.getSource();
 		if (jtpc.getSelectedIndex() == 2) {

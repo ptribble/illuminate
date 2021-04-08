@@ -62,6 +62,7 @@ public class InstalledFilesPanel extends JPanel {
 
 	final JTree cft = new ContentsFileTree(altroot);
 	cft.addTreeSelectionListener(new TreeSelectionListener() {
+	    @Override
 	    public void valueChanged(TreeSelectionEvent e) {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode)
 		    cft.getLastSelectedPathComponent();

@@ -40,6 +40,7 @@ public class SmfListCellRenderer extends DefaultListCellRenderer {
     private static final Color oncolor = new Color(127, 255, 127);
     private static final Color offcolor = Color.ORANGE;
 
+    @Override
     public Component getListCellRendererComponent(JList list,
 	    Object value, int index, boolean isSelected, boolean cellHasFocus) {
 

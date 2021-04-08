@@ -170,10 +170,12 @@ public class ManPane extends JEditorPane
 	return (File) null;
     }
 
+    @Override
     public void actionPerformed(ActionEvent e) {
 	goBack();
     }
 
+    @Override
     public void hyperlinkUpdate(HyperlinkEvent ev) {
 	if (ev.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
 	    File f = findManPage(ev.getDescription());

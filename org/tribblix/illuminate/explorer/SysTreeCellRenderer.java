@@ -48,6 +48,7 @@ public class SysTreeCellRenderer extends DefaultTreeCellRenderer {
 	unknownIcon = createImageIcon("/images/unknown.png");
     }
 
+    @Override
     public Component getTreeCellRendererComponent(JTree tree,
 						  Object value,
 						  boolean sel,

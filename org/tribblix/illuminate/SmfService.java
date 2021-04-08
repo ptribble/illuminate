@@ -317,6 +317,7 @@ public class SmfService implements Comparable<SmfService> {
      * @return whether the given SmfService is greater than or less than this
      * SmfService
      */
+    @Override
     public int compareTo(SmfService ss) {
 	return fmri.compareTo(ss.getFMRI());
     }

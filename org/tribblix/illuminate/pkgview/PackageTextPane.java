@@ -57,6 +57,7 @@ public class PackageTextPane extends JEditorPane implements HyperlinkListener {
 	addHyperlinkListener(this);
     }
 
+    @Override
     public void setText(String s) {
 	super.setText(s);
 	setMargin(new Insets(5, 5, 5, 5));
@@ -64,6 +65,7 @@ public class PackageTextPane extends JEditorPane implements HyperlinkListener {
 	setEditable(false);
     }
 
+    @Override
     public void hyperlinkUpdate(HyperlinkEvent ev) {
 	if (ev.getEventType() == HyperlinkEvent.EventType.ACTIVATED
 		&& Desktop.isDesktopSupported()) {

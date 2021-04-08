@@ -66,6 +66,7 @@ public class SysPanel extends JPanel {
 	// should this be set inside the SysTree itself?
 	ptree.setCellRenderer(new SysTreeCellRenderer());
 	ptree.addTreeSelectionListener(new TreeSelectionListener() {
+	    @Override
 	    public void valueChanged(TreeSelectionEvent e) {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode)
 		    ptree.getLastSelectedPathComponent();

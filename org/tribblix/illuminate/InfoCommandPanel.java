@@ -90,6 +90,7 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
     }
 
     MouseListener mouseListener = new MouseAdapter() {
+	@Override
 	public void mouseClicked(MouseEvent e) {
 	    @SuppressWarnings("unchecked")
 	    JList <InfoCommand> source = (JList <InfoCommand>) e.getSource();
@@ -98,6 +99,7 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
     };
 
     KeyListener keyListener = new KeyAdapter() {
+	@Override
 	public void keyPressed(KeyEvent e) {
 	    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 		@SuppressWarnings("unchecked")

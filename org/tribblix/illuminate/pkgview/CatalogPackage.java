@@ -70,6 +70,7 @@ public class CatalogPackage {
      *
      * @return the name of this package
      */
+    @Override
     public String toString() {
 	return name + "@" + pkgvers;
     }

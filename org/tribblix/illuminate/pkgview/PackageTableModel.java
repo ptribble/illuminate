@@ -50,10 +50,12 @@ public class PackageTableModel extends AbstractTableModel {
 	pkgs = new ArrayList <SVR4Package> (plist);
     }
 
+    @Override
     public int getColumnCount() {
 	return columnNames.length;
     }
 
+    @Override
     public int getRowCount() {
 	return pkgs.size();
     }
@@ -73,6 +75,7 @@ public class PackageTableModel extends AbstractTableModel {
      *
      * @return the Object at the selected cell
      */
+    @Override
     public Object getValueAt(int row, int col) {
 	SVR4Package pkg = pkgs.get(row);
 	if (col == 0) {

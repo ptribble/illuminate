@@ -71,6 +71,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      *
      * @return the name of this package
      */
+    @Override
     public String toString() {
 	return name;
     }
@@ -242,6 +243,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
     /**
      * For Comparable.
      */
+    @Override
     public int compareTo(SVR4Package p) {
 	return name.compareTo(p.getName());
     }

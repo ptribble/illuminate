@@ -48,6 +48,7 @@ public class SmfTreeCellRenderer extends DefaultTreeCellRenderer {
 	okIcon = createImageIcon("/images/ok.png");
     }
 
+    @Override
     public Component getTreeCellRendererComponent(JTree tree,
 						  Object value,
 						  boolean sel,
