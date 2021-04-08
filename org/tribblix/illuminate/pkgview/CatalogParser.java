@@ -38,6 +38,7 @@ public class CatalogParser {
      * Parse a package catalog.
      *
      * @param altroot  An alternate root directory for this OS image
+     * @param reponame  The repository represented by this catalog
      */
     public CatalogParser(String altroot, String reponame) {
 	/*

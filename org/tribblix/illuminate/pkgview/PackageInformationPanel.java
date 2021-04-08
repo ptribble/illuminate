@@ -55,6 +55,7 @@ public class PackageInformationPanel extends JTabbedPane {
      *
      * @param altroot the root of the file system
      * @param ovlist an OverlayList object
+     * @param zc the ZapConfig for this image
      */
     public PackageInformationPanel(String altroot, OverlayList ovlist,
 			    ZapConfig zc) {
@@ -66,6 +67,7 @@ public class PackageInformationPanel extends JTabbedPane {
      *
      * @param altroot the root of the file system
      * @param ovlist an OverlayList object
+     * @param zc the ZapConfig for this image
      * @param showdependencies a boolean determining if dependencies are shown
      */
     public PackageInformationPanel(String altroot, OverlayList ovlist,

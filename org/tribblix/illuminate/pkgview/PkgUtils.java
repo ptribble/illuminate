@@ -39,6 +39,7 @@ public class PkgUtils {
      * Returns the pkginfo file as a html table.
      *
      * @param pkg the package to display
+     * @param zc the ZapConfig for this image
      *
      * @return a nicely formatted version of the pkginfo file
      */

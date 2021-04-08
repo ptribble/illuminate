@@ -70,6 +70,10 @@ public class ZapConfig {
     /**
      * Returns a CatalogPackage for the available package, as listed
      * in the catalogs.
+     *
+     * @param name  The name of the desired package
+     * @return  The CatalogPackage for the desired package, or null if the
+     * package cannot be found
      */
     public CatalogPackage getPackage(String name) {
 	for (ZapRepository zr : repoMap.values()) {
@@ -81,6 +85,13 @@ public class ZapConfig {
 	return null;
     }
 
+    /**
+     * Returns the currently available version of a package.
+     *
+     * @param name  The name of the desired package
+     * @return  The currently available version of the desired package
+     *
+     */
     public String currentVersion(String name) {
 	CatalogPackage cp = getPackage(name);
 	return cp == null ? null : cp.getVersion();

@@ -42,6 +42,11 @@ public class CatalogPackage {
      * Create an SVR4 package catalog entry.
      *
      * @param name  The name of the package.
+     * @param pkgvers  The version of the package.
+     * @param depends  The name of the package.
+     * @param dsize  The download size of the package, specifically the size
+     * of the zap file it's distributed in.
+     * @param repo  The name of the repository supplying this package.
      */
     public CatalogPackage(String name, String pkgvers, String depends, String dsize, String repo) {
 	this.name = name;

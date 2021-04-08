@@ -45,6 +45,7 @@ public class InstalledFilesPanel extends JPanel {
      *
      * @param altroot the root of the file system
      * @param ovlist a list of overlays
+     * @param zc the ZapConfig for this image
      */
     public InstalledFilesPanel(String altroot, OverlayList ovlist,
 			ZapConfig zc) {

@@ -42,6 +42,7 @@ public class ZapRepository {
      * Create a zap repository configuration.
      *
      * @param altroot  An alternate root directory for this OS image
+     * @param repo  The repository represented by this ZapRepository
      */
     public ZapRepository(String altroot, String repo) {
 	File f = new File(altroot + ZapConfig.ZAP_ROOT + "/repositories",
