@@ -43,7 +43,7 @@ public class ZoneConfig {
     private ZoneConfig() {
 	zones = new HashSet <String> ();
 	zmap = new HashMap <String, ZoneEntry> ();
-	parse_zones();
+	parseZones();
     }
 
     /**
@@ -59,7 +59,7 @@ public class ZoneConfig {
      * Get the list of zones, ignore global.
      * Populate the ZoneEntry map;
      */
-    private void parse_zones() {
+    private void parseZones() {
 	InfoCommand ic =
 	    new InfoCommand("ZL", "/usr/sbin/zoneadm", "list -icp");
 	if (ic.exists()) {

@@ -54,9 +54,9 @@ public class Zpool {
 	zvolumes = new HashSet <Zvolume> ();
 	zmap = new HashMap <String, Zfilesys> ();
 	zdevices = new HashSet <String> ();
-	add_components();
-	parse_zfs();
-	relate_fs();
+	addComponents();
+	parseZfs();
+	relateFs();
     }
 
     /*
@@ -66,7 +66,7 @@ public class Zpool {
      *
      * FIXME defer until information is requested, or run in a SwingWorker
      */
-    private void add_components() {
+    private void addComponents() {
 	InfoCommand ic = new InfoCommand("ZP", "/usr/sbin/zpool",
 						"status " + name);
 	if (ic.exists()) {
@@ -87,7 +87,7 @@ public class Zpool {
      *
      * Walk through filesystem and volume lists separately
      */
-    private void parse_zfs() {
+    private void parseZfs() {
 	InfoCommand ic = new InfoCommand("ZF", "/usr/sbin/zfs",
 					"list -H -t filesystem -r " + name);
 	if (ic.exists()) {
@@ -126,7 +126,7 @@ public class Zpool {
      * If it contains a / then strip off one level and add it to its parent.
      * The pop-level filesystem is recorded separately as the parent.
      */
-    private void relate_fs() {
+    private void relateFs() {
 	for (Zfilesys zfs : zfilesys) {
 	    String zname = zfs.getName();
 	    // regular dataset

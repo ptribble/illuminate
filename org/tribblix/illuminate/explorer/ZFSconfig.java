@@ -38,7 +38,7 @@ public class ZFSconfig {
 
     private ZFSconfig() {
 	zpools = new HashSet <Zpool> ();
-	parse_zpool();
+	parseZpool();
     }
 
     /**
@@ -54,7 +54,7 @@ public class ZFSconfig {
      * Parse zpool output. Populates the list of pools and gives some
      * information about each one.
      */
-    private void parse_zpool() {
+    private void parseZpool() {
 	InfoCommand ic = new InfoCommand("ZL", "/usr/sbin/zpool", "list -H");
 	if (ic.exists()) {
 	    for (String line : ic.getOutputLines()) {
