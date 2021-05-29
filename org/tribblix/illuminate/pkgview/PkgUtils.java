@@ -99,7 +99,8 @@ public class PkgUtils {
 		if (cver == null) {
 		    addRow(sb, "Update status", "(Package not in catalog)");
 		} else {
-		    addRow(sb, "Update status", "New version "+ cver +" available");
+		    addRow(sb, "Update status",
+			"New version "+ cver +" available");
 		}
 	    }
 	}

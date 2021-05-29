@@ -33,7 +33,7 @@ import uk.co.petertribble.jumble.JumbleFile;
  */
 public class ZapConfig {
 
-    public static final String ZAP_ROOT="/etc/zap";
+    public static final String ZAP_ROOT = "/etc/zap";
 
     private boolean zapexists;
 

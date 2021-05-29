@@ -91,7 +91,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
 	}
 	if (isDevice()) {
 	    // skip major and minor device numbers
-	    i+=2;
+	    i += 2;
 	}
 	mode = st[i++];
 	owner = st[i++];
@@ -99,7 +99,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
 	if (isRegular()) {
 	    size = Long.parseLong(st[i]);
 	    // increment, skip cksum
-	    i+=2;
+	    i += 2;
 	    modtime = Long.parseLong(st[i++]);
 	}
 	// anything left is a package

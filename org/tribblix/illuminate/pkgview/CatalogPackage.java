@@ -48,7 +48,8 @@ public class CatalogPackage {
      * of the zap file it's distributed in.
      * @param repo  The name of the repository supplying this package.
      */
-    public CatalogPackage(String name, String pkgvers, String depends, String dsize, String repo) {
+    public CatalogPackage(String name, String pkgvers, String depends,
+			String dsize, String repo) {
 	this.name = name;
 	this.pkgvers = pkgvers;
 	this.dsize = dsize;
