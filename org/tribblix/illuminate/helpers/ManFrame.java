@@ -30,13 +30,13 @@ public class ManFrame extends JFrame {
     public ManFrame(String name) {
 	add(new ManPane(name));
 
-	addWindowListener(new winExit());
+	addWindowListener(new WinExit());
 
 	setSize(720, 600);
 	setVisible(true);
     }
 
-    class winExit extends WindowAdapter {
+    class WinExit extends WindowAdapter {
 	@Override
 	public void windowClosing(WindowEvent we) {
 	    dispose();

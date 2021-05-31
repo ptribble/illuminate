@@ -28,7 +28,7 @@ public class Illuminate extends JFrame implements ActionListener {
     public Illuminate() {
 	super("Illuminate");
 
-	addWindowListener(new winExit());
+	addWindowListener(new WinExit());
 
 	JTabbedPane jtp = new JTabbedPane();
 	getContentPane().add(jtp, BorderLayout.CENTER);
@@ -101,7 +101,7 @@ public class Illuminate extends JFrame implements ActionListener {
 	setVisible(true);
     }
 
-    class winExit extends WindowAdapter {
+    class WinExit extends WindowAdapter {
 	@Override
 	public void windowClosing(WindowEvent we) {
 	    JingleMultiFrame.unregister(Illuminate.this);

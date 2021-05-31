@@ -34,7 +34,7 @@ public class MultiView extends JFrame implements ActionListener {
 	super(IlluminateResources.getString(stitle));
 	this.helpfile = helpfile;
 
-	addWindowListener(new winExit());
+	addWindowListener(new WinExit());
 	getContentPane().add(panel, BorderLayout.CENTER);
 
 	JMenuBar jm = new JMenuBar();
@@ -70,7 +70,7 @@ public class MultiView extends JFrame implements ActionListener {
 	setVisible(true);
     }
 
-    class winExit extends WindowAdapter {
+    class WinExit extends WindowAdapter {
 	@Override
 	public void windowClosing(WindowEvent we) {
 	    System.exit(0);
