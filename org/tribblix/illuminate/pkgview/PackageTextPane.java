@@ -25,7 +25,8 @@ package org.tribblix.illuminate.pkgview;
 import javax.swing.JEditorPane;
 import java.awt.Insets;
 import java.awt.Desktop;
-import javax.swing.event.*;
+import javax.swing.event.HyperlinkEvent;
+import javax.swing.event.HyperlinkListener;
 import java.io.File;
 import java.io.IOException;
 

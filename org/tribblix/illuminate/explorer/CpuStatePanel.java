@@ -22,17 +22,30 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.SpringLayout;
+import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
-import java.awt.event.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseAdapter;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.gui.*;
 import org.tribblix.illuminate.IlluminateResources;
 import uk.co.petertribble.jkstat.demo.ProcessorTree;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
 import uk.co.petertribble.jingle.SpringUtilities;
 
 /**

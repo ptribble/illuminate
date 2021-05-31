@@ -22,7 +22,9 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.*;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import java.awt.BorderLayout;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jingle.TableSorter;

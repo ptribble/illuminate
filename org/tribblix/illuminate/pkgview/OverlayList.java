@@ -23,7 +23,11 @@
 package org.tribblix.illuminate.pkgview;
 
 import java.io.File;
-import java.util.*;
+import java.util.List;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * OverlayList - shows available overlays in a JList.

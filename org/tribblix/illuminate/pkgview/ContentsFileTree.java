@@ -24,8 +24,11 @@ package org.tribblix.illuminate.pkgview;
 
 import java.awt.Cursor;
 import javax.swing.JTree;
-import javax.swing.tree.*;
-import javax.swing.event.*;
+import javax.swing.tree.DefaultTreeModel;
+import javax.swing.tree.TreePath;
+import javax.swing.tree.TreeSelectionModel;
+import javax.swing.event.TreeExpansionEvent;
+import javax.swing.event.TreeExpansionListener;
 import java.io.File;
 
 /**

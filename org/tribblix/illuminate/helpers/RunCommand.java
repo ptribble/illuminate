@@ -22,7 +22,10 @@
 
 package org.tribblix.illuminate.helpers;
 
-import java.io.*;
+import java.io.File;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.io.IOException;
 
 /**
  * RunCommand - run a command and return the output.

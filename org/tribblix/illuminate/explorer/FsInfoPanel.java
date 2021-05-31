@@ -22,7 +22,9 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.*;
+import javax.swing.BoxLayout;
+import javax.swing.JPanel;
+import javax.swing.JTable;
 import uk.co.petertribble.jkstat.api.*;
 import org.tribblix.illuminate.InfoCommand;
 

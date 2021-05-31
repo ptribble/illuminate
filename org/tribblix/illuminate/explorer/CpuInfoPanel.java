@@ -22,7 +22,9 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.*;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import uk.co.petertribble.jkstat.api.Kstat;

@@ -25,7 +25,9 @@ package org.tribblix.illuminate.pkgview;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * We parse the contents file and create two hashes.

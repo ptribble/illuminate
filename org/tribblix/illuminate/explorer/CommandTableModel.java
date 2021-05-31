@@ -23,7 +23,7 @@
 package org.tribblix.illuminate.explorer;
 
 import org.tribblix.illuminate.InfoCommand;
-import javax.swing.table.*;
+import javax.swing.table.AbstractTableModel;
 
 /**
  * A Table Model representing the output from a command.

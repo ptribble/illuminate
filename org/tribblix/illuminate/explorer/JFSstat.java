@@ -24,8 +24,14 @@ package org.tribblix.illuminate.explorer;
 
 import java.util.Set;
 import java.util.HashSet;
-import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.ButtonGroup;
+import javax.swing.JCheckBoxMenuItem;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.demo.JKdemo;

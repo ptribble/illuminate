@@ -22,7 +22,10 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeSet;
 import java.io.File;
 import uk.co.petertribble.jumble.JumbleFile;
 import uk.co.petertribble.jumble.JumbleUtils;

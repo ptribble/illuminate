@@ -23,7 +23,11 @@
 package org.tribblix.illuminate.pkgview;
 
 import java.io.File;
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.HashSet;
+import java.util.TreeSet;
 
 /**
  * PkgList - list installed SVR4 packages.

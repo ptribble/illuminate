@@ -23,7 +23,9 @@
 package org.tribblix.illuminate.pkgview;
 
 import java.io.File;
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.TreeMap;
 import uk.co.petertribble.jumble.JumbleFile;
 
 /**

@@ -22,9 +22,12 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.*;
-import javax.swing.tree.*;
-import javax.swing.event.*;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JSplitPane;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.event.TreeSelectionEvent;
+import javax.swing.event.TreeSelectionListener;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import uk.co.petertribble.jkstat.api.JKstat;

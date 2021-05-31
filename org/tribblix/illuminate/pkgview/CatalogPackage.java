@@ -22,7 +22,8 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.util.*;
+import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * Describe an SVR4 package in a catalog.

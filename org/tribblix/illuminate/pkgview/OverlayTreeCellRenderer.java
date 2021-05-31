@@ -22,9 +22,12 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import javax.swing.*;
-import javax.swing.tree.*;
-import java.awt.*;
+import javax.swing.ImageIcon;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
+import java.awt.Component;
+import java.net.URL;
 
 /**
  * Adds tooltips and custom icons to an overlay/package tree.
@@ -88,7 +91,7 @@ public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
      * Based on the Java Swing tutorial examples.
      */
     private ImageIcon createImageIcon(String s) {
-	java.net.URL imgURL = getClass().getResource(s);
+	URL imgURL = getClass().getResource(s);
 	return (imgURL == null) ? null : new ImageIcon(imgURL);
     }
 }

@@ -24,7 +24,10 @@ package org.tribblix.illuminate.explorer;
 
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import javax.swing.SwingConstants;
 

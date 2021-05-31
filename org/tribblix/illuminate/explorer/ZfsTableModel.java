@@ -23,7 +23,7 @@
 package org.tribblix.illuminate.explorer;
 
 import java.util.Set;
-import javax.swing.table.*;
+import javax.swing.table.AbstractTableModel;
 
 /**
  * A Table Model representing zfs properties.

@@ -22,9 +22,13 @@
 
 package org.tribblix.illuminate.explorer;
 
-import java.util.*;
-import javax.swing.*;
-import javax.swing.tree.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.Set;
+import java.util.TreeSet;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeModel;
 import uk.co.petertribble.jkstat.api.*;
 import uk.co.petertribble.jkstat.demo.ProcessorTree;
 import org.tribblix.illuminate.IlluminateResources;

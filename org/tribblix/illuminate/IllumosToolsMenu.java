@@ -22,10 +22,14 @@
 
 package org.tribblix.illuminate;
 
-import javax.swing.*;
-import java.awt.event.*;
+import javax.swing.JMenu;
+import javax.swing.JMenuItem;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import org.tribblix.illuminate.helpers.RunInXterm;
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
 import java.io.File;
 
 /**
