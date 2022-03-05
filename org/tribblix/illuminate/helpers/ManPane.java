@@ -200,7 +200,7 @@ public class ManPane extends JEditorPane
 		if (ev.getURL() != null && Desktop.isDesktopSupported()) {
 		    try {
 			Desktop.getDesktop().browse(ev.getURL().toURI());
-		    } catch (Exception e) {
+		    } catch (Exception e) { //NOPMD
 			try {
 			    if (browserExe == null) {
 				for (String b : browsers) {

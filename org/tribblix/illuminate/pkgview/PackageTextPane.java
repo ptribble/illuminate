@@ -72,7 +72,7 @@ public class PackageTextPane extends JEditorPane implements HyperlinkListener {
 		&& Desktop.isDesktopSupported()) {
 	    try {
 		Desktop.getDesktop().browse(ev.getURL().toURI());
-	    } catch (Exception e) {
+	    } catch (Exception e) { //NOPMD
 		try {
 		    if (browserExe == null) {
 			for (String b : browsers) {
