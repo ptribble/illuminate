@@ -245,25 +245,6 @@ public class CpuInfoPanel extends InfoPanel {
     }
 
     /*
-     * How many threads per core? If it's the same for all cores, return
-     * that, otherwise -1. This across all chips.
-     */
-    private int threadsPerCore() {
-	int imin = 0;
-	int imax = Integer.MAX_VALUE;
-	for (Long l : proctree.getChips()) {
-	    int i = threadsPerCore(l);
-	    if (i > imin) {
-		imin = i;
-	    }
-	    if (i < imax) {
-		imax = i;
-	    }
-	}
-	return imin == imax ? imax : -1;
-    }
-
-    /*
      * A prettier version of chipDetails in ProcessorTree, handling the
      * case where all cores have the same thread count more elegantly.
      */
