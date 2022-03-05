@@ -35,6 +35,9 @@ import uk.co.petertribble.jumble.JumbleFile;
  */
 public class ZapConfig {
 
+    /**
+     * This is the directory where zap configuration is stored.
+     */
     public static final String ZAP_ROOT = "/etc/zap";
 
     private boolean zapexists;
@@ -65,7 +68,12 @@ public class ZapConfig {
 	}
     }
 
-    public Map getRepos() {
+    /**
+     * Returns a Map of zap repositories, keyed by rank.
+     *
+     * @return a Map of zap repositories
+     */
+    public Map <Integer, ZapRepository> getRepos() {
 	return repoMap;
     }
 

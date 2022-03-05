@@ -38,6 +38,11 @@ public class ContentsFileTreeNode extends DefaultMutableTreeNode {
     private boolean explored;
     private File file;
 
+    /**
+     * Create a node for the given pathname.
+     *
+     * @param file The File representing the current pathname.
+     */
     public ContentsFileTreeNode(File file) {
 	this.file = file;
 	setUserObject(file);
@@ -56,6 +61,11 @@ public class ContentsFileTreeNode extends DefaultMutableTreeNode {
 	return isLink() || !file.isDirectory();
     }
 
+    /**
+     * Track whether we've already descended below this point.
+     *
+     * @return true if this file has been explored.
+     */
     public boolean isExplored() {
 	return explored;
     }
@@ -77,6 +87,10 @@ public class ContentsFileTreeNode extends DefaultMutableTreeNode {
 	}
     }
 
+    /**
+     * Traverse the directory tree from this point. Stop if any problem
+     * is encountered.
+     */
     public void explore() {
 	if (file.isDirectory() && !explored) {
 	    /*

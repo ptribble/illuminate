@@ -32,6 +32,9 @@ import org.tribblix.illuminate.helpers.RunCommand;
  */
 public class SmfServiceList extends Vector <SmfService> {
 
+    /**
+     * Create a list of SMF services for the current system.
+     */
     public SmfServiceList() {
 	RunCommand svcs = new RunCommand("/usr/bin/svcs -aH");
 	// parse the svcs output to get the service name and status

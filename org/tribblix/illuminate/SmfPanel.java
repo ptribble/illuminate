@@ -46,6 +46,9 @@ import java.awt.event.MouseListener;
  */
 public class SmfPanel extends JPanel {
 
+    /**
+     * The panel showing the information for services.
+     */
     private final SmfInfoPanel sip;
 
     /**
@@ -96,6 +99,10 @@ public class SmfPanel extends JPanel {
 	setCursor(c);
     }
 
+    /**
+     * A MouseListener so that clicking on a service in the menu will show its
+     * information.
+     */
     MouseListener mouseListener = new MouseAdapter() {
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -104,6 +111,10 @@ public class SmfPanel extends JPanel {
 	}
     };
 
+    /**
+     * A KeyListener so that selecting a service in the menu will show its
+     * information.
+     */
     KeyListener keyListener = new KeyAdapter() {
 	@Override
 	public void keyPressed(KeyEvent e) {

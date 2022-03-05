@@ -97,7 +97,7 @@ public class PackageInformationPanel extends JTabbedPane {
 	if (pkg.isInstalled()) {
 	    setInfoText(PkgUtils.infoTable(pkg, zc),
 		    PkgUtils.dependencyTable(pkg),
-		    revDeps(pkg));
+		    revDeps(pkg.getDependantSet()));
 	} else {
 	    setInfoText("Not installed", "", "");
 	}
@@ -113,19 +113,15 @@ public class PackageInformationPanel extends JTabbedPane {
     public void showOverlay(Overlay ovl) {
 	setOvlTab(PkgResources.getString("PKG.PACKAGES"));
 	setInfoText(PkgUtils.infoTable(ovl),
-		    PkgUtils.dependencyTable(ovl), ovlDeps(ovl));
+		    PkgUtils.dependencyTable(ovl),
+		    ovlDeps(ovlist.containingOverlays(ovl)));
 	setOverlayText(PkgUtils.overlayMembers(ovl));
 	disableFiles();
     }
 
-    private String ovlDeps(Overlay ovl) {
-	return ovlDeps("Depending on this overlay:",
-		    ovlist.containingOverlays(ovl));
-    }
-
-    private String ovlDeps(String title, Set <Overlay> ovls) {
+    private String ovlDeps(Set <Overlay> ovls) {
 	StringBuilder sb = new StringBuilder(105);
-	PkgUtils.headRow2(sb, title);
+	PkgUtils.headRow2(sb, "Depending on this overlay:");
 	if (ovls != null) {
 	    for (Overlay ovl : ovls) {
 		PkgUtils.addRow(sb, ovl.getName(), ovl.getDescription());
@@ -134,13 +130,9 @@ public class PackageInformationPanel extends JTabbedPane {
 	return PkgUtils.wrapTable(sb);
     }
 
-    private String revDeps(SVR4Package pkg) {
-	return revDeps("Depending on this package:", pkg.getDependantSet());
-    }
-
-    private String revDeps(String title, Set <SVR4Package> pkgs) {
+    private String revDeps(Set <SVR4Package> pkgs) {
 	StringBuilder sb = new StringBuilder(93);
-	PkgUtils.headRow(sb, title);
+	PkgUtils.headRow(sb, "Depending on this package:");
 	if (pkgs != null) {
 	    for (SVR4Package pkg : pkgs) {
 		PkgUtils.addRow(sb, pkg.getName());

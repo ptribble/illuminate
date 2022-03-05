@@ -52,12 +52,33 @@ import uk.co.petertribble.jumble.JumbleFile;
  */
 public class SmfInfoPanel extends JPanel implements ActionListener {
 
+    /**
+     * A panel to show service status.
+     */
     private final JingleTextPane tp;
+    /**
+     * A panel to show the log file.
+     */
     private final JingleTextPane tpl;
+    /**
+     * A panel to show dependencies.
+     */
     private final JingleTextPane dtp;
+    /**
+     * The main tabbed pane.
+     */
     private final JTabbedPane jtp;
+    /**
+     * A panel to show the process list.
+     */
     private final JPinfoTable jpi;
+    /**
+     * The log file for the displayed SMF service.
+     */
     private File logfile;
+    /**
+     * A JPanel to hold buttons that will launch display of man pages.
+     */
     private final JPanel manButtonPanel;
 
     /**

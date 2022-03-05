@@ -64,18 +64,38 @@ public class ZapRepository {
 	}
     }
 
+    /**
+     * Get the name of this zap repository.
+     *
+     * @return the zap repository's name.
+     */
     public String getName() {
 	return repoNAME;
     }
 
+    /**
+     * Get the description of this zap repository.
+     *
+     * @return the zap repository's description.
+     */
     public String getDescription() {
 	return repoDESC;
     }
 
+    /**
+     * Get the URL of this zap repository.
+     *
+     * @return the zap repository's URL.
+     */
     public String getURL() {
 	return repoURL;
     }
 
+    /**
+     * Get the signer of packages in this zap repository, if any.
+     *
+     * @return the signer of packages in this zap repository.
+     */
     public String getSIGNED() {
 	return repoSIGNED;
     }

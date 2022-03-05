@@ -45,6 +45,18 @@ public class ZoneEntry {
     // attributes derived if necessary
     private Set <ZoneNet> netconfig;
 
+    /**
+     * Create a ZoneEntry to describe a zone's configuration. Basic
+     * properties are as given by zoneadm list.
+     *
+     * @param zid the zone id
+     * @param zname the zone name
+     * @param zstate the zone state
+     * @param zroot the zone root
+     * @param zuuid the zone's uuid
+     * @param zbrand the zone's brand
+     * @param ziptype the zone's ip type, shared or exclusive
+     */
     public ZoneEntry(int zid, String zname, String zstate, String zroot,
 		String zuuid, String zbrand, String ziptype) {
 	this.zid = zid;

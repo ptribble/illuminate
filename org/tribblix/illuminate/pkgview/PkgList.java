@@ -68,10 +68,23 @@ public class PkgList extends TreeSet <SVR4Package> {
 	}
     }
 
+    /**
+     * Return a Set of installed package names.
+     *
+     * @return a Set of installed package names
+     */
     public Set <String> getPackageNames() {
 	return new TreeSet <String> (pkgMap.keySet());
     }
 
+    /**
+     * Return the SVR4Package of the given name.
+     *
+     * @param name the name of the requested package
+     *
+     * @return the SVR4Package of the name, or null if no such package
+     * is installed.
+     */
     public SVR4Package getPackage(String name) {
 	return pkgMap.get(name);
     }

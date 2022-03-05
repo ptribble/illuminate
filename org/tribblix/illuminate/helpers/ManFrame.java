@@ -26,8 +26,16 @@ import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import javax.swing.JFrame;
 
+/**
+ * A window to display a manual page.
+ */
 public class ManFrame extends JFrame {
 
+    /**
+     * Create a window to display a manual page
+     *
+     * @param name the name of the manual page to display
+     */
     public ManFrame(String name) {
 	add(new ManPane(name));
 

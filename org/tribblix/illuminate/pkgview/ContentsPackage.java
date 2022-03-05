@@ -37,16 +37,30 @@ public class ContentsPackage {
     private Set <ContentsFileDetail> fileset;
     private ContentsParser cp;
 
+    /**
+     * Create a new empty ContentsPackage.
+     */
     public ContentsPackage() {
 	fileset = new HashSet <ContentsFileDetail> ();
     }
 
+    /**
+     * Create a new ContentsPackage containing the files from the
+     * given overlay.
+     *
+     * @param ovl the overlay whose files will populate this ContentsPackage
+     */
     public ContentsPackage(Overlay ovl) {
 	fileset = new HashSet <ContentsFileDetail> ();
-	cp = ContentsParser.getInstance();
+	cp = ContentsParser.getInstance("/");
 	addPkgFiles(ovl);
     }
 
+    /**
+     * Add a file.
+     *
+     * @param cfd the ContentsFileDetail to add.
+     */
     public void addFile(ContentsFileDetail cfd) {
 	fileset.add(cfd);
     }
@@ -64,10 +78,20 @@ public class ContentsPackage {
 	}
     }
 
+    /**
+     * Returns the number of entries in this ContentsPackage.
+     *
+     * @return the number of entries
+     */
     public int numEntries() {
 	return fileset.size();
     }
 
+    /**
+     * Returns the number of files in this ContentsPackage.
+     *
+     * @return the number of files
+     */
     public int numFiles() {
 	int i = 0;
 	for (ContentsFileDetail cfd : fileset) {
@@ -78,6 +102,11 @@ public class ContentsPackage {
 	return i;
     }
 
+    /**
+     * Returns the number of directories in this ContentsPackage.
+     *
+     * @return the number of directories
+     */
     public int numDirectories() {
 	int i = 0;
 	for (ContentsFileDetail cfd : fileset) {
@@ -88,8 +117,11 @@ public class ContentsPackage {
 	return i;
     }
 
-    /*
-     * pkginfo -l reports "linked files" just for hard links
+    /**
+     * Returns the number of hard links in this ContentsPackage. This is what
+     * pkginfo -l refers to as linked files.
+     *
+     * @return the number of hard linkes
      */
     public int numHardLinks() {
 	int i = 0;
@@ -101,6 +133,11 @@ public class ContentsPackage {
 	return i;
     }
 
+    /**
+     * Returns the number of symbolic links in this ContentsPackage.
+     *
+     * @return the number of symbolic links
+     */
     public int numSymLinks() {
 	int i = 0;
 	for (ContentsFileDetail cfd : fileset) {
@@ -111,8 +148,10 @@ public class ContentsPackage {
 	return i;
     }
 
-    /*
-     * Devices
+    /**
+     * Returns the number of device files in this ContentsPackage.
+     *
+     * @return the number of devices
      */
     public int numDevices() {
 	int i = 0;
@@ -124,8 +163,11 @@ public class ContentsPackage {
 	return i;
     }
 
-    /*
-     * Shared files - contained in more than one package
+    /**
+     * Returns the number of shared files in this ContentsPackage, that is,
+     * files contained in more than one packegs.
+     *
+     * @return the number of shared files
      */
     public int numShared() {
 	int i = 0;
@@ -137,8 +179,10 @@ public class ContentsPackage {
 	return i;
     }
 
-    /*
-     * Add up the space used
+    /**
+     * Return the space used by the files in this ContentsPackage
+     *
+     * @return the space used by the files in this ContentsPackage
      */
     public long spaceUsed() {
 	long l = 0;

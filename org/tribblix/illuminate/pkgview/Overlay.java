@@ -103,6 +103,11 @@ public class Overlay implements Comparable<Overlay> {
 	}
     }
 
+    /**
+     * Returnsthea description of this Overlay.
+     *
+     * @return a String description of this overlay
+     */
     public String getDescription() {
 	return description;
     }
@@ -112,10 +117,20 @@ public class Overlay implements Comparable<Overlay> {
 	return name;
     }
 
+    /**
+     * Returns the version of this Overlay.
+     *
+     * @return the version of this overlay as a String
+     */
     public String getVersion() {
 	return oversion;
     }
 
+    /**
+     * Returns the name of this Overlay.
+     *
+     * @return a name of this overlay as a String
+     */
     public String getName() {
 	return name;
     }

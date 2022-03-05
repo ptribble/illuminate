@@ -49,9 +49,21 @@ import uk.co.petertribble.jingle.JingleTextPane;
  */
 public class InfoCommandPanel extends JPanel implements ActionListener {
 
+    /**
+     * The JingleTextPane where we send output.
+     */
     private JingleTextPane tp;
+    /**
+     * A label for the current command.
+     */
     private JLabel jcl;
+    /**
+     * A JButton to display the manual page for the current command.
+     */
     private JButton jmb;
+    /**
+     * Track the current command we're dispalying.
+     */
     private InfoCommand currentCmd;
 
     /**
@@ -103,6 +115,10 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
 	}
     }
 
+    /**
+     * A MouseListener so that clicking on a command in the menu will show its
+     * output.
+     */
     MouseListener mouseListener = new MouseAdapter() {
 	@Override
 	public void mouseClicked(MouseEvent e) {
@@ -112,6 +128,10 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
 	}
     };
 
+    /**
+     * A KeyListener so that selecting a command in the menu will show its
+     * output.
+     */
     KeyListener keyListener = new KeyAdapter() {
 	@Override
 	public void keyPressed(KeyEvent e) {

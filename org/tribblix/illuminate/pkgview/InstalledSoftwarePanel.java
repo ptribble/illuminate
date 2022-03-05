@@ -44,6 +44,11 @@ public class InstalledSoftwarePanel extends JTabbedPane {
     OverlayPanel ovp;
     InstalledFilesPanel ifp;
 
+    /**
+     * Create a panel to display installed software.
+     *
+     * @param altroot An alternate root directory for this OS image
+     */
     public InstalledSoftwarePanel(String altroot) {
 	this.altroot = altroot;
 	zc = new ZapConfig(altroot);

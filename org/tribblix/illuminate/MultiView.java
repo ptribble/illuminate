@@ -24,9 +24,21 @@ import uk.co.petertribble.jingle.JingleInfoFrame;
  */
 public class MultiView extends JFrame implements ActionListener {
 
+    /**
+     * A JMenuItem to exit the application.
+     */
     private final JMenuItem exitItem;
+    /**
+     * A JMenuItem to show help.
+     */
     private final JMenuItem helpItem;
+    /**
+     * A JMenuItem to show the license.
+     */
     private final JMenuItem licenseItem;
+    /**
+     * The name of teh help file.
+     */
     private final String helpfile;
 
     /**

@@ -39,6 +39,9 @@ import java.io.File;
  */
 public class IllumosToolsMenu extends JMenu implements ActionListener {
 
+    /**
+     * A Map to track the tools that have been successfully added.
+     */
     private final Map <String, String> toolMap =
 	new HashMap <String, String> ();
 

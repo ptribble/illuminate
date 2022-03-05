@@ -28,12 +28,30 @@ import uk.co.petertribble.jkstat.demo.KstatToolsMenu;
  */
 public class Illuminate extends JFrame implements ActionListener {
 
+    /**
+     * A menu item to exit illuminate.
+     */
     private final JMenuItem exitItem;
+    /**
+     * A menu item to create a new illuminate window.
+     */
     private final JMenuItem cloneItem;
+    /**
+     * A menu item to close this illuminate window.
+     */
     private final JMenuItem closeItem;
+    /**
+     * A menu item to show the help window.
+     */
     private final JMenuItem helpItem;
+    /**
+     * A menu item to show the license window.
+     */
     private final JMenuItem licenseItem;
 
+    /**
+     * Instantiate a copy of Illuminate.
+     */
     public Illuminate() {
 	super("Illuminate");
 

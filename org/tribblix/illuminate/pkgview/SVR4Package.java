@@ -38,6 +38,9 @@ import uk.co.petertribble.jumble.JumbleUtils;
  */
 public class SVR4Package implements Comparable<SVR4Package> {
 
+    /**
+     * This is where SVR4 pcakaging metadata is stored.
+     */
     public static final String PKG_ROOT = "/var/sadm/pkg";
 
     private File pkgrootf;

@@ -73,6 +73,14 @@ public class CatalogParser {
 	}
     }
 
+    /**
+     * Return the CatalogPackage for the requested package.
+     *
+     * @param name the name of the packge of interest
+     *
+     * @return the CatalogPackage for the given package, or null if there
+     * is no entry for the requested package.
+     */
     public CatalogPackage getPackage(String name) {
 	return pkgMap.get(name);
     }

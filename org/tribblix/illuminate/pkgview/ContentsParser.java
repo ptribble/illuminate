@@ -54,23 +54,22 @@ public class ContentsParser {
      *
      * @param altroot  An alternate root directory for this OS image
      */
-    public ContentsParser(String altroot) {
+    private ContentsParser(String altroot) {
 	fileHash = new HashMap <String, ContentsFileDetail> (65536);
 	pkgHash = new HashMap <String, ContentsPackage> (2048);
 	parse(altroot);
     }
 
+    /**
+     * Get the singleton instance of the contents file.
+     *
+     * @param altroot  An alternate root directory for this OS image
+     *
+     * @return the singleton instance of the contents file.
+     */
     public static synchronized ContentsParser getInstance(String altroot) {
 	if (cpinstance == null) {
 	    cpinstance = new ContentsParser(altroot);
-	}
-	return cpinstance;
-    }
-
-    // FIXME remove this
-    public static synchronized ContentsParser getInstance() {
-	if (cpinstance == null) {
-	    cpinstance = new ContentsParser("/");
 	}
 	return cpinstance;
     }
@@ -111,18 +110,44 @@ public class ContentsParser {
 	} catch (IOException ioe) {}
     }
 
+    /**
+     * Return the Set of all paths in the contents file.
+     *
+     * @return the Set of all paths in the contents file
+     */
     public Set <String> getPaths() {
 	return fileHash.keySet();
     }
 
+    /**
+     * Get the details of a particular path name.
+     *
+     * @param s the path name to return details of
+     *
+     * @return the corresponding ContentsFileDetail
+     */
     public ContentsFileDetail getFileDetail(String s) {
 	return fileHash.get(s);
     }
 
+    /**
+     * Get the details of a particular package.
+     *
+     * @param pkgname the package name to return details of
+     *
+     * @return the corresponding ContentsPackage
+     */
     public ContentsPackage getPackage(String pkgname) {
 	return pkgHash.get(pkgname);
     }
 
+    /**
+     * Get the details of a particular overlay.
+     *
+     * @param ovl the overlay name to return details of
+     *
+     * @return the corresponding ContentsPackage
+     */
     public ContentsPackage getOverlay(Overlay ovl) {
 	return new ContentsPackage(ovl);
     }

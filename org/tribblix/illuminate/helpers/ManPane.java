@@ -48,14 +48,20 @@ import java.util.Locale;
 public class ManPane extends JEditorPane
 		implements ActionListener, HyperlinkListener {
 
-    /*
-     * navigation controls
+    /**
+     * A JLabel with the name of the manual page being displayed.
      */
     private JLabel manLabel;
+    /**
+     * A JButton to go back to the previous page.
+     */
     private JButton backButton;
+    /**
+     * The JEditorPane with the man page content.
+     */
     private JEditorPane jep;
 
-    /*
+    /**
      * list of opened pages for history
      */
     private List <File> historyList;
@@ -100,6 +106,11 @@ public class ManPane extends JEditorPane
 	showMan(m);
     }
 
+    /**
+     * Display a new manual page in place of the current one.
+     *
+     * @param m the name of the new manual page to be displayed.
+     */
     public void showMan(String m) {
 	showMan(findManPage(m));
     }

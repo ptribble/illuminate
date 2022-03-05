@@ -34,7 +34,13 @@ import java.util.HashSet;
  */
 public class SmfTreeNode extends DefaultMutableTreeNode {
 
+    /**
+     * The service underlying this SmfTreeNode
+     */
     private SmfService svc;
+    /**
+     * The display name of this SmfTreeNode
+     */
     private final String node;
 
     /**
