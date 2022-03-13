@@ -27,7 +27,7 @@ import java.util.ResourceBundle;
 /**
  * A handler for resource bundles.
  */
-public class IlluminateResources {
+public final class IlluminateResources {
 
     private static final ResourceBundle illuminateres =
 			ResourceBundle.getBundle("properties/illuminate");

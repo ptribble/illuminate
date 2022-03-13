@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
  *
  * @author Peter Tribble
  */
-public class PkgResources {
+public final class PkgResources {
 
     private static final ResourceBundle pkgres =
 			ResourceBundle.getBundle("properties/pkgview");

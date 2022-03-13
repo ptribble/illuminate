@@ -33,7 +33,7 @@ import org.tribblix.illuminate.InfoCommand;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ZoneConfig {
+public final class ZoneConfig {
     private static final ZoneConfig INSTANCE = new ZoneConfig();
 
     private Set <String> zones;

@@ -31,7 +31,7 @@ import org.tribblix.illuminate.InfoCommand;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ZFSconfig {
+public final class ZFSconfig {
     private static final ZFSconfig INSTANCE = new ZFSconfig();
 
     private Set <Zpool> zpools;

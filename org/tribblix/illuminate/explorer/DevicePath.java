@@ -36,7 +36,7 @@ import uk.co.petertribble.jumble.JumbleFile;
  * @author Peter Tribble
  * @version 1.0
  */
-public class DevicePath {
+public final class DevicePath {
 
     private static final DevicePath INSTANCE = new DevicePath();
     private static Map <String, String> dMap = new HashMap <String, String> ();

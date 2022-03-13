@@ -40,7 +40,7 @@ import java.io.IOException;
  * The second hash is by package. The key is the package name,
  * and the value is a List of ContentsFileDetail's.
  */
-public class ContentsParser {
+public final class ContentsParser {
 
     private static ContentsParser cpinstance;
 
