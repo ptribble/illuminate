@@ -34,8 +34,8 @@ import java.io.IOException;
  */
 public class RunCommand {
 
-    private StringBuilder stdout;
-    private StringBuilder stderr;
+    private StringBuilder stdout; //NOPMD
+    private StringBuilder stderr; //NOPMD
 
     /**
      * Run a command and record its output.
