@@ -118,7 +118,7 @@ public class PkgUtils {
 	// the fixed text here varies from 37 to 51 characters
 	// overlay names are between 3 and 20 characters
 	StringBuilder sbh = new StringBuilder(70);
-	sbh.append("Overlay " + ovl.getName());
+	sbh.append("Overlay ").append(ovl.getName());
 	if (ovl.isInstalled()) {
 	    if (ovl.isComplete()) {
 		sbh.append(" is installed and complete.");
@@ -197,8 +197,7 @@ public class PkgUtils {
 	if (cp != null) {
 	    ContentsPackage cpp = cp.getPackage(pkg.getName());
 	    if (cpp != null) {
-		sb.append(doDetailTable(cpp));
-		sb.append(doFileList(cpp));
+		sb.append(doDetailTable(cpp)).append(doFileList(cpp));
 	    }
 	}
 	return sb.toString();
@@ -235,50 +234,37 @@ public class PkgUtils {
 
     static public void headRow(StringBuilder sb, String s1, String s2) {
 	// adds 46 characters to the string
-	sb.append("<tr bgcolor=\"#eeeeee\"><th>");
-	sb.append(s1);
-	sb.append("</th><th>");
-	sb.append(s2);
-	sb.append("</th></tr>\n");
+	sb.append("<tr bgcolor=\"#eeeeee\"><th>").append(s1)
+	    .append("</th><th>").append(s2).append("</th></tr>\n");
     }
 
     static public void headRow2(StringBuilder sb, String s) {
 	// adds 49 characters to the string
-	sb.append("<tr bgcolor=\"#eeeeee\"><th colspan=\"2\">");
-	sb.append(s);
-	sb.append("</th></tr>\n");
+	sb.append("<tr bgcolor=\"#eeeeee\"><th colspan=\"2\">").append(s)
+	    .append("</th></tr>\n");
     }
 
     static public void headRow(StringBuilder sb, String s) {
 	// adds 37 characters to the string
-	sb.append("<tr bgcolor=\"#eeeeee\"><th>");
-	sb.append(s);
-	sb.append("</th></tr>\n");
+	sb.append("<tr bgcolor=\"#eeeeee\"><th>").append(s)
+	    .append("</th></tr>\n");
     }
 
     static public void addRow(StringBuilder sb, String s) {
 	// adds 19 characters to the string
-	sb.append("<tr><td>");
-	sb.append(s);
-	sb.append("</td></tr>\n");
+	sb.append("<tr><td>").append(s).append("</td></tr>\n");
     }
 
     static public void addRow(StringBuilder sb, String s1, long l) {
 	// adds 28 characters to the string
-	sb.append("<tr><td>");
-	sb.append(s1);
-	sb.append("</td><td>");
-	sb.append(l);
-	sb.append("</td></tr>\n");
+	sb.append("<tr><td>").append(s1).append("</td><td>").append(l)
+	    .append("</td></tr>\n");
     }
 
     static public void addRow(StringBuilder sb, String s1, String s2) {
 	// adds 28 characters to the string
-	sb.append("<tr><td>");
-	sb.append(s1);
-	sb.append("</td><td>");
-	sb.append(s2);
-	sb.append("</td></tr>\n");
+	sb.append("<tr><td>").append(s1).append("</td><td>").append(s2)
+	    .append("</td></tr>\n");
     }
 
     static public String wrapTable(StringBuilder sb) {
@@ -297,8 +283,7 @@ public class PkgUtils {
 	    iscale++;
 	    dspace /= 1024.0;
 	}
-	sb.append(df.format(dspace));
-	sb.append(' ');
+	sb.append(df.format(dspace)).append(' ');
 	switch (iscale) {
 	    case 0:
 		sb.append(PkgResources.getString("PKGUTILS.BYTES"));

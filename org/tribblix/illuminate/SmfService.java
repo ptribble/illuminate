@@ -248,20 +248,22 @@ public class SmfService implements Comparable<SmfService> {
 	    return null;
 	}
 	StringBuilder sb = new StringBuilder(200);
-	sb.append("<h3>").append(getName()).append("</h3>");
-	sb.append("<p bgcolor=\"#cccccc\">");
-	sb.append("<b>Services this service depends on</b></p>");
-	sb.append("<pre>").append(getDependencies()).append("</pre>");
-	sb.append("<p bgcolor=\"#cccccc\">");
-	sb.append("<b>Services that depend on this service</b></p>");
-	sb.append("<pre>").append(getDependents()).append("</pre>");
+	sb.append("<h3>")
+	    .append(getName())
+	    .append("</h3><p bgcolor=\"#cccccc\">"
+		    +"<b>Services this service depends on</b></p><pre>")
+	    .append(getDependencies())
+	    .append("</pre><p bgcolor=\"#cccccc\">"
+		    +"<b>Services that depend on this service</b></p><pre>")
+	    .append(getDependents())
+	    .append("</pre>");
 	return sb.toString();
     }
 
     /**
      * Produce an html formatted table describing this service.
      *
-     * @return an html formatted table describing tis service
+     * @return an html formatted table describing this service
      */
     public String getHtmlInfo() {
 	if ("legacy_run".equals(status)) {
@@ -271,11 +273,11 @@ public class SmfService implements Comparable<SmfService> {
 	    if (fl == null) {
 		sb.append("This is an unknown legacy script.</b></p>");
 	    } else {
-		sb.append("This is a legacy script, file name ");
-		sb.append(fl.getPath());
-		sb.append("</b></p><pre>\n\n\nScript Contents:\n\n");
-		sb.append(JumbleFile.getStringContents(fl));
-		sb.append("</pre>\n");
+		sb.append("This is a legacy script, file name ")
+		    .append(fl.getPath())
+		    .append("</b></p><pre>\n\n\nScript Contents:\n\n")
+		    .append(JumbleFile.getStringContents(fl))
+		    .append("</pre>\n");
 	    }
 	    return sb.toString();
 	} else {

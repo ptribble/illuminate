@@ -132,11 +132,12 @@ public class InfoCommand {
      * @return a html String representing the command
      */
     public String infoLabel() {
-	StringBuilder sb = new StringBuilder();
-	sb.append("<html>");
-	sb.append(IlluminateResources.getString("INFO.OUTPUT.TEXT"));
-	sb.append(": <b>").append(fullcmd);
-	sb.append("</b></html>");
+	StringBuilder sb = new StringBuilder(32);
+	sb.append("<html>")
+	    .append(IlluminateResources.getString("INFO.OUTPUT.TEXT"))
+	    .append(": <b>")
+	    .append(fullcmd)
+	    .append("</b></html>");
 	return sb.toString();
     }
 }

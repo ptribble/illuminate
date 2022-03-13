@@ -200,9 +200,9 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
 	Cursor c = getCursor();
 	setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	StringBuilder sb = new StringBuilder();
-	sb.append("<pre>\n");
-	sb.append(JumbleFile.getStringContents(logfile));
-	sb.append("</pre>\n");
+	sb.append("<pre>\n")
+	    .append(JumbleFile.getStringContents(logfile))
+	    .append("</pre>\n");
 	tpl.setText(sb.toString());
 	setCursor(c);
     }
