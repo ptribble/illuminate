@@ -60,6 +60,7 @@ public class ContentsFileTree extends JTree {
 	addTreeExpansionListener(new TreeExpansionListener() {
 	    @Override
 	    public void treeCollapsed(TreeExpansionEvent e) {
+		// nothing to do
 	    }
 	    @Override
 	    public void treeExpanded(TreeExpansionEvent e) {

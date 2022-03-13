@@ -67,9 +67,11 @@ public class InfoPanel extends JPanel {
     }
 
     /**
-     * Stop the panel updating.
+     * Stop the panel updating. Extending classes should override this method
+     * to stop updates of any of their component panels.
      */
     public void stopLoop() {
+	// implementation here
     }
 
     /**
