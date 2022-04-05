@@ -43,29 +43,29 @@ public class InfoCommandList extends Vector <InfoCommand> {
 	InfoCommand ic =
 	    new InfoCommand(IlluminateResources.getString("INFO.BEADM"),
 		"/usr/sbin/beadm", "list");
-	ic.setManpage("beadm.1m");
+	ic.setManpage("beadm.8");
 	addCommand(ic);
 	if (inglobal) {
 	    ic = new InfoCommand(IlluminateResources.getString("INFO.CFGADM"),
 		"/usr/sbin/cfgadm");
-	    ic.setManpage("cfgadm.1m");
+	    ic.setManpage("cfgadm.8");
 	    addCommand(ic);
 	}
 	ic = new InfoCommand(IlluminateResources.getString("INFO.CONN"),
 		"/usr/bin/connstat");
-	ic.setManpage("connstat.1m");
+	ic.setManpage("connstat.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.CORE"),
 		"/usr/bin/coreadm");
-	ic.setManpage("coreadm.1m");
+	ic.setManpage("coreadm.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.DF"),
 		"/usr/sbin/df", "-kl");
-	ic.setManpage("df.1m");
+	ic.setManpage("df.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.IOSTAT"),
 		"/usr/bin/iostat", "-En");
-	ic.setManpage("iostat.1m");
+	ic.setManpage("iostat.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.HOSTID"),
 		"/usr/bin/hostid");
@@ -73,11 +73,11 @@ public class InfoCommandList extends Vector <InfoCommand> {
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.IFCONFIG"),
 		"/usr/sbin/ifconfig", "-a");
-	ic.setManpage("ifconfig.1m");
+	ic.setManpage("ifconfig.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.INETADM"),
 		"/usr/sbin/inetadm");
-	ic.setManpage("inetadm.1m");
+	ic.setManpage("inetadm.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.ISA"),
 		"/usr/bin/isainfo", "-v");
@@ -85,11 +85,11 @@ public class InfoCommandList extends Vector <InfoCommand> {
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.MOD"),
 		"/usr/sbin/modinfo");
-	ic.setManpage("modinfo.1m");
+	ic.setManpage("modinfo.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.NSCD"),
 		"/usr/sbin/nscd", "-g");
-	ic.setManpage("nscd.1m");
+	ic.setManpage("nscd.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.NTP"),
 		"/usr/sbin/ntpq", "-p");
@@ -103,50 +103,50 @@ public class InfoCommandList extends Vector <InfoCommand> {
 	if (inglobal) {
 	    ic = new InfoCommand(IlluminateResources.getString("INFO.EEPROM"),
 		"/usr/sbin/eeprom");
-	    ic.setManpage("eeprom.1m");
+	    ic.setManpage("eeprom.8");
 	    addCommand(ic);
 	    ic = new InfoCommand(IlluminateResources.getString("INFO.PRTCONF"),
 		"/usr/sbin/prtconf");
-	    ic.setManpage("prtconf.1m");
+	    ic.setManpage("prtconf.8");
 	    addCommand(ic);
 	    ic = new InfoCommand(IlluminateResources.getString("INFO.PRTDIAG"),
 		"/usr/sbin/prtdiag");
-	    ic.setManpage("prtdiag.1m");
+	    ic.setManpage("prtdiag.8");
 	    addCommand(ic);
 	    ic = new InfoCommand(IlluminateResources.getString("INFO.PRTFRU"),
 		"/usr/sbin/prtfru");
-	    ic.setManpage("prtfru.1m");
+	    ic.setManpage("prtfru.8");
 	    addCommand(ic);
 	    ic = new InfoCommand(IlluminateResources.getString("INFO.PRTPICL"),
 		"/usr/sbin/prtpicl");
-	    ic.setManpage("prtpicl.1m");
+	    ic.setManpage("prtpicl.8");
 	    addCommand(ic);
 	    ic = new InfoCommand(IlluminateResources.getString("INFO.PSRINFO"),
 		"/usr/sbin/psrinfo", "-v");
-	    ic.setManpage("psrinfo.1m");
+	    ic.setManpage("psrinfo.8");
 	    addCommand(ic);
 	    ic = new InfoCommand(IlluminateResources.getString("INFO.ROUTE"),
 		"/sbin/routeadm");
-	    ic.setManpage("routeadm.1m");
+	    ic.setManpage("routeadm.8");
 	    addCommand(ic);
 	}
 	ic = new InfoCommand(IlluminateResources.getString("INFO.RPC"),
 		"/usr/bin/rpcinfo", "-s");
-	ic.setManpage("rpcinfo.1m");
+	ic.setManpage("rpcinfo.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.SHARE"),
 		"/usr/sbin/share");
-	ic.setManpage("share.1m");
+	ic.setManpage("share.8");
 	addCommand(ic);
 	if (inglobal) {
 	    ic = new InfoCommand(IlluminateResources.getString("INFO.SMBIOS"),
 		"/usr/sbin/smbios");
-	    ic.setManpage("smbios.1m");
+	    ic.setManpage("smbios.8");
 	    addCommand(ic);
 	}
 	ic = new InfoCommand(IlluminateResources.getString("INFO.SWAP"),
 		"/usr/sbin/swap", "-lh");
-	ic.setManpage("swap.1m");
+	ic.setManpage("swap.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.UNAME"),
 		"/usr/bin/uname", "-a");
@@ -158,20 +158,20 @@ public class InfoCommandList extends Vector <InfoCommand> {
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.ZPOOL"),
 		"/usr/sbin/zpool", "status");
-	ic.setManpage("zpool.1m");
+	ic.setManpage("zpool.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.ZFS"),
 		"/usr/sbin/zfs", "list");
-	ic.setManpage("zfs.1m");
+	ic.setManpage("zfs.8");
 	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.ZONES"),
 		"/usr/sbin/zoneadm", "list -icv");
-	ic.setManpage("zoneadm.1m");
+	ic.setManpage("zoneadm.8");
 	addCommand(ic);
 	if (inglobal) {
 	    ic = new InfoCommand(IlluminateResources.getString("INFO.UCODE"),
 		"/usr/sbin/ucodeadm", "-v");
-	    ic.setManpage("ucodeadm.1m");
+	    ic.setManpage("ucodeadm.8");
 	    addCommand(ic);
 	}
     }
