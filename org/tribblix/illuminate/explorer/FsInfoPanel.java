@@ -37,6 +37,7 @@ public class FsInfoPanel extends InfoPanel {
 
     private JKstat jkstat;
     private JFSstatPanel fsPanel;
+    private BootEnvironments beadm;
 
     /**
      * Display a file system information panel.
@@ -47,6 +48,8 @@ public class FsInfoPanel extends InfoPanel {
     public FsInfoPanel(SysItem hi, JKstat jkstat) {
 	super(hi);
 	this.jkstat = jkstat;
+
+	beadm = new BootEnvironments();
 
 	switch (hi.getType()) {
 	    case SysItem.FS_FSSTAT:
@@ -137,7 +140,16 @@ public class FsInfoPanel extends InfoPanel {
      */
     private void displayZFS() {
 	Zfilesys zfs = (Zfilesys) hi.getAttribute("zfs");
-	addLabel("ZFS Filesystem properties for " + zfs.getName());
+	// this is the UUID of the corresponding boot environment
+	Zproperty beprop = zfs.getProperty("org.opensolaris.libbe:uuid");
+	// if not found, look for a parent
+	if (beprop == null) {
+	    beprop = zfs.getProperty("org.opensolaris.libbe:parentbe");
+	}
+	String beuuid = (beprop == null) ? "" : beprop.getValue();
+	String bename = beadm.getBE(beuuid);
+	String bedesc = (bename == null) ? "" : " (in BE "+bename+")";
+	addLabel("ZFS properties for " + zfs.getName() + bedesc);
 	addScrollPane(new JTable(new ZfsTableModel(zfs.getProperties())));
     }
 
