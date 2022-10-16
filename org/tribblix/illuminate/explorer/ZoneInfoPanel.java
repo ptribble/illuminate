@@ -117,7 +117,7 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
 	jtb.addSeparator();
 	jmb = new JButton("About " + ze.getBrand() + " zones");
 	jmb.setEnabled(true);
-	jmb.setName(ze.getBrand() + ".5");
+	jmb.setName(ze.getBrand() + ".7");
 	jmb.addActionListener(this);
 	jtb.add(jmb, BorderLayout.LINE_END);
 
