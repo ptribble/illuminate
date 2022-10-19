@@ -136,6 +136,18 @@ overlaysizes)
     exit 0
     ;;
 
+smfdependents)
+    shift
+    LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA -cp ${BASEJARS} org.tribblix.illuminate.SmfDependents $*
+    exit 0
+    ;;
+
+smfdependencies)
+    shift
+    LD_LIBRARY_PATH=${ARCHLIBDIR} $JAVA -cp ${BASEJARS} org.tribblix.illuminate.SmfDependencies $*
+    exit 0
+    ;;
+
 esac
 
 cat <<EOF
