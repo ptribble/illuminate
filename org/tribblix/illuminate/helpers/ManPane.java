@@ -153,11 +153,11 @@ public class ManPane extends JEditorPane
      *
      * return null if we can't find anything
      */
-    private File findManPage(String m) {
+    private File findManPage(String mpage) {
 	/*
 	 * The Hyperlink event is quoted, so dequote
 	 */
-	m = m.replaceAll("'", "");
+	String m = mpage.replaceAll("'", "");
 	/*
 	 * First split off the section
 	 */
@@ -170,8 +170,7 @@ public class ManPane extends JEditorPane
 	 * Cross references invariably use the uppercase form of the section
 	 * ie 1M rather than 1m, so lowercase it
 	 */
-	String rawext = m.substring(i+1);
-	String ext = rawext.toLowerCase(Locale.ENGLISH);
+	String ext = m.substring(i+1).toLowerCase(Locale.ENGLISH);
 	String name = m.substring(0, i);
 	for (String dir : manpath) {
 	    File f = new File(dir + "/man" + ext + "/" + name + "." + ext);
@@ -216,7 +215,7 @@ public class ManPane extends JEditorPane
 				    {browserExe, ev.getURL().toString()});
 			    }
 			} catch (IOException e2) {
-			    System.out.println(e2);
+			    System.out.println(e2); //NOPMD
 			}
 		    }
 		}
