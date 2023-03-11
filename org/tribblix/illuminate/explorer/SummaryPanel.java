@@ -81,17 +81,38 @@ public class SummaryPanel extends InfoPanel {
 	ProcessorTree proctree = new ProcessorTree(jkstat);
 	addLabel("Processor Summary");
 
-        addLabel((proctree.numChips() == 1) ?
-		"System contains 1 chip" :
-		"System contains " + proctree.numChips() + " chips");
-
-	StringBuilder sb = new StringBuilder();
+	int ncores = 0;
+	int nthreads = 0;
+	String sbrand = "";
 	Set <Kstat> kss = new HashSet <Kstat> ();
 	for (Long l : proctree.getChips()) {
-	    sb.append(proctree.chipDetails(l));
+	    ncores += proctree.numCores(l);
+	    nthreads += proctree.numThreads(l);
 	    kss.addAll(proctree.chipStats(l));
+	    sbrand = proctree.getBrand(l);
 	}
-	addText(sb.toString());
+
+	StringBuilder sb2 = new StringBuilder();
+	if (proctree.numChips() == 1) {
+	    sb2.append("System contains 1 chip");
+	} else {
+	    sb2.append("System contains ").append(proctree.numChips())
+		.append(" chips");
+	}
+	if (proctree.numChips() != ncores) {
+	    sb2.append(" with ").append(ncores).append(" cores");
+	}
+	if (ncores != nthreads) {
+	    if (proctree.numChips() != ncores) {
+		sb2.append(" and ");
+	    } else {
+		sb2.append(" with ");
+	    }
+	    sb2.append(nthreads).append(" threads");
+	}
+        addLabel(sb2.toString());
+	addLabel(sbrand);
+
 	addLoadAccessory();
         addComponent(new CpuStatePanel(jkstat));
 	addNetAccessory();
