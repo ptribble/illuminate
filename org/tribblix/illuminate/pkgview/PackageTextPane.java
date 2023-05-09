@@ -29,6 +29,7 @@ import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import java.io.File;
 import java.io.IOException;
+import org.tribblix.illuminate.helpers.ManFrame;
 
 /**
  * A Scrollable panel containing Text
@@ -68,28 +69,37 @@ public class PackageTextPane extends JEditorPane implements HyperlinkListener {
 
     @Override
     public void hyperlinkUpdate(HyperlinkEvent ev) {
-	if (ev.getEventType() == HyperlinkEvent.EventType.ACTIVATED
-		&& Desktop.isDesktopSupported()) {
-	    try {
-		Desktop.getDesktop().browse(ev.getURL().toURI());
-	    } catch (Exception e) { //NOPMD
+	if (ev.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
+	    /*
+	     * Is this a regular URL?
+	     */
+	    if (ev.getURL() != null && Desktop.isDesktopSupported()) {
 		try {
-		    if (browserExe == null) {
-			for (String b : browsers) {
-			    File f = new File("/usr/bin", b);
-			    if (f.exists()) {
-				browserExe = "/usr/bin/" + b;
-				break;
+		    Desktop.getDesktop().browse(ev.getURL().toURI());
+		} catch (Exception e) { //NOPMD
+		    try {
+			if (browserExe == null) {
+			    for (String b : browsers) {
+				File f = new File("/usr/bin", b);
+				if (f.exists()) {
+				    browserExe = "/usr/bin/" + b;
+				    break;
+				}
 			    }
 			}
-		    }
-		    if (browserExe != null) {
-			Runtime.getRuntime().exec(new String[]
-			    {browserExe, ev.getURL().toString()});
-		    }
-		} catch (IOException e2) {
+			if (browserExe != null) {
+			    Runtime.getRuntime().exec(new String[]
+				{browserExe, ev.getURL().toString()});
+			}
+		    } catch (IOException e2) {
 			System.out.println(e2);
+		    }
 		}
+	    } else {
+		/*
+		 * try a man page
+		 */
+		new ManFrame(ev.getDescription());
 	    }
 	}
     }

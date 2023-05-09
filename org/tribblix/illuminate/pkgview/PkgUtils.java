@@ -209,7 +209,13 @@ public class PkgUtils {
 	StringBuilder sb2 = new StringBuilder(32);
 	sb2.append("<pre>\n");
 	for (ContentsFileDetail cfd : cpp.getDetails()) {
-	    sb2.append(cfd.getName()).append('\n');
+	    String sname = cfd.getName();
+	    if (!cfd.isDirectory() && sname.startsWith("/usr/share/man")) {
+		int ii = sname.lastIndexOf('/');
+		sb2.append("<a href=\"").append(sname.substring(ii+1)).append("\">").append(sname).append("</a>").append('\n');
+	    } else {
+		sb2.append(sname).append('\n');
+	    }
 	}
 	sb2.append("</pre>\n");
 	return wrapTable(sb) + sb2;
