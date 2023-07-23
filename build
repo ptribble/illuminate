@@ -56,7 +56,7 @@ doc|-doc)
 	;;
 
 clean|-clean)
-	rm -f `find org/tribblix -name '*.class'`
+	rm -f `find org/tribblix -type f -name '*.class'`
 	rm -f `find . -type f -name '*~'`
 	rm -fr javadoc
 	;;
