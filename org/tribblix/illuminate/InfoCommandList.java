@@ -121,10 +121,12 @@ public class InfoCommandList extends Vector <InfoCommand> {
 		"/usr/sbin/prtpicl");
 	    ic.setManpage("prtpicl.8");
 	    addCommand(ic);
-	    ic = new InfoCommand(IlluminateResources.getString("INFO.PSRINFO"),
+	}
+	ic = new InfoCommand(IlluminateResources.getString("INFO.PSRINFO"),
 		"/usr/sbin/psrinfo", "-v");
-	    ic.setManpage("psrinfo.8");
-	    addCommand(ic);
+	ic.setManpage("psrinfo.8");
+	addCommand(ic);
+	if (inglobal) {
 	    ic = new InfoCommand(IlluminateResources.getString("INFO.ROUTE"),
 		"/sbin/routeadm");
 	    ic.setManpage("routeadm.8");
