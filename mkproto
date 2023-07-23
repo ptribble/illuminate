@@ -59,7 +59,7 @@ echo "f none /usr/share/pixmaps/illuminate.png=./pixmaps/illuminate.png 0644 ${O
 
 #
 # if depending on installed packages, then:
-#   jcommon jfreechart come from TRIBjfreechart-###
+#   jfreechart come from TRIBjfreechart-###
 #
 if [ "X$PKGTYPE" = "Xstandalone" ]; then
   for path in lib/java/*
@@ -68,7 +68,7 @@ if [ "X$PKGTYPE" = "Xstandalone" ]; then
 	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
   done
 else
-  for path in lib/java/jcommon* lib/java/jfreechart*
+  for path in lib/java/jfreechart*
   do
 	pname=`basename $path`
 	echo "s none /${JARDIR}/${pname}=../jfreechart-${JFCVERS}/${pname}"

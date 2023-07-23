@@ -12,7 +12,6 @@ XFLAGS="-Xlint -Xlint:-serial -Xlint:-rawtypes"
 
 
 SVJAR=${JARLIBDIR}/illuminate.jar
-JCJAR=${JARLIBDIR}/jcommon-1.0.24.jar
 JFJAR=${JARLIBDIR}/jfreechart-1.5.0.jar
 JINGLEJAR=${JARLIBDIR}/jingle.jar
 JUMBLEJAR=${JARLIBDIR}/jumble.jar
@@ -22,7 +21,6 @@ JPJAR=${JARLIBDIR}/jproc.jar
 BUILDJARS=${JINGLEJAR}:${JUMBLEJAR}:${JKJAR}:${JPJAR}
 
 PATH=/usr/jdk/instances/jdk1.8.0/bin:$PATH
-#PATH=/usr/jdk/instances/jdk17/bin:$PATH
 export PATH
 
 #
