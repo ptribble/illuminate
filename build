@@ -74,7 +74,7 @@ pmd|-pmd)
 	if [ ! -d ${HOME}/.pmd ]; then
 	    mkdir -p ${HOME}/.pmd
 	fi
-	pmd check --cache ${PMDCACHE} -d uk -R $RULESETS --use-version java-1.8 --aux-classpath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
+	pmd check --cache ${PMDCACHE} -d org -R $RULESETS --use-version java-1.8 --aux-classpath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
 	pmd check --cache ${PMDCACHE}.html -d help/*.html  -R category/html/bestpractices.xml 2>/dev/null
 	exit 0
 	;;
