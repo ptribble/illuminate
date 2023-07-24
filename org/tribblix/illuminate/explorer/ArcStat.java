@@ -50,9 +50,9 @@ public class ArcStat extends JKdemo {
      * from another application
      */
     public ArcStat(JKstat jkstat, boolean standalone) {
-	super("ArcStat", 5, standalone);
+	super("ArcStat", standalone);
 
-	mainPanel = new ArcStatPanel(jkstat, 5);
+	mainPanel = new ArcStatPanel(jkstat, DEFAULT_INTERVAL);
 	setContentPane(mainPanel);
 
 	pack();
@@ -74,7 +74,6 @@ public class ArcStat extends JKdemo {
     @Override
     public void setDelay(int i) {
 	mainPanel.setDelay(i);
-	setLabelDelay(i);
     }
 
     /**
