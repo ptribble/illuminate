@@ -17,6 +17,8 @@ MYARCH=$1
 PKGTYPE="standalone"
 
 echo "i pkginfo=./pkginfo.${MYARCH}"
+echo "i postinstall=./postinstall"
+echo "i postremove=./postinstall"
 
 if [ "X$2" = "Xdeps" ]; then
   JFCVERS="1.5.4"
