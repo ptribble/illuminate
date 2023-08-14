@@ -37,7 +37,7 @@ public class MultiView extends JFrame implements ActionListener {
      */
     private final JMenuItem licenseItem;
     /**
-     * The name of teh help file.
+     * The name of the help file.
      */
     private final String helpfile;
 

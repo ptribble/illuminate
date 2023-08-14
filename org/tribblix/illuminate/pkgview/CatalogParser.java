@@ -76,7 +76,7 @@ public class CatalogParser {
     /**
      * Return the CatalogPackage for the requested package.
      *
-     * @param name the name of the packge of interest
+     * @param name the name of the package of interest
      *
      * @return the CatalogPackage for the given package, or null if there
      * is no entry for the requested package.

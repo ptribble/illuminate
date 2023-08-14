@@ -62,7 +62,7 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
      */
     private JButton jmb;
     /**
-     * Track the current command we're dispalying.
+     * Track the current command we're displaying.
      */
     private InfoCommand currentCmd;
 
