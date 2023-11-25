@@ -191,6 +191,14 @@ public class NetInfoPanel extends InfoPanel {
 	    addLabel("Network protocol stats: " + proto);
 	    kt = new KstatTable(proto, "0", proto + "stat", 5, jkstat);
 	    addScrollPane(kt);
+	} else if (hi.getAttribute("flag") == "6stats") {
+	    addLabel("Network protocol v6 stats: " + proto);
+	    kt = new KstatTable(proto, "0", proto + "6stat", 5, jkstat);
+	    addScrollPane(kt);
+	} else if (hi.getAttribute("flag") == "icmp") {
+	    addLabel("Network icmp stats: " + proto);
+	    kt = new KstatTable(proto, "0", "icmp", 5, jkstat);
+	    addScrollPane(kt);
 	} else {
 	    addLabel("Network protocol: " + proto);
 	    kt = new KstatTable(proto, "0", proto, 5, jkstat);

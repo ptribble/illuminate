@@ -224,7 +224,11 @@ public class SysTree extends JTree {
 	SysTreeNode htnpx = new SysTreeNode(
 				new SysItem(SysItem.NET_PROTO_IP), "ip");
 	htnpx.add(new SysTreeNode(
-			new SysItem(SysItem.NET_PROTO_IP, "stats"), "ipstats"));
+		   new SysItem(SysItem.NET_PROTO_IP, "icmp"), "icmp"));
+	htnpx.add(new SysTreeNode(
+		   new SysItem(SysItem.NET_PROTO_IP, "stats"), "ipstats"));
+	htnpx.add(new SysTreeNode(
+		    new SysItem(SysItem.NET_PROTO_IP, "6stats"), "ip6stats"));
 	htnpx.add(new SysTreeNode(
 			new SysItem(SysItem.NET_PROTO_IP, "man"), "manual"));
 	htnp.add(htnpx);
