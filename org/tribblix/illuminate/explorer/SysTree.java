@@ -221,10 +221,23 @@ public class SysTree extends JTree {
 				IlluminateResources.getString("HARD.NETPROTO"));
 	htn.add(htnp);
 
-	htnp.add(new SysTreeNode(new SysItem(SysItem.NET_PROTO_IP), "ip"));
-	htnp.add(new SysTreeNode(new SysItem(SysItem.NET_PROTO_TCP), "tcp"));
-	htnp.add(new SysTreeNode(new SysItem(SysItem.NET_PROTO_UDP), "udp"));
-	htnp.add(new SysTreeNode(new SysItem(SysItem.NET_PROTO_SCTP), "sctp"));
+	SysTreeNode htnpx = new SysTreeNode(
+				new SysItem(SysItem.NET_PROTO_IP), "ip");
+	htnpx.add(new SysTreeNode(
+			new SysItem(SysItem.NET_PROTO_IP, "stats"), "ipstats"));
+	htnp.add(htnpx);
+	htnpx = new SysTreeNode(new SysItem(SysItem.NET_PROTO_TCP), "tcp");
+	htnpx.add(new SysTreeNode(
+		    new SysItem(SysItem.NET_PROTO_TCP, "stats"), "tcpstats"));
+	htnp.add(htnpx);
+	htnpx = new SysTreeNode(new SysItem(SysItem.NET_PROTO_UDP), "udp");
+	htnpx.add(new SysTreeNode(
+		    new SysItem(SysItem.NET_PROTO_UDP, "stats"), "udpstats"));
+	htnp.add(htnpx);
+	htnpx = new SysTreeNode(new SysItem(SysItem.NET_PROTO_SCTP), "sctp");
+	htnpx.add(new SysTreeNode(
+		    new SysItem(SysItem.NET_PROTO_SCTP, "stats"), "sctpstats"));
+	htnp.add(htnpx);
 
 	// dladm output
 	SysTreeNode htnd = new SysTreeNode(new SysItem(SysItem.NET_DLADM),

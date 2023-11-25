@@ -257,6 +257,19 @@ public class SysItem {
     }
 
     /**
+     * A container for a hardware item. Adds a flag, a String that will be
+     * added as the attribute for key "flag"
+     *
+     * @param type the type of item
+     * @flag flag a String flag
+     */
+    public SysItem(int type, String flag) {
+	this.type = type;
+	attributes = new HashMap <String, Object> ();
+	addAttribute("flag", flag);
+    }
+
+    /**
      * Return the type of this SysItem.
      *
      * @return the type of this item
