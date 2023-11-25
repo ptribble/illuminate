@@ -69,6 +69,9 @@ public class NetInfoPanel extends InfoPanel {
 	    case SysItem.NET_PROTO_UDP:
 		displayProto("udp");
 		break;
+	    case SysItem.NET_PROTO_SCTP:
+		displayProto("sctp");
+		break;
 	    case SysItem.NET_STAT:
 		displayNetstat();
 		break;

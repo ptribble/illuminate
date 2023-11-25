@@ -224,6 +224,7 @@ public class SysTree extends JTree {
 	htnp.add(new SysTreeNode(new SysItem(SysItem.NET_PROTO_IP), "ip"));
 	htnp.add(new SysTreeNode(new SysItem(SysItem.NET_PROTO_TCP), "tcp"));
 	htnp.add(new SysTreeNode(new SysItem(SysItem.NET_PROTO_UDP), "udp"));
+	htnp.add(new SysTreeNode(new SysItem(SysItem.NET_PROTO_SCTP), "sctp"));
 
 	// dladm output
 	SysTreeNode htnd = new SysTreeNode(new SysItem(SysItem.NET_DLADM),

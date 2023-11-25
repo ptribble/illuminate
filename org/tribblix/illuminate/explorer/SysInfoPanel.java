@@ -89,6 +89,7 @@ public class SysInfoPanel extends JPanel {
 	    case SysItem.NET_PROTO_IP:
 	    case SysItem.NET_PROTO_TCP:
 	    case SysItem.NET_PROTO_UDP:
+	    case SysItem.NET_PROTO_SCTP:
 	    case SysItem.NET_STAT:
 	    case SysItem.NET_DLADM:
 	    case SysItem.NET_DLADM_PHYS:

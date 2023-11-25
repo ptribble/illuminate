@@ -101,9 +101,13 @@ public class SysItem {
      */
     public static final int NET_PROTO_UDP = 306;
     /**
+     * Represents the SCTP protocol.
+     */
+    public static final int NET_PROTO_SCTP = 307;
+    /**
      * Represents a network statistic.
      */
-    public static final int NET_STAT = 307;
+    public static final int NET_STAT = 308;
     /**
      * Represents a dladm object.
      */
