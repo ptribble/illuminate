@@ -79,7 +79,7 @@ public class NetInfoPanel extends InfoPanel {
 		displaySummary();
 		break;
 	    case SysItem.NET_DLADM:
-		displayManual("dladm.1m");
+		displayManual("dladm.8");
 		break;
 	    case SysItem.NET_DLADM_PHYS:
 		displayDladm("phys");
@@ -100,7 +100,7 @@ public class NetInfoPanel extends InfoPanel {
 		displayDladm("aggr");
 		break;
 	    case SysItem.NET_IPADM:
-		displayManual("ipadm.1m");
+		displayManual("ipadm.8");
 		break;
 	    case SysItem.NET_IPADM_IF:
 		displayIpadm("if");
