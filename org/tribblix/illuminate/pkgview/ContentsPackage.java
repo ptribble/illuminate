@@ -121,7 +121,7 @@ public class ContentsPackage {
      * Returns the number of hard links in this ContentsPackage. This is what
      * pkginfo -l refers to as linked files.
      *
-     * @return the number of hard linkes
+     * @return the number of hard links
      */
     public int numHardLinks() {
 	int i = 0;
