@@ -26,7 +26,7 @@ import uk.co.petertribble.jkstat.demo.KstatToolsMenu;
  * @author Peter Tribble
  * @version 1.0
  */
-public class Illuminate extends JFrame implements ActionListener {
+public final class Illuminate extends JFrame implements ActionListener {
 
     /**
      * A menu item to exit illuminate.
