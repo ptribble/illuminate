@@ -29,7 +29,7 @@ import org.tribblix.illuminate.InfoCommand;
 /**
  * Zfilesys - represent a ZFS filesystem.
  * @author Peter Tribble
- * @version 1.0
+ * @version 1.1
  */
 public class Zfilesys extends Zdataset {
 
@@ -79,7 +79,7 @@ public class Zfilesys extends Zdataset {
      *
      * @return the Set of all child filesystems
      */
-    public Set <Zfilesys> children() {
+    public Set <Zfilesys> getChildren() {
 	return children;
     }
 
@@ -88,7 +88,7 @@ public class Zfilesys extends Zdataset {
      *
      * @return the Set of all snapshots of this filesystem
      */
-    public Set <Zsnapshot> snapshots() {
+    public Set <Zsnapshot> getSnapshots() {
 	if (snapshots == null) {
 	    snapshots = new HashSet <Zsnapshot> ();
 	    InfoCommand ic = new InfoCommand("ZF", "/usr/sbin/zfs",

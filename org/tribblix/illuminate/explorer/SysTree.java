@@ -334,7 +334,7 @@ public class SysTree extends JTree {
 	zitem.addAttribute("zfs", zfs);
 	SysTreeNode ztn = new SysTreeNode(zitem, zfs.getShortName());
 	stn.add(ztn);
-	for (Zfilesys zfs2 : zfs.children()) {
+	for (Zfilesys zfs2 : zfs.getChildren()) {
 	    addZnode(ztn, zfs2);
 	}
     }
@@ -371,7 +371,7 @@ public class SysTree extends JTree {
      */
     private void addZones(DefaultMutableTreeNode root) {
 	ZoneConfig zc = ZoneConfig.getInstance();
-	if (!zc.isGlobal() || zc.size() == 0) {
+	if (!zc.isGlobalZone() || zc.size() == 0) {
 	    return;
 	}
 	SysTreeNode stn = new SysTreeNode(new SysItem(SysItem.ZONE_CONTAINER),

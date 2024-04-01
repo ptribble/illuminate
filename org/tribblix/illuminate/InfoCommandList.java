@@ -38,7 +38,7 @@ public class InfoCommandList extends Vector <InfoCommand> {
      * Note that it's actually a Vector.
      */
     public InfoCommandList() {
-	boolean inglobal = ZoneConfig.getInstance().isGlobal();
+	boolean inglobal = ZoneConfig.getInstance().isGlobalZone();
 	// add all the possible commands here
 	InfoCommand ic =
 	    new InfoCommand(IlluminateResources.getString("INFO.BEADM"),

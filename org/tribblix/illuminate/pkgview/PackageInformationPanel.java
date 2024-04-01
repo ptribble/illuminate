@@ -116,7 +116,7 @@ public class PackageInformationPanel extends JTabbedPane {
 		    PkgUtils.dependencyTable(ovl),
 		    ovlDeps(ovlist.containingOverlays(ovl)));
 	setOverlayText(PkgUtils.overlayMembers(ovl));
-	disableFiles();
+	disableFilesTab();
     }
 
     private String ovlDeps(Set <Overlay> ovls) {
@@ -217,7 +217,7 @@ public class PackageInformationPanel extends JTabbedPane {
 
     private void setFilesText(String s) {
 	if (!showfiles) {
-	    showFiles();
+	    showFilesTab();
 	}
 	enableFiles();
 	tp_files.setText(s);
@@ -239,7 +239,7 @@ public class PackageInformationPanel extends JTabbedPane {
     /*
      * Show the files tab.
      */
-    private void showFiles() {
+    private void showFilesTab() {
 	add(PkgResources.getString("PKG.CONTENTS"), new JScrollPane(tp_files));
 	showfiles = true;
     }
@@ -247,7 +247,7 @@ public class PackageInformationPanel extends JTabbedPane {
     /*
      * Disable the files tab
      */
-    private void disableFiles() {
+    private void disableFilesTab() {
 	int i = indexOfTab(PkgResources.getString("PKG.CONTENTS"));
 	if (i >= 0) {
 	    if (isEnabledAt(i)) {

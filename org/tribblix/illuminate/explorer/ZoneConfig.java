@@ -118,7 +118,7 @@ public final class ZoneConfig {
      *
      * @return true if run in the global zone
      */
-    public boolean isGlobal() {
+    public boolean isGlobalZone() {
 	return isglobal;
     }
 

@@ -46,7 +46,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
     private File pkgrootf;
 
     private String name;
-    private Map <String, String> infomap;
+    private Map <String, String> pkginfomap;
     private Set <String> dependson;
     private Set <String> rdepends;
     private Set <String> incompatibles;
@@ -197,28 +197,28 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * @return the content of the pkginfo file as a Map
      */
     public Map <String, String> infoMap() {
-	if (infomap == null) {
+	if (pkginfomap == null) {
 	    parseInfo();
 	}
 	// defensive copy, as PkgUtils mangles it
-	return new HashMap <String, String> (infomap);
+	return new HashMap <String, String> (pkginfomap);
     }
 
     /*
      * Get the specified property from the pkginfo file.
      */
     private String getInfoItem(String s) {
-	if (infomap == null) {
+	if (pkginfomap == null) {
 	    parseInfo();
 	}
-	return infomap.get(s);
+	return pkginfomap.get(s);
     }
 
     /*
      * Parse the pkginfo file.
      */
     private void parseInfo() {
-	infomap = JumbleUtils.stringToPropMap(getInfo(), "\n");
+	pkginfomap = JumbleUtils.stringToPropMap(getInfo(), "\n");
     }
 
     /**

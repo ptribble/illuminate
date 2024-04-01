@@ -66,7 +66,7 @@ public class Zvolume extends Zdataset {
      *
      * @return the Set of all snapshots of this volume
      */
-    public Set <Zsnapshot> snapshots() {
+    public Set <Zsnapshot> getSnapshots() {
 	if (snapshots == null) {
 	    snapshots = new HashSet <Zsnapshot> ();
 	    InfoCommand ic = new InfoCommand("ZF", "/usr/sbin/zfs",
