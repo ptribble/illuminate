@@ -1,9 +1,11 @@
-#!/bin/sh
+#!/bin/ksh
+#
+# SPDX-License-Identifier: CDDL-1.0
 #
 # build illuminate
 #
 
-SVDIR=`dirname $0`
+SVDIR=${0%/*}
 LIBDIR=${SVDIR}/lib
 JARLIBDIR=${LIBDIR}/java
 JAVA=java
@@ -36,10 +38,10 @@ PMDCACHE="${HOME}/.pmd/cache.illuminate"
 case $# in
 0)
 	if [ -x /opt/onbld/bin/jstyle ]; then
-	    /opt/onbld/bin/jstyle `find org/tribblix -name '*.java'`
+	    /opt/onbld/bin/jstyle $(find org/tribblix -name '*.java')
 	fi
-	javac ${XFLAGS} -classpath .:${BUILDJARS} `find org/tribblix -name '*.java'`
-	jar -cmf illuminate.manifest ${SVJAR} images/*.png pixmaps/* properties/*.properties help/*.html help/CDDL.txt `find org/tribblix -name '*.class'`
+	javac ${XFLAGS} -classpath .:${BUILDJARS} $(find org/tribblix -name '*.java')
+	jar -cmf illuminate.manifest "${SVJAR}" images/*.png pixmaps/* properties/*.properties help/*.html help/CDDL.txt $(find org/tribblix -name '*.class')
 	exit 0
 	;;
 esac
@@ -53,8 +55,8 @@ doc|-doc)
 	;;
 
 clean|-clean)
-	rm -f `find org/tribblix -type f -name '*.class'`
-	rm -f `find . -type f -name '*~'`
+	rm -f $(find org/tribblix -type f -name '*.class')
+	rm -f $(find . -type f -name '*~')
 	rm -fr javadoc
 	;;
 
@@ -62,19 +64,19 @@ pmd|-pmd)
 	if [ ! -d ${HOME}/.pmd ]; then
 	    mkdir -p ${HOME}/.pmd
 	fi
-	pmd check --cache ${PMDCACHE} -d org -R ${PMDRULES} --use-version java-1.8 --aux-classpath `echo lib/java/* | sed 's= =:=g'` 2>/dev/null
-	pmd check --cache ${PMDCACHE}.html -d help/*.html  -R category/html/bestpractices.xml 2>/dev/null
+	pmd check --cache "${PMDCACHE}" -d org -R ${PMDRULES} --use-version java-1.8 --aux-classpath $(echo lib/java/* | sed 's= =:=g') 2>/dev/null
+	pmd check --cache "${PMDCACHE}".html -d help/*.html -R category/html/bestpractices.xml 2>/dev/null
 	exit 0
 	;;
 
 packages)
-	cat illuminate | sed s:INSTALLED=false:INSTALLED=true: > illuminate.installed
+	sed s:INSTALLED=false:INSTALLED=true: illuminate > illuminate.installed
 	./mkproto i386 $2 > prototype.i386
 	./mkproto sparc $2 > prototype.sparc
-	pkgmk -d /tmp -f prototype.i386 -r `pwd` TRIBilluminate
+	pkgmk -d /tmp -f prototype.i386 -r $(pwd) TRIBilluminate
 	pkgtrans -s /tmp /tmp/TRIBilluminate-i386.pkg TRIBilluminate
 	rm -fr /tmp/TRIBilluminate
-	pkgmk -d /tmp -f prototype.sparc -r `pwd` TRIBilluminate
+	pkgmk -d /tmp -f prototype.sparc -r $(pwd) TRIBilluminate
 	pkgtrans -s /tmp /tmp/TRIBilluminate-sparc.pkg TRIBilluminate
 	rm -fr /tmp/TRIBilluminate
 	ls -l /tmp/TRIBilluminate-sparc.pkg /tmp/TRIBilluminate-i386.pkg
