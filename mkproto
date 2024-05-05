@@ -37,15 +37,11 @@ fi
 if [ "X$PKGTYPE" = "Xstandalone" ]; then
 case $MYARCH in
 i386)
-	echo "f none /${LIBDIR}/${JLIB}=lib/i386/${JLIB} 0755 ${OWNER}"
 	echo "f none /${LIBDIR}/amd64/${JLIB}=lib/amd64/${JLIB} 0755 ${OWNER}"
-	echo "f none /${LIBDIR}/${JPLIB}=lib/i386/${JPLIB} 0755 ${OWNER}"
 	echo "f none /${LIBDIR}/amd64/${JPLIB}=lib/amd64/${JPLIB} 0755 ${OWNER}"
 	;;
 sparc)
-	echo "f none /${LIBDIR}/${JLIB}=lib/sparc/${JLIB} 0755 ${OWNER}"
 	echo "f none /${LIBDIR}/sparcv9/${JLIB}=lib/sparcv9/${JLIB} 0755 ${OWNER}"
-	echo "f none /${LIBDIR}/${JPLIB}=lib/sparc/${JPLIB} 0755 ${OWNER}"
 	echo "f none /${LIBDIR}/sparcv9/${JPLIB}=lib/sparcv9/${JPLIB} 0755 ${OWNER}"
 	;;
 esac
