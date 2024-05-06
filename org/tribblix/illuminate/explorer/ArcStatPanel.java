@@ -115,12 +115,6 @@ public class ArcStatPanel extends JPanel implements ActionListener {
     private long n_pf_data_misses;
     private long n_pf_md_misses;
 
-    private int p_d_arc_hit;
-    private int p_d_demand_hit;
-    private int p_d_pf_hit;
-    private int p_d_mdemand_hit;
-    private int p_d_mpf_hit;
-
     private Timer timer;
     private int delay = 5000;
 
@@ -318,12 +312,12 @@ public class ArcStatPanel extends JPanel implements ActionListener {
 	}
 
 	// summary labels
-	arc_size_label.setText(Long.toString(arc_size/mb) + " MB");
-	target_size_label.setText(Long.toString(target_size/mb) + " MB");
-	arc_min_size_label.setText(Long.toString(arc_min_size/mb) + " MB");
-	arc_max_size_label.setText(Long.toString(arc_max_size/mb) + " MB");
-	mru_size_label.setText(Long.toString(mru_size/mb) + " MB");
-	mfu_size_label.setText(Long.toString(mfu_size/mb) + " MB");
+	arc_size_label.setText(mbstring(arc_size));
+	target_size_label.setText(mbstring(target_size));
+	arc_min_size_label.setText(mbstring(arc_min_size));
+	arc_max_size_label.setText(mbstring(arc_max_size));
+	mru_size_label.setText(mbstring(mru_size));
+	mfu_size_label.setText(mbstring(mfu_size));
 
 	// create deltas
 	long d_arc_hits = n_arc_hits - arc_hits;
@@ -359,41 +353,11 @@ public class ArcStatPanel extends JPanel implements ActionListener {
 	pf_data_misses = n_pf_data_misses;
 	pf_md_misses = n_pf_md_misses;
 
-	if ((d_arc_hits+d_arc_misses) > 0) {
-	    p_d_arc_hit = (int) ((100L*d_arc_hits)/(d_arc_hits+d_arc_misses));
-	} else {
-	    p_d_arc_hit = 0;
-	}
-	if ((d_demand_data_hits+d_demand_data_misses) > 0) {
-	    p_d_demand_hit = (int) ((100L*d_demand_data_hits)/
-				(d_demand_data_hits+d_demand_data_misses));
-	} else {
-	    p_d_demand_hit = 0;
-	}
-	if ((d_pf_data_hits+d_pf_data_misses) > 0) {
-	    p_d_pf_hit = (int) ((100L*d_pf_data_hits)/
-				(d_pf_data_hits+d_pf_data_misses));
-	} else {
-	    p_d_pf_hit = 0;
-	}
-	if ((d_demand_md_hits+d_demand_md_misses) > 0) {
-	    p_d_mdemand_hit = (int) ((100L*d_demand_md_hits)/
-				(d_demand_md_hits+d_demand_md_misses));
-	} else {
-	    p_d_mdemand_hit = 0;
-	}
-	if ((d_pf_md_hits+d_pf_md_misses) > 0) {
-	    p_d_mpf_hit = (int) ((100L*d_pf_md_hits)/
-				(d_pf_md_hits+d_pf_md_misses));
-	} else {
-	    p_d_mpf_hit = 0;
-	}
-
-	arc_hit_bar.setValue(p_d_arc_hit);
-	demand_hit_bar.setValue(p_d_demand_hit);
-	pf_hit_bar.setValue(p_d_pf_hit);
-	mdemand_hit_bar.setValue(p_d_mdemand_hit);
-	mpf_hit_bar.setValue(p_d_mpf_hit);
+	arc_hit_bar.setValue(hitrate(d_arc_hits, d_arc_misses));
+	demand_hit_bar.setValue(hitrate(d_demand_data_hits, d_demand_data_misses));
+	pf_hit_bar.setValue(hitrate(d_pf_data_hits, d_pf_data_misses));
+	mdemand_hit_bar.setValue(hitrate(d_demand_md_hits, d_demand_md_misses));
+	mpf_hit_bar.setValue(hitrate(d_pf_md_hits, d_pf_md_misses));
 
 	// hits by list
 	totalCacheHitsDataset.setValue("Anon",
@@ -452,6 +416,18 @@ public class ArcStatPanel extends JPanel implements ActionListener {
 					d_pf_data_misses);
 	currentCacheMissesByTypeDataset.setValue("Prefetch Metadata Misses",
 					d_pf_md_misses);
+    }
+
+    private String mbstring(long lval) {
+	return Long.toString(lval/mb) + " MB";
+    }
+
+    private int hitrate(long hits, long misses) {
+	if ((hits+misses) > 0) {
+	    return (int) ((100L*hits)/(hits+misses));
+	} else {
+	    return 0;
+	}
     }
 
     /**
