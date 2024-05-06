@@ -92,6 +92,10 @@ software)
     exit 0
     ;;
 
+#
+# the following are undocumented
+#
+
 man)
     shift
     case $1 in
@@ -110,10 +114,7 @@ man)
     esac
     ;;
 
-#
-# the following are undocumented
-#
-check)
+check|pkgchk)
     shift
     $JAVA ${PKGFLAGS} ${EXTRAMEMFLAGS} -cp "${PKGJARS}" org.tribblix.illuminate.pkgview.PkgCheck "$@"
     exit 0
