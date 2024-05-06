@@ -122,7 +122,7 @@ public class OverlayList {
     public Set <Overlay> containingOverlays(SVR4Package pkg) {
 	Set <Overlay> h = new TreeSet <Overlay> ();
 	for (Overlay ovl : ovlist) {
-	    if (ovl.containsPackage(pkg)) {
+	    if (ovl.containsPackage(pkg.getName())) {
 		h.add(ovl);
 	    }
 	}

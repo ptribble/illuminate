@@ -260,18 +260,6 @@ public class Overlay implements Comparable<Overlay> {
      * Gets whether this overlay explicitly contains the specified
      * package.
      *
-     * @param p the package of interest
-     *
-     * @return true if the given package is contained in this overlay
-     */
-    public boolean containsPackage(SVR4Package p) {
-	return packages.contains(p) || containsPackage(p.getName());
-    }
-
-    /**
-     * Gets whether this overlay explicitly contains the specified
-     * package.
-     *
      * @param pname the name of the package of interest
      *
      * @return true if the given package is contained in this overlay
