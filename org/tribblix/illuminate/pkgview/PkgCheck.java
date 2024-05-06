@@ -37,7 +37,6 @@ public class PkgCheck {
     private boolean check = true;
     private boolean list;
     private boolean verbose;
-    private boolean debug;
     private boolean dopaths;
     private boolean partpaths;
     private boolean allpkgs;
@@ -91,7 +90,6 @@ public class PkgCheck {
 		allpkgs = true;
 	    } else if ("-V".equals(arg)) {
 		verbose = true;
-		debug = true;
 	    } else if ("-p".equals(arg)) {
 		dopaths = true;
 		partpaths = false;
@@ -213,18 +211,7 @@ public class PkgCheck {
 		    if (f.isFile()) {
 			long fmodtime = f.lastModified()/1000;
 			long pmodtime = cfd.lastModified();
-			if (debug) {
-			    System.out.println("    File " +
-					cfd.getName() +
-					" confirmed present");
-			}
-			if (f.length() == cfd.getSize()) {
-			    if (debug) {
-				System.out.println("    File " +
-						cfd.getName() +
-						" has correct size");
-			    }
-			} else {
+			if (f.length() != cfd.getSize()) {
 			    if (cfd.isEditable()) {
 				if (verbose) {
 				    System.out.println("   WARNING: File " +
@@ -238,11 +225,7 @@ public class PkgCheck {
 			    }
 			}
 			// allow a little rounding error
-			if (Math.abs(fmodtime - pmodtime) < 2) {
-			    if (debug) {
-				System.out.println("      Timestamp verified.");
-			    }
-			} else {
+			if (Math.abs(fmodtime - pmodtime) >= 2) {
 			    if (cfd.isEditable()) {
 				if (verbose) {
 				    System.out.println("   WARNING: File " +
@@ -262,13 +245,7 @@ public class PkgCheck {
 		    }
 		}
 		if (cfd.isDirectory()) {
-		    if (f.isDirectory()) {
-			if (debug) {
-			    System.out.println("    Directory " +
-					cfd.getName() +
-					" confirmed present");
-			}
-		    } else {
+		    if (!f.isDirectory()) {
 			System.out.println("   ERROR: Path " +
 					cfd.getName() +
 					" is not a directory");
@@ -283,11 +260,7 @@ public class PkgCheck {
 
     private void doProcess(String pkg) {
 	ContentsPackage cpp = cp.getPackage(pkg);
-	if (cpp == null) {
-	    if (debug) {
-		System.out.println("    Package " + pkg + " is empty.");
-	    }
-	} else {
+	if (cpp != null) {
 	    for (ContentsFileDetail cfd : cpp.getDetails()) {
 		showFile(cfd);
 	    }
