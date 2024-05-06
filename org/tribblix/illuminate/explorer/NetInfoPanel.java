@@ -185,17 +185,18 @@ public class NetInfoPanel extends InfoPanel {
      * Generic protocol handler.
      */
     private void displayProto(String proto) {
-	if (hi.getAttribute("flag") == "man") {
+	String sflag = (String) hi.getAttribute("flag");
+	if ("man".equals(sflag)) {
 	    displayManual(proto + ".4p");
-	} else if (hi.getAttribute("flag") == "stats") {
+	} else if ("stats".equals(sflag)) {
 	    addLabel("Network protocol stats: " + proto);
 	    kt = new KstatTable(proto, "0", proto + "stat", 5, jkstat);
 	    addScrollPane(kt);
-	} else if (hi.getAttribute("flag") == "6stats") {
+	} else if ("6stats".equals(sflag)) {
 	    addLabel("Network protocol v6 stats: " + proto);
 	    kt = new KstatTable(proto, "0", proto + "6stat", 5, jkstat);
 	    addScrollPane(kt);
-	} else if (hi.getAttribute("flag") == "icmp") {
+	} else if ("icmp".equals(sflag)) {
 	    addLabel("Network icmp stats: " + proto);
 	    kt = new KstatTable(proto, "0", "icmp", 5, jkstat);
 	    addScrollPane(kt);
