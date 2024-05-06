@@ -88,8 +88,6 @@ public class PkgCheck {
 		verbose = true;
 	    } else if ("-a".equals(arg)) {
 		allpkgs = true;
-	    } else if ("-V".equals(arg)) {
-		verbose = true;
 	    } else if ("-p".equals(arg)) {
 		dopaths = true;
 		partpaths = false;
@@ -102,10 +100,31 @@ public class PkgCheck {
 		names.add(arg);
 	    }
 	}
+	if (dopaths && partpaths) {
+	    usage();
+	}
 	if (dopaths && checkovl) {
 	    usage();
 	}
 	if (partpaths && checkovl) {
+	    usage();
+	}
+	if (allpkgs && checkovl) {
+	    usage();
+	}
+	if (allpkgs && dopaths) {
+	    usage();
+	}
+	if (allpkgs && partpaths) {
+	    usage();
+	}
+	if (list && checkovl) {
+	    usage();
+	}
+	if (list && dopaths) {
+	    usage();
+	}
+	if (list && partpaths) {
 	    usage();
 	}
 	return names;
@@ -214,12 +233,12 @@ public class PkgCheck {
 			if (f.length() != cfd.getSize()) {
 			    if (cfd.isEditable()) {
 				if (verbose) {
-				    System.out.println("   WARNING: File " +
+				    System.out.println("WARNING: File " +
 					cfd.getName() +
 					" has incorrect size");
 				}
 			    } else {
-				System.out.println("   ERROR: File " +
+				System.out.println("ERROR: File " +
 					cfd.getName() +
 					" has incorrect size");
 			    }
@@ -228,31 +247,31 @@ public class PkgCheck {
 			if (Math.abs(fmodtime - pmodtime) >= 2) {
 			    if (cfd.isEditable()) {
 				if (verbose) {
-				    System.out.println("   WARNING: File " +
+				    System.out.println("WARNING: File " +
 					cfd.getName() +
 					" has incorrect modification time");
 				}
 			    } else {
-				System.out.println("   ERROR: File " +
+				System.out.println("ERROR: File " +
 					cfd.getName() +
 					" has incorrect modification time");
 			    }
 			}
 		    } else {
-			System.out.println("   ERROR: Path " +
+			System.out.println("ERROR: Path " +
 					cfd.getName() +
 					" is not a file");
 		    }
 		}
 		if (cfd.isDirectory()) {
 		    if (!f.isDirectory()) {
-			System.out.println("   ERROR: Path " +
+			System.out.println("ERROR: Path " +
 					cfd.getName() +
 					" is not a directory");
 		    }
 		}
 	    } else {
-		System.err.println("Missing or unreadable path "
+		System.err.println("ERROR: Missing or unreadable path "
 			+ cfd.getName());
 	    }
 	}
@@ -268,8 +287,8 @@ public class PkgCheck {
     }
 
     private static void usage() {
-	System.err.println("Usage: check [-R alt_root] [-v|-V] "
-		+ "[-o | -p path ... | -P partial-path ...] [name ...]");
+	System.err.println("Usage: check [-R alt_root] [-v] "
+		+ "[-a | -l | -o | -p path ... | -P partial-path ...] [name ...]");
 	System.exit(1);
     }
 
