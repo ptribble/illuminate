@@ -24,6 +24,7 @@ package org.tribblix.illuminate.pkgview;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Arrays;
 
 /**
  * Parse a line of the SVR4 packaging contents file.
@@ -54,7 +55,6 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      */
     public ContentsFileDetail(String altroot, String s) {
 	this.altroot = altroot;
-	pkglist = new ArrayList <String> (4);
 	parseNewStyle(s);
     }
 
@@ -84,9 +84,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
 	    String[] ds = filename.split("=", 2);
 	    filename = ds[0];
 	    target = ds[1];
-	    while (i < st.length) {
-		pkglist.add(st[i++]);
-	    }
+	    // anything left is a package
+	    pkglist = Arrays.asList(Arrays.copyOfRange(st, i, st.length));
 	    return;
 	}
 	if (isDevice()) {
@@ -103,9 +102,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
 	    modtime = Long.parseLong(st[i++]);
 	}
 	// anything left is a package
-	while (i < st.length) {
-	    pkglist.add(st[i++]);
-	}
+	pkglist = Arrays.asList(Arrays.copyOfRange(st, i, st.length));
     }
 
     /**
