@@ -287,50 +287,6 @@ public class Overlay implements Comparable<Overlay> {
     }
 
     /**
-     * Gets whether this overlay contains the specified package,
-     * either explicitly or implicitly via requires.
-     *
-     * @param p the package of interest
-     *
-     * @return true if the given package is contained in this overlay or
-     * in its dependencies
-     */
-    public boolean includesPackage(SVR4Package p) {
-	if (containsPackage(p)) {
-	    return true;
-	}
-	// check required overlays
-	for (Overlay ovl : overlays) {
-	    if (ovl.includesPackage(p)) {
-		return true;
-	    }
-	}
-	return false;
-    }
-
-    /**
-     * Gets whether this overlay contains the specified package,
-     * either explicitly or implicitly via requires.
-     *
-     * @param pname the name of the package of interest
-     *
-     * @return true if the given package is contained in this overlay or
-     * in its dependencies
-     */
-    public boolean includesPackage(String pname) {
-	if (containsPackage(pname)) {
-	    return true;
-	}
-	// check required overlays
-	for (Overlay ovl : overlays) {
-	    if (ovl.includesPackage(pname)) {
-		return true;
-	    }
-	}
-	return false;
-    }
-
-    /**
      * For Comparable.
      */
     @Override
