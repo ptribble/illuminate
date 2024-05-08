@@ -77,7 +77,7 @@ public class SysItem {
     public static final int DISK_IO = 206;
 
     /**
-     * Represents 
+     * Represents a network container.
      */
     public static final int NET_CONTAINER = 301;
     /**

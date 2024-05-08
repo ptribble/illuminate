@@ -34,7 +34,7 @@ public class SmfDependents {
 
     // save the dependency tree to avoid repeated calls
     static Map <String, String> depMap = new HashMap <String, String> ();
-   
+
     public static void printDependents(String arg) {
 	printDependents(arg, "");
     }
