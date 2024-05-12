@@ -46,7 +46,7 @@ public class MissingPackages {
 	 * Go through installed packages and create a complete list
 	 * of their dependencies.
 	 */
-	Set <String> deps = new TreeSet <String> ();
+	Set <String> deps = new TreeSet<>();
 	for (SVR4Package pkg : plist) {
 	    deps.addAll(pkg.getDependencySet());
 	}

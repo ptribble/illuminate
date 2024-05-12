@@ -77,7 +77,7 @@ public class PkgCheck {
     }
 
     private Set <String> parseArgs(String[] args) {
-	Set <String> names = new HashSet <String> ();
+	Set <String> names = new HashSet<>();
 	for (String arg : args) {
 	    if ("-l".equals(arg)) {
 		list = true;

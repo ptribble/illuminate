@@ -37,7 +37,7 @@ import java.util.TreeSet;
  */
 public class PkgList extends TreeSet <SVR4Package> {
 
-    private Map <String, SVR4Package> pkgMap;
+    private Map <String, SVR4Package> pkgMap = new HashMap<>();
     private Map <String, Set <SVR4Package>> revDependencies;
 
     /**
@@ -50,8 +50,6 @@ public class PkgList extends TreeSet <SVR4Package> {
      * @param altroot  An alternate root directory for this OS image
      */
     public PkgList(String altroot) {
-	pkgMap = new HashMap <String, SVR4Package> ();
-
 	File pkgrootf = new File(altroot + SVR4Package.PKG_ROOT);
 
 	if (pkgrootf.exists()) {

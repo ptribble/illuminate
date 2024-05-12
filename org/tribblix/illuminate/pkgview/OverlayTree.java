@@ -39,8 +39,8 @@ import java.util.HashSet;
 public class OverlayTree extends JTree {
 
     private DefaultTreeModel model;
-    private Map <SVR4Package, NodeSet> pkgmap;
-    private Map <Overlay, NodeSet> ovmap;
+    private Map <SVR4Package, NodeSet> pkgmap = new HashMap<>();
+    private Map <Overlay, NodeSet> ovmap = new HashMap<>();
 
     /**
      * Create a tree from an overlay list and add it to the parent node.
@@ -51,8 +51,6 @@ public class OverlayTree extends JTree {
 	DefaultMutableTreeNode topmenu = new DefaultMutableTreeNode("Overlays");
 	model = new DefaultTreeModel(topmenu);
 	setModel(model);
-	pkgmap = new HashMap <SVR4Package, NodeSet> ();
-	ovmap = new HashMap <Overlay, NodeSet> ();
 	for (Overlay ovl : ovlist.getOverlays()) {
 	    DefaultMutableTreeNode mitem = new DefaultMutableTreeNode(ovl);
 	    topmenu.add(mitem);
@@ -116,9 +114,8 @@ public class OverlayTree extends JTree {
     }
 
     class NodeSet {
-	private Set <DefaultMutableTreeNode> nodes;
+	private Set <DefaultMutableTreeNode> nodes = new HashSet<>();
 	public NodeSet() {
-	    nodes = new HashSet <DefaultMutableTreeNode> ();
 	}
 	public void add(DefaultMutableTreeNode node) {
 	    nodes.add(node);

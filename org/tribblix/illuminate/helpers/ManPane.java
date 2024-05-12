@@ -64,7 +64,7 @@ public class ManPane extends JEditorPane
     /**
      * list of opened pages for history
      */
-    private List <File> historyList;
+    private List <File> historyList = new ArrayList<>();
 
     /*
      * commands to open external URLs
@@ -102,7 +102,6 @@ public class ManPane extends JEditorPane
 	add(jtb, BorderLayout.PAGE_START);
 	add(new JScrollPane(jep), BorderLayout.CENTER);
 
-	historyList = new ArrayList <File> ();
 	showMan(m);
     }
 

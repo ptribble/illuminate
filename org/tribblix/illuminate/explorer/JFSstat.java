@@ -45,7 +45,7 @@ import org.tribblix.illuminate.IlluminateResources;
 public class JFSstat extends JKdemo implements ActionListener {
 
     private static final String sversion = "JFSstat version 1.0";
-    private Set <JRadioButtonMenuItem> displayset;
+    private Set <JRadioButtonMenuItem> displayset = new HashSet<>();
     private JCheckBoxMenuItem hiddenItem;
     private JCheckBoxMenuItem aggrItem;
 
@@ -74,7 +74,6 @@ public class JFSstat extends JKdemo implements ActionListener {
 
 	addInfoPanel(mainPanel, sversion);
 
-	displayset = new HashSet <JRadioButtonMenuItem> ();
 	JMenu displayMenu = new JMenu(IlluminateResources.getString(
 						"FSSTAT.DISPLAY.TEXT"));
 	displayMenu.setMnemonic(KeyEvent.VK_D);

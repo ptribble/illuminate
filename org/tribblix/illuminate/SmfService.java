@@ -188,7 +188,7 @@ public class SmfService implements Comparable<SmfService> {
      * requested, to avoid having to call getExplanation() repeatedly
      */
     private void parseManpages(String explanation) {
-	manpages = new HashMap <String, String> ();
+	manpages = new HashMap<>();
 	for (String line : explanation.split("\n")) {
 	    String[] ds = line.trim().split("\\s+", 7);
 	    if (ds.length == 7 && "man".equals(ds[1])) {
@@ -222,7 +222,7 @@ public class SmfService implements Comparable<SmfService> {
      */
     private String getProperty(String s) {
 	if (props == null) {
-	    props = new HashMap <String, String> ();
+	    props = new HashMap<>();
 	    /*
 	     * Properties aren't supported for legacy services.
 	     */

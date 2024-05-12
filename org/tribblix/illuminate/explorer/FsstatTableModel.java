@@ -69,9 +69,9 @@ public class FsstatTableModel extends AbstractTableModel
     private String columnTitle;
 
     static final private Map <String, String[]> columnMap;
-    private List <ChartableKstat> allfsdata;
-    private List <ChartableKstat> fsdata;
-    private Map <ChartableKstat, String> fsnames;
+    private List <ChartableKstat> allfsdata = new ArrayList<>();
+    private List <ChartableKstat> fsdata = new ArrayList<>();
+    private Map <ChartableKstat, String> fsnames = new HashMap<>();
 
     private Timer timer;
     private int delay = 1000;
@@ -92,8 +92,8 @@ public class FsstatTableModel extends AbstractTableModel
     // don't show any filesystem aggregates at all
     private static final int MASK_ALLAGGR = 16;
     // Lists to hold lists of zones, fstypes to show
-    private List <String> showzones;
-    private List <String> showfstypes;
+    private List <String> showzones = new ArrayList<>();
+    private List <String> showfstypes = new ArrayList<>();
 
     static {
 	columnMap = new HashMap <String, String[]> ();
@@ -126,9 +126,6 @@ public class FsstatTableModel extends AbstractTableModel
 	delay = interval*1000;
 	this.filtermask = filtermask;
 
-	allfsdata = new ArrayList <ChartableKstat> ();
-	fsdata = new ArrayList <ChartableKstat> ();
-
 	/*
 	 * All fsstat kstats are under unix:0
 	 */
@@ -142,9 +139,6 @@ public class FsstatTableModel extends AbstractTableModel
 	    }
 	}
 
-	showzones = new ArrayList <String> ();
-	showfstypes = new ArrayList <String> ();
-	fsnames = new HashMap <ChartableKstat, String> ();
 	mnttab = new Mnttab();
 
 	updateFilter();

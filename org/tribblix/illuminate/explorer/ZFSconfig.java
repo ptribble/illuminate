@@ -34,10 +34,9 @@ import org.tribblix.illuminate.InfoCommand;
 public final class ZFSconfig {
     private static final ZFSconfig INSTANCE = new ZFSconfig();
 
-    private Set <Zpool> zpools;
+    private Set <Zpool> zpools = new HashSet<>();
 
     private ZFSconfig() {
-	zpools = new HashSet <Zpool> ();
 	parseZpool();
     }
 

@@ -39,22 +39,17 @@ import uk.co.petertribble.jumble.JumbleFile;
  */
 public class Mnttab {
 
-    private Map <String, String> devmap;
-    private Map <String, String> fsmap;
-    private Map <String, String> fstypemap;
-    private Map <String, List <String>> optmap;
-    private Set <String> fsList;
+    private Map <String, String> devmap = new HashMap<>();
+    private Map <String, String> fsmap = new HashMap<>();
+    private Map <String, String> fstypemap = new HashMap<>();
+    private Map <String, List <String>> optmap = new HashMap<>();
+    private Set <String> fsList = new HashSet<>();
     private long modified;
 
     /**
      * Parse the list of mounted filesystems.
      */
     public Mnttab() {
-	devmap = new HashMap <String, String> ();
-	fsmap = new HashMap <String, String> ();
-	fstypemap = new HashMap <String, String> ();
-	optmap = new HashMap <String, List <String>> ();
-	fsList = new HashSet <String> ();
 	update();
     }
 
@@ -216,7 +211,7 @@ public class Mnttab {
      * @return A List of zones that have mounted filesystems
      */
     public List <String> getZoneList() {
-	List <String> v = new ArrayList <String> ();
+	List <String> v = new ArrayList<>();
 	for (String fs : fsList) {
 	    String zn = getZoneName(fs);
 	    if (!v.contains(zn)) {
@@ -234,7 +229,7 @@ public class Mnttab {
      * @return A List of filesystems that the given zone has mounted
      */
     public List <String> getFSforZone(String myzone) {
-	List <String> v = new ArrayList <String> ();
+	List <String> v = new ArrayList<>();
 	for (String fs : fsList) {
 	    if (getZoneName(fs).equals(myzone)) {
 		v.add(fs);
@@ -249,7 +244,7 @@ public class Mnttab {
      * @return A List of filesystem types that are currently mounted
      */
     public List <String> getFstypeList() {
-	List <String> v = new ArrayList <String> ();
+	List <String> v = new ArrayList<>();
 	for (String s : fstypemap.values()) {
 	    if (!v.contains(s)) {
 		v.add(s);
@@ -266,7 +261,7 @@ public class Mnttab {
      * @return A List of filesystems of the given filesystem type
      */
     public List <String> getFSforFstype(String ftype) {
-	List <String> v = new ArrayList <String> ();
+	List <String> v = new ArrayList<>();
 	for (Map.Entry<String, String> entry : fstypemap.entrySet()) {
 	    if (entry.getValue().equals(ftype)) {
 		v.add(entry.getKey());
@@ -283,7 +278,7 @@ public class Mnttab {
      * @return A List of device IDs for the given filesystem type
      */
     public List <String> getIDforFstype(String ftype) {
-	List <String> v = new ArrayList <String> ();
+	List <String> v = new ArrayList <>();
 	for (Map.Entry<String, String> entry : fstypemap.entrySet()) {
 	    if (entry.getValue().equals(ftype)) {
 		String dev = devmap.get(entry.getKey());

@@ -34,7 +34,7 @@ import org.tribblix.illuminate.InfoCommand;
 public class Zfilesys extends Zdataset {
 
     private String shortname;
-    private Set <Zfilesys> children;
+    private Set <Zfilesys> children = new HashSet<>();
     private Set <Zsnapshot> snapshots;
 
     /**
@@ -50,7 +50,6 @@ public class Zfilesys extends Zdataset {
 	} else {
 	    shortname = name;
 	}
-	children = new HashSet <Zfilesys> ();
     }
 
     /**
@@ -90,7 +89,7 @@ public class Zfilesys extends Zdataset {
      */
     public Set <Zsnapshot> getSnapshots() {
 	if (snapshots == null) {
-	    snapshots = new HashSet <Zsnapshot> ();
+	    snapshots = new HashSet<>();
 	    InfoCommand ic = new InfoCommand("ZF", "/usr/sbin/zfs",
 					"list -H -t snapshot -d 1 -r " + name);
 	    if (ic.exists()) {

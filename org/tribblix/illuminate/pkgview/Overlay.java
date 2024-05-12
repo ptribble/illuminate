@@ -43,9 +43,9 @@ public class Overlay implements Comparable<Overlay> {
     private String name;
     private String description;
     private String oversion;
-    private Set <Overlay> overlays;
-    private Set <SVR4Package> packages;
-    private Set <String> services;
+    private Set <Overlay> overlays = new TreeSet<>();
+    private Set <SVR4Package> packages = new TreeSet<>();
+    private Set <String> services = new TreeSet<>();
 
     /**
      * Create an Overlay object. To be useful, you must call populate().
@@ -57,9 +57,6 @@ public class Overlay implements Comparable<Overlay> {
 	this.altroot = altroot;
 	ovrootf = new File(altroot + OVL_ROOT);
 	this.name = name;
-	packages = new TreeSet <SVR4Package> ();
-	overlays = new TreeSet <Overlay> ();
-	services = new TreeSet <String> ();
     }
 
     /**
@@ -190,7 +187,7 @@ public class Overlay implements Comparable<Overlay> {
      * @return a Set of required overlays that are not installed
      */
     public Set <Overlay> missingOverlays() {
-	Set <Overlay> omiss = new TreeSet <Overlay> ();
+	Set <Overlay> omiss = new TreeSet<>();
 	for (Overlay ovl : overlays) {
 	    if (!ovl.isInstalled()) {
 		omiss.add(ovl);
@@ -206,7 +203,7 @@ public class Overlay implements Comparable<Overlay> {
      * not currently installed
      */
     public Set <SVR4Package> missingPackages() {
-	Set <SVR4Package> pmiss = new TreeSet <SVR4Package> ();
+	Set <SVR4Package> pmiss = new TreeSet<>();
 	for (SVR4Package pkg : packages) {
 	    if (!pkg.isInstalled()) {
 		pmiss.add(pkg);

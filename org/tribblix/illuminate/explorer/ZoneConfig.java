@@ -36,13 +36,11 @@ import org.tribblix.illuminate.InfoCommand;
 public final class ZoneConfig {
     private static final ZoneConfig INSTANCE = new ZoneConfig();
 
-    private Set <String> zones;
-    private Map <String, ZoneEntry> zmap;
+    private Set <String> zones = new HashSet<>();
+    private Map <String, ZoneEntry> zmap = new HashMap<>();
     private boolean isglobal;
 
     private ZoneConfig() {
-	zones = new HashSet <String> ();
-	zmap = new HashMap <String, ZoneEntry> ();
 	parseZones();
     }
 

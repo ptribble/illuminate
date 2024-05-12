@@ -44,8 +44,8 @@ public final class ContentsParser {
 
     private static ContentsParser cpinstance;
 
-    private Map <String, ContentsFileDetail> fileHash;
-    private Map <String, ContentsPackage> pkgHash;
+    private Map <String, ContentsFileDetail> fileHash = new HashMap<>();
+    private Map <String, ContentsPackage> pkgHash = new HashMap<>();
 
     private static final String CONTENTS_FILE = "/var/sadm/install/contents";
 
@@ -55,8 +55,6 @@ public final class ContentsParser {
      * @param altroot  An alternate root directory for this OS image
      */
     private ContentsParser(String altroot) {
-	fileHash = new HashMap <String, ContentsFileDetail> (65536);
-	pkgHash = new HashMap <String, ContentsPackage> (2048);
 	parse(altroot);
     }
 

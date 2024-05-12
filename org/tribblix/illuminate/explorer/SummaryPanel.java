@@ -84,7 +84,7 @@ public class SummaryPanel extends InfoPanel {
 	int ncores = 0;
 	int nthreads = 0;
 	String sbrand = "";
-	Set <Kstat> kss = new HashSet <Kstat> ();
+	Set <Kstat> kss = new HashSet<>();
 	for (Long l : proctree.getChips()) {
 	    ncores += proctree.numCores(l);
 	    nthreads += proctree.numThreads(l);

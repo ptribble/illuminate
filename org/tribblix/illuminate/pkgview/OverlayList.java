@@ -38,8 +38,8 @@ public class OverlayList {
 
     private boolean ovlexists;
 
-    private Set <Overlay> ovlist;
-    private Map <String, Overlay> ovMap;
+    private Set <Overlay> ovlist = new TreeSet<>();
+    private Map <String, Overlay> ovMap = new HashMap<>();
 
     /**
      * Create an overlay list.
@@ -50,9 +50,6 @@ public class OverlayList {
      * @param plist a PkgList object
      */
     public OverlayList(String altroot, PkgList plist) {
-	ovMap = new HashMap <String, Overlay> ();
-	ovlist = new TreeSet <Overlay> ();
-
 	File ovrootf = new File(altroot + Overlay.OVL_ROOT);
 	ovlexists = ovrootf.exists();
 
@@ -103,7 +100,7 @@ public class OverlayList {
      * @return the Set of overlays requiring the given overlay
      */
     public Set <Overlay> containingOverlays(Overlay ovl) {
-	Set <Overlay> h = new TreeSet <Overlay> ();
+	Set <Overlay> h = new TreeSet<>();
 	for (Overlay ov1 : ovlist) {
 	    if (ov1.containsOverlay(ovl)) {
 		h.add(ov1);
@@ -120,7 +117,7 @@ public class OverlayList {
      * @return the Set of overlays containing the given package
      */
     public Set <Overlay> containingOverlays(SVR4Package pkg) {
-	Set <Overlay> h = new TreeSet <Overlay> ();
+	Set <Overlay> h = new TreeSet<>();
 	for (Overlay ovl : ovlist) {
 	    if (ovl.containsPackage(pkg.getName())) {
 		h.add(ovl);
@@ -138,7 +135,7 @@ public class OverlayList {
      */
     public Set <Overlay> containingOverlays(
 				List <SVR4Package> pkglist) {
-	Set <Overlay> h = new TreeSet <Overlay> ();
+	Set <Overlay> h = new TreeSet<>();
 	for (SVR4Package pkg : pkglist) {
 	    h.addAll(containingOverlays(pkg));
 	}

@@ -56,8 +56,8 @@ public class ZapConfig {
 
 	// create the repo list
 	if (zapexists) {
-	    repoMap = new TreeMap <Integer, ZapRepository> ();
-	    catalogMap = new HashMap <String, CatalogParser> (8);
+	    repoMap = new TreeMap<>();
+	    catalogMap = new HashMap<>(8);
 	    File rf = new File(zaprootf, "repo.list");
 	    for (String line : JumbleFile.getLines(rf)) {
 		String[] ds = line.split(" ", 2);

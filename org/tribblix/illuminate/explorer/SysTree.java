@@ -40,7 +40,7 @@ import org.tribblix.illuminate.IlluminateResources;
  */
 public class SysTree extends JTree {
 
-    private Map <String, Kstat> netMap;
+    private Map <String, Kstat> netMap = new HashMap<>();
     private JKstat jkstat;
 
     /**
@@ -60,7 +60,6 @@ public class SysTree extends JTree {
      */
     public SysTree(JKstat jkstat, String title) {
 	this.jkstat = jkstat;
-	netMap = new HashMap <String, Kstat> ();
 
 	DefaultMutableTreeNode root = new SysTreeNode(
 					new SysItem(SysItem.HOST), title);
@@ -162,7 +161,7 @@ public class SysTree extends JTree {
 	 * the 'disks' Set, which sorts them, and run through that at the
 	 * end to add all the nodes to the tree.
 	 */
-	Set <SysTreeNode> disks = new TreeSet <SysTreeNode> ();
+	Set <SysTreeNode> disks = new TreeSet<>();
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.setFilterClass("disk");
 	KstatSet kss = new KstatSet(jkstat, ksf);

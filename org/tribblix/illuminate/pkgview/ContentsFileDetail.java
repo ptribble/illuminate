@@ -183,7 +183,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * @return  A List of packages that own this entry.
      */
     public List <SVR4Package> getPackages() {
-	List <SVR4Package> lp = new ArrayList <SVR4Package> ();
+	List <SVR4Package> lp = new ArrayList<>();
 	for (String s : pkglist) {
 	    lp.add(new SVR4Package(altroot, s));
 	}
