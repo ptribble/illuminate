@@ -23,7 +23,7 @@ fi
 #
 # need to give java more memory to handle contents file parsing
 #
-EXTRAMEMFLAGS="-Xmx512m"
+EXTRAMEMFLAGS="-Xmx1024m"
 
 #
 # there's a lot of duplication in the contents file - mode, owner, group
