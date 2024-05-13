@@ -127,7 +127,7 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
 	jtp.add(IlluminateResources.getString("SMF.DEPS"),
 		new JScrollPane(dtp));
 
-	tpl = new JingleTextPane();
+	tpl = new JingleTextPane("text/plain");
 	jtp.add(IlluminateResources.getString("SMF.LOG"), new JScrollPane(tpl));
 
 	/*
@@ -199,11 +199,7 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
     void displayLog() {
 	Cursor c = getCursor();
 	setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-	StringBuilder sb = new StringBuilder();
-	sb.append("<pre>\n")
-	    .append(JumbleFile.getStringContents(logfile))
-	    .append("</pre>\n");
-	tpl.setText(sb.toString());
+	tpl.setText(JumbleFile.getStringContents(logfile));
 	setCursor(c);
     }
 
