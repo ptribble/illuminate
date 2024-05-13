@@ -34,10 +34,10 @@ import java.awt.Component;
  */
 public class SmfListCellRenderer extends DefaultListCellRenderer {
 
-    private static final Color lcolor = new Color(127, 255, 255);
-    private static final Color mcolor = new Color(255, 127, 127);
-    private static final Color dcolor = new Color(127, 127, 255);
-    private static final Color oncolor = new Color(127, 255, 127);
+    private static final Color lcolor = new Color(151, 255, 255);
+    private static final Color mcolor = new Color(255, 151, 151);
+    private static final Color dcolor = new Color(151, 151, 255);
+    private static final Color oncolor = new Color(151, 255, 151);
     private static final Color offcolor = Color.ORANGE;
 
     @Override
