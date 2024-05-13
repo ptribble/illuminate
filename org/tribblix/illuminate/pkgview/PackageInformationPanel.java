@@ -102,7 +102,7 @@ public class PackageInformationPanel extends JTabbedPane {
 	if (pkg.isInstalled()) {
 	    setInfoText(PkgUtils.infoTable(pkg, zc),
 		    PkgUtils.dependencyTable(pkg),
-		    revDeps(pkg.getDependantSet()));
+		    PkgUtils.revDeps(pkg.getDependantSet()));
 	} else {
 	    setInfoText("Not installed", "", "");
 	}
@@ -120,31 +120,9 @@ public class PackageInformationPanel extends JTabbedPane {
 	setOvlTab(PkgResources.getString("PKG.PACKAGES"));
 	setInfoText(PkgUtils.infoTable(ovl),
 		    PkgUtils.dependencyTable(ovl),
-		    ovlDeps(ovlist.containingOverlays(ovl)));
+		    PkgUtils.ovlDeps(ovlist.containingOverlays(ovl)));
 	setOverlayText(PkgUtils.overlayMembers(ovl));
 	disableFilesTab();
-    }
-
-    private String ovlDeps(Set <Overlay> ovls) {
-	StringBuilder sb = new StringBuilder(105);
-	PkgUtils.headRow2(sb, "Depending on this overlay:");
-	if (ovls != null) {
-	    for (Overlay ovl : ovls) {
-		PkgUtils.addRow(sb, ovl.getName(), ovl.getDescription());
-	    }
-	}
-	return PkgUtils.wrapTable(sb);
-    }
-
-    private String revDeps(Set <SVR4Package> pkgs) {
-	StringBuilder sb = new StringBuilder(93);
-	PkgUtils.headRow(sb, "Depending on this package:");
-	if (pkgs != null) {
-	    for (SVR4Package pkg : pkgs) {
-		PkgUtils.addRow(sb, pkg.getName());
-	    }
-	}
-	return PkgUtils.wrapTable(sb);
     }
 
     public void showFile(File f) {
@@ -159,46 +137,10 @@ public class PackageInformationPanel extends JTabbedPane {
 	    if (cfd == null) {
 		infoOnly("Not a member of any package.");
 	    } else {
-		setInfoText(fileDetailTable(cfd), "", "");
-		setOverlayText(overlayMembership(cfd));
+		setInfoText(PkgUtils.fileDetailTable(cfd), "", "");
+		setOverlayText(PkgUtils.overlayMembership(ovlist, cfd));
 	    }
 	}
-    }
-
-    private String fileDetailTable(ContentsFileDetail cfd) {
-	StringBuilder sb = new StringBuilder(400);
-	PkgUtils.headRow2(sb, "Path name: " + cfd.getName());
-	PkgUtils.addRow(sb, "File Type:", cfd.getDescriptiveType());
-	if (cfd.isLink()) {
-	    PkgUtils.addRow(sb, "Link target:", cfd.getTarget());
-	} else {
-	    PkgUtils.addRow(sb, "Owner:", cfd.getOwner());
-	    PkgUtils.addRow(sb, "Group owner:", cfd.getGroup());
-	    PkgUtils.addRow(sb, "Permissions:", cfd.getMode());
-	    if (cfd.isRegular()) {
-		PkgUtils.addRow(sb, "Size:", cfd.getSize());
-	    }
-	}
-	sb.append("</table>\n<table width=\"100%\">");
-	PkgUtils.headRow(sb, "This " + cfd.getBasicType()
-			+ " is a member of the following packages");
-	for (String pname : cfd.getPackageNames()) {
-	    PkgUtils.addRow(sb, pname);
-	}
-	return PkgUtils.wrapTable(sb);
-    }
-
-    /*
-     * Display which overlays a given file is in.
-     */
-    private String overlayMembership(ContentsFileDetail cfd) {
-	StringBuilder sb = new StringBuilder();
-	PkgUtils.headRow2(sb, "This " + cfd.getBasicType()
-			+ " is part of the following overlays");
-	for (Overlay ovl : ovlist.containingOverlays(cfd.getPackages())) {
-	    PkgUtils.addRow(sb, ovl.toString(), ovl.getDescription());
-	}
-	return PkgUtils.wrapTable(sb);
     }
 
     /*

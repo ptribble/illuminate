@@ -228,42 +228,109 @@ public class PkgUtils {
 	return wrapTable(sb);
     }
 
-    static public void headRow(StringBuilder sb, String s1, String s2) {
+    static public String ovlDeps(Set <Overlay> ovls) {
+	StringBuilder sb = new StringBuilder(105);
+	headRow2(sb, "Depending on this overlay:");
+	if (ovls != null) {
+	    for (Overlay ovl : ovls) {
+		addRow(sb, ovl.getName(), ovl.getDescription());
+	    }
+	}
+	return wrapTable(sb);
+    }
+
+    static public String revDeps(Set <SVR4Package> pkgs) {
+	StringBuilder sb = new StringBuilder(93);
+	headRow(sb, "Depending on this package:");
+	if (pkgs != null) {
+	    for (SVR4Package pkg : pkgs) {
+		addRow(sb, pkg.getName());
+	    }
+	}
+	return wrapTable(sb);
+    }
+
+    static public String fileDetailTable(ContentsFileDetail cfd) {
+	StringBuilder sb = new StringBuilder(400);
+	headRow2(sb, "Path name: " + cfd.getName());
+	addRow(sb, "File Type:", cfd.getDescriptiveType());
+	if (cfd.isLink()) {
+	    addRow(sb, "Link target:", cfd.getTarget());
+	} else {
+	    addRow(sb, "Owner:", cfd.getOwner());
+	    addRow(sb, "Group owner:", cfd.getGroup());
+	    addRow(sb, "Permissions:", cfd.getMode());
+	    if (cfd.isRegular()) {
+		addRow(sb, "Size:", cfd.getSize());
+	    }
+	}
+	sb.append("</table>\n<table width=\"100%\">");
+	headRow(sb, "This " + cfd.getBasicType()
+			+ " is a member of the following packages");
+	for (String pname : cfd.getPackageNames()) {
+	    addRow(sb, pname);
+	}
+	return wrapTable(sb);
+    }
+
+    static public String overlayMembership(OverlayList ovlist, ContentsFileDetail cfd) {
+	StringBuilder sb = new StringBuilder();
+	headRow2(sb, "This " + cfd.getBasicType()
+			+ " is part of the following overlays");
+	for (Overlay ovl : ovlist.containingOverlays(cfd.getPackages())) {
+	    addRow(sb, ovl.toString(), ovl.getDescription());
+	}
+	return wrapTable(sb);
+    }
+
+    static public String overlayMembership(SVR4Package pkg,
+		OverlayList ovlist) {
+	StringBuilder sb = new StringBuilder(80);
+
+	headRow2(sb, PkgResources.getString("PKGUTILS.OVL"));
+	for (Overlay ovl : ovlist.containingOverlays(pkg)) {
+	    addRow(sb, ovl.toString(), ovl.getDescription());
+	}
+
+	return wrapTable(sb);
+    }
+
+    static private void headRow(StringBuilder sb, String s1, String s2) {
 	// adds 46 characters to the string
 	sb.append("<tr bgcolor=\"#eeeeee\"><th>").append(s1)
 	    .append("</th><th>").append(s2).append("</th></tr>\n");
     }
 
-    static public void headRow2(StringBuilder sb, String s) {
+    static private void headRow2(StringBuilder sb, String s) {
 	// adds 49 characters to the string
 	sb.append("<tr bgcolor=\"#eeeeee\"><th colspan=\"2\">").append(s)
 	    .append("</th></tr>\n");
     }
 
-    static public void headRow(StringBuilder sb, String s) {
+    static private void headRow(StringBuilder sb, String s) {
 	// adds 37 characters to the string
 	sb.append("<tr bgcolor=\"#eeeeee\"><th>").append(s)
 	    .append("</th></tr>\n");
     }
 
-    static public void addRow(StringBuilder sb, String s) {
+    static private void addRow(StringBuilder sb, String s) {
 	// adds 19 characters to the string
 	sb.append("<tr><td>").append(s).append("</td></tr>\n");
     }
 
-    static public void addRow(StringBuilder sb, String s1, long l) {
+    static private void addRow(StringBuilder sb, String s1, long l) {
 	// adds 28 characters to the string
 	sb.append("<tr><td>").append(s1).append("</td><td>").append(l)
 	    .append("</td></tr>\n");
     }
 
-    static public void addRow(StringBuilder sb, String s1, String s2) {
+    static private void addRow(StringBuilder sb, String s1, String s2) {
 	// adds 28 characters to the string
 	sb.append("<tr><td>").append(s1).append("</td><td>").append(s2)
 	    .append("</td></tr>\n");
     }
 
-    static public String wrapTable(StringBuilder sb) {
+    static private String wrapTable(StringBuilder sb) {
 	// adds 29 characters to the string
 	sb.insert(0, "<table width=\"100%\">");
 	sb.append("</table>\n");
@@ -295,17 +362,5 @@ public class PkgUtils {
 		break;
 	}
 	return sb.toString();
-    }
-
-    static public String overlayMembership(SVR4Package pkg,
-		OverlayList ovlist) {
-	StringBuilder sb = new StringBuilder(80);
-
-	headRow2(sb, PkgResources.getString("PKGUTILS.OVL"));
-	for (Overlay ovl : ovlist.containingOverlays(pkg)) {
-	    addRow(sb, ovl.toString(), ovl.getDescription());
-	}
-
-	return wrapTable(sb);
     }
 }
