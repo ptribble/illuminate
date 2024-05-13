@@ -48,7 +48,10 @@ public class SmfListCellRenderer extends DefaultListCellRenderer {
 						cellHasFocus);
 	if (value instanceof SmfService) {
 	    SmfService svc = (SmfService) value;
-	    setText(svc.getFMRI());
+	    // strip the scheme
+	    String serv = svc.getFMRI();
+	    int ioff = serv.startsWith("svc:") ? 2 : 1;
+	    setText(serv.substring(serv.indexOf(':')+ioff));
 	    Color color = getStatusColor(svc);
 	    if (color != null) {
 		setBackground(isSelected ? color : color.brighter());
