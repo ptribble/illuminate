@@ -69,6 +69,15 @@ pmd|-pmd)
 	exit 0
 	;;
 
+spotbugs)
+	#
+	# spotbugs works on the class files, so those need to be available
+	#
+	./build
+	spotbugs -auxclasspath $(echo lib/java/* | sed 's= =:=g') org
+	exit 0
+	;;
+
 packages)
 	sed s:INSTALLED=false:INSTALLED=true: illuminate > illuminate.installed
 	./mkproto i386 $2 > prototype.i386
