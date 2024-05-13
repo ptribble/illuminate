@@ -61,6 +61,10 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
      */
     private final JingleTextPane tpl;
     /**
+     * A panel to show the service properties.
+     */
+    private final JingleTextPane tprops;
+    /**
      * A panel to show dependencies.
      */
     private final JingleTextPane dtp;
@@ -130,6 +134,10 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
 	tpl = new JingleTextPane("text/plain");
 	jtp.add(IlluminateResources.getString("SMF.LOG"), new JScrollPane(tpl));
 
+	tprops = new JingleTextPane("text/plain");
+	jtp.add(IlluminateResources.getString("SMF.PROPERTIES"),
+		new JScrollPane(tprops));
+
 	/*
 	 * Add a change listener so that, when the log tab is
 	 * selected, the logfile is automatically displayed.
@@ -154,6 +162,7 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
 	tp.setText(svc.getHtmlInfo());
 	setManButtons(svc);
 	setDep(svc.getDepInfo());
+	setProps(svc.getSvcProperties());
 	setLog(svc.getLog());
 	// FIXME bug no contract is -1, but the table interprets -1
 	// as no filtering
@@ -180,6 +189,16 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
 	} else {
 	    jtp.setEnabledAt(1, true);
 	    dtp.setText(s);
+	}
+    }
+
+    private void setProps(String s) {
+	if (s == null) {
+	    jtp.setEnabledAt(3, false);
+	    jtp.setSelectedIndex(0);
+	} else {
+	    jtp.setEnabledAt(3, true);
+	    tprops.setText(s);
 	}
     }
 

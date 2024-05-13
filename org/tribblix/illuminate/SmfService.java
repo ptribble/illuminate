@@ -156,6 +156,14 @@ public class SmfService implements Comparable<SmfService> {
 	return svcs.getOut();
     }
 
+    public String getSvcProperties() {
+	if ("legacy_run".equals(status)) {
+	    return null;
+	}
+	RunCommand svcs = new RunCommand("/usr/bin/svcprop " + fmri);
+	return svcs.getOut();
+    }
+
     /**
      * Get the name of this service, for display purposes
      *
