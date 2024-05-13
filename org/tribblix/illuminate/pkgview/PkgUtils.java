@@ -192,33 +192,23 @@ public class PkgUtils {
 	}
     }
 
-    static public String detailTable(SVR4Package pkg, ContentsParser cp) {
+    static public String detailTable(ContentsPackage cpp) {
 	StringBuilder sb = new StringBuilder();
-	if (cp != null) {
-	    ContentsPackage cpp = cp.getPackage(pkg.getName());
-	    if (cpp != null) {
-		sb.append(doDetailTable(cpp)).append(doFileList(cpp));
+	if (cpp != null) {
+	    sb.append(doDetailTable(cpp));
+	    headRow(sb, PkgResources.getString("PKGUTILS.FILELIST"));
+	}
+	return wrapTable(sb);
+    }
+
+    static public String doTextFileList(ContentsPackage cpp) {
+	StringBuilder sb = new StringBuilder(80);
+	if (cpp != null) {
+	    for (ContentsFileDetail cfd : cpp.getDetails()) {
+		sb.append(cfd.getName()).append('\n');
 	    }
 	}
 	return sb.toString();
-    }
-
-    static private String doFileList(ContentsPackage cpp) {
-	StringBuilder sb = new StringBuilder(80);
-	headRow(sb, PkgResources.getString("PKGUTILS.FILELIST"));
-	StringBuilder sb2 = new StringBuilder(32);
-	sb2.append("<pre>\n");
-	for (ContentsFileDetail cfd : cpp.getDetails()) {
-	    String sname = cfd.getName();
-	    if (!cfd.isDirectory() && sname.startsWith("/usr/share/man")) {
-		int ii = sname.lastIndexOf('/');
-		sb2.append("<a href=\"").append(sname.substring(ii+1)).append("\">").append(sname).append("</a>").append('\n');
-	    } else {
-		sb2.append(sname).append('\n');
-	    }
-	}
-	sb2.append("</pre>\n");
-	return wrapTable(sb) + sb2;
     }
 
     static private String doDetailTable(ContentsPackage cpp) {

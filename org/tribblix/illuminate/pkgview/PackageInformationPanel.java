@@ -23,10 +23,13 @@
 package org.tribblix.illuminate.pkgview;
 
 import java.util.Set;
+import java.awt.BorderLayout;
 import java.awt.Cursor;
+import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
 import java.io.File;
+import uk.co.petertribble.jingle.JingleTextPane;
 
 /**
  * Show information about installed files or packages in a set of
@@ -44,7 +47,8 @@ public class PackageInformationPanel extends JTabbedPane {
     private PackageTextPane tp_rdep;
     private PackageTextPane tp_ovl;
     private JScrollPane jp_ovl;
-    private PackageTextPane tp_files;
+    private JingleTextPane tp_filehead;
+    private JingleTextPane tp_filelist;
     private boolean showfiles;
     private OverlayList ovlist;
     private ContentsParser cp;
@@ -80,7 +84,8 @@ public class PackageInformationPanel extends JTabbedPane {
 	tp_dep = new PackageTextPane();
 	tp_rdep = new PackageTextPane();
 	tp_ovl = new PackageTextPane();
-	tp_files = new PackageTextPane();
+	tp_filehead = new JingleTextPane();
+	tp_filelist = new JingleTextPane("text/plain");
 	add(PkgResources.getString("PKG.INFO"), new JScrollPane(tp_info));
 	if (showdependencies) {
 	    add(PkgResources.getString("PKG.DEPENDENCIES"),
@@ -104,8 +109,9 @@ public class PackageInformationPanel extends JTabbedPane {
 	setOverlayText(PkgUtils.overlayMembership(pkg, ovlist));
 	if (cp != null) {
 	    Cursor c = getCursor();
+	    ContentsPackage cpp = cp.getPackage(pkg.getName());
 	    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-	    setFilesText(PkgUtils.detailTable(pkg, cp));
+	    setFilesText(PkgUtils.detailTable(cpp), PkgUtils.doTextFileList(cpp));
 	    setCursor(c);
 	}
     }
@@ -215,12 +221,13 @@ public class PackageInformationPanel extends JTabbedPane {
 	tp_ovl.setText(s);
     }
 
-    private void setFilesText(String s) {
+    private void setFilesText(String shead, String slist) {
 	if (!showfiles) {
 	    showFilesTab();
 	}
 	enableFiles();
-	tp_files.setText(s);
+	tp_filehead.setText(shead);
+	tp_filelist.setText(slist);
     }
 
     /**
@@ -240,7 +247,10 @@ public class PackageInformationPanel extends JTabbedPane {
      * Show the files tab.
      */
     private void showFilesTab() {
-	add(PkgResources.getString("PKG.CONTENTS"), new JScrollPane(tp_files));
+	JPanel jfp = new JPanel(new BorderLayout());
+	jfp.add(tp_filehead, BorderLayout.PAGE_START);
+	jfp.add(tp_filelist, BorderLayout.CENTER);
+	add(PkgResources.getString("PKG.CONTENTS"), new JScrollPane(jfp));
 	showfiles = true;
     }
 
