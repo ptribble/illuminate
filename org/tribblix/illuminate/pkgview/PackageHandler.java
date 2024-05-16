@@ -151,11 +151,10 @@ public class PackageHandler {
      */
 
     protected Set <String> listPackageNames() {
-	File pkgrootf = new File(altroot + PKG_ROOT);
 	Set <String> pnamelist = new TreeSet<>();
 
-	if (pkgrootf.exists()) {
-	    for (File f : pkgrootf.listFiles()) {
+	if (pkgdirf.exists()) {
+	    for (File f : pkgdirf.listFiles()) {
 		if (f.isDirectory() &&
 		    !f.isHidden() &&
 		    !"locale".equals(f.getName()) &&
@@ -168,15 +167,14 @@ public class PackageHandler {
     }
 
     protected Set <String> listOverlayNames() {
-	File ovrootf = new File(altroot + OVL_ROOT);
 	Set <String> onamelist = new TreeSet<>();
 
-	if (ovrootf.exists()) {
-	    for (File f : ovrootf.listFiles()) {
+	if (ovldirf.exists()) {
+	    for (File f : ovldirf.listFiles()) {
 		if (f.getName().endsWith(".ovl")) {
 		    String fname = f.getName();
 		    String rootname = fname.substring(0, fname.length()-4);
-		    File f2 = new File(ovrootf, rootname + ".pkgs");
+		    File f2 = new File(ovldirf, rootname + ".pkgs");
 		    if (f2.exists()) {
 			onamelist.add(rootname);
 		    }
@@ -187,10 +185,8 @@ public class PackageHandler {
     }
 
     protected String[] listRepositories() {
-	File zaprootf = new File(altroot + ZAP_ROOT);
-
-	if (zaprootf.exists()) {
-	    return JumbleFile.getLines(new File(zaprootf, "repo.list"));
+	if (zapdirf.exists()) {
+	    return JumbleFile.getLines(new File(zapdirf, "repo.list"));
 	}
 	return new String[0];
     }

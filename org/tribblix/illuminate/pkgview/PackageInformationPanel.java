@@ -28,7 +28,6 @@ import java.awt.Cursor;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTabbedPane;
-import java.io.File;
 import uk.co.petertribble.jingle.JingleTextPane;
 
 /**
@@ -120,14 +119,14 @@ public class PackageInformationPanel extends JTabbedPane {
 	disableFilesTab();
     }
 
-    public void showFile(File f) {
+    public void showFile(String fname) {
 	setOvlTab(PkgResources.getString("PKG.OVERLAYS"));
 	if (cp == null) {
 	    infoOnly("Package information not available.");
 	} else {
 	    // need to remove any altroot from the filename before
 	    // matching it against the contents file
-	    ContentsFileDetail cfd = cp.getFileDetail(f.toString()
+	    ContentsFileDetail cfd = cp.getFileDetail(fname
 					.replaceFirst(pkghdl.getRoot(), "/")
 					.replaceFirst("//", "/"));
 	    if (cfd == null) {

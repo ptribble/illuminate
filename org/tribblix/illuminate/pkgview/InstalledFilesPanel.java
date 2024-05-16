@@ -78,7 +78,7 @@ public class InstalledFilesPanel extends JPanel {
     }
 
     void showFile(File f) {
-	pip.showFile(f);
+	pip.showFile(f.toString());
     }
 
     /**
