@@ -1,3 +1,6 @@
+Refactoring of pkgview to start routing all requests for data through
+new PackageHandler class
+
 Add service properties tab to SMF view
 
 Display list of files in plain text, not html

@@ -31,7 +31,7 @@ import java.util.Arrays;
  */
 public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
 
-    private String altroot;
+    private PackageHandler pkghdl;
 
     private String filename;
     private char ftype;
@@ -50,11 +50,11 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
     /**
      * Create a set of details from a line of the contents file.
      *
-     * @param altroot  An alternate root directory for this OS image
+     * @param pkghdl a PackageHandler for this OS image
      * @param s  One line of the contents file
      */
-    public ContentsFileDetail(String altroot, String s) {
-	this.altroot = altroot;
+    public ContentsFileDetail(PackageHandler pkghdl, String s) {
+	this.pkghdl = pkghdl;
 	parseNewStyle(s);
     }
 
@@ -185,7 +185,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
     public List <SVR4Package> getPackages() {
 	List <SVR4Package> lp = new ArrayList<>();
 	for (String s : pkglist) {
-	    lp.add(new SVR4Package(altroot, s));
+	    lp.add(new SVR4Package(pkghdl, s));
 	}
 	return lp;
     }

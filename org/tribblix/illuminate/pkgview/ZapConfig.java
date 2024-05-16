@@ -22,11 +22,9 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.TreeMap;
-import uk.co.petertribble.jumble.JumbleFile;
 
 /**
  * ZapConfig - describe zap configuration.
@@ -34,11 +32,6 @@ import uk.co.petertribble.jumble.JumbleFile;
  * @version 1.0
  */
 public class ZapConfig {
-
-    /**
-     * This is the directory where zap configuration is stored.
-     */
-    public static final String ZAP_ROOT = "/etc/zap";
 
     private boolean zapexists;
 
@@ -48,24 +41,18 @@ public class ZapConfig {
     /**
      * Create a zap configuration.
      *
-     * @param altroot  An alternate root directory for this OS image
+     * @param pkghdl a PackageHandler for this OS image
      */
-    public ZapConfig(String altroot) {
-	File zaprootf = new File(altroot + ZAP_ROOT);
-	zapexists = zaprootf.exists();
-
-	// create the repo list
-	if (zapexists) {
-	    repoMap = new TreeMap<>();
-	    catalogMap = new HashMap<>(8);
-	    File rf = new File(zaprootf, "repo.list");
-	    for (String line : JumbleFile.getLines(rf)) {
-		String[] ds = line.split(" ", 2);
-		repoMap.put(Integer.parseInt(ds[0]),
-					new ZapRepository(altroot, ds[1]));
-		catalogMap.put(ds[1], new CatalogParser(altroot, ds[1]));
-	    }
+    public ZapConfig(PackageHandler pkghdl) {
+	repoMap = new TreeMap<>();
+	catalogMap = new HashMap<>(8);
+	for (String line : pkghdl.listRepositories()) {
+	    String[] ds = line.split(" ", 2);
+	    repoMap.put(Integer.parseInt(ds[0]),
+			new ZapRepository(pkghdl, ds[1]));
+	    catalogMap.put(ds[1], new CatalogParser(pkghdl, ds[1]));
 	}
+	zapexists = !repoMap.isEmpty();
     }
 
     /**

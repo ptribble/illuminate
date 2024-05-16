@@ -26,8 +26,6 @@ import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
-import java.io.File;
-import uk.co.petertribble.jumble.JumbleFile;
 import uk.co.petertribble.jumble.JumbleUtils;
 
 /**
@@ -38,12 +36,7 @@ import uk.co.petertribble.jumble.JumbleUtils;
  */
 public class SVR4Package implements Comparable<SVR4Package> {
 
-    /**
-     * This is where SVR4 pcakaging metadata is stored.
-     */
-    public static final String PKG_ROOT = "/var/sadm/pkg";
-
-    private File pkgrootf;
+    private PackageHandler pkghdl;
 
     private String name;
     private Map <String, String> pkginfomap;
@@ -55,11 +48,11 @@ public class SVR4Package implements Comparable<SVR4Package> {
     /**
      * Create an SVR4 package container.
      *
-     * @param altroot  An alternate root directory for this OS image
+     * @param pkghdl a PackageHandler for this OS image
      * @param name  The name of the package.
      */
-    public SVR4Package(String altroot, String name) {
-	pkgrootf = new File(altroot + PKG_ROOT);
+    public SVR4Package(PackageHandler pkghdl, String name) {
+	this.pkghdl = pkghdl;
 	this.name = name;
     }
 
@@ -228,22 +221,21 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * @return true if this package is installed
      */
     public boolean isInstalled() {
-	return new File(pkgrootf, name).exists();
+	return pkghdl.isPkgInstalled(name);
     }
 
     /*
      * Returns the pkginfo file associated with this package as a String.
      */
     private String getInfo() {
-	return JumbleFile.getStringContents(
-		new File(pkgrootf, name+"/pkginfo"));
+	return pkghdl.getPkgInfo(name);
     }
 
     /*
      * Returns the depend file associated with this package as a String array.
      */
     private String[] getDepend() {
-	return JumbleFile.getLines(new File(pkgrootf, name+"/install/depend"));
+	return pkghdl.getPkgDepend(name);
     }
 
     /**

@@ -22,7 +22,6 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.io.File;
 import java.util.Map;
 import java.util.HashMap;
 import java.util.Set;
@@ -47,22 +46,13 @@ public class PkgList extends TreeSet <SVR4Package> {
      * and anything hidden (starting with a dot) and
      * also the locale directory
      *
-     * @param altroot  An alternate root directory for this OS image
+     * @param pkghdl a PackageHandler for this OS image
      */
-    public PkgList(String altroot) {
-	File pkgrootf = new File(altroot + SVR4Package.PKG_ROOT);
-
-	if (pkgrootf.exists()) {
-	    for (File f : pkgrootf.listFiles()) {
-		if (f.isDirectory() &&
-		    !f.isHidden() &&
-		    !"locale".equals(f.getName()) &&
-		    new File(f, "pkginfo").exists()) {
-		    SVR4Package sp = new SVR4Package(altroot, f.getName());
-		    add(sp);
-		    pkgMap.put(sp.getName(), sp);
-		}
-	    }
+    public PkgList(PackageHandler pkghdl) {
+        for (String s : pkghdl.listPackageNames()) {
+	    SVR4Package sp = new SVR4Package(pkghdl, s);
+	    add(sp);
+	    pkgMap.put(s, sp);
 	}
     }
 

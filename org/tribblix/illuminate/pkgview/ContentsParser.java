@@ -42,8 +42,6 @@ import java.io.IOException;
  */
 public final class ContentsParser {
 
-    private static ContentsParser cpinstance;
-
     private Map <String, ContentsFileDetail> fileHash = new HashMap<>();
     private Map <String, ContentsPackage> pkgHash = new HashMap<>();
 
@@ -52,24 +50,10 @@ public final class ContentsParser {
     /**
      * Parse a contents file.
      *
-     * @param altroot  An alternate root directory for this OS image
+     * @param pkghdl a PackageHandler for this OS image
      */
-    private ContentsParser(String altroot) {
-	parse(altroot);
-    }
-
-    /**
-     * Get the singleton instance of the contents file.
-     *
-     * @param altroot  An alternate root directory for this OS image
-     *
-     * @return the singleton instance of the contents file.
-     */
-    public static synchronized ContentsParser getInstance(String altroot) {
-	if (cpinstance == null) {
-	    cpinstance = new ContentsParser(altroot);
-	}
-	return cpinstance;
+    public ContentsParser(PackageHandler pkghdl) {
+	parse(pkghdl);
     }
 
     /*
@@ -87,13 +71,14 @@ public final class ContentsParser {
      * So the actual parse is pretty quick - it's populating the maps
      * that really adds to the cost.
      */
-    private void parse(String altroot) {
+    private void parse(PackageHandler pkghdl) {
 	try (BufferedReader in
-		= new BufferedReader(new FileReader(altroot + CONTENTS_FILE))) {
+		= new BufferedReader(
+		    new FileReader(pkghdl.getRoot() + CONTENTS_FILE))) {
 	    String s = null;
 	    while ((s = in.readLine()) != null) {
 		if (s.charAt(0) == '/') {
-		    ContentsFileDetail cfd = new ContentsFileDetail(altroot, s);
+		    ContentsFileDetail cfd = new ContentsFileDetail(pkghdl, s);
 		    fileHash.put(cfd.getName(), cfd);
 		    for (String pkgname : cfd.getPackageNames()) {
 			ContentsPackage cp = pkgHash.get(pkgname);
@@ -147,6 +132,6 @@ public final class ContentsParser {
      * @return the corresponding ContentsPackage
      */
     public ContentsPackage getOverlay(Overlay ovl) {
-	return new ContentsPackage(ovl);
+	return new ContentsPackage(ovl, this);
     }
 }

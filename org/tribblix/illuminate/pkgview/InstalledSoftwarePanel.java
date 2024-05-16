@@ -36,10 +36,9 @@ import javax.swing.SwingWorker;
  */
 public class InstalledSoftwarePanel extends JTabbedPane {
 
-    String altroot;
+    PackageHandler pkghdl;
 
     PkgList plist;
-    ZapConfig zc;
     PackagePanel ipp;
     OverlayPanel ovp;
     InstalledFilesPanel ifp;
@@ -50,20 +49,19 @@ public class InstalledSoftwarePanel extends JTabbedPane {
      * @param altroot An alternate root directory for this OS image
      */
     public InstalledSoftwarePanel(String altroot) {
-	this.altroot = altroot;
-	zc = new ZapConfig(altroot);
-	plist = new PkgList(altroot);
-	OverlayList ovlist = new OverlayList(altroot, plist);
+	pkghdl = new PackageHandler(altroot);
+	plist = pkghdl.getPkgList();
+	OverlayList ovlist = pkghdl.getOverlayList();
 
-	ipp = new PackagePanel(altroot, plist, ovlist, zc);
+	ipp = new PackagePanel(pkghdl);
 	add(PkgResources.getString("PKG.LIST"), ipp);
 
-	ovp = new OverlayPanel(altroot, ovlist, zc);
+	ovp = new OverlayPanel(pkghdl);
 	if (ovlist.exists()) {
 	    add(PkgResources.getString("PKG.OVP"), ovp);
 	}
 
-	ifp = new InstalledFilesPanel(altroot, ovlist, zc);
+	ifp = new InstalledFilesPanel(pkghdl);
 	add(PkgResources.getString("PKG.FS"), ifp);
 
 	(new RevDependencyWorker()).execute();
@@ -78,7 +76,7 @@ public class InstalledSoftwarePanel extends JTabbedPane {
     class ContentsWorker extends SwingWorker <String, Object> {
 	@Override
 	public String doInBackground() {
-	    ContentsParser.getInstance(altroot);
+	    pkghdl.getContentsParser();
 	    return "done";
 	}
 

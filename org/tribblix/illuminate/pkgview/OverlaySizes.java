@@ -37,8 +37,9 @@ public class OverlaySizes {
 	if (args.length == 2 && "-R".equals(args[0])) {
 	    altroot = args[1];
 	}
-	ContentsParser cp = ContentsParser.getInstance(altroot);
-	for (Overlay ovl : new OverlayList(altroot, new PkgList(altroot)).getOverlays()) {
+	PackageHandler pkghdl = new PackageHandler(altroot);
+	ContentsParser cp = pkghdl.getContentsParser();
+	for (Overlay ovl : pkghdl.getOverlayList().getOverlays()) {
 	    ContentsPackage cc = cp.getOverlay(ovl);
 	    System.out.println(cc.spaceUsed() + " | " + cc.numEntries()
 			+ " | " + ovl.getName()

@@ -2,9 +2,6 @@ Things To Do:
 
 Information tab - refresh button on the toolbar?
 
-Could handle man pages from the file list
-And other file types too
-
 Need a way to filter displayed output. Could use that to toggle
 zfs snapshots on or off, or disabled services
 

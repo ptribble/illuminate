@@ -24,8 +24,6 @@ package org.tribblix.illuminate.pkgview;
 
 import java.util.HashMap;
 import java.util.Map;
-import java.io.File;
-import uk.co.petertribble.jumble.JumbleFile;
 
 /**
  * We parse the catalog file and create a map of catalog entries.
@@ -37,10 +35,10 @@ public class CatalogParser {
     /**
      * Parse a package catalog.
      *
-     * @param altroot  An alternate root directory for this OS image
+     * @param pkghdl a PackageHandler for this OS image
      * @param reponame  The repository represented by this catalog
      */
-    public CatalogParser(String altroot, String reponame) {
+    public CatalogParser(PackageHandler pkghdl, String reponame) {
 	/*
 	 * the release repo usually has 3 packages
 	 * the illumos repo has just under 500
@@ -56,17 +54,15 @@ public class CatalogParser {
 	    isize = 256;
 	}
 	pkgMap = new HashMap <String, CatalogPackage> (isize);
-	parse(altroot, reponame);
+	parse(pkghdl, reponame);
     }
 
     /*
      * The catalog has lines of the form
      * name|version|depends|size|checksum
      */
-    private void parse(String altroot, String reponame) {
-	for (String s : JumbleFile.getLines(new File(altroot +
-		ZapConfig.ZAP_ROOT + "/repositories/" + reponame
-		+ ".catalog"))) {
+    private void parse(PackageHandler pkghdl, String reponame) {
+	for (String s : pkghdl.getCatalog(reponame)) {
 	    String[] ds = s.split("\\|", 5);
 	    pkgMap.put(ds[0],
 		new CatalogPackage(ds[0], ds[1], ds[2], ds[3], reponame));

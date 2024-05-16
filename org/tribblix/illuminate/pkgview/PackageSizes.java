@@ -37,8 +37,9 @@ public class PackageSizes {
 	if (args.length == 2 && "-R".equals(args[0])) {
 	    altroot = args[1];
 	}
-	ContentsParser cp = ContentsParser.getInstance(altroot);
-	for (String pkg :  new PkgList(altroot).getPackageNames()) {
+	PackageHandler pkghdl = new PackageHandler(altroot);
+	ContentsParser cp = pkghdl.getContentsParser();
+	for (String pkg :  pkghdl.getPkgList().getPackageNames()) {
 	    ContentsPackage cc = cp.getPackage(pkg);
 	    if (cc == null) {
 		System.out.println("0 | 0 | " + pkg);

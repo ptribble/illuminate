@@ -22,9 +22,6 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.io.File;
-import uk.co.petertribble.jumble.JumbleFile;
-
 /**
  * ZapRepository - describe and query a zap repository
  * @author Peter Tribble
@@ -41,25 +38,20 @@ public class ZapRepository {
     /**
      * Create a zap repository configuration.
      *
-     * @param altroot  An alternate root directory for this OS image
+     * @param pkghdl a PackageHandler for this OS image
      * @param repo  The repository represented by this ZapRepository
      */
-    public ZapRepository(String altroot, String repo) {
-	File f = new File(altroot + ZapConfig.ZAP_ROOT + "/repositories",
-			repo + ".repo");
-
-	if (f.exists()) {
-	    for (String line : JumbleFile.getLines(f)) {
-		String[] ds = line.split("=", 2);
-		if ("NAME".equals(ds[0])) {
-		    repoNAME = ds[1];
-		} else if ("DESC".equals(ds[0])) {
-		    repoDESC = ds[1];
-		} else if ("URL".equals(ds[0])) {
-		    repoURL = ds[1];
-		} else if ("SIGNED".equals(ds[0])) {
-		    repoSIGNED = ds[1];
-		}
+    public ZapRepository(PackageHandler pkghdl, String repo) {
+	for (String line : pkghdl.getRepository(repo)) {
+	    String[] ds = line.split("=", 2);
+	    if ("NAME".equals(ds[0])) {
+		repoNAME = ds[1];
+	    } else if ("DESC".equals(ds[0])) {
+		repoDESC = ds[1];
+	    } else if ("URL".equals(ds[0])) {
+		repoURL = ds[1];
+	    } else if ("SIGNED".equals(ds[0])) {
+		repoSIGNED = ds[1];
 	    }
 	}
     }

@@ -47,16 +47,13 @@ public class InstalledFilesPanel extends JPanel {
     /**
      * Create a new InstalledFilesPanel.
      *
-     * @param altroot the root of the file system
-     * @param ovlist a list of overlays
-     * @param zc the ZapConfig for this image
+     * @param pkghdl a PackageHandler for this OS image
      */
-    public InstalledFilesPanel(String altroot, OverlayList ovlist,
-			ZapConfig zc) {
+    public InstalledFilesPanel(PackageHandler pkghdl) {
 	setLayout(new BorderLayout());
 
 	JPanel jptree = new JPanel(new BorderLayout());
-	pip = new PackageInformationPanel(altroot, ovlist, zc, false);
+	pip = new PackageInformationPanel(pkghdl, false);
 
 	JSplitPane psplit = new JSplitPane(JSplitPane.HORIZONTAL_SPLIT,
 		jptree, pip);
@@ -64,7 +61,7 @@ public class InstalledFilesPanel extends JPanel {
 	psplit.setDividerLocation(180);
 	add(psplit);
 
-	final JTree cft = new ContentsFileTree(altroot);
+	final JTree cft = new ContentsFileTree(pkghdl);
 	cft.addTreeSelectionListener(new TreeSelectionListener() {
 	    @Override
 	    public void valueChanged(TreeSelectionEvent e) {

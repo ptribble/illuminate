@@ -40,7 +40,7 @@ import uk.co.petertribble.jingle.JingleTextPane;
  */
 public class PackageInformationPanel extends JTabbedPane {
 
-    private String altroot;
+    private PackageHandler pkghdl;
 
     private PackageTextPane tp_info;
     private PackageTextPane tp_dep;
@@ -57,28 +57,23 @@ public class PackageInformationPanel extends JTabbedPane {
     /**
      * Create a default PackageInformationPanel showing the default tabs.
      *
-     * @param altroot the root of the file system
-     * @param ovlist an OverlayList object
-     * @param zc the ZapConfig for this image
+     * @param pkghdl a PackageHandler for this OS image
      */
-    public PackageInformationPanel(String altroot, OverlayList ovlist,
-			    ZapConfig zc) {
-	this(altroot, ovlist, zc, true);
+    public PackageInformationPanel(PackageHandler pkghdl) {
+	this(pkghdl, true);
     }
 
     /**
      * Create a PackageInformationPanel showing the specified tabs.
      *
-     * @param altroot the root of the file system
-     * @param ovlist an OverlayList object
-     * @param zc the ZapConfig for this image
+     * @param pkghdl a PackageHandler for this OS image
      * @param showdependencies a boolean determining if dependencies are shown
      */
-    public PackageInformationPanel(String altroot, OverlayList ovlist,
-			    ZapConfig zc, boolean showdependencies) {
-	this.altroot = altroot;
-	this.ovlist = ovlist;
-	this.zc = zc;
+    public PackageInformationPanel(PackageHandler pkghdl,
+				boolean showdependencies) {
+	this.pkghdl = pkghdl;
+	ovlist = pkghdl.getOverlayList();
+	zc = pkghdl.getZapConfig();
 
 	tp_info = new PackageTextPane();
 	tp_dep = new PackageTextPane();
@@ -133,7 +128,8 @@ public class PackageInformationPanel extends JTabbedPane {
 	    // need to remove any altroot from the filename before
 	    // matching it against the contents file
 	    ContentsFileDetail cfd = cp.getFileDetail(f.toString()
-			.replaceFirst(altroot, "/").replaceFirst("//", "/"));
+					.replaceFirst(pkghdl.getRoot(), "/")
+					.replaceFirst("//", "/"));
 	    if (cfd == null) {
 		infoOnly("Not a member of any package.");
 	    } else {
@@ -234,6 +230,6 @@ public class PackageInformationPanel extends JTabbedPane {
      * Cause the detailed view of package contents to be shown.
      */
     public void showDetailedView() {
-	cp = ContentsParser.getInstance(altroot);
+	cp = pkghdl.getContentsParser();
     }
 }

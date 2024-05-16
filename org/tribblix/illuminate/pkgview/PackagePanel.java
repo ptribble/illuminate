@@ -45,10 +45,11 @@ public class PackagePanel extends JPanel {
     private SVR4Package currentPackage;
     final JTable ptable;
 
-    public PackagePanel(String altroot, PkgList plist, OverlayList ovlist,
-			ZapConfig zc) {
+    public PackagePanel(PackageHandler pkghdl) {
 
 	setLayout(new BorderLayout());
+
+	PkgList plist = pkghdl.getPkgList();
 
 	JPanel jpp = new JPanel(new BorderLayout());
 	final PackageTableModel ptm = new PackageTableModel(plist);
@@ -57,7 +58,7 @@ public class PackagePanel extends JPanel {
 	jpp.add(new JScrollPane(ptable));
 	sortedModel.setTableHeader(ptable.getTableHeader());
 
-	pip = new PackageInformationPanel(altroot, ovlist, zc);
+	pip = new PackageInformationPanel(pkghdl);
 
 	JSplitPane psplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
 		jpp, pip);

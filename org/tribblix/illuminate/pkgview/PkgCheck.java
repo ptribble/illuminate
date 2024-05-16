@@ -32,7 +32,7 @@ import java.util.HashSet;
  */
 public class PkgCheck {
 
-    private String altroot;
+    private PackageHandler pkghdl;
 
     private boolean check = true;
     private boolean list;
@@ -51,20 +51,20 @@ public class PkgCheck {
      * @param args a list of package, overlay, or file names
      */
     public PkgCheck(String altroot, String[] args) {
-	this.altroot = altroot;
-	PkgList plist = new PkgList(altroot);
+	pkghdl = new PackageHandler(altroot);
+	PkgList plist = pkghdl.getPkgList();
 	Set <String> names = parseArgs(args);
 	if (checkovl) {
-	    doOverlays(names, plist);
+	    doOverlays(names);
 	} else if (dopaths || partpaths) {
-	    cp = ContentsParser.getInstance(altroot);
+	    cp = pkghdl.getContentsParser();
 	    if (dopaths) {
 		doPathNames(names);
 	    } else {
 		doPartPathNames(names);
 	    }
 	} else {
-	    cp = ContentsParser.getInstance(altroot);
+	    cp = pkghdl.getContentsParser();
 	    for (String pkg : allpkgs ? plist.getPackageNames() : names) {
 		if (plist.getPackage(pkg) == null) {
 		    System.out.println("Invalid package " + pkg);
@@ -151,8 +151,8 @@ public class PkgCheck {
 	}
     }
 
-    private void doOverlays(Set <String> names, PkgList plist) {
-	OverlayList ovlist = new OverlayList(altroot, plist);
+    private void doOverlays(Set <String> names) {
+	OverlayList ovlist = pkghdl.getOverlayList();
 	if (names.isEmpty()) {
 	    for (Overlay ovl : ovlist.getOverlays()) {
 		checkOverlay(ovl);
@@ -224,7 +224,7 @@ public class PkgCheck {
 	    System.out.println();
 	}
 	if (check) {
-	    File f = new File(altroot, cfd.getName());
+	    File f = new File(pkghdl.getRoot(), cfd.getName());
 	    if (f.exists()) {
 		if (cfd.isRegular()) {
 		    if (f.isFile()) {

@@ -41,7 +41,8 @@ public class MissingPackages {
 	if (args.length == 2 && "-R".equals(args[0])) {
 	    altroot = args[1];
 	}
-	PkgList plist = new PkgList(altroot);
+	PackageHandler pkghdl = new PackageHandler(altroot);
+	PkgList plist = pkghdl.getPkgList();
 	/*
 	 * Go through installed packages and create a complete list
 	 * of their dependencies.

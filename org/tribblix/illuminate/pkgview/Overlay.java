@@ -22,8 +22,6 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import uk.co.petertribble.jumble.JumbleFile;
-import java.io.File;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -35,11 +33,8 @@ import java.util.TreeSet;
  */
 public class Overlay implements Comparable<Overlay> {
 
-    public static final String OVL_ROOT = "/var/sadm/overlays";
+    private PackageHandler pkghdl;
 
-    private File ovrootf;
-
-    private String altroot;
     private String name;
     private String description;
     private String oversion;
@@ -50,12 +45,11 @@ public class Overlay implements Comparable<Overlay> {
     /**
      * Create an Overlay object. To be useful, you must call populate().
      *
-     * @param altroot  An alternate root directory for this OS image
+     * @param pkghdl a PackageHandler for this OS image
      * @param name  The name of this Overlay.
      */
-    public Overlay(String altroot, String name) {
-	this.altroot = altroot;
-	ovrootf = new File(altroot + OVL_ROOT);
+    public Overlay(PackageHandler pkghdl, String name) {
+	this.pkghdl = pkghdl;
 	this.name = name;
     }
 
@@ -71,8 +65,7 @@ public class Overlay implements Comparable<Overlay> {
     }
 
     private void parseOVL(OverlayList ovlist) {
-	File f = new File(ovrootf, name + ".ovl");
-	for (String line : JumbleFile.getLines(f)) {
+	for (String line : pkghdl.getOvlOvl(name)) {
 	    String[] ds = line.split("=", 2);
 	    if ("VERSION".equals(ds[0])) {
 		oversion = ds[1];
@@ -82,7 +75,7 @@ public class Overlay implements Comparable<Overlay> {
 		// use existing overlay rather than a new one if possible
 		Overlay ovl = ovlist.getOverlay(ds[1]);
 		if (ovl == null) {
-		    overlays.add(new Overlay(altroot, ds[1]));
+		    overlays.add(new Overlay(pkghdl, ds[1]));
 		} else {
 		    overlays.add(ovl);
 		}
@@ -93,15 +86,14 @@ public class Overlay implements Comparable<Overlay> {
     }
 
     private void parsePKGS(PkgList plist) {
-	File f = new File(ovrootf, name + ".pkgs");
-	for (String line : JumbleFile.getLines(f)) {
+	for (String line : pkghdl.getOvlPkgs(name)) {
 	    SVR4Package pkg = plist.getPackage(line);
-	    packages.add(pkg == null ? new SVR4Package(altroot, line) : pkg);
+	    packages.add(pkg == null ? new SVR4Package(pkghdl, line) : pkg);
 	}
     }
 
     /**
-     * Returnsthea description of this Overlay.
+     * Returns a description of this Overlay.
      *
      * @return a String description of this overlay
      */
@@ -156,9 +148,7 @@ public class Overlay implements Comparable<Overlay> {
      * @return true if this overlay is installed, otherwise false.
      */
     public boolean isInstalled() {
-	File f = new File(ovrootf, "installed");
-	File f2 = new File(f, name);
-	return f2.exists();
+	return pkghdl.isOvlInstalled(name);
     }
 
     /**

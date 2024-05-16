@@ -35,7 +35,6 @@ import java.util.TreeSet;
 public class ContentsPackage {
 
     private Set <ContentsFileDetail> fileset = new HashSet<>();
-    private ContentsParser cp;
 
     /**
      * Create a new empty ContentsPackage.
@@ -48,10 +47,10 @@ public class ContentsPackage {
      * given overlay.
      *
      * @param ovl the overlay whose files will populate this ContentsPackage
+     * @param cp a ContentsParser
      */
-    public ContentsPackage(Overlay ovl) {
-	cp = ContentsParser.getInstance("/");
-	addPkgFiles(ovl);
+    public ContentsPackage(Overlay ovl, ContentsParser cp) {
+	addPkgFiles(ovl, cp);
     }
 
     /**
@@ -63,13 +62,13 @@ public class ContentsPackage {
 	fileset.add(cfd);
     }
 
-    private void addPkgFiles(Overlay ovl) {
+    private void addPkgFiles(Overlay ovl, ContentsParser cp) {
 	for (SVR4Package pkg : ovl.getPackages()) {
-	    addPkgFiles(pkg);
+	    addPkgFiles(pkg, cp);
 	}
     }
 
-    private void addPkgFiles(SVR4Package pkg) {
+    private void addPkgFiles(SVR4Package pkg, ContentsParser cp) {
 	ContentsPackage cpp = cp.getPackage(pkg.getName());
 	if (cpp != null) {
 	    fileset.addAll(cpp.getDetails());

@@ -22,7 +22,6 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.io.File;
 import java.util.List;
 import java.util.Map;
 import java.util.HashMap;
@@ -46,28 +45,19 @@ public class OverlayList {
      *
      * There should be a .ovl file and a .pkgs file for each overlay
      *
-     * @param altroot  An alternate root directory for this OS image
-     * @param plist a PkgList object
+     * @param pkghdl a PackageHandler for this OS image
      */
-    public OverlayList(String altroot, PkgList plist) {
-	File ovrootf = new File(altroot + Overlay.OVL_ROOT);
-	ovlexists = ovrootf.exists();
+    public OverlayList(PackageHandler pkghdl) {
+	PkgList plist = pkghdl.getPkgList();
 
 	// first create a list of empty overlays
-	if (ovlexists) {
-	    for (File f : ovrootf.listFiles()) {
-		if (f.getName().endsWith(".ovl")) {
-		    String fname = f.getName();
-		    String rootname = fname.substring(0, fname.length()-4);
-		    File f2 = new File(ovrootf, rootname + ".pkgs");
-		    if (f2.exists()) {
-			Overlay ovl = new Overlay(altroot, rootname);
-			ovlist.add(ovl);
-			ovMap.put(rootname, ovl);
-		    }
-		}
-	    }
+        for (String s : pkghdl.listOverlayNames()) {
+	    Overlay ovl = new Overlay(pkghdl, s);
+	    ovlist.add(ovl);
+	    ovMap.put(s, ovl);
 	}
+
+	ovlexists = !ovlist.isEmpty();
 
 	// then populate them
 	for (Overlay ovl : ovlist) {

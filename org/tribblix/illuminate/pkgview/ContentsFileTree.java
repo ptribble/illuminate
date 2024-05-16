@@ -44,11 +44,11 @@ public class ContentsFileTree extends JTree {
     /**
      * Create a JTree representing local files and directories.
      *
-     * @param altroot the root of the file system
+     * @param pkghdl a PackageHandler for this OS image
      */
-    public ContentsFileTree(String altroot) {
+    public ContentsFileTree(PackageHandler pkghdl) {
 	ContentsFileTreeNode rootNode = new ContentsFileTreeNode(
-							new File(altroot));
+						new File(pkghdl.getRoot()));
 	rootNode.explore();
 	model = new DefaultTreeModel(rootNode);
 
