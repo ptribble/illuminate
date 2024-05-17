@@ -57,9 +57,9 @@ public class PackageHandler {
      * relocated to the root of this image, to avoid having to
      * create them frequently.
      */
-    public static File pkgdirf;
-    public static File ovldirf;
-    public static File zapdirf;
+    private final File pkgdirf;
+    private final File ovldirf;
+    private final File zapdirf;
 
     /*
      * These are our copies of the relevant data, created on demand.
