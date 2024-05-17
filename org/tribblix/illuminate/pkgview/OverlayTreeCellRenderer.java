@@ -50,8 +50,7 @@ public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
     }
 
     @Override
-    public Component getTreeCellRendererComponent(
-						  JTree tree,
+    public Component getTreeCellRendererComponent(JTree tree,
 						  Object value,
 						  boolean sel,
 						  boolean expanded,
@@ -59,8 +58,7 @@ public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
 						  int row,
 						  boolean hasFocus) {
 
-	super.getTreeCellRendererComponent(
-					   tree, value, sel,
+	super.getTreeCellRendererComponent(tree, value, sel,
 					   expanded, leaf, row,
 					   hasFocus);
 	Object o = ((DefaultMutableTreeNode) value).getUserObject();
@@ -71,18 +69,16 @@ public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
 	    SVR4Package p = (SVR4Package) o;
 	    setToolTipText(p.getDescription());
 	    setIcon(p.isInstalled() ? selectedIcon : noneIcon);
-	} else {
-	    if (o instanceof Overlay) {
-		Overlay ovl = (Overlay) o;
-		setToolTipText(ovl.getDescription());
-		if (ovl.isInstalled()) {
-		    setIcon(ovl.isComplete() ? selectedIcon : warnIcon);
-		} else {
-		    setIcon(ovl.isComplete() ? partIcon : noneIcon);
-		}
+	} else if (o instanceof Overlay) {
+	    Overlay ovl = (Overlay) o;
+	    setToolTipText(ovl.getDescription());
+	    if (ovl.isInstalled()) {
+		setIcon(ovl.isComplete() ? selectedIcon : warnIcon);
 	    } else {
-		setToolTipText(null);
+		setIcon(ovl.isComplete() ? partIcon : noneIcon);
 	    }
+	} else {
+	    setToolTipText(null);
 	}
 	return this;
     }
