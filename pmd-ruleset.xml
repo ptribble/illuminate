@@ -19,6 +19,7 @@
       <exclude name="UseProperClassLoader"/>
     </rule>
     <rule ref="category/java/bestpractices.xml">
+      <exclude name="ReplaceVectorWithList"/>
       <exclude name="SwitchStmtsShouldHaveDefault"/>
       <exclude name="SystemPrintln"/>
       <exclude name="UseVarargs"/>
