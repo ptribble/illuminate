@@ -16,6 +16,7 @@
       <exclude name="ConstructorCallsOverridableMethod"/>
       <exclude name="DoNotTerminateVM"/>
       <exclude name="MissingSerialVersionUID"/>
+      <exclude name="UseProperClassLoader"/>
     </rule>
     <rule ref="category/java/bestpractices.xml">
       <exclude name="SwitchStmtsShouldHaveDefault"/>
