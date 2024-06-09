@@ -261,7 +261,7 @@ public class SysItem {
      * added as the attribute for key "flag"
      *
      * @param type the type of item
-     * @flag flag a String flag
+     * @param flag a String flag
      */
     public SysItem(int type, String flag) {
 	this.type = type;
