@@ -83,9 +83,5 @@ else
 	pname=${path##*/}
 	echo "s none /${JARDIR}/${pname}=../jproc/${pname}"
   done
-  for path in lib/java/illuminate.jar
-  do
-	pname=${path##*/}
-	echo "f none /${JARDIR}/${pname}=${path} 0644 ${OWNER}"
-  done
+  echo "f none /${JARDIR}/illuminate.jar=lib/java/illuminate.jar 0644 ${OWNER}"
 fi

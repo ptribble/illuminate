@@ -8,13 +8,11 @@
 SVDIR=${0%/*}
 LIBDIR=${SVDIR}/lib
 JARLIBDIR=${LIBDIR}/java
-JAVA=java
 
 XFLAGS="-Xlint -Xlint:-serial -Xlint:-rawtypes"
 
 
 SVJAR=${JARLIBDIR}/illuminate.jar
-JFJAR=${JARLIBDIR}/jfreechart-1.5.4.jar
 JINGLEJAR=${JARLIBDIR}/jingle.jar
 JUMBLEJAR=${JARLIBDIR}/jumble.jar
 JKJAR=${JARLIBDIR}/jkstat.jar
@@ -40,7 +38,7 @@ case $# in
 	if [ -x /opt/onbld/bin/jstyle ]; then
 	    /opt/onbld/bin/jstyle $(find org/tribblix -name '*.java')
 	fi
-	javac ${XFLAGS} -classpath .:${BUILDJARS} $(find org/tribblix -name '*.java')
+	javac ${XFLAGS} -classpath .:"${BUILDJARS}" $(find org/tribblix -name '*.java')
 	jar -cmf illuminate.manifest "${SVJAR}" images/*.png pixmaps/* properties/*.properties help/*.html help/CDDL.txt $(find org/tribblix -name '*.class')
 	exit 0
 	;;
@@ -51,7 +49,7 @@ case $1 in
 doc|-doc)
 	rm -fr javadoc
 	mkdir javadoc
-	env CLASSPATH=.:${JKJAR}:${JPJAR} javadoc -Xdoclint:all -Xmaxwarns 300 -d javadoc org.tribblix.illuminate org.tribblix.illuminate.helpers org.tribblix.illuminate.explorer org.tribblix.illuminate.pkgview
+	env CLASSPATH=.:"${JKJAR}":"${JPJAR}" javadoc -Xdoclint:all -Xmaxwarns 300 -d javadoc org.tribblix.illuminate org.tribblix.illuminate.helpers org.tribblix.illuminate.explorer org.tribblix.illuminate.pkgview
 	;;
 
 clean|-clean)
@@ -61,8 +59,8 @@ clean|-clean)
 	;;
 
 pmd|-pmd)
-	if [ ! -d ${HOME}/.pmd ]; then
-	    mkdir -p ${HOME}/.pmd
+	if [ ! -d "${HOME}/.pmd" ]; then
+	    mkdir -p "${HOME}/.pmd"
 	fi
 	pmd check --cache "${PMDCACHE}" -d org -R ${PMDRULES} --use-version java-1.8 --aux-classpath $(echo lib/java/* | sed 's= =:=g') 2>/dev/null
 	pmd check --cache "${PMDCACHE}".html -d help/*.html -R category/html/bestpractices.xml 2>/dev/null
@@ -79,13 +77,35 @@ spotbugs)
 	;;
 
 packages)
+	echo "Use the tribblix-packages or standalone-packages arguments"
+	exit 0
+	;;
+
+tribblix-packages)
 	sed s:INSTALLED=false:INSTALLED=true: illuminate > illuminate.installed
-	./mkproto i386 $2 > prototype.i386
-	./mkproto sparc $2 > prototype.sparc
-	pkgmk -d /tmp -f prototype.i386 -r $(pwd) TRIBilluminate
+	./mkproto i386 deps > prototype.i386
+	./mkproto sparc deps > prototype.sparc
+	pkgmk -d /tmp -f prototype.i386 -r "$(pwd)" TRIBilluminate
 	pkgtrans -s /tmp /tmp/TRIBilluminate-i386.pkg TRIBilluminate
 	rm -fr /tmp/TRIBilluminate
-	pkgmk -d /tmp -f prototype.sparc -r $(pwd) TRIBilluminate
+	pkgmk -d /tmp -f prototype.sparc -r "$(pwd)" TRIBilluminate
+	pkgtrans -s /tmp /tmp/TRIBilluminate-sparc.pkg TRIBilluminate
+	rm -fr /tmp/TRIBilluminate
+	ls -l /tmp/TRIBilluminate-sparc.pkg /tmp/TRIBilluminate-i386.pkg
+	rm prototype.i386 prototype.sparc
+	rm illuminate.installed
+	rm -f depend
+	exit 0
+	;;
+
+standalone-packages)
+	sed s:INSTALLED=false:INSTALLED=true: illuminate > illuminate.installed
+	./mkproto i386 > prototype.i386
+	./mkproto sparc > prototype.sparc
+	pkgmk -d /tmp -f prototype.i386 -r "$(pwd)" TRIBilluminate
+	pkgtrans -s /tmp /tmp/TRIBilluminate-i386.pkg TRIBilluminate
+	rm -fr /tmp/TRIBilluminate
+	pkgmk -d /tmp -f prototype.sparc -r "$(pwd)" TRIBilluminate
 	pkgtrans -s /tmp /tmp/TRIBilluminate-sparc.pkg TRIBilluminate
 	rm -fr /tmp/TRIBilluminate
 	ls -l /tmp/TRIBilluminate-sparc.pkg /tmp/TRIBilluminate-i386.pkg
