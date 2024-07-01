@@ -51,6 +51,8 @@ public class PkgInfo {
 
     /**
      * Get the whole of the pkginfo file as a key-value Map.
+     * Returns a copy so that a consumer is free to modify the
+     * Map as it sees fit.
      *
      * @return the content of the pkginfo file as a Map
      */
