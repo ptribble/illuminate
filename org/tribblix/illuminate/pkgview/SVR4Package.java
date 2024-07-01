@@ -23,10 +23,8 @@
 package org.tribblix.illuminate.pkgview;
 
 import java.util.Map;
-import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
-import uk.co.petertribble.jumble.JumbleUtils;
 
 /**
  * Describe an SVR4 package.
@@ -37,9 +35,9 @@ import uk.co.petertribble.jumble.JumbleUtils;
 public class SVR4Package implements Comparable<SVR4Package> {
 
     private PackageHandler pkghdl;
+    private PkgInfo pkginfo;
 
     private String name;
-    private Map <String, String> pkginfomap;
     private Set <String> dependson;
     private Set <String> rdepends;
     private Set <String> incompatibles;
@@ -54,6 +52,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
     public SVR4Package(PackageHandler pkghdl, String name) {
 	this.pkghdl = pkghdl;
 	this.name = name;
+	pkginfo = new PkgInfo(pkghdl, name);
     }
 
     /**
@@ -190,28 +189,14 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * @return the content of the pkginfo file as a Map
      */
     public Map <String, String> infoMap() {
-	if (pkginfomap == null) {
-	    parseInfo();
-	}
-	// defensive copy, as PkgUtils mangles it
-	return new HashMap <String, String> (pkginfomap);
+	return pkginfo.infoMap();
     }
 
     /*
      * Get the specified property from the pkginfo file.
      */
     private String getInfoItem(String s) {
-	if (pkginfomap == null) {
-	    parseInfo();
-	}
-	return pkginfomap.get(s);
-    }
-
-    /*
-     * Parse the pkginfo file.
-     */
-    private void parseInfo() {
-	pkginfomap = JumbleUtils.stringToPropMap(getInfo(), "\n");
+	return pkginfo.getInfoItem(s);
     }
 
     /**
