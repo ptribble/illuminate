@@ -64,7 +64,7 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
     /**
      * Track the current command we're displaying.
      */
-    private InfoCommand currentCmd;
+    private transient InfoCommand currentCmd;
 
     /**
      * Display an information panel.

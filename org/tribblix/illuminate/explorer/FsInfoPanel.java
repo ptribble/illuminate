@@ -37,7 +37,7 @@ public class FsInfoPanel extends InfoPanel {
 
     private JKstat jkstat;
     private JFSstatPanel fsPanel;
-    private BootEnvironments beadm;
+    private transient BootEnvironments beadm;
 
     /**
      * Display a file system information panel.

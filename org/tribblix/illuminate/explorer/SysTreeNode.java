@@ -32,7 +32,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 public class SysTreeNode extends DefaultMutableTreeNode
     implements Comparable<SysTreeNode> {
 
-    private SysItem hi;
+    private transient SysItem hi;
     private String node;
 
     /**

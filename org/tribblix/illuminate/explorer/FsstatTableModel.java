@@ -76,8 +76,8 @@ public class FsstatTableModel extends AbstractTableModel
     private Timer timer;
     private int delay = 1000;
     private JKstat jkstat;
-    private KstatSet kss;
-    private Mnttab mnttab;
+    private transient KstatSet kss;
+    private transient Mnttab mnttab;
 
     // display masks
     private int filtermask;

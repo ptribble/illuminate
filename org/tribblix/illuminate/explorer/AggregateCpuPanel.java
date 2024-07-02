@@ -40,7 +40,7 @@ import javax.swing.SwingConstants;
  */
 public class AggregateCpuPanel extends KstatAccessoryPanel {
 
-    private KstatAggregate ksa;
+    private transient KstatAggregate ksa;
     private long luser;
     private long lsys;
     private long lwait;

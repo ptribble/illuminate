@@ -67,7 +67,7 @@ public class JCpuState extends JKdemo implements ActionListener {
 
     private JKstat jkstat;
 
-    private ProcessorTree proctree;
+    private transient ProcessorTree proctree;
     private Set <Kstat> kstats;
     private int ncpus;
     private int naggr;

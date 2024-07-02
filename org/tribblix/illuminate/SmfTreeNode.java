@@ -37,7 +37,8 @@ public class SmfTreeNode extends DefaultMutableTreeNode {
     /**
      * The service underlying this SmfTreeNode
      */
-    private SmfService svc;
+    private transient SmfService svc;
+
     /**
      * The display name of this SmfTreeNode
      */

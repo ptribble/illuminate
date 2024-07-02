@@ -43,7 +43,7 @@ public class InfoPanel extends JPanel {
     /**
      * The SysItem defining what is displayed in the InfoPanel.
      */
-    protected SysItem hi;
+    protected transient SysItem hi;
 
     /*
      * The panel into which the item display is placed.

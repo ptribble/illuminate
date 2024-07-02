@@ -41,7 +41,7 @@ public class DiskInfoPanel extends InfoPanel {
     private Kstat ks;
     private KstatTable kt;
     private IOstatTable iot;
-    private Mnttab mnttab = new Mnttab();
+    private transient Mnttab mnttab = new Mnttab();
 
     /**
      * Display a Disk information panel.

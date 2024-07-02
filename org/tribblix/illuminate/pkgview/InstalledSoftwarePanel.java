@@ -36,7 +36,7 @@ import javax.swing.SwingWorker;
  */
 public class InstalledSoftwarePanel extends JTabbedPane {
 
-    PackageHandler pkghdl;
+    transient PackageHandler pkghdl;
 
     PkgList plist;
     PackagePanel ipp;

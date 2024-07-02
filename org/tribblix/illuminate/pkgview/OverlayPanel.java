@@ -41,7 +41,7 @@ public class OverlayPanel extends JPanel {
 
     final OverlayTree tree;
     private PackageInformationPanel pip;
-    private SVR4Package currentPackage;
+    private transient SVR4Package currentPackage;
 
     public OverlayPanel(PackageHandler pkghdl) {
 	setLayout(new BorderLayout());

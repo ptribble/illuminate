@@ -47,7 +47,7 @@ import java.util.TreeSet;
  */
 public class SummaryPanel extends InfoPanel {
 
-    private KstatAccessorySet kas;
+    private transient KstatAccessorySet kas;
     private List <KstatAccessoryPanel> kaplist;
     private JKstat jkstat;
 

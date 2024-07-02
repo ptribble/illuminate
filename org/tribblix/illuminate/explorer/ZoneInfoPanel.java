@@ -52,7 +52,7 @@ import uk.co.petertribble.jkstat.gui.KstatTable;
 public class ZoneInfoPanel extends InfoPanel implements ActionListener {
 
     private JKstat jkstat;
-    private KstatAccessorySet kas;
+    private transient KstatAccessorySet kas;
     private KstatTable kt;
     private List <KstatAccessoryPanel> kaplist;
     private JButton jmb;

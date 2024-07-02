@@ -42,7 +42,7 @@ import java.awt.BorderLayout;
 public class PackagePanel extends JPanel {
 
     private PackageInformationPanel pip;
-    private SVR4Package currentPackage;
+    private transient SVR4Package currentPackage;
     final JTable ptable;
 
     public PackagePanel(PackageHandler pkghdl) {

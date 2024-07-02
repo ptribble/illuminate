@@ -39,7 +39,7 @@ import uk.co.petertribble.jingle.JingleTextPane;
  */
 public class PackageInformationPanel extends JTabbedPane {
 
-    private PackageHandler pkghdl;
+    private transient PackageHandler pkghdl;
 
     private PackageTextPane tp_info;
     private PackageTextPane tp_dep;
@@ -49,9 +49,9 @@ public class PackageInformationPanel extends JTabbedPane {
     private JingleTextPane tp_filehead;
     private JingleTextPane tp_filelist;
     private boolean showfiles;
-    private OverlayList ovlist;
-    private ContentsParser cp;
-    private ZapConfig zc;
+    private transient OverlayList ovlist;
+    private transient ContentsParser cp;
+    private transient ZapConfig zc;
 
     /**
      * Create a default PackageInformationPanel showing the default tabs.

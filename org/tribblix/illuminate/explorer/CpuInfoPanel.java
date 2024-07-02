@@ -49,7 +49,7 @@ import org.jfree.chart.ChartPanel;
  */
 public class CpuInfoPanel extends InfoPanel {
 
-    private ProcessorTree proctree;
+    private transient ProcessorTree proctree;
     private MPstatTable mptable;
     private KstatAccessoryPanel kap;
     private KstatBaseChart kbc;
