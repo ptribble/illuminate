@@ -24,7 +24,6 @@ package org.tribblix.illuminate.pkgview;
 
 import java.util.Map;
 import java.util.Set;
-import java.util.TreeSet;
 
 /**
  * Describe an SVR4 package.
@@ -36,11 +35,9 @@ public class SVR4Package implements Comparable<SVR4Package> {
 
     private PackageHandler pkghdl;
     private PkgInfo pkginfo;
+    private PkgDepend pkgdepend;
 
     private String name;
-    private Set <String> dependson;
-    private Set <String> rdepends;
-    private Set <String> incompatibles;
     private Set <SVR4Package> depSet;
 
     /**
@@ -53,6 +50,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
 	this.pkghdl = pkghdl;
 	this.name = name;
 	pkginfo = new PkgInfo(pkghdl, name);
+	pkgdepend = new PkgDepend(pkghdl, name);
     }
 
     /**
@@ -99,39 +97,13 @@ public class SVR4Package implements Comparable<SVR4Package> {
 	return (s == null) ? "-" : s;
     }
 
-    /*
-     * Actually parse the depend file
-     */
-    private void parseDepend() {
-	dependson = new TreeSet <String> ();
-	rdepends = new TreeSet <String> ();
-	incompatibles = new TreeSet <String> ();
-	for (String s : getDepend()) {
-	    String[] ds = s.split("\\s+", 3);
-	    // Must have at least 2 words
-	    if (ds.length > 1 && ("P".equals(ds[0]) || "I".equals(ds[0]) ||
-						"R".equals(ds[0]))) {
-		if ("P".equals(ds[0])) {
-		    dependson.add(ds[1]);
-		} else if ("R".equals(ds[0])) {
-		    rdepends.add(ds[1]);
-		} else if ("I".equals(ds[0])) {
-		    incompatibles.add(ds[1]);
-		}
-	    }
-	}
-    }
-
     /**
      * Return the Set of package names that this package depends on.
      *
      * @return the Set of package names this package depends on
      */
     public Set <String> getDependencySet() {
-	if (dependson == null) {
-	    parseDepend();
-	}
-	return dependson;
+	return pkgdepend.getDependencySet();
     }
 
     /**
@@ -142,10 +114,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * dependent on it
      */
     public Set <String> getRDependencySet() {
-	if (rdepends == null) {
-	    parseDepend();
-	}
-	return rdepends;
+	return pkgdepend.getRDependencySet();
     }
 
     /**
@@ -155,10 +124,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * incompatible with it
      */
     public Set <String> getIncompatibleSet() {
-	if (incompatibles == null) {
-	    parseDepend();
-	}
-	return incompatibles;
+	return pkgdepend.getIncompatibleSet();
     }
 
     /**
@@ -207,13 +173,6 @@ public class SVR4Package implements Comparable<SVR4Package> {
      */
     public boolean isInstalled() {
 	return pkghdl.isPkgInstalled(name);
-    }
-
-    /*
-     * Returns the depend file associated with this package as a String array.
-     */
-    private String[] getDepend() {
-	return pkghdl.getPkgDepend(name);
     }
 
     /**
