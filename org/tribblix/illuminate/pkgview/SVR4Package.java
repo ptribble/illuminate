@@ -210,13 +210,6 @@ public class SVR4Package implements Comparable<SVR4Package> {
     }
 
     /*
-     * Returns the pkginfo file associated with this package as a String.
-     */
-    private String getInfo() {
-	return pkghdl.getPkgInfo(name);
-    }
-
-    /*
      * Returns the depend file associated with this package as a String array.
      */
     private String[] getDepend() {
