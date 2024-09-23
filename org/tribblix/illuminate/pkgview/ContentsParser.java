@@ -75,7 +75,7 @@ public final class ContentsParser {
 	try (BufferedReader in
 		= new BufferedReader(
 		    new FileReader(pkghdl.getRoot() + CONTENTS_FILE))) {
-	    String s = null;
+	    String s;
 	    while ((s = in.readLine()) != null) {
 		if (s.charAt(0) == '/') {
 		    ContentsFileDetail cfd = new ContentsFileDetail(pkghdl, s);
