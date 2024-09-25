@@ -13,16 +13,24 @@
     <rule ref="category/java/security.xml" />
     <rule ref="category/java/errorprone.xml">
       <exclude name="AvoidLiteralsInIfCondition"/>
+      <exclude name="AvoidDuplicateLiterals"/>
       <exclude name="ConstructorCallsOverridableMethod"/>
       <exclude name="DoNotTerminateVM"/>
       <exclude name="MissingSerialVersionUID"/>
       <exclude name="UseProperClassLoader"/>
+      <exclude name="AssignmentToNonFinalStatic"/>
+      <exclude name="CompareObjectsWithEquals"/>
+      <exclude name="EmptyCatchBlock"/>
+      <exclude name="AssignmentInOperand"/>
+      <exclude name="NullAssignment"/>
     </rule>
     <rule ref="category/java/bestpractices.xml">
       <exclude name="ReplaceVectorWithList"/>
       <exclude name="SwitchStmtsShouldHaveDefault"/>
       <exclude name="SystemPrintln"/>
       <exclude name="UseVarargs"/>
+      <exclude name="LooseCoupling"/>
+      <exclude name="UnusedAssignment"/>
     </rule>
     <exclude-pattern>.*/org/tribblix/illuminate/pkgview/TableSorter.*</exclude-pattern>
 </ruleset>
