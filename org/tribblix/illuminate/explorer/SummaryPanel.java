@@ -92,7 +92,7 @@ public class SummaryPanel extends InfoPanel {
 	    sbrand = proctree.getBrand(l);
 	}
 
-	StringBuilder sb2 = new StringBuilder();
+	StringBuilder sb2 = new StringBuilder(64);
 	if (proctree.numChips() == 1) {
 	    sb2.append("System contains 1 chip");
 	} else {

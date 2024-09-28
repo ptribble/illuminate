@@ -265,7 +265,7 @@ public class CpuInfoPanel extends InfoPanel {
 
     private String chipDetails(Long l, boolean brand) {
 	if (threadsPerCore(l) > 1) {
-	    StringBuilder sb = new StringBuilder();
+	    StringBuilder sb = new StringBuilder(64);
 	    sb.append("Physical processor ").append(l).append(" has ");
 	    if (proctree.numCores(l) == 1) {
 		sb.append("1 core with ");

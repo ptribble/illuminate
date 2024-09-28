@@ -275,7 +275,7 @@ public class SmfService implements Comparable<SmfService> {
      */
     public String getHtmlInfo() {
 	if ("legacy_run".equals(status)) {
-	    StringBuilder sb = new StringBuilder(70);
+	    StringBuilder sb = new StringBuilder(96);
 	    File fl = getScriptFile();
 	    sb.append("<p bgcolor=\"#cccccc\"><b>");
 	    if (fl == null) {
