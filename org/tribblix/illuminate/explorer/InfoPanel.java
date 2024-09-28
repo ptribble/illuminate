@@ -29,7 +29,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import javax.swing.BoxLayout;
 import java.awt.BorderLayout;
-import java.awt.Component;
 import uk.co.petertribble.jingle.JingleVPanel;
 import org.tribblix.illuminate.InfoCommand;
 
@@ -81,7 +80,7 @@ public class InfoPanel extends JPanel {
      */
     protected void addLabel(String text) {
 	JLabel jl = new JLabel(text);
-	jl.setAlignmentX(Component.CENTER_ALIGNMENT);
+	jl.setAlignmentX(CENTER_ALIGNMENT);
 	jvp.add(jl);
     }
 

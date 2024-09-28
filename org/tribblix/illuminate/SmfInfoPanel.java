@@ -22,7 +22,6 @@
 
 package org.tribblix.illuminate;
 
-import java.awt.Component;
 import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -176,7 +175,7 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
 	    JButton jb = new JButton(s);
 	    jb.setName(manmap.get(s));
 	    jb.addActionListener(this);
-	    jb.setAlignmentX(Component.CENTER_ALIGNMENT);
+	    jb.setAlignmentX(CENTER_ALIGNMENT);
 	    manButtonPanel.add(jb);
 	}
 	manButtonPanel.revalidate();
