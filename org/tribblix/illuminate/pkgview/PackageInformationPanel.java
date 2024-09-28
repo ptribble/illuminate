@@ -22,7 +22,6 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.util.Set;
 import java.awt.BorderLayout;
 import java.awt.Cursor;
 import javax.swing.JPanel;

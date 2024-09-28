@@ -424,7 +424,7 @@ public class ArcStatPanel extends JPanel implements ActionListener {
 
     private int hitrate(long hits, long misses) {
 	if ((hits+misses) > 0) {
-	    return (int) ((100L*hits)/(hits+misses));
+	    return (int) (100L*hits / (hits+misses));
 	} else {
 	    return 0;
 	}

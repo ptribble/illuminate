@@ -64,8 +64,8 @@ public class InstalledSoftwarePanel extends JTabbedPane {
 	ifp = new InstalledFilesPanel(pkghdl);
 	add(PkgResources.getString("PKG.FS"), ifp);
 
-	(new RevDependencyWorker()).execute();
-	(new ContentsWorker()).execute();
+	new RevDependencyWorker().execute();
+	new ContentsWorker().execute();
     }
 
     /*
