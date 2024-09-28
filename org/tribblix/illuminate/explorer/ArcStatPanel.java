@@ -50,14 +50,6 @@ public class ArcStatPanel extends JPanel implements ActionListener {
 
     private JKstat jkstat;
 
-    // sizes
-    private long arc_size;
-    private long target_size;
-    private long arc_min_size;
-    private long arc_max_size;
-    private long mru_size;
-    private long mfu_size;
-
     // labels for sizes
     private JLabel arc_size_label;
     private JLabel target_size_label;
@@ -98,22 +90,6 @@ public class ArcStatPanel extends JPanel implements ActionListener {
     private long demand_md_misses;
     private long pf_data_misses;
     private long pf_md_misses;
-    // working statistics
-    private long n_arc_hits;
-    private long n_arc_misses;
-    private long n_mfu_hits;
-    private long n_mru_hits;
-    private long n_mfu_ghost_hits;
-    private long n_mru_ghost_hits;
-    private long n_anon_hits;
-    private long n_demand_data_hits;
-    private long n_demand_md_hits;
-    private long n_pf_data_hits;
-    private long n_pf_md_hits;
-    private long n_demand_data_misses;
-    private long n_demand_md_misses;
-    private long n_pf_data_misses;
-    private long n_pf_md_misses;
 
     private Timer timer;
     private int delay = 5000;
@@ -275,41 +251,32 @@ public class ArcStatPanel extends JPanel implements ActionListener {
     private void update() {
 	Kstat ks = jkstat.getKstat("zfs", 0, "arcstats");
 	if (ks == null) {
-	    // FIXME what is the smartest response?
-	    // return;
-	    n_demand_data_hits = 7;
-	    n_demand_md_hits = 4;
-	    n_pf_data_hits = 2;
-	    n_pf_md_hits = 3;
-	    n_demand_data_misses = 9;
-	    n_demand_md_misses = 8;
-	    n_pf_data_misses = 6;
-	    n_pf_md_misses = 4;
-	} else {
-	    n_arc_hits = ks.longData("hits");
-	    n_arc_misses = ks.longData("misses");
-	    n_mfu_hits = ks.longData("mfu_hits");
-	    n_mru_hits = ks.longData("mru_hits");
-	    n_mfu_ghost_hits = ks.longData("mfu_ghost_hits");
-	    n_mru_ghost_hits = ks.longData("mru_ghost_hits");
-	    n_anon_hits = n_arc_hits - (n_mfu_hits + n_mru_hits
-					+ n_mfu_ghost_hits + n_mru_ghost_hits);
-	    n_demand_data_hits = ks.longData("demand_data_hits");
-	    n_demand_md_hits = ks.longData("demand_metadata_hits");
-	    n_pf_data_hits = ks.longData("prefetch_data_hits");
-	    n_pf_md_hits = ks.longData("prefetch_metadata_hits");
-	    n_demand_data_misses = ks.longData("demand_data_misses");
-	    n_demand_md_misses = ks.longData("demand_metadata_misses");
-	    n_pf_data_misses = ks.longData("prefetch_data_misses");
-	    n_pf_md_misses = ks.longData("prefetch_metadata_misses");
-	    // sizes
-	    arc_size = ks.longData("size");
-	    target_size = ks.longData("c");
-	    arc_min_size = ks.longData("c_min");
-	    arc_max_size = ks.longData("c_max");
-	    mru_size = ks.longData("p");
-	    mfu_size = target_size - mru_size;
+	    return;
 	}
+
+	long n_arc_hits = ks.longData("hits");
+	long n_arc_misses = ks.longData("misses");
+	long n_mfu_hits = ks.longData("mfu_hits");
+	long n_mru_hits = ks.longData("mru_hits");
+	long n_mfu_ghost_hits = ks.longData("mfu_ghost_hits");
+	long n_mru_ghost_hits = ks.longData("mru_ghost_hits");
+	long n_anon_hits = n_arc_hits - (n_mfu_hits + n_mru_hits
+				    + n_mfu_ghost_hits + n_mru_ghost_hits);
+	long n_demand_data_hits = ks.longData("demand_data_hits");
+	long n_demand_md_hits = ks.longData("demand_metadata_hits");
+	long n_pf_data_hits = ks.longData("prefetch_data_hits");
+	long n_pf_md_hits = ks.longData("prefetch_metadata_hits");
+	long n_demand_data_misses = ks.longData("demand_data_misses");
+	long n_demand_md_misses = ks.longData("demand_metadata_misses");
+	long n_pf_data_misses = ks.longData("prefetch_data_misses");
+	long n_pf_md_misses = ks.longData("prefetch_metadata_misses");
+	// sizes
+	long arc_size = ks.longData("size");
+	long target_size = ks.longData("c");
+	long arc_min_size = ks.longData("c_min");
+	long arc_max_size = ks.longData("c_max");
+	long mru_size = ks.longData("p");
+	long mfu_size = target_size - mru_size;
 
 	// summary labels
 	arc_size_label.setText(mbstring(arc_size));

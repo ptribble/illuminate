@@ -38,14 +38,14 @@ public class RunInXterm {
      * must support the -e option. If none of them work, we fall back to
      * an unqualified xterm and cross our fingers.
      */
-    private static String[] xsearch = { "/usr/bin/sakura",
-					"/usr/bin/Terminal",
-					"/usr/bin/xterm",
-					"/usr/bin/urxvt",
-					"/usr/bin/gnome-terminal",
-					"/usr/dt/bin/dtterm" };
-
     static {
+	String[] xsearch = { "/usr/bin/sakura",
+			     "/usr/bin/Terminal",
+			     "/usr/bin/xterm",
+			     "/usr/bin/urxvt",
+			     "/usr/bin/gnome-terminal",
+			     "/usr/dt/bin/dtterm" };
+
 	for (String s : xsearch) {
 	    if (new File(s).exists()) {
 		xtermbin = s;

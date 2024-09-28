@@ -46,25 +46,8 @@ public class FsstatTableModel extends AbstractTableModel
 
     // standard choices for columns
     // read/write
-    private static String title_1 = "I/O operations";
-    private static String[] names_1 = { "nread", "nwrite", "nreaddir",
-		"read_bytes", "write_bytes", "readdir_bytes" };
-    // create/remove
-    private static String title_2 = "Create/Remove";
-    private static String[] names_2 = { "ncreate", "nremove", "nmkdir",
-		"nrmdir", "nlink", "nsymlink" };
-    // file status
-    private static String title_3 = "File access";
-    private static String[] names_3 = { "nlookup", "naccess", "npathconf",
-		"nreadlink" };
-    // attributes - this is exactly fsstat -a
-    private static String title_4 = "Attributes";
-    private static String[] names_4 = { "ngetattr", "nsetattr", "ngetsecattr",
-		"nsetsecattr" };
-    // map - this is exactly fsstat -v
-    private static String title_5 = "fsstat -v";
-    private static String[] names_5 = { "nmap", "naddmap", "ndelmap",
-		"ngetpage", "nputpage", "npageio" };
+    private static String deftitle;
+    private static String[] defnames;
     private String[] columnNames;
     private String columnTitle;
 
@@ -96,12 +79,35 @@ public class FsstatTableModel extends AbstractTableModel
     private List <String> showfstypes = new ArrayList<>();
 
     static {
+	// standard choices for columns
+	// read/write
+	String title_1 = "I/O operations";
+	String[] names_1 = { "nread", "nwrite", "nreaddir",
+		"read_bytes", "write_bytes", "readdir_bytes" };
+	// create/remove
+	String title_2 = "Create/Remove";
+	String[] names_2 = { "ncreate", "nremove", "nmkdir",
+		"nrmdir", "nlink", "nsymlink" };
+	// file status
+	String title_3 = "File access";
+	String[] names_3 = { "nlookup", "naccess", "npathconf",
+		"nreadlink" };
+	// attributes - this is exactly fsstat -a
+	String title_4 = "Attributes";
+	String[] names_4 = { "ngetattr", "nsetattr",
+		 "ngetsecattr", "nsetsecattr" };
+	// map - this is exactly fsstat -v
+	String title_5 = "fsstat -v";
+	String[] names_5 = { "nmap", "naddmap", "ndelmap",
+		"ngetpage", "nputpage", "npageio" };
 	columnMap = new HashMap <String, String[]> ();
 	columnMap.put(title_1, names_1);
 	columnMap.put(title_2, names_2);
 	columnMap.put(title_3, names_3);
 	columnMap.put(title_4, names_4);
 	columnMap.put(title_5, names_5);
+	deftitle = title_1;
+	defnames = names_1;
     }
 
     /**
@@ -142,7 +148,7 @@ public class FsstatTableModel extends AbstractTableModel
 	mnttab = new Mnttab();
 
 	updateFilter();
-	setNames(title_1);
+	setNames(deftitle);
 	startLoop();
     }
 
@@ -363,7 +369,7 @@ public class FsstatTableModel extends AbstractTableModel
 	columnTitle = s;
 	columnNames = columnMap.get(columnTitle);
 	if (columnNames == null) {
-	    columnNames = names_1;
+	    columnNames = defnames;
 	}
 	fireTableStructureChanged();
     }
