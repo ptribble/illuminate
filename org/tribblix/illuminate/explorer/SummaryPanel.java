@@ -103,10 +103,10 @@ public class SummaryPanel extends InfoPanel {
 	    sb2.append(" with ").append(ncores).append(" cores");
 	}
 	if (ncores != nthreads) {
-	    if (proctree.numChips() != ncores) {
-		sb2.append(" and ");
-	    } else {
+	    if (proctree.numChips() == ncores) {
 		sb2.append(" with ");
+	    } else {
+		sb2.append(" and ");
 	    }
 	    sb2.append(nthreads).append(" threads");
 	}
