@@ -70,12 +70,12 @@ public class ManPane extends JEditorPane
      * commands to open external URLs
      */
     private static String browserExe;
-    private static final String[] browsers = { "exo-open", "firefox" };
+    private static final String[] BROWSERS = { "exo-open", "firefox" };
 
     /*
      * This is hard-coded, unfortunately
      */
-    private static final String[] manpath = { "/usr/share/man",
+    private static final String[] MANPATH = { "/usr/share/man",
 					"/usr/gnu/share/man" };
 
     /**
@@ -171,7 +171,7 @@ public class ManPane extends JEditorPane
 	 */
 	String ext = m.substring(i+1).toLowerCase(Locale.ENGLISH);
 	String name = m.substring(0, i);
-	for (String dir : manpath) {
+	for (String dir : MANPATH) {
 	    File f = new File(dir + "/man" + ext + "/" + name + "." + ext);
 	    if (f.exists()) {
 		return f;
@@ -201,7 +201,7 @@ public class ManPane extends JEditorPane
 		    } catch (Exception e) { //NOPMD
 			try {
 			    if (browserExe == null) {
-				for (String b : browsers) {
+				for (String b : BROWSERS) {
 				    File f2 = new File("/usr/bin", b);
 				    if (f2.exists()) {
 					browserExe = "/usr/bin/" + b;

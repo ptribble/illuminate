@@ -29,7 +29,7 @@ import java.util.ResourceBundle;
  */
 public final class IlluminateResources {
 
-    private static final ResourceBundle illuminateres =
+    private static final ResourceBundle ILLUMINATERES =
 			ResourceBundle.getBundle("properties/illuminate");
 
     private IlluminateResources() {
@@ -43,6 +43,6 @@ public final class IlluminateResources {
      * @return  The matching String.
      */
     public static String getString(String key) {
-	return illuminateres.getString(key);
+	return ILLUMINATERES.getString(key);
     }
 }

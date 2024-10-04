@@ -54,9 +54,9 @@ public class CpuInfoPanel extends InfoPanel {
     private KstatAccessoryPanel kap;
     private KstatBaseChart kbc;
     private JKstat jkstat;
-    private static final List <String> mystats =
+    private static final List <String> MYSTATS =
 		Arrays.asList("kernel", "user", "idle");
-    private static final List <Color> mycolors =
+    private static final List <Color> MYCOLORS =
 		Arrays.asList(Color.YELLOW, Color.GREEN, Color.BLUE);
 
     /**
@@ -181,8 +181,8 @@ public class CpuInfoPanel extends InfoPanel {
 	    jp.add(kap);
 	    jp.setBorder(BorderFactory.createTitledBorder("CPU activity"));
 	    addComponent(jp);
-	    kbc = new KstatAreaChart(jkstat, ksc, mystats, true);
-	    kbc.setColors(mycolors);
+	    kbc = new KstatAreaChart(jkstat, ksc, MYSTATS, true);
+	    kbc.setColors(MYCOLORS);
 	    addComponent(new ChartPanel(kbc.getChart()));
 	}
     }
@@ -220,8 +220,8 @@ public class CpuInfoPanel extends InfoPanel {
 	jp.setBorder(BorderFactory.createTitledBorder(
 						"Aggregate CPU activity"));
 	addComponent(jp);
-	kbc = new KstatAggregateAreaChart(jkstat, ksa, mystats, true);
-	kbc.setColors(mycolors);
+	kbc = new KstatAggregateAreaChart(jkstat, ksa, MYSTATS, true);
+	kbc.setColors(MYCOLORS);
 	addComponent(new ChartPanel(kbc.getChart()));
     }
 

@@ -42,7 +42,7 @@ import uk.co.petertribble.jkstat.api.*;
 public class FsstatTableModel extends AbstractTableModel
 		implements ActionListener {
 
-    private static final String vop_prefix = "vopstats_";
+    private static final String VOP_PREFIX = "vopstats_";
 
     // standard choices for columns
     // read/write
@@ -51,7 +51,7 @@ public class FsstatTableModel extends AbstractTableModel
     private String[] columnNames;
     private String columnTitle;
 
-    static final private Map <String, String[]> columnMap;
+    static final private Map <String, String[]> COLUMN_MAP;
     private List <ChartableKstat> allfsdata = new ArrayList<>();
     private List <ChartableKstat> fsdata = new ArrayList<>();
     private Map <ChartableKstat, String> fsnames = new HashMap<>();
@@ -100,12 +100,12 @@ public class FsstatTableModel extends AbstractTableModel
 	String title_5 = "fsstat -v";
 	String[] names_5 = { "nmap", "naddmap", "ndelmap",
 		"ngetpage", "nputpage", "npageio" };
-	columnMap = new HashMap<>();
-	columnMap.put(title_1, names_1);
-	columnMap.put(title_2, names_2);
-	columnMap.put(title_3, names_3);
-	columnMap.put(title_4, names_4);
-	columnMap.put(title_5, names_5);
+	COLUMN_MAP = new HashMap<>();
+	COLUMN_MAP.put(title_1, names_1);
+	COLUMN_MAP.put(title_2, names_2);
+	COLUMN_MAP.put(title_3, names_3);
+	COLUMN_MAP.put(title_4, names_4);
+	COLUMN_MAP.put(title_5, names_5);
 	deftitle = title_1;
 	defnames = names_1;
     }
@@ -140,7 +140,7 @@ public class FsstatTableModel extends AbstractTableModel
 	kss = new KstatSet(jkstat, ksf);
 	// but we have to match the actual name
 	for (Kstat ks : kss.getKstats()) {
-	    if (ks.getName().startsWith(vop_prefix)) {
+	    if (ks.getName().startsWith(VOP_PREFIX)) {
 		allfsdata.add(new ChartableKstat(jkstat, ks));
 	    }
 	}
@@ -297,7 +297,7 @@ public class FsstatTableModel extends AbstractTableModel
     private void addIfFiltered(ChartableKstat cks) {
 	Kstat ks = cks.getKstat();
 	boolean doadd = true;
-	String dev2 = ks.getName().substring(vop_prefix.length());
+	String dev2 = ks.getName().substring(VOP_PREFIX.length());
 	String dev3 = mnttab.getFSforDevice(dev2);
 
 	// first check if we should ignore it
@@ -340,7 +340,7 @@ public class FsstatTableModel extends AbstractTableModel
 	    // update mnttab first as the filter uses it
 	    mnttab.update();
 	    for (Kstat ks : kss.getAddedKstats()) {
-		if (ks.getName().startsWith(vop_prefix)) {
+		if (ks.getName().startsWith(VOP_PREFIX)) {
 		    ChartableKstat cks = new ChartableKstat(jkstat, ks);
 		    allfsdata.add(cks);
 		    addIfFiltered(cks);
@@ -367,7 +367,7 @@ public class FsstatTableModel extends AbstractTableModel
      */
     public void setNames(String s) {
 	columnTitle = s;
-	columnNames = columnMap.get(columnTitle);
+	columnNames = COLUMN_MAP.get(columnTitle);
 	if (columnNames == null) {
 	    columnNames = defnames;
 	}
@@ -389,7 +389,7 @@ public class FsstatTableModel extends AbstractTableModel
      * @return the Set of available display names
      */
     public Set <String> titles() {
-	return columnMap.keySet();
+	return COLUMN_MAP.keySet();
     }
 
     /**

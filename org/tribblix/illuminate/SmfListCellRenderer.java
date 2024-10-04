@@ -34,11 +34,11 @@ import java.awt.Component;
  */
 public class SmfListCellRenderer extends DefaultListCellRenderer {
 
-    private static final Color lcolor = new Color(151, 255, 255);
-    private static final Color mcolor = new Color(255, 151, 151);
-    private static final Color dcolor = new Color(151, 151, 255);
-    private static final Color oncolor = new Color(151, 255, 151);
-    private static final Color offcolor = Color.ORANGE;
+    private static final Color LCOLOR = new Color(151, 255, 255);
+    private static final Color MCOLOR = new Color(255, 151, 151);
+    private static final Color DCOLOR = new Color(151, 151, 255);
+    private static final Color ONCOLOR = new Color(151, 255, 151);
+    private static final Color OFFCOLOR = Color.ORANGE;
 
     @Override
     public Component getListCellRendererComponent(JList list,
@@ -62,15 +62,15 @@ public class SmfListCellRenderer extends DefaultListCellRenderer {
 
     private Color getStatusColor(SmfService svc) {
 	if ("online".equals(svc.getStatus())) {
-	    return oncolor;
+	    return ONCOLOR;
 	} else if ("offline".equals(svc.getStatus())) {
-	    return offcolor;
+	    return OFFCOLOR;
 	} else if ("legacy_run".equals(svc.getStatus())) {
-	    return lcolor;
+	    return LCOLOR;
 	} else if ("disabled".equals(svc.getStatus())) {
-	    return dcolor;
+	    return DCOLOR;
 	} else if ("maintenance".equals(svc.getStatus())) {
-	    return mcolor;
+	    return MCOLOR;
 	}
 	return null;
     }

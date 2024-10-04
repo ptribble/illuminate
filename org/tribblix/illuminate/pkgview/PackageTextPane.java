@@ -39,7 +39,7 @@ import org.tribblix.illuminate.helpers.ManFrame;
 public class PackageTextPane extends JEditorPane implements HyperlinkListener {
 
     private static String browserExe;
-    private static final String[] browsers = { "exo-open", "firefox" };
+    private static final String[] BROWSERS = { "exo-open", "firefox" };
 
     /**
      * Create a Scrollable panel containing Text
@@ -79,7 +79,7 @@ public class PackageTextPane extends JEditorPane implements HyperlinkListener {
 		} catch (Exception e) { //NOPMD
 		    try {
 			if (browserExe == null) {
-			    for (String b : browsers) {
+			    for (String b : BROWSERS) {
 				File f = new File("/usr/bin", b);
 				if (f.exists()) {
 				    browserExe = "/usr/bin/" + b;

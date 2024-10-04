@@ -31,7 +31,7 @@ import java.util.ResourceBundle;
  */
 public final class PkgResources {
 
-    private static final ResourceBundle pkgres =
+    private static final ResourceBundle PKGRES =
 			ResourceBundle.getBundle("properties/pkgview");
 
     private PkgResources() {
@@ -45,6 +45,6 @@ public final class PkgResources {
      * @return the text resource matching the specified key
      */
     public static String getString(String key) {
-	return pkgres.getString(key);
+	return PKGRES.getString(key);
     }
 }

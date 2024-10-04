@@ -46,7 +46,7 @@ import org.jfree.data.general.*;
  */
 public class ArcStatPanel extends JPanel implements ActionListener {
 
-    private static final long mb = 1024*1024;
+    private static final long MB = 1024*1024;
 
     private JKstat jkstat;
 
@@ -386,7 +386,7 @@ public class ArcStatPanel extends JPanel implements ActionListener {
     }
 
     private String mbstring(long lval) {
-	return Long.toString(lval/mb) + " MB";
+	return Long.toString(lval/MB) + " MB";
     }
 
     private int hitrate(long hits, long misses) {
