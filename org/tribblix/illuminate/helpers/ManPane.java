@@ -163,7 +163,7 @@ public class ManPane extends JEditorPane
 	int i = m.lastIndexOf('.');
 	// man pages must have something before the dot
 	if (i < 1) {
-	    return (File) null;
+	    return null;
 	}
 	/*
 	 * Cross references invariably use the uppercase form of the section
@@ -177,7 +177,7 @@ public class ManPane extends JEditorPane
 		return f;
 	    }
 	}
-	return (File) null;
+	return null;
     }
 
     @Override

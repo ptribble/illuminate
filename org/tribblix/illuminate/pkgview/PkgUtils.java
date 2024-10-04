@@ -340,7 +340,7 @@ public class PkgUtils {
     static private String niceSpaceUsed(long space) {
         DecimalFormat df = new DecimalFormat("##0.0#");
 	StringBuilder sb = new StringBuilder();
-	double dspace = (double) space;
+	double dspace = space;
 	int iscale = 0;
 	while (dspace > 1024.0 && iscale < 3) {
 	    iscale++;
