@@ -153,7 +153,7 @@ public class JCpuState extends JKdemo implements ActionListener {
 	extendedCpuItem = new JMenuItem[ncpus];
 	chartCpuItem = new JMenuItem[ncpus];
 	cpuID = new String[ncpus];
-	kaplist = new ArrayList <KstatAccessoryPanel> ();
+	kaplist = new ArrayList<>();
 
 	// create main display panel
 	mainPanel = new JPanel(new SpringLayout());

@@ -102,7 +102,7 @@ public class CpuStatePanel extends JPanel implements ActionListener {
 	extendedCpuItem = new JMenuItem[ncpus];
 	chartCpuItem = new JMenuItem[ncpus];
 	cpuID = new String[ncpus];
-	kaplist = new ArrayList <KstatAccessoryPanel> ();
+	kaplist = new ArrayList<>();
 
 	// get the logical structure of the cpus
 	proctree = new ProcessorTree(jkstat);

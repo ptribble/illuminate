@@ -61,7 +61,7 @@ public class PkgInfo {
 	    parseInfo();
 	}
 	// make defensive copy, as PkgUtils modifies it
-	return new HashMap <String, String> (pkginfomap);
+	return new HashMap<>(pkginfomap);
     }
 
     /**

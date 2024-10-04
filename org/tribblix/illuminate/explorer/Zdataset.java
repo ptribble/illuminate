@@ -53,8 +53,8 @@ public class Zdataset {
      */
     private void initProperties() {
 	if (propmap == null) {
-	    propset = new HashSet <Zproperty> ();
-	    propmap = new HashMap <String, Zproperty> ();
+	    propset = new HashSet<>();
+	    propmap = new HashMap<>();
 	    InfoCommand ic = new InfoCommand("ZP", "/usr/sbin/zfs",
 				"get -o property,value,source -Hp all " + name);
 	    if (ic.exists()) {

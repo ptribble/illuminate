@@ -53,7 +53,7 @@ public class CatalogParser {
 	} else if ("oi".equals(reponame)) {
 	    isize = 256;
 	}
-	pkgMap = new HashMap <String, CatalogPackage> (isize);
+	pkgMap = new HashMap<>(isize);
 	parse(pkghdl, reponame);
     }
 

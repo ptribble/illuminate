@@ -185,7 +185,7 @@ public class ZoneEntry {
      * Parse the network interface specification from zonecfg
      */
     private void populateNet() {
-	netconfig = new HashSet <ZoneNet> ();
+	netconfig = new HashSet<>();
 	String address = null;
 	String allowedaddress = null;
 	String physical = null;

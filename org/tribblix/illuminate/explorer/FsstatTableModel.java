@@ -100,7 +100,7 @@ public class FsstatTableModel extends AbstractTableModel
 	String title_5 = "fsstat -v";
 	String[] names_5 = { "nmap", "naddmap", "ndelmap",
 		"ngetpage", "nputpage", "npageio" };
-	columnMap = new HashMap <String, String[]> ();
+	columnMap = new HashMap<>();
 	columnMap.put(title_1, names_1);
 	columnMap.put(title_2, names_2);
 	columnMap.put(title_3, names_3);

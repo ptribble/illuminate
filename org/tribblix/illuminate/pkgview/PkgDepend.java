@@ -92,9 +92,9 @@ public class PkgDepend {
      * Actually parse the depend file
      */
     private void parseDepend() {
-	dependson = new TreeSet <String> ();
-	rdepends = new TreeSet <String> ();
-	incompatibles = new TreeSet <String> ();
+	dependson = new TreeSet<>();
+	rdepends = new TreeSet<>();
+	incompatibles = new TreeSet<>();
 	for (String s : pkghdl.getPkgDepend(name)) {
 	    String[] ds = s.split("\\s+", 3);
 	    // Must have at least 2 words

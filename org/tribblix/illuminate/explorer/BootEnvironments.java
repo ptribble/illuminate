@@ -41,8 +41,8 @@ public class BootEnvironments {
      */
     private void initProperties() {
 	if (forwardmap == null) {
-	    forwardmap = new HashMap <String, String> ();
-	    backwardmap = new HashMap <String, String> ();
+	    forwardmap = new HashMap<>();
+	    backwardmap = new HashMap<>();
 	    InfoCommand ic = new InfoCommand("BE", "/usr/sbin/beadm",
 				"list -H");
 	    if (ic.exists()) {

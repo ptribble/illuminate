@@ -60,7 +60,7 @@ public class SummaryPanel extends InfoPanel {
     public SummaryPanel(SysItem hi, JKstat jkstat) {
 	super(hi);
 	this.jkstat = jkstat;
-	kaplist = new ArrayList <KstatAccessoryPanel> ();
+	kaplist = new ArrayList<>();
 
 	displaySummary();
 

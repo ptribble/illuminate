@@ -62,7 +62,7 @@ public class PkgList extends TreeSet <SVR4Package> {
      * @return a Set of installed package names
      */
     public Set <String> getPackageNames() {
-	return new TreeSet <String> (pkgMap.keySet());
+	return new TreeSet<>(pkgMap.keySet());
     }
 
     /**
@@ -86,12 +86,12 @@ public class PkgList extends TreeSet <SVR4Package> {
      * and populate another Map.
      */
     public void createRevDependencies() {
-	revDependencies = new HashMap <String, Set <SVR4Package>> ();
+	revDependencies = new HashMap<>();
 	for (SVR4Package pkg : this) {
 	    for (String pkgdep : pkg.getDependencySet()) {
 		Set <SVR4Package> revSet = revDependencies.get(pkgdep);
 		if (revSet == null) {
-		    revSet = new HashSet <SVR4Package> ();
+		    revSet = new HashSet<>();
 		    revDependencies.put(pkgdep, revSet);
 		}
 		revSet.add(pkg);

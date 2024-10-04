@@ -66,7 +66,7 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
     public ZoneInfoPanel(SysItem hi, JKstat jkstat) {
 	super(hi);
 	this.jkstat = jkstat;
-	kaplist = new ArrayList <KstatAccessoryPanel> ();
+	kaplist = new ArrayList<>();
 
 	if (hi.getType() == SysItem.ZONE_CONTAINER) {
 	    displaySummary();

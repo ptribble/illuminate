@@ -253,7 +253,7 @@ public class SysItem {
      */
     public SysItem(int type) {
 	this.type = type;
-	attributes = new HashMap <String, Object> ();
+	attributes = new HashMap<>();
     }
 
     /**
@@ -265,7 +265,7 @@ public class SysItem {
      */
     public SysItem(int type, String flag) {
 	this.type = type;
-	attributes = new HashMap <String, Object> ();
+	attributes = new HashMap<>();
 	addAttribute("flag", flag);
     }
 
