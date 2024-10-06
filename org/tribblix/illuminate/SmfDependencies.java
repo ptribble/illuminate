@@ -33,7 +33,7 @@ import java.util.HashMap;
 public class SmfDependencies {
 
     // save the dependency tree to avoid repeated calls
-    static Map <String, String> depMap = new HashMap<>();
+    private static final Map <String, String> depMap = new HashMap<>();
 
     public static void printDependencies(String arg) {
 	printDependencies(arg, "");
