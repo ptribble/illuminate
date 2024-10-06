@@ -263,12 +263,10 @@ public class PkgCheck {
 					" is not a file");
 		    }
 		}
-		if (cfd.isDirectory()) {
-		    if (!f.isDirectory()) {
-			System.out.println("ERROR: Path " +
-					cfd.getName() +
-					" is not a directory");
-		    }
+		if (cfd.isDirectory() && !f.isDirectory()) {
+		    System.out.println("ERROR: Path " +
+				       cfd.getName() +
+				       " is not a directory");
 		}
 	    } else {
 		System.err.println("ERROR: Missing or unreadable path "
