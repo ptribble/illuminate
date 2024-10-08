@@ -104,6 +104,8 @@ public class SysInfoPanel extends JPanel {
 	    case SysItem.NET_IPADM_ADDR:
 	    case SysItem.NET_IPADM_ADDRPROP:
 	    case SysItem.NET_IPADM_PROP:
+	    case SysItem.NET_ROUTE_TABLE:
+	    case SysItem.NET_ROUTE_ADM:
 		ip = new NetInfoPanel(hi, jkstat);
 		add(ip);
 		break;

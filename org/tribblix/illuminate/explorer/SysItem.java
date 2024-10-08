@@ -160,6 +160,18 @@ public class SysItem {
      * Represents an ipadm property.
      */
     public static final int NET_IPADM_PROP = 325;
+    /**
+     * Represents routing.
+     */
+    public static final int NET_ROUTE = 330;
+    /**
+     * Represents the route table.
+     */
+    public static final int NET_ROUTE_TABLE = 331;
+    /**
+     * Represents the routeadm state.
+     */
+    public static final int NET_ROUTE_ADM = 332;
 
     /**
      * Represents a memory container.

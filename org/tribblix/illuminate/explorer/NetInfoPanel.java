@@ -117,6 +117,12 @@ public class NetInfoPanel extends InfoPanel {
 	    case SysItem.NET_IPADM_PROP:
 		displayIpadm("prop");
 		break;
+	    case SysItem.NET_ROUTE_TABLE:
+		displayRoute(SysItem.NET_ROUTE_TABLE);
+		break;
+	    case SysItem.NET_ROUTE_ADM:
+		displayRoute(SysItem.NET_ROUTE_ADM);
+		break;
 	}
 
 	validate();
@@ -169,6 +175,19 @@ public class NetInfoPanel extends InfoPanel {
 	addLabel("Output from ipadm show-"+iptype);
 
 	addText(new InfoCommand("IF", "/usr/sbin/ipadm", "show-"+iptype));
+    }
+
+    /*
+     * Routing
+     */
+    private void displayRoute(int rtype) {
+	if (rtype == SysItem.NET_ROUTE_TABLE) {
+	    addLabel("Output from netstat -nr");
+	    addText(new InfoCommand("RT", "/usr/bin/netstat", "-nr"));
+	} else if (rtype == SysItem.NET_ROUTE_ADM) {
+	    addLabel("Output from routeadm");
+	    addText(new InfoCommand("RA", "/usr/sbin/routeadm"));
+	}
     }
 
     /*

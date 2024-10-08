@@ -275,6 +275,13 @@ public class SysTree extends JTree {
 				"addrprop"));
 	htni.add(new SysTreeNode(new SysItem(SysItem.NET_IPADM_PROP), "prop"));
 
+	// Routing
+	SysTreeNode htnr = new SysTreeNode(new SysItem(SysItem.NET_ROUTE),
+				IlluminateResources.getString("HARD.ROUTING"));
+	htn.add(htnr);
+	htnr.add(new SysTreeNode(new SysItem(SysItem.NET_ROUTE_TABLE), "Table"));
+	htnr.add(new SysTreeNode(new SysItem(SysItem.NET_ROUTE_ADM), "Services"));
+
 	// netstat -an
 	htn.add(new SysTreeNode(new SysItem(SysItem.NET_STAT), "netstat"));
     }
