@@ -49,6 +49,8 @@ import org.jfree.chart.ChartPanel;
  */
 public class CpuInfoPanel extends InfoPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private transient ProcessorTree proctree;
     private MPstatTable mptable;
     private KstatAccessoryPanel kap;

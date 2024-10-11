@@ -38,6 +38,8 @@ import uk.co.petertribble.jingle.JingleTextPane;
  */
 public class PackageInformationPanel extends JTabbedPane {
 
+    private static final long serialVersionUID = 1L;
+
     private transient PackageHandler pkghdl;
 
     private PackageTextPane tp_info;

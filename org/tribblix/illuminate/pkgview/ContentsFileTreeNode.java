@@ -35,6 +35,8 @@ import java.io.IOException;
  */
 public class ContentsFileTreeNode extends DefaultMutableTreeNode {
 
+    private static final long serialVersionUID = 1L;
+
     private boolean explored;
     private File file;
 

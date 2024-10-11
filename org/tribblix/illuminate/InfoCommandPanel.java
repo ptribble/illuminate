@@ -49,6 +49,8 @@ import uk.co.petertribble.jingle.JingleTextPane;
  */
 public class InfoCommandPanel extends JPanel implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * The JingleTextPane where we send output.
      */

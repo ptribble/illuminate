@@ -34,6 +34,8 @@ import org.tribblix.illuminate.explorer.CommandTableModel;
  */
 public class IPSSoftwarePanel extends InfoPanel {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Create a panel showing basic IPS packaging information.
      */

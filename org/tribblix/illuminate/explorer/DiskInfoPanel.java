@@ -36,6 +36,8 @@ import org.tribblix.illuminate.InfoCommand;
  */
 public class DiskInfoPanel extends InfoPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private AccessoryIOPanel acp;
     private JKstat jkstat;
     private Kstat ks;

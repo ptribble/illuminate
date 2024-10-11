@@ -33,6 +33,8 @@ import uk.co.petertribble.jkstat.demo.JKdemo;
  */
 public class ArcStat extends JKdemo {
 
+    private static final long serialVersionUID = 1L;
+
     private ArcStatPanel mainPanel;
 
     /**

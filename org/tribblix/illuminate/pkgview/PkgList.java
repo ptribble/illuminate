@@ -36,6 +36,8 @@ import java.util.TreeSet;
  */
 public class PkgList extends TreeSet <SVR4Package> {
 
+    private static final long serialVersionUID = 1L;
+
     private Map <String, SVR4Package> pkgMap = new HashMap<>();
     private Map <String, Set <SVR4Package>> revDependencies;
 

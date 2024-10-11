@@ -9,7 +9,7 @@ SVDIR=${0%/*}
 LIBDIR=${SVDIR}/lib
 JARLIBDIR=${LIBDIR}/java
 
-XFLAGS="-Xlint -Xlint:-serial -Xlint:-rawtypes"
+XFLAGS="-Xlint -Xlint:-rawtypes"
 
 
 SVJAR=${JARLIBDIR}/illuminate.jar

@@ -34,6 +34,8 @@ import java.awt.Component;
  */
 public class SmfListCellRenderer extends DefaultListCellRenderer {
 
+    private static final long serialVersionUID = 1L;
+
     private static final Color LCOLOR = new Color(151, 255, 255);
     private static final Color MCOLOR = new Color(255, 151, 151);
     private static final Color DCOLOR = new Color(151, 151, 255);

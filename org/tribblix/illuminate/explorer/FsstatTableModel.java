@@ -42,6 +42,8 @@ import uk.co.petertribble.jkstat.api.*;
 public class FsstatTableModel extends AbstractTableModel
 		implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private static final String VOP_PREFIX = "vopstats_";
 
     // standard choices for columns

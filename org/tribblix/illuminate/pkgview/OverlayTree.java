@@ -38,6 +38,8 @@ import java.util.HashSet;
  */
 public class OverlayTree extends JTree {
 
+    private static final long serialVersionUID = 1L;
+
     private DefaultTreeModel model;
     private Map <SVR4Package, NodeSet> pkgmap = new HashMap<>();
     private Map <Overlay, NodeSet> ovmap = new HashMap<>();

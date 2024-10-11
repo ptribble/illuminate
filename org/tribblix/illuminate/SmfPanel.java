@@ -46,6 +46,8 @@ import java.awt.event.MouseListener;
  */
 public class SmfPanel extends JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * The panel showing the information for services.
      */

@@ -48,6 +48,8 @@ import java.util.Locale;
 public class ManPane extends JEditorPane
 		implements ActionListener, HyperlinkListener {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * A JLabel with the name of the manual page being displayed.
      */

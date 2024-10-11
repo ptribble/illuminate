@@ -35,6 +35,8 @@ import java.util.HashMap;
  */
 public class SmfTree extends JTree {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * A Map to track the services so we can find relationships when
      * building the tree.

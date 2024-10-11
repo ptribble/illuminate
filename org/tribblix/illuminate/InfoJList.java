@@ -32,6 +32,8 @@ import javax.swing.JList;
  */
 public class InfoJList extends JList <InfoCommand> {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Display a list of commands.
      *

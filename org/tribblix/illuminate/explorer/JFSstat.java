@@ -44,6 +44,8 @@ import org.tribblix.illuminate.IlluminateResources;
  */
 public class JFSstat extends JKdemo implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private static final String SVERSION = "JFSstat version 1.0";
     private Set <JRadioButtonMenuItem> displayset = new HashSet<>();
     private JCheckBoxMenuItem hiddenItem;

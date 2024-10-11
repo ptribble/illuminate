@@ -42,6 +42,8 @@ import java.io.File;
  */
 public class InstalledFilesPanel extends JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private PackageInformationPanel pip;
 
     /**

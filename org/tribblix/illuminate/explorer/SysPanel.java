@@ -41,6 +41,8 @@ import org.tribblix.illuminate.InfoCommand;
  */
 public class SysPanel extends JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private SysInfoPanel hip;
 
     /**

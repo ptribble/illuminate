@@ -28,6 +28,8 @@ import uk.co.petertribble.jkstat.demo.KstatToolsMenu;
  */
 public final class Illuminate extends JFrame implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * A menu item to exit illuminate.
      */

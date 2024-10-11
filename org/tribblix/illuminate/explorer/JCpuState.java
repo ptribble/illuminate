@@ -60,6 +60,8 @@ import uk.co.petertribble.jingle.SpringUtilities;
  */
 public class JCpuState extends JKdemo implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     static private final int STYLE_BASIC = 0;
     static private final int STYLE_CHART = 1;
     private static int style = STYLE_BASIC;

@@ -37,6 +37,8 @@ import java.net.URL;
  */
 public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
 
+    private static final long serialVersionUID = 1L;
+
     private static ImageIcon noneIcon;
     private static ImageIcon selectedIcon;
     private static ImageIcon partIcon;

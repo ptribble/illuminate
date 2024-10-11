@@ -36,6 +36,8 @@ import javax.swing.SwingWorker;
  */
 public class InstalledSoftwarePanel extends JTabbedPane {
 
+    private static final long serialVersionUID = 1L;
+
     transient PackageHandler pkghdl;
 
     PkgList plist;

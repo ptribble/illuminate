@@ -34,6 +34,8 @@ import java.util.HashSet;
  */
 public class SmfTreeNode extends DefaultMutableTreeNode {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * The service underlying this SmfTreeNode
      */

@@ -35,6 +35,8 @@ import org.tribblix.illuminate.InfoCommand;
  */
 public class FsInfoPanel extends InfoPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private JKstat jkstat;
     private JFSstatPanel fsPanel;
     private transient BootEnvironments beadm;

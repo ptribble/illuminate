@@ -40,6 +40,8 @@ import org.tribblix.illuminate.IlluminateResources;
  */
 public class SysTree extends JTree {
 
+    private static final long serialVersionUID = 1L;
+
     private Map <String, Kstat> netMap = new HashMap<>();
     private JKstat jkstat;
 

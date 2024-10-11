@@ -33,6 +33,8 @@ import org.tribblix.illuminate.explorer.ZoneConfig;
  */
 public class InfoCommandList extends Vector <InfoCommand> {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Construct a List of available commands.
      * Note that it's actually a Vector.

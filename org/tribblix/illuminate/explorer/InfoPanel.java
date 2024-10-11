@@ -39,6 +39,8 @@ import org.tribblix.illuminate.InfoCommand;
  */
 public class InfoPanel extends JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * The SysItem defining what is displayed in the InfoPanel.
      */

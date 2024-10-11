@@ -39,6 +39,8 @@ import java.io.File;
  */
 public class ContentsFileTree extends JTree {
 
+    private static final long serialVersionUID = 1L;
+
     private DefaultTreeModel model;
 
     /**

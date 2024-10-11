@@ -46,6 +46,8 @@ import org.jfree.data.general.*;
  */
 public class ArcStatPanel extends JPanel implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private static final long MB = 1024*1024;
 
     private JKstat jkstat;

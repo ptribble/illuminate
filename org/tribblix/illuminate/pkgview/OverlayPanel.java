@@ -39,6 +39,8 @@ import javax.swing.event.TreeSelectionListener;
  */
 public class OverlayPanel extends JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     final OverlayTree tree;
     private PackageInformationPanel pip;
     private transient SVR4Package currentPackage;

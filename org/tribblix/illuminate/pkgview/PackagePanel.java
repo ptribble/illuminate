@@ -41,6 +41,8 @@ import java.awt.BorderLayout;
  */
 public class PackagePanel extends JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private PackageInformationPanel pip;
     private transient SVR4Package currentPackage;
     final JTable ptable;

@@ -34,6 +34,8 @@ import uk.co.petertribble.jingle.JingleTextPane;
  */
 public class SysCmdPanel extends JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Create a SysCmdPanel that shows the output from an InfoCommand.
      *

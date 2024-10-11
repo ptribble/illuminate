@@ -38,6 +38,8 @@ import org.tribblix.illuminate.helpers.ManFrame;
  */
 public class PackageTextPane extends JEditorPane implements HyperlinkListener {
 
+    private static final long serialVersionUID = 1L;
+
     private static String browserExe;
     private static final String[] BROWSERS = { "exo-open", "firefox" };
 

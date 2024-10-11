@@ -32,6 +32,8 @@ import javax.swing.table.AbstractTableModel;
  */
 public class CommandTableModel extends AbstractTableModel {
 
+    private static final long serialVersionUID = 1L;
+
     private String[] columnNames;
     private String[][] data;
     private int nrows;

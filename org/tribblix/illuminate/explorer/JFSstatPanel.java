@@ -37,6 +37,8 @@ import java.util.Set;
  */
 public class JFSstatPanel extends JPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private FsstatTableModel ftm;
 
     /**

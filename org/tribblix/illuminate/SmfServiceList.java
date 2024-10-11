@@ -32,6 +32,8 @@ import org.tribblix.illuminate.helpers.RunCommand;
  */
 public class SmfServiceList extends Vector <SmfService> {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Create a list of SMF services for the current system.
      */

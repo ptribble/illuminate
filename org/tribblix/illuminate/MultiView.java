@@ -24,6 +24,8 @@ import uk.co.petertribble.jingle.JingleInfoFrame;
  */
 public class MultiView extends JFrame implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * A JMenuItem to exit the application.
      */

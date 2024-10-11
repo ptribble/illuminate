@@ -38,6 +38,8 @@ import java.net.URL;
  */
 public class SysTreeCellRenderer extends DefaultTreeCellRenderer {
 
+    private static final long serialVersionUID = 1L;
+
     private static ImageIcon failIcon;
     private static ImageIcon warnIcon;
     private static ImageIcon unknownIcon;

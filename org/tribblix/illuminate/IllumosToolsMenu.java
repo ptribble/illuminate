@@ -39,6 +39,8 @@ import java.io.File;
  */
 public class IllumosToolsMenu extends JMenu implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * A Map to track the tools that have been successfully added.
      */

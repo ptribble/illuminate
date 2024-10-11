@@ -56,6 +56,8 @@ import uk.co.petertribble.jingle.SpringUtilities;
  */
 public class CpuStatePanel extends JPanel implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private static int orientation = SwingConstants.VERTICAL;
 
     private JKstat jkstat;

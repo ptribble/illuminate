@@ -37,6 +37,8 @@ import java.net.URL;
  */
 public class SmfTreeCellRenderer extends DefaultTreeCellRenderer {
 
+    private static final long serialVersionUID = 1L;
+
     private static ImageIcon failIcon;
     private static ImageIcon okIcon;
 

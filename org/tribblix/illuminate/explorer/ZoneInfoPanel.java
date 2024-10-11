@@ -51,6 +51,8 @@ import uk.co.petertribble.jkstat.gui.KstatTable;
  */
 public class ZoneInfoPanel extends InfoPanel implements ActionListener {
 
+    private static final long serialVersionUID = 1L;
+
     private JKstat jkstat;
     private transient KstatAccessorySet kas;
     private KstatTable kt;

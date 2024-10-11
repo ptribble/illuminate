@@ -35,6 +35,8 @@ import uk.co.petertribble.jproc.api.JProcessFilter;
  */
 public class ProcessInfoPanel extends InfoPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private JPinfoTable jpip;
     private ZoneInfoTable zit;
 

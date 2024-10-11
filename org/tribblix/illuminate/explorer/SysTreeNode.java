@@ -32,6 +32,8 @@ import javax.swing.tree.DefaultMutableTreeNode;
 public class SysTreeNode extends DefaultMutableTreeNode
     implements Comparable<SysTreeNode> {
 
+    private static final long serialVersionUID = 1L;
+
     private transient SysItem hi;
     private String node;
 

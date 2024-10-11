@@ -32,6 +32,8 @@ import javax.swing.JList;
  */
 public class SmfList extends JList <SmfService> {
 
+    private static final long serialVersionUID = 1L;
+
     /**
      * Display a list of SMF services.
      *

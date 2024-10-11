@@ -41,6 +41,8 @@ import org.jfree.chart.ChartPanel;
  */
 public class NetInfoPanel extends InfoPanel {
 
+    private static final long serialVersionUID = 1L;
+
     private AccessoryNetPanel acp;
     private JKstat jkstat;
     private KstatTable kt;
