@@ -27,9 +27,8 @@ import java.awt.Insets;
 import java.awt.Desktop;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
-import java.io.File;
-import java.io.IOException;
 import org.tribblix.illuminate.helpers.ManFrame;
+import org.tribblix.illuminate.helpers.RunBrowser;
 
 /**
  * A Scrollable panel containing Text
@@ -39,9 +38,6 @@ import org.tribblix.illuminate.helpers.ManFrame;
 public class PackageTextPane extends JEditorPane implements HyperlinkListener {
 
     private static final long serialVersionUID = 1L;
-
-    private static String browserExe;
-    private static final String[] BROWSERS = { "exo-open", "firefox" };
 
     /**
      * Create a Scrollable panel containing Text
@@ -76,27 +72,7 @@ public class PackageTextPane extends JEditorPane implements HyperlinkListener {
 	     * Is this a regular URL?
 	     */
 	    if (ev.getURL() != null && Desktop.isDesktopSupported()) {
-		try {
-		    Desktop.getDesktop().browse(ev.getURL().toURI());
-		} catch (Exception e) { //NOPMD
-		    try {
-			if (browserExe == null) {
-			    for (String b : BROWSERS) {
-				File f = new File("/usr/bin", b);
-				if (f.exists()) {
-				    browserExe = "/usr/bin/" + b;
-				    break;
-				}
-			    }
-			}
-			if (browserExe != null) {
-			    Runtime.getRuntime().exec(new String[]
-				{browserExe, ev.getURL().toString()});
-			}
-		    } catch (IOException e2) {
-			System.out.println(e2);
-		    }
-		}
+		new RunBrowser(ev.getURL());
 	    } else {
 		/*
 		 * try a man page

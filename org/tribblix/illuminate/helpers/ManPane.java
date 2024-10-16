@@ -23,7 +23,6 @@
 package org.tribblix.illuminate.helpers;
 
 import java.io.File;
-import java.io.IOException;
 import javax.swing.JButton;
 import javax.swing.JEditorPane;
 import javax.swing.JLabel;
@@ -67,12 +66,6 @@ public class ManPane extends JEditorPane
      * list of opened pages for history
      */
     private List <File> historyList = new ArrayList<>();
-
-    /*
-     * commands to open external URLs
-     */
-    private static String browserExe;
-    private static final String[] BROWSERS = { "exo-open", "firefox" };
 
     /*
      * This is hard-coded, unfortunately
@@ -198,27 +191,7 @@ public class ManPane extends JEditorPane
 		 * if not a manpage, try as a URL
 		 */
 		if (ev.getURL() != null && Desktop.isDesktopSupported()) {
-		    try {
-			Desktop.getDesktop().browse(ev.getURL().toURI());
-		    } catch (Exception e) { //NOPMD
-			try {
-			    if (browserExe == null) {
-				for (String b : BROWSERS) {
-				    File f2 = new File("/usr/bin", b);
-				    if (f2.exists()) {
-					browserExe = "/usr/bin/" + b;
-					break;
-				    }
-				}
-			    }
-			    if (browserExe != null) {
-				Runtime.getRuntime().exec(new String[]
-				    {browserExe, ev.getURL().toString()});
-			    }
-			} catch (IOException e2) {
-			    System.out.println(e2); //NOPMD
-			}
-		    }
+		    new RunBrowser(ev.getURL());
 		}
 	    }
 	}
