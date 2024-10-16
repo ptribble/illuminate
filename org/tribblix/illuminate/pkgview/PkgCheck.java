@@ -100,32 +100,20 @@ public class PkgCheck {
 		names.add(arg);
 	    }
 	}
-	if (dopaths && partpaths) {
-	    usage();
+	if (checkovl) {
+	    if (dopaths || partpaths || allpkgs || list) {
+		usage();
+	    }
 	}
-	if (dopaths && checkovl) {
-	    usage();
+	if (dopaths) {
+	    if (partpaths || allpkgs || list) {
+		usage();
+	    }
 	}
-	if (partpaths && checkovl) {
-	    usage();
-	}
-	if (allpkgs && checkovl) {
-	    usage();
-	}
-	if (allpkgs && dopaths) {
-	    usage();
-	}
-	if (allpkgs && partpaths) {
-	    usage();
-	}
-	if (list && checkovl) {
-	    usage();
-	}
-	if (list && dopaths) {
-	    usage();
-	}
-	if (list && partpaths) {
-	    usage();
+	if (partpaths) {
+	    if (allpkgs || list) {
+		usage();
+	    }
 	}
 	return names;
     }
@@ -207,71 +195,79 @@ public class PkgCheck {
 	System.out.println();
     }
 
+    private void listFile(ContentsFileDetail cfd) {
+	System.out.print("  " + cfd.getName());
+	if (verbose) {
+	    System.out.print(" owner=" + cfd.getOwner());
+	    System.out.print(" group=" + cfd.getGroup());
+	    System.out.print(" mode=" + cfd.getMode());
+	    if (cfd.isRegular()) {
+		System.out.print(" size=" + cfd.getSize());
+	    }
+	}
+	System.out.println();
+    }
+
+    private void checkFile(ContentsFileDetail cfd) {
+	File f = new File(pkghdl.getRoot(), cfd.getName());
+	if (f.exists()) {
+	    if (cfd.isRegular()) {
+		if (f.isFile()) {
+		    long fmodtime = f.lastModified()/1000;
+		    long pmodtime = cfd.lastModified();
+		    if (f.length() != cfd.getSize()) {
+			if (cfd.isEditable()) {
+			    if (verbose) {
+				System.out.println("WARNING: File " +
+					    cfd.getName() +
+					    " has incorrect size");
+			    }
+			} else {
+			    System.out.println("ERROR: File " +
+					    cfd.getName() +
+					    " has incorrect size");
+			}
+		    }
+		    // allow a little rounding error
+		    if (Math.abs(fmodtime - pmodtime) >= 2) {
+			if (cfd.isEditable()) {
+			    if (verbose) {
+				System.out.println("WARNING: File " +
+					    cfd.getName() +
+					    " has incorrect modification time");
+			    }
+			} else {
+			    System.out.println("ERROR: File " +
+					    cfd.getName() +
+					    " has incorrect modification time");
+			}
+		    }
+		} else {
+		    System.out.println("ERROR: Path " +
+				       cfd.getName() +
+				       " is not a file");
+		}
+	    }
+	    if (cfd.isDirectory() && !f.isDirectory()) {
+		System.out.println("ERROR: Path " +
+				   cfd.getName() +
+				   " is not a directory");
+	    }
+	} else {
+	    System.err.println("ERROR: Missing or unreadable path "
+			       + cfd.getName());
+	}
+    }
+
     private void showFile(ContentsFileDetail cfd) {
 	if (dopaths || partpaths) {
 	    showOwningPkgs(cfd);
 	}
 	if (list) {
-	    System.out.print("  " + cfd.getName());
-	    if (verbose) {
-		System.out.print(" owner=" + cfd.getOwner());
-		System.out.print(" group=" + cfd.getGroup());
-		System.out.print(" mode=" + cfd.getMode());
-		if (cfd.isRegular()) {
-		    System.out.print(" size=" + cfd.getSize());
-		}
-	    }
-	    System.out.println();
+	    listFile(cfd);
 	}
 	if (check) {
-	    File f = new File(pkghdl.getRoot(), cfd.getName());
-	    if (f.exists()) {
-		if (cfd.isRegular()) {
-		    if (f.isFile()) {
-			long fmodtime = f.lastModified()/1000;
-			long pmodtime = cfd.lastModified();
-			if (f.length() != cfd.getSize()) {
-			    if (cfd.isEditable()) {
-				if (verbose) {
-				    System.out.println("WARNING: File " +
-					cfd.getName() +
-					" has incorrect size");
-				}
-			    } else {
-				System.out.println("ERROR: File " +
-					cfd.getName() +
-					" has incorrect size");
-			    }
-			}
-			// allow a little rounding error
-			if (Math.abs(fmodtime - pmodtime) >= 2) {
-			    if (cfd.isEditable()) {
-				if (verbose) {
-				    System.out.println("WARNING: File " +
-					cfd.getName() +
-					" has incorrect modification time");
-				}
-			    } else {
-				System.out.println("ERROR: File " +
-					cfd.getName() +
-					" has incorrect modification time");
-			    }
-			}
-		    } else {
-			System.out.println("ERROR: Path " +
-					cfd.getName() +
-					" is not a file");
-		    }
-		}
-		if (cfd.isDirectory() && !f.isDirectory()) {
-		    System.out.println("ERROR: Path " +
-				       cfd.getName() +
-				       " is not a directory");
-		}
-	    } else {
-		System.err.println("ERROR: Missing or unreadable path "
-			+ cfd.getName());
-	    }
+	    checkFile(cfd);
 	}
     }
 
