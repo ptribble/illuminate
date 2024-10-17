@@ -116,8 +116,17 @@ public class SummaryPanel extends InfoPanel {
 	addLabel(sbrand);
 
 	addLoadAccessory();
-        addComponent(new CpuStatePanel(jkstat));
+	addCpuAccessory();
 	addNetAccessory();
+    }
+
+    /*
+     * Add a cpu activity display
+     */
+    private void addCpuAccessory() {
+	JPanel cpupanel = new CpuStatePanel(jkstat);
+	cpupanel.setBorder(BorderFactory.createTitledBorder("Processor Activity"));
+        addComponent(cpupanel);
     }
 
     /*
