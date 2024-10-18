@@ -83,29 +83,28 @@ public class SummaryPanel extends InfoPanel {
 	ProcessorTree proctree = new ProcessorTree(jkstat);
 	addLabel("Processor Summary");
 
-	int ncores = 0;
+	int nchips = proctree.numChips();
+	int ncores = proctree.numCores();
 	int nthreads = 0;
 	String sbrand = "";
 	Set <Kstat> kss = new HashSet<>();
 	for (Long l : proctree.getChips()) {
-	    ncores += proctree.numCores(l);
 	    nthreads += proctree.numThreads(l);
 	    kss.addAll(proctree.chipStats(l));
 	    sbrand = proctree.getBrand(l);
 	}
 
 	StringBuilder sb2 = new StringBuilder(64);
-	if (proctree.numChips() == 1) {
+	if (nchips == 1) {
 	    sb2.append("System contains 1 chip");
 	} else {
-	    sb2.append("System contains ").append(proctree.numChips())
-		.append(" chips");
+	    sb2.append("System contains ").append(nchips).append(" chips");
 	}
-	if (proctree.numChips() != ncores) {
+	if (nchips != ncores) {
 	    sb2.append(" with ").append(ncores).append(" cores");
 	}
 	if (ncores != nthreads) {
-	    if (proctree.numChips() == ncores) {
+	    if (nchips == ncores) {
 		sb2.append(" with ");
 	    } else {
 		sb2.append(" and ");
