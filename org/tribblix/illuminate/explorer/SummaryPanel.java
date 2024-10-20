@@ -36,8 +36,6 @@ import uk.co.petertribble.jkstat.gui.KstatResources;
 import uk.co.petertribble.jkstat.demo.ProcessorTree;
 import java.util.List;
 import java.util.ArrayList;
-import java.util.Set;
-import java.util.HashSet;
 import java.util.TreeSet;
 
 /**
@@ -85,14 +83,8 @@ public class SummaryPanel extends InfoPanel {
 
 	int nchips = proctree.numChips();
 	int ncores = proctree.numCores();
-	int nthreads = 0;
-	String sbrand = "";
-	Set <Kstat> kss = new HashSet<>();
-	for (Long l : proctree.getChips()) {
-	    nthreads += proctree.numThreads(l);
-	    kss.addAll(proctree.chipStats(l));
-	    sbrand = proctree.getBrand(l);
-	}
+	int nthreads = proctree.numThreads();
+	String sbrand = proctree.getBrand();
 
 	StringBuilder sb2 = new StringBuilder(64);
 	if (nchips == 1) {
