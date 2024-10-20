@@ -96,12 +96,13 @@ public class SysTree extends JTree {
 	    SysItem hi2 = new SysItem(SysItem.CPU);
 	    hi2.addAttribute("ptree", proctree);
 	    hi2.addAttribute("chip", l);
-	    SysTreeNode htnchip = new SysTreeNode(hi2, l.toString());
+	    SysTreeNode htnchip = new SysTreeNode(hi2, "CPU " + l.toString());
 	    if (proctree.isMulticore()) {
 		// multicore, loop over cores
 		for (Long ll : proctree.getCores(l)) {
 		    SysItem hi3 = new SysItem(SysItem.CPU_CORE);
-		    SysTreeNode htncore = new SysTreeNode(hi3, ll.toString());
+		    SysTreeNode htncore = new SysTreeNode(hi3,
+						    "Core " + ll.toString());
 		    hi3.addAttribute("ptree", proctree);
 		    hi3.addAttribute("chip", l);
 		    hi3.addAttribute("core", ll);
@@ -115,7 +116,7 @@ public class SysTree extends JTree {
 			    hi4.addAttribute("core", ll);
 			    hi4.addAttribute("chip", l);
 			    htncore.add(new SysTreeNode(hi4,
-							ks.getInstance()));
+						"Thread " + ks.getInstance()));
 			}
 		    } else {
 			// single thread

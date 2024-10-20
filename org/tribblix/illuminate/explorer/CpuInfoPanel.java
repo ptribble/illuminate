@@ -24,7 +24,6 @@ package org.tribblix.illuminate.explorer;
 
 import javax.swing.BorderFactory;
 import javax.swing.JPanel;
-import javax.swing.JTextArea;
 import java.awt.BorderLayout;
 import java.awt.Color;
 import uk.co.petertribble.jkstat.api.Kstat;
@@ -127,8 +126,22 @@ public class CpuInfoPanel extends InfoPanel {
      */
     private void displayChip() {
 	Long l = (Long) hi.getAttribute("chip");
-	addLabel("Details of processor " + l);
-	addText(chipDetails(l));
+	StringBuilder sb = new StringBuilder(40);
+	sb.append("Processor ").append(l);
+	if (proctree.isMulticore()) {
+	    sb.append(" (").append(proctree.numCores(l)).append(" cores");
+	    if (proctree.isThreaded()) {
+		sb.append(", ").append(proctree.numThreads(l)).append(" threads)");
+	    } else {
+		sb.append(')');
+	    }
+	} else {
+	    if (proctree.isThreaded()) {
+		sb.append(" (").append(proctree.numThreads(l)).append(" threads)");
+	    }
+	}
+	addLabel(sb.toString());
+	addLabel(proctree.getBrand(l));
 	if (proctree.isMulticore()) {
 	    addChipAccessory();
 	} else {
@@ -142,16 +155,14 @@ public class CpuInfoPanel extends InfoPanel {
     private void displayCore() {
 	Long lcore = (Long) hi.getAttribute("core");
 	Long lchip = (Long) hi.getAttribute("chip");
-	addLabel("Details of core " + lcore
-		+ " on processor " + lchip);
 	if (proctree.isThreaded()) {
-	    JTextArea jt = new JTextArea("Core " + lcore + " has "
-		+ proctree.numThreads(lchip, lcore) + " threads.", 1, 64);
-	    jt.setEditable(false);
-	    addComponent(jt);
+	    addLabel("Core " + lcore
+		     + " (" + proctree.numThreads(lchip, lcore)
+		     + " threads) on processor " + lchip);
 	    addCoreAccessory();
 	} else {
-	    addText(ProcessorTree.details(hi.getKstat()));
+	    addLabel("Core " + lcore
+		     + " on processor " + lchip);
 	    addAccessory();
 	}
     }
@@ -161,11 +172,11 @@ public class CpuInfoPanel extends InfoPanel {
      */
     private void displayThread() {
 	if (proctree.isMulticore()) {
-	    addLabel("Details of thread " + hi.getAttribute("thread")
+	    addLabel("Thread " + hi.getAttribute("thread")
 		+ " of core " + hi.getAttribute("core")
 		+ " on processor " + hi.getAttribute("chip"));
 	} else {
-	    addLabel("Details of thread " + hi.getAttribute("thread")
+	    addLabel("Thread " + hi.getAttribute("thread")
 		+ " on processor " + hi.getAttribute("chip"));
 	}
 	addAccessory();
@@ -254,7 +265,7 @@ public class CpuInfoPanel extends InfoPanel {
 	StringBuilder sb = new StringBuilder();
 	Long ll = 0L;
 	for (Long l : proctree.getChips()) {
-	    sb.append(chipDetails(l, false));
+	    sb.append(chipDetails(l));
 	    ll = l;
 	}
 	sb.append("    ").append(proctree.getBrand(ll));
@@ -262,10 +273,6 @@ public class CpuInfoPanel extends InfoPanel {
     }
 
     private String chipDetails(Long l) {
-	return chipDetails(l, true);
-    }
-
-    private String chipDetails(Long l, boolean brand) {
 	if (threadsPerCore(l) > 1) {
 	    StringBuilder sb = new StringBuilder(64);
 	    sb.append("Physical processor ").append(l).append(" has ");
@@ -275,9 +282,6 @@ public class CpuInfoPanel extends InfoPanel {
 		sb.append(proctree.numCores(l)).append(" cores with ");
 	    }
 	    sb.append(threadsPerCore(l)).append(" threads per core\n");
-	    if (brand) {
-		sb.append("    ").append(proctree.getBrand(l));
-	    }
 	    return sb.toString();
 	} else {
 	    return proctree.chipDetails(l);
