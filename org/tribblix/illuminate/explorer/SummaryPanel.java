@@ -22,6 +22,7 @@
 
 package org.tribblix.illuminate.explorer;
 
+import java.awt.Dimension;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -78,8 +79,17 @@ public class SummaryPanel extends InfoPanel {
      * chart, probably process count, load average, and memory summary
      */
     private void displaySummary() {
+	addCpuDescription();
+	addLoadAccessory();
+	addCpuAccessory();
+	addNetAccessory();
+    }
+
+    /*
+     * Add a cpu description panel
+     */
+    private void addCpuDescription() {
 	ProcessorTree proctree = new ProcessorTree(jkstat);
-	addLabel("Processor Summary");
 
 	int nchips = proctree.numChips();
 	int ncores = proctree.numCores();
@@ -103,12 +113,21 @@ public class SummaryPanel extends InfoPanel {
 	    }
 	    sb2.append(nthreads).append(" threads");
 	}
-        addLabel(sb2.toString());
-	addLabel(sbrand);
-
-	addLoadAccessory();
-	addCpuAccessory();
-	addNetAccessory();
+	/*
+	 * The following appears necessary to make the label fill the width
+	 * of its container.
+	 */
+	JPanel jp = new JPanel();
+	JLabel jl = new JLabel(sb2.toString());
+	Dimension dlab = jl.getMaximumSize();
+	if (dlab != null) {
+	    dlab.setSize(Double.MAX_VALUE, dlab.getHeight());
+	    jl.setMaximumSize(dlab);
+	}
+	jl.setAlignmentX(CENTER_ALIGNMENT);
+	jp.add(jl);
+	jp.setBorder(BorderFactory.createTitledBorder(sbrand));
+	addComponent(jp);
     }
 
     /*
