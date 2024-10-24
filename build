@@ -35,9 +35,6 @@ PMDCACHE="${HOME}/.pmd/cache.illuminate"
 
 case $# in
 0)
-	if [ -x /opt/onbld/bin/jstyle ]; then
-	    /opt/onbld/bin/jstyle $(find org/tribblix -name '*.java')
-	fi
 	javac ${XFLAGS} -classpath .:"${BUILDJARS}" $(find org/tribblix -name '*.java')
 	jar -cmf illuminate.manifest "${SVJAR}" images/*.png pixmaps/* properties/*.properties help/*.html help/CDDL.txt $(find org/tribblix -name '*.class')
 	exit 0
