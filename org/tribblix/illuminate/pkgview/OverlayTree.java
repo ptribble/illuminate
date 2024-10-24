@@ -117,8 +117,6 @@ public class OverlayTree extends JTree {
 
     class NodeSet {
 	private Set <DefaultMutableTreeNode> nodes = new HashSet<>();
-	public NodeSet() {
-	}
 	public void add(DefaultMutableTreeNode node) {
 	    nodes.add(node);
 	}

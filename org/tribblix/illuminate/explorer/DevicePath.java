@@ -77,7 +77,7 @@ public final class DevicePath {
      * quotes 1 and 2, the instance is between 2 and 3, trimming whitespace,
      * and the driver is between 3 and 4.
      */
-    static private void readPathToInst() {
+    private static void readPathToInst() {
 	for (String s1: JumbleFile.getLines(new File("/etc/path_to_inst"))) {
 	    String[] ds = s1.split("\"");
 	    if (ds.length > 3) {
@@ -86,7 +86,7 @@ public final class DevicePath {
 	}
     }
 
-    static private void scanDev() {
+    private static void scanDev() {
 	File fdir = new File("/dev/dsk");
 	for (File f : fdir.listFiles()) {
 	    try {
@@ -126,7 +126,7 @@ public final class DevicePath {
      * same real device. We keep a Set of all equivalent alternate device
      * names, and keep it in a Map, using all possible names as keys.
      */
-    static private void addAlternate(String dev1, String dev2) {
+    private static void addAlternate(String dev1, String dev2) {
 	if (altMap.containsKey(dev1)) {
 	    altMap.get(dev1).add(dev2);
 	} else {

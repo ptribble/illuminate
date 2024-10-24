@@ -43,7 +43,7 @@ public class PkgUtils {
      *
      * @return a nicely formatted version of the pkginfo file
      */
-    static public String infoTable(SVR4Package pkg, ZapConfig zc) {
+    public static String infoTable(SVR4Package pkg, ZapConfig zc) {
 	StringBuilder sb = new StringBuilder(256);
 	Map <String, String> infomap = pkg.infoMap();
 	// clean out the junk
@@ -114,7 +114,7 @@ public class PkgUtils {
      *
      * @return a formatted table describing the given overlay
      */
-    static public String infoTable(Overlay ovl) {
+    public static String infoTable(Overlay ovl) {
 	// the fixed text here varies from 37 to 51 characters
 	// overlay names are between 3 and 20 characters
 	StringBuilder sbh = new StringBuilder(70);
@@ -144,12 +144,12 @@ public class PkgUtils {
 	return sbh.toString() + wrapTable(sb);
     }
 
-    static public String dependencyTable(SVR4Package pkg) {
+    public static String dependencyTable(SVR4Package pkg) {
 	return dependencyTable(pkg.getDependencySet(), pkg.getRDependencySet(),
 			pkg.getIncompatibleSet());
     }
 
-    static public String dependencyTable(Overlay ovl) {
+    public static String dependencyTable(Overlay ovl) {
 	StringBuilder sb = new StringBuilder(128);
 	headRow2(sb, "This Overlay depends on");
 	for (Overlay o : ovl.getOverlays()) {
@@ -158,7 +158,7 @@ public class PkgUtils {
 	return wrapTable(sb);
     }
 
-    static public String overlayMembers(Overlay ovl) {
+    public static String overlayMembers(Overlay ovl) {
 	StringBuilder sb = new StringBuilder(256);
 	headRow2(sb, "This Overlay contains the following packages");
 	for (SVR4Package pkg : ovl.getPackages()) {
@@ -170,7 +170,7 @@ public class PkgUtils {
     /*
      * Common dependency tree code
      */
-    static private String dependencyTable(Set <String> depset,
+    private static String dependencyTable(Set <String> depset,
 				Set <String> rdepset, Set <String> idepset) {
 	StringBuilder sb = new StringBuilder(256);
 
@@ -185,14 +185,14 @@ public class PkgUtils {
 	return wrapTable(sb);
     }
 
-    static private void innerdeptable(StringBuilder sb, Set <String> depset,
+    private static void innerdeptable(StringBuilder sb, Set <String> depset,
 			String deptype) {
 	for (String s : depset) {
 	    addRow(sb, s, deptype);
 	}
     }
 
-    static public String detailTable(ContentsPackage cpp) {
+    public static String detailTable(ContentsPackage cpp) {
 	StringBuilder sb = new StringBuilder();
 	if (cpp != null) {
 	    sb.append(doDetailTable(cpp));
@@ -201,7 +201,7 @@ public class PkgUtils {
 	return wrapTable(sb);
     }
 
-    static public String doTextFileList(ContentsPackage cpp) {
+    public static String doTextFileList(ContentsPackage cpp) {
 	StringBuilder sb = new StringBuilder(80);
 	if (cpp != null) {
 	    for (ContentsFileDetail cfd : cpp.getDetails()) {
@@ -211,7 +211,7 @@ public class PkgUtils {
 	return sb.toString();
     }
 
-    static private String doDetailTable(ContentsPackage cpp) {
+    private static String doDetailTable(ContentsPackage cpp) {
 	StringBuilder sb = new StringBuilder(320);
 
 	headRow2(sb, PkgResources.getString("PKGUTILS.DETAILS"));
@@ -228,7 +228,7 @@ public class PkgUtils {
 	return wrapTable(sb);
     }
 
-    static public String ovlDeps(Set <Overlay> ovls) {
+    public static String ovlDeps(Set <Overlay> ovls) {
 	StringBuilder sb = new StringBuilder(105);
 	headRow2(sb, "Depending on this overlay:");
 	if (ovls != null) {
@@ -239,7 +239,7 @@ public class PkgUtils {
 	return wrapTable(sb);
     }
 
-    static public String revDeps(Set <SVR4Package> pkgs) {
+    public static String revDeps(Set <SVR4Package> pkgs) {
 	StringBuilder sb = new StringBuilder(93);
 	headRow(sb, "Depending on this package:");
 	if (pkgs != null) {
@@ -250,7 +250,7 @@ public class PkgUtils {
 	return wrapTable(sb);
     }
 
-    static public String fileDetailTable(ContentsFileDetail cfd) {
+    public static String fileDetailTable(ContentsFileDetail cfd) {
 	StringBuilder sb = new StringBuilder(400);
 	headRow2(sb, "Path name: " + cfd.getName());
 	addRow(sb, "File Type:", cfd.getDescriptiveType());
@@ -273,7 +273,7 @@ public class PkgUtils {
 	return wrapTable(sb);
     }
 
-    static public String overlayMembership(OverlayList ovlist, ContentsFileDetail cfd) {
+    public static String overlayMembership(OverlayList ovlist, ContentsFileDetail cfd) {
 	StringBuilder sb = new StringBuilder();
 	headRow2(sb, "This " + cfd.getBasicType()
 			+ " is part of the following overlays");
@@ -283,7 +283,7 @@ public class PkgUtils {
 	return wrapTable(sb);
     }
 
-    static public String overlayMembership(SVR4Package pkg,
+    public static String overlayMembership(SVR4Package pkg,
 		OverlayList ovlist) {
 	StringBuilder sb = new StringBuilder(80);
 
@@ -295,49 +295,49 @@ public class PkgUtils {
 	return wrapTable(sb);
     }
 
-    static private void headRow(StringBuilder sb, String s1, String s2) {
+    private static void headRow(StringBuilder sb, String s1, String s2) {
 	// adds 46 characters to the string
 	sb.append("<tr bgcolor=\"#eeeeee\"><th>").append(s1)
 	    .append("</th><th>").append(s2).append("</th></tr>\n");
     }
 
-    static private void headRow2(StringBuilder sb, String s) {
+    private static void headRow2(StringBuilder sb, String s) {
 	// adds 49 characters to the string
 	sb.append("<tr bgcolor=\"#eeeeee\"><th colspan=\"2\">").append(s)
 	    .append("</th></tr>\n");
     }
 
-    static private void headRow(StringBuilder sb, String s) {
+    private static void headRow(StringBuilder sb, String s) {
 	// adds 37 characters to the string
 	sb.append("<tr bgcolor=\"#eeeeee\"><th>").append(s)
 	    .append("</th></tr>\n");
     }
 
-    static private void addRow(StringBuilder sb, String s) {
+    private static void addRow(StringBuilder sb, String s) {
 	// adds 19 characters to the string
 	sb.append("<tr><td>").append(s).append("</td></tr>\n");
     }
 
-    static private void addRow(StringBuilder sb, String s1, long l) {
+    private static void addRow(StringBuilder sb, String s1, long l) {
 	// adds 28 characters to the string
 	sb.append("<tr><td>").append(s1).append("</td><td>").append(l)
 	    .append("</td></tr>\n");
     }
 
-    static private void addRow(StringBuilder sb, String s1, String s2) {
+    private static void addRow(StringBuilder sb, String s1, String s2) {
 	// adds 28 characters to the string
 	sb.append("<tr><td>").append(s1).append("</td><td>").append(s2)
 	    .append("</td></tr>\n");
     }
 
-    static private String wrapTable(StringBuilder sb) {
+    private static String wrapTable(StringBuilder sb) {
 	// adds 29 characters to the string
 	sb.insert(0, "<table width=\"100%\">");
 	sb.append("</table>\n");
 	return sb.toString();
     }
 
-    static private String niceSpaceUsed(long space) {
+    private static String niceSpaceUsed(long space) {
         DecimalFormat df = new DecimalFormat("##0.0#");
 	StringBuilder sb = new StringBuilder();
 	double dspace = space;

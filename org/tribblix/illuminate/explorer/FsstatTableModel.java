@@ -53,7 +53,7 @@ public class FsstatTableModel extends AbstractTableModel
     private String[] columnNames;
     private String columnTitle;
 
-    static final private Map <String, String[]> COLUMN_MAP;
+    private static final Map <String, String[]> COLUMN_MAP;
     private List <ChartableKstat> allfsdata = new ArrayList<>();
     private List <ChartableKstat> fsdata = new ArrayList<>();
     private Map <ChartableKstat, String> fsnames = new HashMap<>();

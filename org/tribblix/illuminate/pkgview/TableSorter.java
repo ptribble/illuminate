@@ -333,7 +333,7 @@ public class TableSorter extends AbstractTableModel {
     private class Row implements Comparable<Row> {
         private int modelIndex;
 
-        public Row(int index) {
+        Row(int index) {
             this.modelIndex = index;
         }
 
@@ -501,7 +501,7 @@ public class TableSorter extends AbstractTableModel {
         private int size;
         private int priority;
 
-        public Arrow(boolean ascending, int size, int priority) {
+        Arrow(boolean ascending, int size, int priority) {
             this.ascending = ascending;
             this.size = size;
             this.priority = priority;
@@ -543,7 +543,7 @@ public class TableSorter extends AbstractTableModel {
     private class SortableHeaderRenderer implements TableCellRenderer {
         private TableCellRenderer tableCellRenderer;
 
-        public SortableHeaderRenderer(TableCellRenderer tableCellRenderer) {
+        SortableHeaderRenderer(TableCellRenderer tableCellRenderer) {
             this.tableCellRenderer = tableCellRenderer;
         }
 
@@ -571,7 +571,7 @@ public class TableSorter extends AbstractTableModel {
         private int column;
         private int direction;
 
-        public Directive(int column, int direction) {
+        Directive(int column, int direction) {
             this.column = column;
             this.direction = direction;
         }
