@@ -291,7 +291,7 @@ public class PkgCheck {
      *
      * @param args Command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 	if (args.length == 0) {
 	    usage();
 	}

@@ -64,7 +64,7 @@ public class RunBrowser {
 	} catch (Exception e) { //NOPMD
 	    try {
 		if (browserbin != null) {
-		    String fullcmd[] = {browserbin, url.toString()};
+		    String[] fullcmd = {browserbin, url.toString()};
 		    Runtime.getRuntime().exec(fullcmd);
 		}
 	    } catch (IOException ioe) {}

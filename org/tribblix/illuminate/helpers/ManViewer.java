@@ -60,7 +60,7 @@ public class ManViewer extends JFrame {
      * @param args command line arguments, the name of the manual page to
      * display is taken from the first argument
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 	if (args.length == 1) {
 	    new ManViewer(args[0]);
 	} else {

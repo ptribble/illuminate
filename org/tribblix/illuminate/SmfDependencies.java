@@ -55,7 +55,7 @@ public class SmfDependencies {
 	}
     }
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 	for (String arg : args) {
 	    printDependencies(arg);
 	}

@@ -121,7 +121,7 @@ public class MultiView extends JFrame implements ActionListener {
      * @param args command line arguments, the first argument representing
      * the view to show.
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 	if ("information".equals(args[0])) {
 	    new MultiView("ILLUMINATE.INFO.TEXT", "HELP.ABOUT.INFO",
 			"help/infoview.html", "pixmaps/solinfo.png",

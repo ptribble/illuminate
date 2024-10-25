@@ -163,7 +163,7 @@ public final class Illuminate extends JFrame implements ActionListener {
      *
      * @param args command line arguments, ignored
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 	new Illuminate();
     }
 }

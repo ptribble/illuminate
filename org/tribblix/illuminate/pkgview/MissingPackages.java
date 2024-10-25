@@ -36,7 +36,7 @@ public class MissingPackages {
      *
      * @param args Command line arguments
      */
-    public static void main(String args[]) {
+    public static void main(String[] args) {
 	String altroot = "/";
 	if (args.length == 2 && "-R".equals(args[0])) {
 	    altroot = args[1];
