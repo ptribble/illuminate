@@ -37,12 +37,12 @@ public class SmfTreeNode extends DefaultMutableTreeNode {
     private static final long serialVersionUID = 1L;
 
     /**
-     * The service underlying this SmfTreeNode
+     * The service underlying this SmfTreeNode.
      */
     private transient SmfService svc;
 
     /**
-     * The display name of this SmfTreeNode
+     * The display name of this SmfTreeNode.
      */
     private final String node;
 

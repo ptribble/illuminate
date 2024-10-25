@@ -86,7 +86,7 @@ public class CpuStatePanel extends JPanel implements ActionListener {
     private Font lfont;
 
     /**
-     * Create a CpuStatePanel
+     * Create a CpuStatePanel.
      *
      * @param jkstat a JKstat object
      */

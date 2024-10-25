@@ -37,7 +37,7 @@ public class Zvolume extends Zdataset {
     private Set <Zsnapshot> snapshots;
 
     /**
-     * Create a new Zvolume object, to store details of a ZFS volume
+     * Create a new Zvolume object, to store details of a ZFS volume.
      *
      * @param name the name of the ZFS volume
      */

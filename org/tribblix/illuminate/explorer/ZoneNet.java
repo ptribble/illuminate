@@ -23,7 +23,7 @@
 package org.tribblix.illuminate.explorer;
 
 /**
- * ZoneNet - represent the net configuration of a zone
+ * ZoneNet - represent the net configuration of a zone.
  * @author Peter Tribble
  * @version 1.0
  */

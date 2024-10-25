@@ -162,7 +162,7 @@ public class ContentsPackage {
 
     /**
      * Returns the number of shared files in this ContentsPackage, that is,
-     * files contained in more than one packegs.
+     * files contained in more than one package.
      *
      * @return the number of shared files
      */
@@ -177,7 +177,7 @@ public class ContentsPackage {
     }
 
     /**
-     * Return the space used by the files in this ContentsPackage
+     * Return the space used by the files in this ContentsPackage.
      *
      * @return the space used by the files in this ContentsPackage
      */

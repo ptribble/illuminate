@@ -27,7 +27,7 @@ import java.util.HashMap;
 import org.tribblix.illuminate.InfoCommand;
 
 /**
- * BootEnvironments - list and describe boot environments
+ * BootEnvironments - list and describe boot environments.
  * @author Peter Tribble
  * @version 1.0
  */

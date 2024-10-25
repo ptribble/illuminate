@@ -61,7 +61,7 @@ public class InfoCommand {
     }
 
     /**
-     * Set the manpage for this command
+     * Set the manpage for this command.
      *
      * @param manpage the manpage, with section appended
      */
@@ -70,7 +70,7 @@ public class InfoCommand {
     }
 
     /**
-     * Get the manpage for this command, if any
+     * Get the manpage for this command, if any.
      *
      * @return the manpage, with section appended
      */

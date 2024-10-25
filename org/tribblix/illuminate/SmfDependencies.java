@@ -26,7 +26,7 @@ import java.util.Map;
 import java.util.HashMap;
 
 /**
- * SmfDependencies - print the services that a service depends on, in a tree
+ * SmfDependencies - print the services that a service depends on, in a tree.
  * @author Peter Tribble
  * @version 1.0
  */

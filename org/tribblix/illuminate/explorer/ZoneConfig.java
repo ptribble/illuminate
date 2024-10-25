@@ -29,7 +29,7 @@ import java.util.HashMap;
 import org.tribblix.illuminate.InfoCommand;
 
 /**
- * ZoneConfig - represent the list of zones and their configuration
+ * ZoneConfig - represent the list of zones and their configuration.
  * @author Peter Tribble
  * @version 1.0
  */
@@ -121,7 +121,7 @@ public final class ZoneConfig {
     }
 
     /**
-     * Return the ZoneEntry for the given zone
+     * Return the ZoneEntry for the given zone.
      *
      * @param zname The name of the zone of interest
      *

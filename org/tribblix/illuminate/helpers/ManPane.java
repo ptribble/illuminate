@@ -40,7 +40,7 @@ import java.util.List;
 import java.util.Locale;
 
 /**
- * A Scrollable panel displaying a man page, with minimal navigation
+ * A Scrollable panel displaying a man page, with minimal navigation.
  *
  * @author Peter C. Tribble (peter.tribble@gmail.com)
  */
@@ -63,7 +63,7 @@ public class ManPane extends JEditorPane
     private JEditorPane jep;
 
     /**
-     * list of opened pages for history
+     * list of opened pages for history.
      */
     private List <File> historyList = new ArrayList<>();
 
@@ -74,7 +74,7 @@ public class ManPane extends JEditorPane
 					"/usr/gnu/share/man" };
 
     /**
-     * Create a Scrollable panel containing the text of a man page
+     * Create a Scrollable panel containing the text of a man page.
      *
      * @param m The name of the man page
      */

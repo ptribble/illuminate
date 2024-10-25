@@ -121,7 +121,7 @@ public class SysItem {
      */
     public static final int NET_DLADM_LINK = 312;
     /**
-     * Represents a dladm link property
+     * Represents a dladm link property.
      */
     public static final int NET_DLADM_LINKPROP = 313;
     /**

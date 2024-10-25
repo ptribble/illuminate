@@ -32,7 +32,7 @@ import java.util.HashSet;
 
 /**
  * A tree structure representing the hierarchical structure of overlays
- * and packages
+ * and packages.
  * @author Peter Tribble
  * @version 1.0
  */

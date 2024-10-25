@@ -87,7 +87,7 @@ public class InfoPanel extends JPanel {
     }
 
     /**
-     * Add a JComponent
+     * Add a JComponent.
      *
      * @param jc The JComponent to add
      */
@@ -96,7 +96,7 @@ public class InfoPanel extends JPanel {
     }
 
     /**
-     * Add a component wrapped in a JScrollPane
+     * Add a component wrapped in a JScrollPane.
      *
      * @param jc The JComponent to add
      */

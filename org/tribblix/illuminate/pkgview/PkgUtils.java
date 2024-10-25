@@ -28,7 +28,7 @@ import java.util.Iterator;
 import java.text.DecimalFormat;
 
 /**
- * PkgUtils - utility methods to format information
+ * PkgUtils - utility methods to format information.
  *
  * @author Peter Tribble
  * @version 2.0
@@ -108,7 +108,7 @@ public class PkgUtils {
     }
 
     /**
-     * Describe an overlay
+     * Describe an overlay.
      *
      * @param ovl the overlay to describe
      *

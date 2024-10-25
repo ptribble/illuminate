@@ -160,7 +160,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
     }
 
     /**
-     * Return the last modified time of a file, in seconds since the epoch
+     * Return the last modified time of a file, in seconds since the epoch.
      *
      * @return the time the file was last modified
      */

@@ -23,7 +23,7 @@
 package org.tribblix.illuminate.pkgview;
 
 /**
- * ZapRepository - describe and query a zap repository
+ * ZapRepository - describe and query a zap repository.
  * @author Peter Tribble
  * @version 1.0
  */

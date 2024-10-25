@@ -34,7 +34,7 @@ public class Zproperty {
     private String source;
 
     /**
-     * Create a new Zproperty object, to store details of a ZFS property
+     * Create a new Zproperty object, to store details of a ZFS property.
      *
      * @param property the name of the ZFS property
      * @param value the value of the ZFS property

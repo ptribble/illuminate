@@ -172,7 +172,7 @@ public class Overlay implements Comparable<Overlay> {
     }
 
     /**
-     * Returns a Set of required overlays that are not installed
+     * Returns a Set of required overlays that are not installed.
      *
      * @return a Set of required overlays that are not installed
      */
@@ -187,7 +187,7 @@ public class Overlay implements Comparable<Overlay> {
     }
 
     /**
-     * Returns a Set of member packages that are not installed
+     * Returns a Set of member packages that are not installed.
      *
      * @return a Set of the packages contained in this Overlay that are
      * not currently installed

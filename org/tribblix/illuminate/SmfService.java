@@ -165,7 +165,7 @@ public class SmfService implements Comparable<SmfService> {
     }
 
     /**
-     * Get the name of this service, for display purposes
+     * Get the name of this service, for display purposes.
      *
      * @return the human readable name of this service
      */
@@ -178,7 +178,7 @@ public class SmfService implements Comparable<SmfService> {
      * page name as the key and the filename (qualified with the section) as
      * the value
      *
-     * @return the human readable name of this service
+     * @return a Map listing the manual pages for this service
      */
     public Map<String, String> getManPages() {
 	if (manpages == null) {

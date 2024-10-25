@@ -31,7 +31,7 @@ import org.tribblix.illuminate.helpers.ManFrame;
 import org.tribblix.illuminate.helpers.RunBrowser;
 
 /**
- * A Scrollable panel containing Text
+ * A Scrollable panel containing Text.
  *
  * @author Peter C. Tribble (peter.tribble@gmail.com)
  */
@@ -40,14 +40,14 @@ public class PackageTextPane extends JEditorPane implements HyperlinkListener {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Create a Scrollable panel containing Text
+     * Create a Scrollable panel containing Text.
      */
     public PackageTextPane() {
 	this("text/html");
     }
 
     /**
-     * Create a Scrollable panel containing Text
+     * Create a Scrollable panel containing Text.
      *
      * @param contentType the desired content type of the panel
      */

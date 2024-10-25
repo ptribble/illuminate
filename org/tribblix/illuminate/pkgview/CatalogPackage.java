@@ -109,7 +109,7 @@ public class CatalogPackage {
     }
 
     /**
-     * Which repository this CatalogPackage comes from
+     * Which repository this CatalogPackage comes from.
      *
      * @return the repository supplying this package
      */

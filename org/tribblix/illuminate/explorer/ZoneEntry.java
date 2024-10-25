@@ -27,7 +27,7 @@ import java.util.HashSet;
 import org.tribblix.illuminate.InfoCommand;
 
 /**
- * ZoneEntry - represent a zone configuration
+ * ZoneEntry - represent a zone configuration.
  * @author Peter Tribble
  * @version 1.0
  */
@@ -152,7 +152,7 @@ public class ZoneEntry {
     }
 
     /**
-     * Return if the zone network is shared-ip
+     * Return if the zone network is shared-ip.
      *
      * @return true if the zone is shared-ip
      */
@@ -161,7 +161,7 @@ public class ZoneEntry {
     }
 
     /**
-     * Return if the zone network is exclusive-ip
+     * Return if the zone network is exclusive-ip.
      *
      * @return true if the zone is exclusive-ip
      */
@@ -170,7 +170,7 @@ public class ZoneEntry {
     }
 
     /**
-     * Return a Set of zone network configurations
+     * Return a Set of zone network configurations.
      *
      * @return A Set of ZoneNet entries, one for each interface
      */

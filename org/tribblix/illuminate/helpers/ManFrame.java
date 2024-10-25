@@ -34,7 +34,7 @@ public class ManFrame extends JFrame {
     private static final long serialVersionUID = 1L;
 
     /**
-     * Create a window to display a manual page
+     * Create a window to display a manual page.
      *
      * @param name the name of the manual page to display
      */

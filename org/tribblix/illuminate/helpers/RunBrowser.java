@@ -28,7 +28,7 @@ import java.io.IOException;
 import java.net.URL;
 
 /**
- * RunBrowser - open a URL in a browser
+ * RunBrowser - open a URL in a browser.
  * @author Peter Tribble
  * @version 1.1
  */
