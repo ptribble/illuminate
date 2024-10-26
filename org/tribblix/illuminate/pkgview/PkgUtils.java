@@ -33,7 +33,10 @@ import java.text.DecimalFormat;
  * @author Peter Tribble
  * @version 2.0
  */
-public class PkgUtils {
+public final class PkgUtils {
+
+    private PkgUtils() {
+    }
 
     /**
      * Returns the pkginfo file as a html table.

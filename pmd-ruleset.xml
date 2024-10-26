@@ -31,7 +31,6 @@
       <exclude name="LooseCoupling"/>
       <exclude name="LocalVariableNamingConventions"/>
       <exclude name="UncommentedEmptyConstructor"/>
-      <exclude name="UseUtilityClass"/>
     </rule>
     <rule ref="category/java/performance.xml">
       <exclude name="AvoidInstantiatingObjectsInLoops"/>

@@ -25,7 +25,10 @@ package org.tribblix.illuminate.pkgview;
 /**
  * Print out the installed sizes of all the packages.
  */
-public class PackageSizes {
+public final class PackageSizes {
+
+    private PackageSizes() {
+    }
 
     /**
      * Prints out the installed sizes of all packages.

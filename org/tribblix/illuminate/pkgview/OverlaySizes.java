@@ -25,7 +25,10 @@ package org.tribblix.illuminate.pkgview;
 /**
  * Print out the installed sizes of all the overlays.
  */
-public class OverlaySizes {
+public final class OverlaySizes {
+
+    private OverlaySizes() {
+    }
 
     /**
      * Prints out the installed sizes of all overlays.

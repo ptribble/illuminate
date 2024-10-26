@@ -30,10 +30,13 @@ import java.util.HashMap;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfDependents {
+public final class SmfDependents {
 
     // save the dependency tree to avoid repeated calls
-    private static final Map <String, String> depMap = new HashMap<>();
+    private static final Map <String, String> DEPMAP = new HashMap<>();
+
+    private SmfDependents() {
+    }
 
     public static void printDependents(String arg) {
 	printDependents(arg, "");
@@ -41,11 +44,11 @@ public class SmfDependents {
 
     public static void printDependents(String arg, String inset) {
 	System.out.println(inset + arg);
-	String sdep = depMap.get(arg);
+	String sdep = DEPMAP.get(arg);
 	if (sdep == null) {
 	    SmfService ss = new SmfService(arg, "dummy");
 	    sdep = ss.getDependents();
-	    depMap.put(arg, sdep);
+	    DEPMAP.put(arg, sdep);
 	}
 	for (String line : sdep.split("\n")) {
 	    String[] ds = line.trim().split("\\s+", 3);

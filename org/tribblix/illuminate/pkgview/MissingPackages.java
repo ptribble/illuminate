@@ -29,7 +29,10 @@ import java.util.TreeSet;
  * MissingPackages - produce a report of packages that are claimed as being
  * required by other packages but aren't installed.
  */
-public class MissingPackages {
+public final class MissingPackages {
+
+    private MissingPackages() {
+    }
 
     /**
      * Run the application.
