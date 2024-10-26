@@ -92,7 +92,7 @@ public class SmfTreeNode extends DefaultMutableTreeNode {
 	    return svc.getStatus();
 	}
 	Set <String> statusses = new HashSet<>();
-	for (Enumeration e = children(); e.hasMoreElements(); ) {
+	for (Enumeration e = children(); e.hasMoreElements();) {
 	    SmfTreeNode stn = (SmfTreeNode) e.nextElement();
 	    statusses.add(stn.getStatus());
 	}
