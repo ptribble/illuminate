@@ -113,12 +113,12 @@ public class ArcStatPanel extends JPanel implements ActionListener {
 	setLayout(new SpringLayout());
 
 	// initialise the datasets
-	totalCacheHitsDataset = new DefaultPieDataset <String> ();
-	currentCacheHitsDataset = new DefaultPieDataset <String> ();
-	totalCacheHitsByTypeDataset = new DefaultPieDataset <String> ();
-	currentCacheHitsByTypeDataset = new DefaultPieDataset <String> ();
-	totalCacheMissesByTypeDataset = new DefaultPieDataset <String> ();
-	currentCacheMissesByTypeDataset = new DefaultPieDataset <String> ();
+	totalCacheHitsDataset = new DefaultPieDataset <String>();
+	currentCacheHitsDataset = new DefaultPieDataset <String>();
+	totalCacheHitsByTypeDataset = new DefaultPieDataset <String>();
+	currentCacheHitsByTypeDataset = new DefaultPieDataset <String>();
+	totalCacheMissesByTypeDataset = new DefaultPieDataset <String>();
+	currentCacheMissesByTypeDataset = new DefaultPieDataset <String>();
 
 	// initialise the pie charts
 	// args: title, dataset, legend?, tooltips?, urls?

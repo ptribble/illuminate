@@ -186,7 +186,7 @@ public class SysTree extends JTree {
 	    ksfp.setFilterClass("partition");
 	    ksfp.addFilter(ks.getModule() + ":" + ks.getInstance() + "::");
 	    KstatSet kssp = new KstatSet(jkstat, ksfp);
-	    for (Kstat ksp : new TreeSet <Kstat> (kssp.getKstats())) {
+	    for (Kstat ksp : new TreeSet <Kstat>(kssp.getKstats())) {
 		SysItem hi3 = new SysItem(SysItem.DISK_PARTITION);
 		hi3.setKstat(ksp);
 		htndisk.add(new SysTreeNode(hi3, ksp.getName()));
@@ -211,7 +211,7 @@ public class SysTree extends JTree {
 	ksf.setFilterClass("net");
 	ksf.addFilter(":::rbytes64");
 	ksf.addNegativeFilter("::mac");
-	for (Kstat ks : new TreeSet <Kstat> (ksf.getKstats())) {
+	for (Kstat ks : new TreeSet <Kstat>(ksf.getKstats())) {
 	    SysItem hi = new SysItem(SysItem.NET_INTERFACE);
 	    hi.setKstat(ks);
 	    htn.add(new SysTreeNode(hi, ks.getName()));

@@ -180,8 +180,8 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
 		npanel.add(kap);
 		kaplist.add(kap);
 		opanel.add(npanel);
-		opanel.setBorder(BorderFactory.createTitledBorder
-				 ("Interface " + ks.getName()));
+		opanel.setBorder(BorderFactory.createTitledBorder(
+				 "Interface " + ks.getName()));
 		addComponent(opanel);
 	    }
 	}

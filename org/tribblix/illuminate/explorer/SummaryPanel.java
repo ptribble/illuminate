@@ -151,7 +151,7 @@ public class SummaryPanel extends InfoPanel {
 
 	String iflabel = "Network " +
 	    KstatResources.getString("NETLOAD.IF.TEXT") + " ";
-	for (Kstat ks : new TreeSet <Kstat> (ksf.getKstats())) {
+	for (Kstat ks : new TreeSet <Kstat>(ksf.getKstats())) {
 	    JPanel npanel = new JPanel();
 	    npanel.add(new JLabel("In: "));
 	    SparkRateAccessory kap =
@@ -164,8 +164,8 @@ public class SummaryPanel extends InfoPanel {
 	    kap.enableTips("Current kb/s out:", 1.0/1024.0);
 	    npanel.add(kap);
 	    kaplist.add(kap);
-	    npanel.setBorder(BorderFactory.createTitledBorder
-				  (iflabel + ks.getName()));
+	    npanel.setBorder(BorderFactory.createTitledBorder(
+				  iflabel + ks.getName()));
 	    addComponent(npanel);
 	}
     }

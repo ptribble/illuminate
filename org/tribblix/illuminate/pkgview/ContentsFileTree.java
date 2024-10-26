@@ -56,8 +56,8 @@ public class ContentsFileTree extends JTree {
 
 	setModel(model);
 	createTreeModelListener();
-	this.getSelectionModel().setSelectionMode
-	    (TreeSelectionModel.SINGLE_TREE_SELECTION);
+	this.getSelectionModel().setSelectionMode(
+	    TreeSelectionModel.SINGLE_TREE_SELECTION);
 
 	addTreeExpansionListener(new TreeExpansionListener() {
 	    @Override
