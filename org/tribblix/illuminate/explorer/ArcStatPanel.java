@@ -323,7 +323,8 @@ public class ArcStatPanel extends JPanel implements ActionListener {
 	pf_md_misses = n_pf_md_misses;
 
 	arc_hit_bar.setValue(hitrate(d_arc_hits, d_arc_misses));
-	demand_hit_bar.setValue(hitrate(d_demand_data_hits, d_demand_data_misses));
+	demand_hit_bar.setValue(hitrate(d_demand_data_hits,
+					d_demand_data_misses));
 	pf_hit_bar.setValue(hitrate(d_pf_data_hits, d_pf_data_misses));
 	mdemand_hit_bar.setValue(hitrate(d_demand_md_hits, d_demand_md_misses));
 	mpf_hit_bar.setValue(hitrate(d_pf_md_hits, d_pf_md_misses));

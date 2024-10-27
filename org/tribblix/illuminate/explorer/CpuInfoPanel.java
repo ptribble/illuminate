@@ -107,9 +107,9 @@ public class CpuInfoPanel extends InfoPanel {
      * Top level summary. This ought to be a variant on psrinfo.
      */
     private void displaySummary() {
-        addLabel((proctree.numChips() == 1) ?
-		"System contains 1 chip" :
-		"System contains " + proctree.numChips() + " chips");
+        addLabel((proctree.numChips() == 1)
+		? "System contains 1 chip"
+		: "System contains " + proctree.numChips() + " chips");
 
 	addText(chipDetails());
 	mptable = new MPstatTable(jkstat, 5);
@@ -131,13 +131,15 @@ public class CpuInfoPanel extends InfoPanel {
 	if (proctree.isMulticore()) {
 	    sb.append(" (").append(proctree.numCores(l)).append(" cores");
 	    if (proctree.isThreaded()) {
-		sb.append(", ").append(proctree.numThreads(l)).append(" threads)");
+		sb.append(", ").append(proctree.numThreads(l))
+		    .append(" threads)");
 	    } else {
 		sb.append(')');
 	    }
 	} else {
 	    if (proctree.isThreaded()) {
-		sb.append(" (").append(proctree.numThreads(l)).append(" threads)");
+		sb.append(" (").append(proctree.numThreads(l))
+		    .append(" threads)");
 	    }
 	}
 	addLabel(sb.toString());

@@ -475,10 +475,9 @@ public class JCpuState extends JKdemo implements ActionListener {
 	    jl.setFont(lfont);
 	    ppanel.add(jl);
 	}
-	KstatAccessoryPanel acp =
-	    (style == STYLE_CHART) ?
-	    new AccessoryCpuChart(ks, 1, jkstat) :
-	    new AccessoryCpuPanel(ks, 1, jkstat, orientation);
+	KstatAccessoryPanel acp = (style == STYLE_CHART)
+	    ? new AccessoryCpuChart(ks, 1, jkstat)
+	    : new AccessoryCpuPanel(ks, 1, jkstat, orientation);
 	kaplist.add(acp);
 	// make wider and thinner than normal
 	acp.setMinimumSize(dthread);
@@ -507,10 +506,9 @@ public class JCpuState extends JKdemo implements ActionListener {
     private void addChip(Set <Kstat> ksc, String s, Long l, Dimension d) {
 	mainPanel.add(new JLabel(s + l));
 	KstatAggregate ksa = new KstatAggregate(jkstat, ksc);
-	KstatAccessoryPanel agp =
-	    (style == STYLE_CHART) ?
-	    new AggregateCpuChart(ksa, 1, jkstat) :
-	    new AggregateCpuPanel(ksa, 1, jkstat, orientation);
+	KstatAccessoryPanel agp = (style == STYLE_CHART)
+	    ? new AggregateCpuChart(ksa, 1, jkstat)
+	    : new AggregateCpuPanel(ksa, 1, jkstat, orientation);
 	kaplist.add(agp);
 	// make wider and thinner than normal
 	agp.setMinimumSize(d);

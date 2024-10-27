@@ -303,8 +303,8 @@ public class FsstatTableModel extends AbstractTableModel
 	String dev3 = mnttab.getFSforDevice(dev2);
 
 	// first check if we should ignore it
-	if ((filtermask & MASK_IGNORE) != 0 && dev3 != null &&
-	    mnttab.getIgnore(dev3)) {
+	if ((filtermask & MASK_IGNORE) != 0 && dev3 != null
+	        && mnttab.getIgnore(dev3)) {
 	    doadd = false;
 	}
 
@@ -421,9 +421,9 @@ public class FsstatTableModel extends AbstractTableModel
 
     @Override
     public Object getValueAt(int row, int col) {
-	return (col == columnNames.length) ?
-	    fsnames.get(fsdata.get(row)) :
-	    fsdata.get(row).getRate(columnNames[col]);
+	return (col == columnNames.length)
+	    ? fsnames.get(fsdata.get(row))
+	    : fsdata.get(row).getRate(columnNames[col]);
     }
 
     @Override

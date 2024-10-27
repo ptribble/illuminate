@@ -276,7 +276,8 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
-    public static String overlayMembership(OverlayList ovlist, ContentsFileDetail cfd) {
+    public static String overlayMembership(OverlayList ovlist,
+					   ContentsFileDetail cfd) {
 	StringBuilder sb = new StringBuilder();
 	headRow2(sb, "This " + cfd.getBasicType()
 			+ " is part of the following overlays");

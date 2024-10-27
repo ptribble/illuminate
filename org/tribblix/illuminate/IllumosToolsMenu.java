@@ -67,8 +67,8 @@ public class IllumosToolsMenu extends JMenu implements ActionListener {
      * with different paths, the first location found will be used.
      */
     private void addItem(String text, String cmd, String args) {
-	if (new File(cmd).exists() &&
-			!toolMap.containsKey(text)) {
+	if (new File(cmd).exists()
+			&& !toolMap.containsKey(text)) {
 	    toolMap.put(text, (args == null) ? cmd : cmd + " " + args);
 	    JMenuItem ji = new JMenuItem(text);
 	    ji.addActionListener(this);

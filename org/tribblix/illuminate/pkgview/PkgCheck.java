@@ -159,8 +159,8 @@ public class PkgCheck {
 
     private void checkOverlay(Overlay ovl) {
 	if (ovl.isInstalled() && !ovl.isComplete()) {
-	    System.out.println("Overlay " + ovl +
-			" is installed but incomplete");
+	    System.out.println("Overlay " + ovl
+			+ " is installed but incomplete");
 	    if (verbose) {
 		for (Overlay ovl2 : ovl.missingOverlays()) {
 		    System.out.println("  missing required overlay " + ovl2);
@@ -171,8 +171,8 @@ public class PkgCheck {
 	    }
 	}
 	if (!ovl.isInstalled() && ovl.isComplete()) {
-	    System.out.println("Overlay " + ovl +
-			" is complete but uninstalled");
+	    System.out.println("Overlay " + ovl
+			+ " is complete but uninstalled");
 	}
     }
 
@@ -218,40 +218,40 @@ public class PkgCheck {
 		    if (f.length() != cfd.getSize()) {
 			if (cfd.isEditable()) {
 			    if (verbose) {
-				System.out.println("WARNING: File " +
-					    cfd.getName() +
-					    " has incorrect size");
+				System.out.println("WARNING: File "
+					    + cfd.getName()
+					    + " has incorrect size");
 			    }
 			} else {
-			    System.out.println("ERROR: File " +
-					    cfd.getName() +
-					    " has incorrect size");
+			    System.out.println("ERROR: File "
+					    + cfd.getName()
+					    + " has incorrect size");
 			}
 		    }
 		    // allow a little rounding error
 		    if (Math.abs(fmodtime - pmodtime) >= 2) {
 			if (cfd.isEditable()) {
 			    if (verbose) {
-				System.out.println("WARNING: File " +
-					    cfd.getName() +
-					    " has incorrect modification time");
+				System.out.println("WARNING: File "
+					+ cfd.getName()
+					+ " has incorrect modification time");
 			    }
 			} else {
-			    System.out.println("ERROR: File " +
-					    cfd.getName() +
-					    " has incorrect modification time");
+			    System.out.println("ERROR: File "
+					+ cfd.getName()
+					+ " has incorrect modification time");
 			}
 		    }
 		} else {
-		    System.out.println("ERROR: Path " +
-				       cfd.getName() +
-				       " is not a file");
+		    System.out.println("ERROR: Path "
+				       + cfd.getName()
+				       + " is not a file");
 		}
 	    }
 	    if (cfd.isDirectory() && !f.isDirectory()) {
-		System.out.println("ERROR: Path " +
-				   cfd.getName() +
-				   " is not a directory");
+		System.out.println("ERROR: Path "
+				   + cfd.getName()
+				   + " is not a directory");
 	    }
 	} else {
 	    System.err.println("ERROR: Missing or unreadable path "
@@ -282,7 +282,8 @@ public class PkgCheck {
 
     private static void usage() {
 	System.err.println("Usage: check [-R alt_root] [-v] "
-		+ "[-a | -l | -o | -p path ... | -P partial-path ...] [name ...]");
+		+ "[-a | -l | -o | -p path ... | -P partial-path ...] "
+		+ "[name ...]");
 	System.exit(1);
     }
 

@@ -131,11 +131,16 @@ public class Mnttab {
      * value. Mount options are either single words, or pairs of
      * words separated by an = sign. If the mount option is not
      * present, return null.
+     *
+     * @param fs The filesystem of interest
+     * @param sopt The mount option of interest
+     *
+     * @return The value of the requested mount option of the given filesystem
      */
-    private String getOptionValue(String sf, String s) {
+    private String getOptionValue(String fs, String sopt) {
 	String sval = null;
-	for (String si : getOptions(sf)) {
-	    if (si.startsWith(s)) {
+	for (String si : getOptions(fs)) {
+	    if (si.startsWith(sopt)) {
 		int i = si.indexOf('=');
 		if (i > 0) {
 		    sval = si.substring(i+1);

@@ -135,7 +135,8 @@ public class SummaryPanel extends InfoPanel {
      */
     private void addCpuAccessory() {
 	JPanel cpupanel = new CpuStatePanel(jkstat);
-	cpupanel.setBorder(BorderFactory.createTitledBorder("Processor Activity"));
+	cpupanel.setBorder(
+		       BorderFactory.createTitledBorder("Processor Activity"));
         addComponent(cpupanel);
     }
 
@@ -149,8 +150,8 @@ public class SummaryPanel extends InfoPanel {
 	ksf.addFilter(":::rbytes64");
 	ksf.addNegativeFilter("::mac");
 
-	String iflabel = "Network " +
-	    KstatResources.getString("NETLOAD.IF.TEXT") + " ";
+	String iflabel = "Network "
+	    + KstatResources.getString("NETLOAD.IF.TEXT") + " ";
 	for (Kstat ks : new TreeSet <Kstat>(ksf.getKstats())) {
 	    JPanel npanel = new JPanel();
 	    npanel.add(new JLabel("In: "));

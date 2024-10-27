@@ -155,10 +155,10 @@ public class PackageHandler {
 
 	if (pkgdirf.exists()) {
 	    for (File f : pkgdirf.listFiles()) {
-		if (f.isDirectory() &&
-		    !f.isHidden() &&
-		    !"locale".equals(f.getName()) &&
-		    new File(f, "pkginfo").exists()) {
+		if (f.isDirectory()
+		        && !f.isHidden()
+		        && !"locale".equals(f.getName())
+		        && new File(f, "pkginfo").exists()) {
 		    pnamelist.add(f.getName());
 		}
 	    }
@@ -227,7 +227,7 @@ public class PackageHandler {
     }
 
     protected String[] getCatalog(String repo) {
-	return JumbleFile.getLines(new File(altroot +
-		ZAP_ROOT + "/repositories/" + repo + ".catalog"));
+	return JumbleFile.getLines(new File(altroot
+		+ ZAP_ROOT + "/repositories/" + repo + ".catalog"));
     }
 }

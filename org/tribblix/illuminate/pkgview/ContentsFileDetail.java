@@ -71,6 +71,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      * ftype x: path x class mode owner group package
      * ftype v: path v class mode owner group size cksum modtime package
      * ftype e: path e class mode owner group size cksum modtime package
+     *
+     * @param s a String representing a line in the contents file
      */
     private void parseNewStyle(String s) {
 	String[] st = s.split(" ");

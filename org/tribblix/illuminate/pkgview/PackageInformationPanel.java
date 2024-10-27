@@ -106,7 +106,8 @@ public class PackageInformationPanel extends JTabbedPane {
 	    Cursor c = getCursor();
 	    ContentsPackage cpp = cp.getPackage(pkg.getName());
 	    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
-	    setFilesText(PkgUtils.detailTable(cpp), PkgUtils.doTextFileList(cpp));
+	    setFilesText(PkgUtils.detailTable(cpp),
+			 PkgUtils.doTextFileList(cpp));
 	    setCursor(c);
 	}
     }

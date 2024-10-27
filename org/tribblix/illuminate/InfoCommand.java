@@ -111,8 +111,8 @@ public class InfoCommand {
      * @return The output from running this command
      */
     public String getOutput() {
-	return exists() ? new RunCommand(fullcmd).getOut() :
-	    "Command not found";
+	return exists() ? new RunCommand(fullcmd).getOut()
+	    : "Command not found";
     }
 
     /**

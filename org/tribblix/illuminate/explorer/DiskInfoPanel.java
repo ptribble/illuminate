@@ -186,8 +186,8 @@ public class DiskInfoPanel extends InfoPanel {
 	}
 	String fs = mnttab.getFs("/dev/dsk/" + devname);
 	if (fs != null) {
-	    addLabel("Mounted as a " + mnttab.getFsType(fs) +
-			" file system at " + fs);
+	    addLabel("Mounted as a " + mnttab.getFsType(fs)
+			+ " file system at " + fs);
 	}
 	// FIXME check swap devices
     }
