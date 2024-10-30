@@ -43,7 +43,7 @@ public class ZoneEntry {
     private String ziptype;
 
     // attributes derived if necessary
-    private Set <ZoneNet> netconfig;
+    private Set<ZoneNet> netconfig;
 
     /**
      * Create a ZoneEntry to describe a zone's configuration. Basic
@@ -174,7 +174,7 @@ public class ZoneEntry {
      *
      * @return A Set of ZoneNet entries, one for each interface
      */
-    public Set <ZoneNet> getNetworks() {
+    public Set<ZoneNet> getNetworks() {
 	if (netconfig == null) {
 	    populateNet();
 	}

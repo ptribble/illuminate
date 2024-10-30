@@ -70,7 +70,7 @@ public class JCpuState extends JKdemo implements ActionListener {
     private JKstat jkstat;
 
     private transient ProcessorTree proctree;
-    private Set <Kstat> kstats;
+    private Set<Kstat> kstats;
     private int ncpus;
     private int naggr;
     private int ncpu;
@@ -81,7 +81,7 @@ public class JCpuState extends JKdemo implements ActionListener {
     private JMenuItem[] extendedCpuItem;
     private JMenuItem[] chartCpuItem;
     private String[] cpuID;
-    private List <KstatAccessoryPanel> kaplist;
+    private List<KstatAccessoryPanel> kaplist;
 
     private Dimension dchip;
     private Dimension dcore;
@@ -240,7 +240,7 @@ public class JCpuState extends JKdemo implements ActionListener {
 	    // iterate over chips, showing aggregates over cores
 	    int nchips = 0;
 	    for (Long l : proctree.getChips()) {
-		Set <Kstat> kschip = proctree.chipStats(l);
+		Set<Kstat> kschip = proctree.chipStats(l);
 		JPanel cpanl = new JPanel(new BorderLayout());
 		cpanl.setBackground(cpanl.getBackground().darker());
 		nchips++;
@@ -253,7 +253,7 @@ public class JCpuState extends JKdemo implements ActionListener {
 		    // JPanel tpnl = new JPanel(new SpringLayout());
 		    JPanel tpnl = new JPanel(new GridLayout());
 		    for (Long ll : proctree.getCores(l)) {
-			Set <Kstat> kscore = proctree.coreStats(l, ll);
+			Set<Kstat> kscore = proctree.coreStats(l, ll);
 			// mpanl is the outer panel for this core
 			JPanel mpanl = new JPanel(new BorderLayout());
 			mpanl.setBackground(mpanl.getBackground().brighter());
@@ -285,7 +285,7 @@ public class JCpuState extends JKdemo implements ActionListener {
 	    for (Long l : proctree.getChips()) {
 		JPanel cpanl = new JPanel(new BorderLayout());
 		nchips++;
-		Set <Kstat> kschip = proctree.chipStats(l);
+		Set<Kstat> kschip = proctree.chipStats(l);
 		addChipNew(kschip, dchip, cpanl);
 		JLabel clabel = new JLabel(chipText + l, JLabel.CENTER);
 		cpanl.add(clabel, BorderLayout.SOUTH);
@@ -309,7 +309,7 @@ public class JCpuState extends JKdemo implements ActionListener {
      * Put a set of kstats into a panel: line of vertical accessories
      * above a line of labels.
      */
-    private JPanel multiPanel(Set <Kstat> kss) {
+    private JPanel multiPanel(Set<Kstat> kss) {
 	JPanel ppanl = new JPanel(new SpringLayout());
 	for (Kstat ks : kss) {
 	    addProcessor(ks, ppanl);
@@ -332,13 +332,13 @@ public class JCpuState extends JKdemo implements ActionListener {
 	if (proctree.isMulticore()) {
 	    // iterate over chips, showing aggregates over cores
 	    for (Long l : proctree.getChips()) {
-		Set <Kstat> kschip = proctree.chipStats(l);
+		Set<Kstat> kschip = proctree.chipStats(l);
 		if (showChips) {
 		    addChip(kschip, chipText, l, dchip);
 		}
 		if (proctree.isThreaded()) {
 		    for (Long ll : proctree.getCores(l)) {
-			Set <Kstat> kscore = proctree.coreStats(l, ll);
+			Set<Kstat> kscore = proctree.coreStats(l, ll);
 			if (showCores) {
 			    addChip(kscore, coreText, ll, dcore);
 			}
@@ -363,7 +363,7 @@ public class JCpuState extends JKdemo implements ActionListener {
 	    // single core cpus
 	    // iterate over chips, showing aggregates over threads
 	    for (Long l : proctree.getChips()) {
-		Set <Kstat> kschip = proctree.chipStats(l);
+		Set<Kstat> kschip = proctree.chipStats(l);
 		if (showChips) {
 		    addChip(kschip, chipText, l, dchip);
 		}
@@ -503,7 +503,7 @@ public class JCpuState extends JKdemo implements ActionListener {
     /*
      * Only used in the horizontal layout
      */
-    private void addChip(Set <Kstat> ksc, String s, Long l, Dimension d) {
+    private void addChip(Set<Kstat> ksc, String s, Long l, Dimension d) {
 	mainPanel.add(new JLabel(s + l));
 	KstatAggregate ksa = new KstatAggregate(jkstat, ksc);
 	KstatAccessoryPanel agp = (style == STYLE_CHART)
@@ -520,7 +520,7 @@ public class JCpuState extends JKdemo implements ActionListener {
     /*
      * Only used in the vertical layout
      */
-    private void addChipNew(Set <Kstat> ksc, Dimension d, JPanel panl) {
+    private void addChipNew(Set<Kstat> ksc, Dimension d, JPanel panl) {
 	KstatAggregate ksa = new KstatAggregate(jkstat, ksc);
 	KstatAccessoryPanel agp =
 	    new AggregateCpuPanel(ksa, 1, jkstat, orientation);
@@ -569,7 +569,7 @@ public class JCpuState extends JKdemo implements ActionListener {
 				    1, jkstat);
 	    }
 	    if (e.getSource() == chartCpuItem[i]) {
-		List <String> stats = Arrays.asList("user", "kernel", "idle");
+		List<String> stats = Arrays.asList("user", "kernel", "idle");
 		new KstatAreaChartFrame(jkstat,
 			new Kstat("cpu_stat", Integer.parseInt(cpuID[i]),
 				"cpu_stat"+cpuID[i]),

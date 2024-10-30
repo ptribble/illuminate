@@ -43,8 +43,8 @@ public class SmfService implements Comparable<SmfService> {
 
     private final String fmri;
     private final String status;
-    private Map <String, String> props;
-    private Map <String, String> manpages;
+    private Map<String, String> props;
+    private Map<String, String> manpages;
 
     /**
      * Create a new SmfService object.

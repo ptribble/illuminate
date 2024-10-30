@@ -36,7 +36,7 @@ public class PkgInfo {
 
     private String name;
     private PackageHandler pkghdl;
-    private Map <String, String> pkginfomap;
+    private Map<String, String> pkginfomap;
 
     /**
      * Create an SVR4 pkg pkginfo container.
@@ -56,7 +56,7 @@ public class PkgInfo {
      *
      * @return the content of the pkginfo file as a Map
      */
-    public Map <String, String> infoMap() {
+    public Map<String, String> infoMap() {
 	if (pkginfomap == null) {
 	    parseInfo();
 	}

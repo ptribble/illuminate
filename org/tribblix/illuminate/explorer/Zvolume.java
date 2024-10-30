@@ -34,7 +34,7 @@ import org.tribblix.illuminate.InfoCommand;
 public class Zvolume extends Zdataset {
 
     private String shortname;
-    private Set <Zsnapshot> snapshots;
+    private Set<Zsnapshot> snapshots;
 
     /**
      * Create a new Zvolume object, to store details of a ZFS volume.
@@ -66,7 +66,7 @@ public class Zvolume extends Zdataset {
      *
      * @return the Set of all snapshots of this volume
      */
-    public Set <Zsnapshot> getSnapshots() {
+    public Set<Zsnapshot> getSnapshots() {
 	if (snapshots == null) {
 	    snapshots = new HashSet<>();
 	    InfoCommand ic = new InfoCommand("ZF", "/usr/sbin/zfs",

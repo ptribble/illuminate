@@ -53,7 +53,7 @@ public class PkgCheck {
     public PkgCheck(String altroot, String[] args) {
 	pkghdl = new PackageHandler(altroot);
 	PkgList plist = pkghdl.getPkgList();
-	Set <String> names = parseArgs(args);
+	Set<String> names = parseArgs(args);
 	if (checkovl) {
 	    doOverlays(names);
 	} else if (dopaths || partpaths) {
@@ -76,8 +76,8 @@ public class PkgCheck {
 	}
     }
 
-    private Set <String> parseArgs(String[] args) {
-	Set <String> names = new HashSet<>();
+    private Set<String> parseArgs(String[] args) {
+	Set<String> names = new HashSet<>();
 	for (String arg : args) {
 	    if ("-l".equals(arg)) {
 		list = true;
@@ -118,7 +118,7 @@ public class PkgCheck {
 	return names;
     }
 
-    private void doPathNames(Set <String> names) {
+    private void doPathNames(Set<String> names) {
 	for (String name : names) {
 	    ContentsFileDetail cfd = cp.getFileDetail(name);
 	    if (cfd == null) {
@@ -129,7 +129,7 @@ public class PkgCheck {
 	}
     }
 
-    private void doPartPathNames(Set <String> names) {
+    private void doPartPathNames(Set<String> names) {
 	for (String path : cp.getPaths()) {
 	    for (String name : names) {
 		if (path.indexOf(name) > 0) {
@@ -139,7 +139,7 @@ public class PkgCheck {
 	}
     }
 
-    private void doOverlays(Set <String> names) {
+    private void doOverlays(Set<String> names) {
 	OverlayList ovlist = pkghdl.getOverlayList();
 	if (names.isEmpty()) {
 	    for (Overlay ovl : ovlist.getOverlays()) {

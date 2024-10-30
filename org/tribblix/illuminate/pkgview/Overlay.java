@@ -38,9 +38,9 @@ public class Overlay implements Comparable<Overlay> {
     private String name;
     private String description;
     private String oversion;
-    private Set <Overlay> overlays = new TreeSet<>();
-    private Set <SVR4Package> packages = new TreeSet<>();
-    private Set <String> services = new TreeSet<>();
+    private Set<Overlay> overlays = new TreeSet<>();
+    private Set<SVR4Package> packages = new TreeSet<>();
+    private Set<String> services = new TreeSet<>();
 
     /**
      * Create an Overlay object. To be useful, you must call populate().
@@ -129,7 +129,7 @@ public class Overlay implements Comparable<Overlay> {
      *
      * @return A Set of the overlays required by this Overlay.
      */
-    public Set <Overlay> getOverlays() {
+    public Set<Overlay> getOverlays() {
 	return overlays;
     }
 
@@ -138,7 +138,7 @@ public class Overlay implements Comparable<Overlay> {
      *
      * @return A Set of the services controlled by this Overlay.
      */
-    public Set <String> getServices() {
+    public Set<String> getServices() {
 	return services;
     }
 
@@ -176,8 +176,8 @@ public class Overlay implements Comparable<Overlay> {
      *
      * @return a Set of required overlays that are not installed
      */
-    public Set <Overlay> missingOverlays() {
-	Set <Overlay> omiss = new TreeSet<>();
+    public Set<Overlay> missingOverlays() {
+	Set<Overlay> omiss = new TreeSet<>();
 	for (Overlay ovl : overlays) {
 	    if (!ovl.isInstalled()) {
 		omiss.add(ovl);
@@ -192,8 +192,8 @@ public class Overlay implements Comparable<Overlay> {
      * @return a Set of the packages contained in this Overlay that are
      * not currently installed
      */
-    public Set <SVR4Package> missingPackages() {
-	Set <SVR4Package> pmiss = new TreeSet<>();
+    public Set<SVR4Package> missingPackages() {
+	Set<SVR4Package> pmiss = new TreeSet<>();
 	for (SVR4Package pkg : packages) {
 	    if (!pkg.isInstalled()) {
 		pmiss.add(pkg);
@@ -209,7 +209,7 @@ public class Overlay implements Comparable<Overlay> {
      * @return A Set of the packages explicitly contained
      * in this Overlay.
      */
-    public Set <SVR4Package> getPackages() {
+    public Set<SVR4Package> getPackages() {
 	return packages;
     }
 

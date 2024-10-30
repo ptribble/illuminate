@@ -34,12 +34,12 @@ import java.util.TreeSet;
  * @author Peter Tribble
  * @version 2.0
  */
-public class PkgList extends TreeSet <SVR4Package> {
+public class PkgList extends TreeSet<SVR4Package> {
 
     private static final long serialVersionUID = 1L;
 
-    private Map <String, SVR4Package> pkgMap = new HashMap<>();
-    private Map <String, Set <SVR4Package>> revDependencies;
+    private Map<String, SVR4Package> pkgMap = new HashMap<>();
+    private Map<String, Set<SVR4Package>> revDependencies;
 
     /**
      * Create a package list.
@@ -63,7 +63,7 @@ public class PkgList extends TreeSet <SVR4Package> {
      *
      * @return a Set of installed package names
      */
-    public Set <String> getPackageNames() {
+    public Set<String> getPackageNames() {
 	return new TreeSet<>(pkgMap.keySet());
     }
 
@@ -79,7 +79,7 @@ public class PkgList extends TreeSet <SVR4Package> {
 	return pkgMap.get(name);
     }
 
-    public Set <SVR4Package> getDependantSet(String pkg) {
+    public Set<SVR4Package> getDependantSet(String pkg) {
 	return (revDependencies == null) ? null : revDependencies.get(pkg);
     }
 
@@ -91,7 +91,7 @@ public class PkgList extends TreeSet <SVR4Package> {
 	revDependencies = new HashMap<>();
 	for (SVR4Package pkg : this) {
 	    for (String pkgdep : pkg.getDependencySet()) {
-		Set <SVR4Package> revSet = revDependencies.get(pkgdep);
+		Set<SVR4Package> revSet = revDependencies.get(pkgdep);
 		if (revSet == null) {
 		    revSet = new HashSet<>();
 		    revDependencies.put(pkgdep, revSet);

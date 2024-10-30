@@ -30,7 +30,7 @@ import java.util.Map;
  */
 public class CatalogParser {
 
-    private Map <String, CatalogPackage> pkgMap;
+    private Map<String, CatalogPackage> pkgMap;
 
     /**
      * Parse a package catalog.

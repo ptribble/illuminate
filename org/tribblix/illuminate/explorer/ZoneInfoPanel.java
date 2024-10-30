@@ -56,7 +56,7 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
     private JKstat jkstat;
     private transient KstatAccessorySet kas;
     private KstatTable kt;
-    private List <KstatAccessoryPanel> kaplist;
+    private List<KstatAccessoryPanel> kaplist;
     private JButton jmb;
 
     /**
@@ -150,8 +150,8 @@ public class ZoneInfoPanel extends InfoPanel implements ActionListener {
     private void displayZoneNet() {
 	ZoneEntry ze = (ZoneEntry) hi.getAttribute("zoneentry");
 	@SuppressWarnings("unchecked")
-	Map <String, Kstat> netMap =
-	    (Map <String, Kstat>) hi.getAttribute("netmap");
+	Map<String, Kstat> netMap =
+	    (Map<String, Kstat>) hi.getAttribute("netmap");
 	for (ZoneNet znet : ze.getNetworks()) {
 	    Kstat ks = netMap.get(znet.getPhysical());
 	    if (ks == null) {

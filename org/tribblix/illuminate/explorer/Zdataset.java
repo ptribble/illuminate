@@ -36,8 +36,8 @@ import org.tribblix.illuminate.InfoCommand;
 public class Zdataset {
 
     protected String name;
-    protected Set <Zproperty> propset;
-    protected Map <String, Zproperty> propmap;
+    protected Set<Zproperty> propset;
+    protected Map<String, Zproperty> propmap;
 
     /**
      * Return the name of this dataset.
@@ -73,7 +73,7 @@ public class Zdataset {
      *
      * @return a Set of the properties of this dataset
      */
-    public Set <Zproperty> getProperties() {
+    public Set<Zproperty> getProperties() {
 	initProperties();
 	return propset;
     }

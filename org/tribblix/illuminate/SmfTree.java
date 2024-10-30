@@ -41,7 +41,7 @@ public class SmfTree extends JTree {
      * A Map to track the services so we can find relationships when
      * building the tree.
      */
-    private final Map <String, SmfTreeNode> treeMap = new HashMap <>();
+    private final Map<String, SmfTreeNode> treeMap = new HashMap<>();
 
     /**
      * Display a tree of SMF services.

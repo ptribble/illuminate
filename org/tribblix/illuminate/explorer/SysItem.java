@@ -252,7 +252,7 @@ public class SysItem {
     public static final int UNKNOWN = 3;
     public static final int BLANK = 99;
 
-    private Map <String, Object> attributes;
+    private Map<String, Object> attributes;
     private int type;
     private int status = BLANK;
 

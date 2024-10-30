@@ -42,7 +42,7 @@ public class SysTree extends JTree {
 
     private static final long serialVersionUID = 1L;
 
-    private Map <String, Kstat> netMap = new HashMap<>();
+    private Map<String, Kstat> netMap = new HashMap<>();
     private JKstat jkstat;
 
     /**
@@ -164,7 +164,7 @@ public class SysTree extends JTree {
 	 * the 'disks' Set, which sorts them, and run through that at the
 	 * end to add all the nodes to the tree.
 	 */
-	Set <SysTreeNode> disks = new TreeSet<>();
+	Set<SysTreeNode> disks = new TreeSet<>();
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.setFilterClass("disk");
 	KstatSet kss = new KstatSet(jkstat, ksf);
@@ -354,7 +354,7 @@ public class SysTree extends JTree {
      * If there are any volumes in this pool, add them, just as a flat list.
      */
     private void addZvol(SysTreeNode stn, Zpool zp) {
-	Set <Zvolume> svol = zp.volumes();
+	Set<Zvolume> svol = zp.volumes();
 	if (!svol.isEmpty()) {
 	    SysItem zitem = new SysItem(SysItem.ZFS_VOLUME);
 	    SysTreeNode vtn = new SysTreeNode(zitem,

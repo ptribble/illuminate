@@ -34,7 +34,7 @@ import java.util.TreeSet;
  */
 public class ContentsPackage {
 
-    private Set <ContentsFileDetail> fileset = new HashSet<>();
+    private Set<ContentsFileDetail> fileset = new HashSet<>();
 
     /**
      * Create a new empty ContentsPackage.
@@ -196,7 +196,7 @@ public class ContentsPackage {
      *
      * @return a Set of ContentsFileDetail objects, sorted by path name
      */
-    public Set <ContentsFileDetail> getDetails() {
+    public Set<ContentsFileDetail> getDetails() {
 	return new TreeSet<>(fileset);
     }
 }

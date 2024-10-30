@@ -33,8 +33,8 @@ import org.tribblix.illuminate.InfoCommand;
  */
 public class BootEnvironments {
 
-    protected Map <String, String> forwardmap;
-    protected Map <String, String> backwardmap;
+    protected Map<String, String> forwardmap;
+    protected Map<String, String> backwardmap;
 
     /*
      * Initialize all the properties if we haven't already done so.

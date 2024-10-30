@@ -242,7 +242,7 @@ public class NetInfoPanel extends InfoPanel {
     private void addAccessory(Kstat ks) {
 	acp = new AccessoryNetPanel(ks, 5, jkstat);
 	addComponent(acp);
-	List <String> statistics = Arrays.asList("rbytes64", "obytes64");
+	List<String> statistics = Arrays.asList("rbytes64", "obytes64");
 	kbc = new KstatChart(jkstat, ks, statistics, true);
 	addComponent(new ChartPanel(kbc.getChart()));
     }

@@ -53,10 +53,10 @@ public class FsstatTableModel extends AbstractTableModel
     private String[] columnNames;
     private String columnTitle;
 
-    private static final Map <String, String[]> COLUMN_MAP;
-    private List <ChartableKstat> allfsdata = new ArrayList<>();
-    private List <ChartableKstat> fsdata = new ArrayList<>();
-    private Map <ChartableKstat, String> fsnames = new HashMap<>();
+    private static final Map<String, String[]> COLUMN_MAP;
+    private List<ChartableKstat> allfsdata = new ArrayList<>();
+    private List<ChartableKstat> fsdata = new ArrayList<>();
+    private Map<ChartableKstat, String> fsnames = new HashMap<>();
 
     private Timer timer;
     private int delay = 1000;
@@ -77,8 +77,8 @@ public class FsstatTableModel extends AbstractTableModel
     // don't show any filesystem aggregates at all
     private static final int MASK_ALLAGGR = 16;
     // Lists to hold lists of zones, fstypes to show
-    private List <String> showzones = new ArrayList<>();
-    private List <String> showfstypes = new ArrayList<>();
+    private List<String> showzones = new ArrayList<>();
+    private List<String> showfstypes = new ArrayList<>();
 
     static {
 	// standard choices for columns
@@ -350,7 +350,7 @@ public class FsstatTableModel extends AbstractTableModel
 	    }
 	}
 
-	Iterator <ChartableKstat> vki = allfsdata.iterator();
+	Iterator<ChartableKstat> vki = allfsdata.iterator();
 	while (vki.hasNext()) {
 	    ChartableKstat cks = vki.next();
 	    if (!cks.update()) {
@@ -390,7 +390,7 @@ public class FsstatTableModel extends AbstractTableModel
      *
      * @return the Set of available display names
      */
-    public Set <String> titles() {
+    public Set<String> titles() {
 	return COLUMN_MAP.keySet();
     }
 
@@ -399,7 +399,7 @@ public class FsstatTableModel extends AbstractTableModel
      *
      * @return A List of filesystem types that are currently mounted
      */
-    public List <String> getFstypeList() {
+    public List<String> getFstypeList() {
 	return mnttab.getFstypeList();
     }
 

@@ -115,7 +115,7 @@ public class JFSstatPanel extends JPanel {
      *
      * @return the Set of available display names
      */
-    public Set <String> titles() {
+    public Set<String> titles() {
 	return ftm.titles();
     }
 }

@@ -42,8 +42,8 @@ import java.io.IOException;
  */
 public final class ContentsParser {
 
-    private Map <String, ContentsFileDetail> fileHash = new HashMap<>();
-    private Map <String, ContentsPackage> pkgHash = new HashMap<>();
+    private Map<String, ContentsFileDetail> fileHash = new HashMap<>();
+    private Map<String, ContentsPackage> pkgHash = new HashMap<>();
 
     private static final String CONTENTS_FILE = "/var/sadm/install/contents";
 
@@ -98,7 +98,7 @@ public final class ContentsParser {
      *
      * @return the Set of all paths in the contents file
      */
-    public Set <String> getPaths() {
+    public Set<String> getPaths() {
 	return fileHash.keySet();
     }
 

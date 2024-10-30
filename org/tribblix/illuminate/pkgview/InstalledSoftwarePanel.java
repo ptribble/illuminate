@@ -75,7 +75,7 @@ public class InstalledSoftwarePanel extends JTabbedPane {
      * a singleton, so once we've done it here we can tell the other
      * views to use it.
      */
-    class ContentsWorker extends SwingWorker <String, Object> {
+    class ContentsWorker extends SwingWorker<String, Object> {
 	@Override
 	public String doInBackground() {
 	    pkghdl.getContentsParser();
@@ -94,7 +94,7 @@ public class InstalledSoftwarePanel extends JTabbedPane {
      * Generate reverse dependencies in the background, then tell the other
      * views to show them.
      */
-    class RevDependencyWorker extends SwingWorker <String, Object> {
+    class RevDependencyWorker extends SwingWorker<String, Object> {
 	@Override
 	public String doInBackground() {
 	    plist.createRevDependencies();

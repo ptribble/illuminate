@@ -44,7 +44,7 @@ public class ZfsTableModel extends AbstractTableModel {
      * @param props a Set of zfs properties whose output will be converted to
      * tabular form
      */
-    public ZfsTableModel(Set <Zproperty> props) {
+    public ZfsTableModel(Set<Zproperty> props) {
 	nrows = props.size();
 	zprops = props.toArray(new Zproperty[0]);
     }

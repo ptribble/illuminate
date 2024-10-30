@@ -39,11 +39,11 @@ import uk.co.petertribble.jumble.JumbleFile;
  */
 public class Mnttab {
 
-    private Map <String, String> devmap = new HashMap<>();
-    private Map <String, String> fsmap = new HashMap<>();
-    private Map <String, String> fstypemap = new HashMap<>();
-    private Map <String, List <String>> optmap = new HashMap<>();
-    private Set <String> fsList = new HashSet<>();
+    private Map<String, String> devmap = new HashMap<>();
+    private Map<String, String> fsmap = new HashMap<>();
+    private Map<String, String> fstypemap = new HashMap<>();
+    private Map<String, List<String>> optmap = new HashMap<>();
+    private Set<String> fsList = new HashSet<>();
     private long modified;
 
     /**
@@ -122,7 +122,7 @@ public class Mnttab {
      *
      * @return The mount options of the given filesystem
      */
-    public List <String> getOptions(String fs) {
+    public List<String> getOptions(String fs) {
 	return optmap.get(fs);
     }
 
@@ -183,7 +183,7 @@ public class Mnttab {
      * @return Whether the given filesystem has the ignore flag set
      */
     public boolean getIgnore(String fs) {
-	List <String> v = optmap.get(fs);
+	List<String> v = optmap.get(fs);
 	return v != null && v.contains("ignore");
     }
 
@@ -215,8 +215,8 @@ public class Mnttab {
      *
      * @return A List of zones that have mounted filesystems
      */
-    public List <String> getZoneList() {
-	List <String> v = new ArrayList<>();
+    public List<String> getZoneList() {
+	List<String> v = new ArrayList<>();
 	for (String fs : fsList) {
 	    String zn = getZoneName(fs);
 	    if (!v.contains(zn)) {
@@ -233,8 +233,8 @@ public class Mnttab {
      *
      * @return A List of filesystems that the given zone has mounted
      */
-    public List <String> getFSforZone(String myzone) {
-	List <String> v = new ArrayList<>();
+    public List<String> getFSforZone(String myzone) {
+	List<String> v = new ArrayList<>();
 	for (String fs : fsList) {
 	    if (getZoneName(fs).equals(myzone)) {
 		v.add(fs);
@@ -248,8 +248,8 @@ public class Mnttab {
      *
      * @return A List of filesystem types that are currently mounted
      */
-    public List <String> getFstypeList() {
-	List <String> v = new ArrayList<>();
+    public List<String> getFstypeList() {
+	List<String> v = new ArrayList<>();
 	for (String s : fstypemap.values()) {
 	    if (!v.contains(s)) {
 		v.add(s);
@@ -265,8 +265,8 @@ public class Mnttab {
      *
      * @return A List of filesystems of the given filesystem type
      */
-    public List <String> getFSforFstype(String ftype) {
-	List <String> v = new ArrayList<>();
+    public List<String> getFSforFstype(String ftype) {
+	List<String> v = new ArrayList<>();
 	for (Map.Entry<String, String> entry : fstypemap.entrySet()) {
 	    if (entry.getValue().equals(ftype)) {
 		v.add(entry.getKey());
@@ -282,8 +282,8 @@ public class Mnttab {
      *
      * @return A List of device IDs for the given filesystem type
      */
-    public List <String> getIDforFstype(String ftype) {
-	List <String> v = new ArrayList <>();
+    public List<String> getIDforFstype(String ftype) {
+	List<String> v = new ArrayList<>();
 	for (Map.Entry<String, String> entry : fstypemap.entrySet()) {
 	    if (entry.getValue().equals(ftype)) {
 		String dev = devmap.get(entry.getKey());

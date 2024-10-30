@@ -39,10 +39,10 @@ import uk.co.petertribble.jumble.JumbleFile;
 public final class DevicePath {
 
     private static final DevicePath INSTANCE = new DevicePath();
-    private static Map <String, String> dMap = new HashMap<>();
-    private static Map <String, String> kMap = new HashMap<>();
-    private static Map <String, String> pMap = new HashMap<>();
-    private static Map <String, Set <String>> altMap = new HashMap<>();
+    private static Map<String, String> dMap = new HashMap<>();
+    private static Map<String, String> kMap = new HashMap<>();
+    private static Map<String, String> pMap = new HashMap<>();
+    private static Map<String, Set<String>> altMap = new HashMap<>();
 
     /*
      * This builds the two primary maps. We look through /dev/dsk for
@@ -130,7 +130,7 @@ public final class DevicePath {
 	if (altMap.containsKey(dev1)) {
 	    altMap.get(dev1).add(dev2);
 	} else {
-	    Set <String> salt = new HashSet<>();
+	    Set<String> salt = new HashSet<>();
 	    salt.add(dev1);
 	    salt.add(dev2);
 	    altMap.put(dev1, salt);
@@ -139,7 +139,7 @@ public final class DevicePath {
 	if (altMap.containsKey(dev2)) {
 	    altMap.get(dev2).add(dev1);
 	} else {
-	    Set <String> salt = new HashSet<>();
+	    Set<String> salt = new HashSet<>();
 	    salt.add(dev1);
 	    salt.add(dev2);
 	    altMap.put(dev1, salt);
@@ -181,7 +181,7 @@ public final class DevicePath {
      *
      * @return the Set of disk or partition names matching the given driver
      */
-    public Set <String> getDiskNames(String driver) {
+    public Set<String> getDiskNames(String driver) {
 	return altMap.get(getDiskName(driver));
     }
 }

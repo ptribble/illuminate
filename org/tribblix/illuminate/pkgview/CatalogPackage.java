@@ -100,8 +100,8 @@ public class CatalogPackage {
      *
      * @return the Set of package names this package depends on
      */
-    public Set <String> getDependencySet() {
-	Set <String> dependson = new TreeSet<>();
+    public Set<String> getDependencySet() {
+	Set<String> dependson = new TreeSet<>();
 	for (String s : depends.split("\\s+")) {
 	    dependson.add(s);
 	}

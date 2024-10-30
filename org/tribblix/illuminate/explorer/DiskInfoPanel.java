@@ -163,7 +163,7 @@ public class DiskInfoPanel extends InfoPanel {
 	 * Check for devices matching this name. There may be multiple or only
 	 * one.
 	 */
-	Set <String> salt = devpath.getDiskNames(ks.getName());
+	Set<String> salt = devpath.getDiskNames(ks.getName());
 	if (salt == null) {
 	    String devname = devpath.getDiskName(ks.getName());
 	    if (devname != null) {

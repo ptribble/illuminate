@@ -34,8 +34,8 @@ import org.tribblix.illuminate.InfoCommand;
 public class Zfilesys extends Zdataset {
 
     private String shortname;
-    private Set <Zfilesys> children = new HashSet<>();
-    private Set <Zsnapshot> snapshots;
+    private Set<Zfilesys> children = new HashSet<>();
+    private Set<Zsnapshot> snapshots;
 
     /**
      * Create a new Zfilesys object, to store details of a ZFS filesystem.
@@ -78,7 +78,7 @@ public class Zfilesys extends Zdataset {
      *
      * @return the Set of all child filesystems
      */
-    public Set <Zfilesys> getChildren() {
+    public Set<Zfilesys> getChildren() {
 	return children;
     }
 
@@ -87,7 +87,7 @@ public class Zfilesys extends Zdataset {
      *
      * @return the Set of all snapshots of this filesystem
      */
-    public Set <Zsnapshot> getSnapshots() {
+    public Set<Zsnapshot> getSnapshots() {
 	if (snapshots == null) {
 	    snapshots = new HashSet<>();
 	    InfoCommand ic = new InfoCommand("ZF", "/usr/sbin/zfs",

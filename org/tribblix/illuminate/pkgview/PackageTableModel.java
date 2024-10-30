@@ -36,7 +36,7 @@ public class PackageTableModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 1L;
 
-    private List <SVR4Package> pkgs;
+    private List<SVR4Package> pkgs;
 
     /*
      * Columns to show

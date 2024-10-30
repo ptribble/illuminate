@@ -55,9 +55,9 @@ public class CpuInfoPanel extends InfoPanel {
     private KstatAccessoryPanel kap;
     private KstatBaseChart kbc;
     private JKstat jkstat;
-    private static final List <String> MYSTATS =
+    private static final List<String> MYSTATS =
 		Arrays.asList("kernel", "user", "idle");
-    private static final List <Color> MYCOLORS =
+    private static final List<Color> MYCOLORS =
 		Arrays.asList(Color.YELLOW, Color.GREEN, Color.BLUE);
 
     /**
@@ -206,7 +206,7 @@ public class CpuInfoPanel extends InfoPanel {
      * Add an accessory aggregated over threads if we can.
      */
     private void addCoreAccessory() {
-	Set <Kstat> kss = proctree.coreStats((Long) hi.getAttribute("chip"),
+	Set<Kstat> kss = proctree.coreStats((Long) hi.getAttribute("chip"),
 					(Long) hi.getAttribute("core"));
 	if (!kss.isEmpty()) {
 	    addAggregateAccessory(new KstatAggregate(jkstat, kss,
@@ -218,7 +218,7 @@ public class CpuInfoPanel extends InfoPanel {
      * Add an accessory aggregated over cores if we can.
      */
     private void addChipAccessory() {
-	Set <Kstat> kss = proctree.chipStats((Long) hi.getAttribute("chip"));
+	Set<Kstat> kss = proctree.chipStats((Long) hi.getAttribute("chip"));
 	if (!kss.isEmpty()) {
 	    addAggregateAccessory(new KstatAggregate(jkstat, kss,
 					"chip " + hi.getAttribute("chip")));

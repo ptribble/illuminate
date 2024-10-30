@@ -34,9 +34,9 @@ public class PkgDepend {
 
     private String name;
     private PackageHandler pkghdl;
-    private Set <String> dependson;
-    private Set <String> rdepends;
-    private Set <String> incompatibles;
+    private Set<String> dependson;
+    private Set<String> rdepends;
+    private Set<String> incompatibles;
 
     /**
      * Create an SVR4 pkg dependency container.
@@ -54,7 +54,7 @@ public class PkgDepend {
      *
      * @return the Set of package names this package depends on
      */
-    public Set <String> getDependencySet() {
+    public Set<String> getDependencySet() {
 	if (dependson == null) {
 	    parseDepend();
 	}
@@ -68,7 +68,7 @@ public class PkgDepend {
      * @return the Set of package names this package declares to be
      * dependent on it
      */
-    public Set <String> getRDependencySet() {
+    public Set<String> getRDependencySet() {
 	if (rdepends == null) {
 	    parseDepend();
 	}
@@ -81,7 +81,7 @@ public class PkgDepend {
      * @return the Set of package names this package declares to be
      * incompatible with it
      */
-    public Set <String> getIncompatibleSet() {
+    public Set<String> getIncompatibleSet() {
 	if (incompatibles == null) {
 	    parseDepend();
 	}

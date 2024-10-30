@@ -35,8 +35,8 @@ public class ZapConfig {
 
     private boolean zapexists;
 
-    private Map <Integer, ZapRepository> repoMap;
-    private Map <String, CatalogParser> catalogMap;
+    private Map<Integer, ZapRepository> repoMap;
+    private Map<String, CatalogParser> catalogMap;
 
     /**
      * Create a zap configuration.
@@ -60,7 +60,7 @@ public class ZapConfig {
      *
      * @return a Map of zap repositories
      */
-    public Map <Integer, ZapRepository> getRepos() {
+    public Map<Integer, ZapRepository> getRepos() {
 	return repoMap;
     }
 

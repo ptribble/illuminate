@@ -30,7 +30,7 @@ import javax.swing.JList;
  * @author Peter Tribble
  * @version 1.0
  */
-public class InfoJList extends JList <InfoCommand> {
+public class InfoJList extends JList<InfoCommand> {
 
     private static final long serialVersionUID = 1L;
 

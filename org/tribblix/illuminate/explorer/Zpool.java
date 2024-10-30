@@ -37,11 +37,11 @@ import org.tribblix.illuminate.InfoCommand;
 public class Zpool {
 
     private String name;
-    private Set <Zfilesys> zfilesys = new HashSet<>();
-    private Set <Zvolume> zvolumes = new HashSet<>();
+    private Set<Zfilesys> zfilesys = new HashSet<>();
+    private Set<Zvolume> zvolumes = new HashSet<>();
     private Zfilesys zparent;
-    private Map <String, Zfilesys> zmap = new HashMap<>();
-    private Set <String> zdevices = new HashSet<>();
+    private Map<String, Zfilesys> zmap = new HashMap<>();
+    private Set<String> zdevices = new HashSet<>();
 
     /**
      * Create a Zpool object representing a ZFS pool.
@@ -151,7 +151,7 @@ public class Zpool {
      *
      * @return a Set of all ZFS filesystems
      */
-    public Set <Zfilesys> filesystems() {
+    public Set<Zfilesys> filesystems() {
 	return zfilesys;
     }
 
@@ -160,7 +160,7 @@ public class Zpool {
      *
      * @return a Set of all ZFS volumes
      */
-    public Set <Zvolume> volumes() {
+    public Set<Zvolume> volumes() {
 	return zvolumes;
     }
 

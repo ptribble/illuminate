@@ -29,7 +29,7 @@ import java.util.Arrays;
 /**
  * Parse a line of the SVR4 packaging contents file.
  */
-public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
+public class ContentsFileDetail implements Comparable<ContentsFileDetail> {
 
     private PackageHandler pkghdl;
 
@@ -42,7 +42,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
     private long size;
     // private String cksum;
     private long modtime;
-    private List <String> pkglist;
+    private List<String> pkglist;
     // only valid for links
     private String target;
     // major + minor only valid for devices, ignore as not used
@@ -175,7 +175,7 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      *
      * @return  A List of package names that own this entry.
      */
-    public List <String> getPackageNames() {
+    public List<String> getPackageNames() {
 	return pkglist;
     }
 
@@ -184,8 +184,8 @@ public class ContentsFileDetail implements Comparable <ContentsFileDetail> {
      *
      * @return  A List of packages that own this entry.
      */
-    public List <SVR4Package> getPackages() {
-	List <SVR4Package> lp = new ArrayList<>();
+    public List<SVR4Package> getPackages() {
+	List<SVR4Package> lp = new ArrayList<>();
 	for (String s : pkglist) {
 	    lp.add(new SVR4Package(pkghdl, s));
 	}

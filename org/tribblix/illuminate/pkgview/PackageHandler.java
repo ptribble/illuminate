@@ -150,8 +150,8 @@ public class PackageHandler {
      * Functions below are helpers.
      */
 
-    protected Set <String> listPackageNames() {
-	Set <String> pnamelist = new TreeSet<>();
+    protected Set<String> listPackageNames() {
+	Set<String> pnamelist = new TreeSet<>();
 
 	if (pkgdirf.exists()) {
 	    for (File f : pkgdirf.listFiles()) {
@@ -166,8 +166,8 @@ public class PackageHandler {
 	return pnamelist;
     }
 
-    protected Set <String> listOverlayNames() {
-	Set <String> onamelist = new TreeSet<>();
+    protected Set<String> listOverlayNames() {
+	Set<String> onamelist = new TreeSet<>();
 
 	if (ovldirf.exists()) {
 	    for (File f : ovldirf.listFiles()) {

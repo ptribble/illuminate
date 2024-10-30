@@ -38,7 +38,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
     private PkgDepend pkgdepend;
 
     private String name;
-    private Set <SVR4Package> depSet;
+    private Set<SVR4Package> depSet;
 
     /**
      * Create an SVR4 package container.
@@ -102,7 +102,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      *
      * @return the Set of package names this package depends on
      */
-    public Set <String> getDependencySet() {
+    public Set<String> getDependencySet() {
 	return pkgdepend.getDependencySet();
     }
 
@@ -113,7 +113,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * @return the Set of package names this package declares to be
      * dependent on it
      */
-    public Set <String> getRDependencySet() {
+    public Set<String> getRDependencySet() {
 	return pkgdepend.getRDependencySet();
     }
 
@@ -123,7 +123,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * @return the Set of package names this package declares to be
      * incompatible with it
      */
-    public Set <String> getIncompatibleSet() {
+    public Set<String> getIncompatibleSet() {
 	return pkgdepend.getIncompatibleSet();
     }
 
@@ -134,7 +134,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      *
      * @param depSet the Set of dependant packages
      */
-    public void setDependantSet(Set <SVR4Package> depSet) {
+    public void setDependantSet(Set<SVR4Package> depSet) {
 	this.depSet = depSet;
     }
 
@@ -145,7 +145,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      *
      * @return the Set of dependant packages
      */
-    public Set <SVR4Package> getDependantSet() {
+    public Set<SVR4Package> getDependantSet() {
 	return depSet;
     }
 
@@ -154,7 +154,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      *
      * @return the content of the pkginfo file as a Map
      */
-    public Map <String, String> infoMap() {
+    public Map<String, String> infoMap() {
 	return pkginfo.infoMap();
     }
 

@@ -171,7 +171,7 @@ public class SmfInfoPanel extends JPanel implements ActionListener {
     }
 
     private void setManButtons(SmfService svc) {
-	Map <String, String> manmap = svc.getManPages();
+	Map<String, String> manmap = svc.getManPages();
 	manButtonPanel.removeAll();
 	for (String s : manmap.keySet()) {
 	    JButton jb = new JButton(s);

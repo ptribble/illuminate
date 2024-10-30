@@ -41,8 +41,8 @@ public class OverlayTree extends JTree {
     private static final long serialVersionUID = 1L;
 
     private DefaultTreeModel model;
-    private Map <SVR4Package, NodeSet> pkgmap = new HashMap<>();
-    private Map <Overlay, NodeSet> ovmap = new HashMap<>();
+    private Map<SVR4Package, NodeSet> pkgmap = new HashMap<>();
+    private Map<Overlay, NodeSet> ovmap = new HashMap<>();
 
     /**
      * Create a tree from an overlay list and add it to the parent node.
@@ -116,11 +116,11 @@ public class OverlayTree extends JTree {
     }
 
     class NodeSet {
-	private Set <DefaultMutableTreeNode> nodes = new HashSet<>();
+	private Set<DefaultMutableTreeNode> nodes = new HashSet<>();
 	public void add(DefaultMutableTreeNode node) {
 	    nodes.add(node);
 	}
-	public Set <DefaultMutableTreeNode> getNodes() {
+	public Set<DefaultMutableTreeNode> getNodes() {
 	    return nodes;
 	}
     }

@@ -68,12 +68,12 @@ public class ArcStatPanel extends JPanel implements ActionListener {
     private JProgressBar mpf_hit_bar;
 
     // cache hit/miss data
-    private DefaultPieDataset <String> totalCacheHitsDataset;
-    private DefaultPieDataset <String> currentCacheHitsDataset;
-    private DefaultPieDataset <String> totalCacheHitsByTypeDataset;
-    private DefaultPieDataset <String> currentCacheHitsByTypeDataset;
-    private DefaultPieDataset <String> totalCacheMissesByTypeDataset;
-    private DefaultPieDataset <String> currentCacheMissesByTypeDataset;
+    private DefaultPieDataset<String> totalCacheHitsDataset;
+    private DefaultPieDataset<String> currentCacheHitsDataset;
+    private DefaultPieDataset<String> totalCacheHitsByTypeDataset;
+    private DefaultPieDataset<String> currentCacheHitsByTypeDataset;
+    private DefaultPieDataset<String> totalCacheMissesByTypeDataset;
+    private DefaultPieDataset<String> currentCacheMissesByTypeDataset;
 
     // saved statistics
     // naming: pf = prefetch; md = metadata
@@ -113,12 +113,12 @@ public class ArcStatPanel extends JPanel implements ActionListener {
 	setLayout(new SpringLayout());
 
 	// initialise the datasets
-	totalCacheHitsDataset = new DefaultPieDataset <String>();
-	currentCacheHitsDataset = new DefaultPieDataset <String>();
-	totalCacheHitsByTypeDataset = new DefaultPieDataset <String>();
-	currentCacheHitsByTypeDataset = new DefaultPieDataset <String>();
-	totalCacheMissesByTypeDataset = new DefaultPieDataset <String>();
-	currentCacheMissesByTypeDataset = new DefaultPieDataset <String>();
+	totalCacheHitsDataset = new DefaultPieDataset<String>();
+	currentCacheHitsDataset = new DefaultPieDataset<String>();
+	totalCacheHitsByTypeDataset = new DefaultPieDataset<String>();
+	currentCacheHitsByTypeDataset = new DefaultPieDataset<String>();
+	totalCacheMissesByTypeDataset = new DefaultPieDataset<String>();
+	currentCacheMissesByTypeDataset = new DefaultPieDataset<String>();
 
 	// initialise the pie charts
 	// args: title, dataset, legend?, tooltips?, urls?

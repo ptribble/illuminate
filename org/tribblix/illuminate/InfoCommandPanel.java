@@ -74,7 +74,7 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
     public InfoCommandPanel() {
 	setLayout(new BorderLayout());
 
-	JList <InfoCommand> ilist = new InfoJList(new InfoCommandList());
+	JList<InfoCommand> ilist = new InfoJList(new InfoCommandList());
 	ilist.addMouseListener(mouseListener);
 	ilist.addKeyListener(keyListener);
 
@@ -125,7 +125,7 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 	    @SuppressWarnings("unchecked")
-	    JList <InfoCommand> source = (JList <InfoCommand>) e.getSource();
+	    JList<InfoCommand> source = (JList<InfoCommand>) e.getSource();
 	    setInfo(source.getSelectedValue());
 	}
     };
@@ -139,8 +139,8 @@ public class InfoCommandPanel extends JPanel implements ActionListener {
 	public void keyPressed(KeyEvent e) {
 	    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 		@SuppressWarnings("unchecked")
-		JList <InfoCommand> source =
-			(JList <InfoCommand>) e.getSource();
+		JList<InfoCommand> source =
+			(JList<InfoCommand>) e.getSource();
 		setInfo(source.getSelectedValue());
 	    }
 	}

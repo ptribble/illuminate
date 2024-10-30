@@ -48,7 +48,7 @@ public final class PkgUtils {
      */
     public static String infoTable(SVR4Package pkg, ZapConfig zc) {
 	StringBuilder sb = new StringBuilder(256);
-	Map <String, String> infomap = pkg.infoMap();
+	Map<String, String> infomap = pkg.infoMap();
 	// clean out the junk
 	infomap.remove("#FASPACD");
 	infomap.remove("PKG");
@@ -62,7 +62,7 @@ public final class PkgUtils {
 	infomap.remove("UPDATE");
 	infomap.remove("ISTATES");
 	infomap.remove("LANG");
-	Iterator <String> itr = infomap.keySet().iterator();
+	Iterator<String> itr = infomap.keySet().iterator();
 	while (itr.hasNext()) {
 	    String s = itr.next();
 	    if (s.startsWith("LC_") || s.startsWith("PATCH_")
@@ -173,8 +173,8 @@ public final class PkgUtils {
     /*
      * Common dependency tree code
      */
-    private static String dependencyTable(Set <String> depset,
-				Set <String> rdepset, Set <String> idepset) {
+    private static String dependencyTable(Set<String> depset,
+				Set<String> rdepset, Set<String> idepset) {
 	StringBuilder sb = new StringBuilder(256);
 
 	headRow(sb, PkgResources.getString("PKGUTILS.PACKAGE"),
@@ -188,7 +188,7 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
-    private static void innerdeptable(StringBuilder sb, Set <String> depset,
+    private static void innerdeptable(StringBuilder sb, Set<String> depset,
 			String deptype) {
 	for (String s : depset) {
 	    addRow(sb, s, deptype);
@@ -231,7 +231,7 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
-    public static String ovlDeps(Set <Overlay> ovls) {
+    public static String ovlDeps(Set<Overlay> ovls) {
 	StringBuilder sb = new StringBuilder(105);
 	headRow2(sb, "Depending on this overlay:");
 	if (ovls != null) {
@@ -242,7 +242,7 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
-    public static String revDeps(Set <SVR4Package> pkgs) {
+    public static String revDeps(Set<SVR4Package> pkgs) {
 	StringBuilder sb = new StringBuilder(93);
 	headRow(sb, "Depending on this package:");
 	if (pkgs != null) {
