@@ -82,6 +82,6 @@ public class PkgInfo {
      * Parse the pkginfo file.
      */
     private void parseInfo() {
-	pkginfomap = JumbleUtils.stringToPropMap(pkghdl.getPkgInfo(name), "\n");
+	pkginfomap = JumbleUtils.stringToPropMap(pkghdl.getPkgInfo(name));
     }
 }
