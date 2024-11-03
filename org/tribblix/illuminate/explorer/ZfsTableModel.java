@@ -34,7 +34,7 @@ public class ZfsTableModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 1L;
 
-    private final String[] columnNames = { "PROPERTY", "VALUE", "SOURCE"};
+    private final String[] columnNames = {"PROPERTY", "VALUE", "SOURCE"};
     private int nrows;
     private Zproperty[] zprops;
 

@@ -84,24 +84,24 @@ public class FsstatTableModel extends AbstractTableModel
 	// standard choices for columns
 	// read/write
 	String title_1 = "I/O operations";
-	String[] names_1 = { "nread", "nwrite", "nreaddir",
-		"read_bytes", "write_bytes", "readdir_bytes" };
+	String[] names_1 = {"nread", "nwrite", "nreaddir",
+		"read_bytes", "write_bytes", "readdir_bytes"};
 	// create/remove
 	String title_2 = "Create/Remove";
-	String[] names_2 = { "ncreate", "nremove", "nmkdir",
-		"nrmdir", "nlink", "nsymlink" };
+	String[] names_2 = {"ncreate", "nremove", "nmkdir",
+		"nrmdir", "nlink", "nsymlink"};
 	// file status
 	String title_3 = "File access";
-	String[] names_3 = { "nlookup", "naccess", "npathconf",
-		"nreadlink" };
+	String[] names_3 = {"nlookup", "naccess", "npathconf",
+		"nreadlink"};
 	// attributes - this is exactly fsstat -a
 	String title_4 = "Attributes";
-	String[] names_4 = { "ngetattr", "nsetattr",
-		 "ngetsecattr", "nsetsecattr" };
+	String[] names_4 = {"ngetattr", "nsetattr",
+		 "ngetsecattr", "nsetsecattr"};
 	// map - this is exactly fsstat -v
 	String title_5 = "fsstat -v";
-	String[] names_5 = { "nmap", "naddmap", "ndelmap",
-		"ngetpage", "nputpage", "npageio" };
+	String[] names_5 = {"nmap", "naddmap", "ndelmap",
+		"ngetpage", "nputpage", "npageio"};
 	COLUMN_MAP = new HashMap<>();
 	COLUMN_MAP.put(title_1, names_1);
 	COLUMN_MAP.put(title_2, names_2);
@@ -161,7 +161,7 @@ public class FsstatTableModel extends AbstractTableModel
      */
     public void showIgnored(boolean b) {
 	if (b) {
-	    setMask(filtermask &~ MASK_IGNORE);
+	    setMask(filtermask & ~MASK_IGNORE);
 	} else {
 	    setMask(filtermask | MASK_IGNORE);
 	}
@@ -174,7 +174,7 @@ public class FsstatTableModel extends AbstractTableModel
      */
     public void showAggregates(boolean b) {
 	if (b) {
-	    setMask(filtermask &~ MASK_ALLAGGR);
+	    setMask(filtermask & ~MASK_ALLAGGR);
 	} else {
 	    setMask(filtermask | MASK_ALLAGGR);
 	}
@@ -187,7 +187,7 @@ public class FsstatTableModel extends AbstractTableModel
      */
     public void showTypes(boolean b) {
 	if (b) {
-	    setMask(filtermask &~ MASK_BYTYPE);
+	    setMask(filtermask & ~MASK_BYTYPE);
 	} else {
 	    setMask(filtermask | MASK_BYTYPE);
 	}

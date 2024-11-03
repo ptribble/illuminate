@@ -41,7 +41,7 @@ public class PackageTableModel extends AbstractTableModel {
     /*
      * Columns to show
      */
-    private String[] columnNames = { "Name", "Version", "Description" };
+    private String[] columnNames = {"Name", "Version", "Description"};
 
     /**
      * Create a new PackageTableModel.

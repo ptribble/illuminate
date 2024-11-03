@@ -70,8 +70,8 @@ public class ManPane extends JEditorPane
     /*
      * This is hard-coded, unfortunately
      */
-    private static final String[] MANPATH = { "/usr/share/man",
-					"/usr/gnu/share/man" };
+    private static final String[] MANPATH = {"/usr/share/man",
+					     "/usr/gnu/share/man"};
 
     /**
      * Create a Scrollable panel containing the text of a man page.

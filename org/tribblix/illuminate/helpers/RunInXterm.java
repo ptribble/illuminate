@@ -39,12 +39,12 @@ public class RunInXterm {
      * an unqualified xterm and cross our fingers.
      */
     static {
-	String[] xsearch = { "/usr/bin/sakura",
-			     "/usr/bin/Terminal",
-			     "/usr/bin/xterm",
-			     "/usr/bin/urxvt",
-			     "/usr/bin/gnome-terminal",
-			     "/usr/dt/bin/dtterm" };
+	String[] xsearch = {"/usr/bin/sakura",
+			    "/usr/bin/Terminal",
+			    "/usr/bin/xterm",
+			    "/usr/bin/urxvt",
+			    "/usr/bin/gnome-terminal",
+			    "/usr/dt/bin/dtterm"};
 
 	for (String s : xsearch) {
 	    if (new File(s).exists()) {

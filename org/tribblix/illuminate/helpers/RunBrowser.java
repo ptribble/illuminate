@@ -39,11 +39,11 @@ public class RunBrowser {
      * We search all the following locations for a browser.
      */
     static {
-	String[] xsearch = { "/usr/bin/palemoon",
-			     "/usr/bin/firefox",
-			     "/usr/bin/dillo",
-			     "/usr/bin/netsurf",
-			     "/usr/bin/xdg-open" };
+	String[] xsearch = {"/usr/bin/palemoon",
+			    "/usr/bin/firefox",
+			    "/usr/bin/dillo",
+			    "/usr/bin/netsurf",
+			    "/usr/bin/xdg-open"};
 
 	for (String s : xsearch) {
 	    if (new File(s).exists()) {
