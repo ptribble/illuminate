@@ -22,7 +22,7 @@
 
 package org.tribblix.illuminate.explorer;
 
-import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.demo.JKmemPanel;
 import org.tribblix.illuminate.InfoCommand;
 

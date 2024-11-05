@@ -22,7 +22,8 @@
 
 package org.tribblix.illuminate.explorer;
 
-import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.gui.AccessoryNetPanel;
 import uk.co.petertribble.jkstat.gui.KstatTable;
 import uk.co.petertribble.jkstat.gui.KstatBaseChart;

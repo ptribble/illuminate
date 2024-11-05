@@ -25,7 +25,7 @@ package org.tribblix.illuminate.explorer;
 import javax.swing.BoxLayout;
 import javax.swing.JPanel;
 import javax.swing.JTable;
-import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jkstat.api.JKstat;
 import org.tribblix.illuminate.InfoCommand;
 
 /**

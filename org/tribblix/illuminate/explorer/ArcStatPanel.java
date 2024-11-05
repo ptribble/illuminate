@@ -36,8 +36,10 @@ import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jingle.SpringUtilities;
 
-import org.jfree.chart.*;
-import org.jfree.data.general.*;
+import org.jfree.chart.ChartFactory;
+import org.jfree.chart.ChartPanel;
+import org.jfree.chart.JFreeChart;
+import org.jfree.data.general.DefaultPieDataset;
 
 /**
  * Display ZFS ARC statistics in a Panel.

@@ -32,7 +32,11 @@ import javax.swing.table.AbstractTableModel;
 import javax.swing.Timer;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
-import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jkstat.api.ChartableKstat;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.KstatFilter;
+import uk.co.petertribble.jkstat.api.KstatSet;
 
 /**
  * A Table model describing fsstat statistics.

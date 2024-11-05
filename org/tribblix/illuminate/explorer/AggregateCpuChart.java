@@ -22,7 +22,9 @@
 
 package org.tribblix.illuminate.explorer;
 
-import uk.co.petertribble.jkstat.api.*;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.KstatAggregate;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import uk.co.petertribble.jstripchart.JStripChart;
 import uk.co.petertribble.jstripchart.JStackedStripChart2;
