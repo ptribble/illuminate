@@ -60,5 +60,4 @@
       <exclude name="LooseCoupling"/>
       <exclude name="UnusedAssignment"/>
     </rule>
-    <exclude-pattern>.*/org/tribblix/illuminate/pkgview/TableSorter.*</exclude-pattern>
 </ruleset>

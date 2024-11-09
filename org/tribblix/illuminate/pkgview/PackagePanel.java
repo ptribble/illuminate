@@ -30,6 +30,7 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.BorderLayout;
+import uk.co.petertribble.jingle.TableSorter;
 
 /**
  * Show a table inside a Scroll pane, displaying the packages installed.
