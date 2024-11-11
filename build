@@ -74,22 +74,18 @@ spotbugs)
 	;;
 
 packages)
-	echo "Use the tribblix-packages or standalone-packages arguments"
+	echo "Use the tribblix-package or standalone-packages arguments"
 	exit 0
 	;;
 
-tribblix-packages)
+tribblix-package)
 	sed s:INSTALLED=false:INSTALLED=true: illuminate > illuminate.installed
-	./mkproto i386 deps > prototype.i386
-	./mkproto sparc deps > prototype.sparc
-	pkgmk -d /tmp -f prototype.i386 -r "$(pwd)" TRIBilluminate
-	pkgtrans -s /tmp /tmp/TRIBilluminate-i386.pkg TRIBilluminate
+	./mkproto any deps > prototype.any
+	pkgmk -d /tmp -f prototype.any -r "$(pwd)" TRIBilluminate
+	pkgtrans -s /tmp /tmp/TRIBilluminate.pkg TRIBilluminate
 	rm -fr /tmp/TRIBilluminate
-	pkgmk -d /tmp -f prototype.sparc -r "$(pwd)" TRIBilluminate
-	pkgtrans -s /tmp /tmp/TRIBilluminate-sparc.pkg TRIBilluminate
-	rm -fr /tmp/TRIBilluminate
-	ls -l /tmp/TRIBilluminate-sparc.pkg /tmp/TRIBilluminate-i386.pkg
-	rm prototype.i386 prototype.sparc
+	ls -l /tmp/TRIBilluminate.pkg
+	rm prototype.any
 	rm illuminate.installed
 	rm -f depend
 	exit 0

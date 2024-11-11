@@ -18,10 +18,6 @@ JPLIB="libproc_jni.so"
 MYARCH=$1
 PKGTYPE="standalone"
 
-echo "i pkginfo=./pkginfo.${MYARCH}"
-echo "i postinstall=./postinstall"
-echo "i postremove=./postinstall"
-
 if [ "X$2" = "Xdeps" ]; then
   JFCVERS="1.5.4"
   JFCPKGVER="150"
@@ -33,6 +29,20 @@ P TRIBjproc
 EOF
   echo "i depend=./depend"
 fi
+
+#
+# if a standalone package, we are architecture-dependent because the package
+# includes the jni libraries. If withdeps, we use the already packaged jni
+# libraries provided by the jkstat and jproc packages
+#
+
+if [ "X$PKGTYPE" = "Xstandalone" ]; then
+    echo "i pkginfo=./pkginfo.${MYARCH}"
+else
+    echo "i pkginfo=./pkginfo"
+fi
+echo "i postinstall=./postinstall"
+echo "i postremove=./postinstall"
 
 if [ "X$PKGTYPE" = "Xstandalone" ]; then
 case $MYARCH in
