@@ -45,6 +45,12 @@ public class OverlayPanel extends JPanel {
     private PackageInformationPanel pip;
     private transient SVR4Package currentPackage;
 
+    /**
+     * Create a new OverlayPanel. The panel contains a tree view of overlays
+     * on the left, with a main information panel.
+     *
+     * @param pkghdl a PackageHandler to query for information
+     */
     public OverlayPanel(PackageHandler pkghdl) {
 	setLayout(new BorderLayout());
 	OverlayList ovlist = pkghdl.getOverlayList();
@@ -101,10 +107,16 @@ public class OverlayPanel extends JPanel {
 	}
     }
 
+    /**
+     * Cause the reverse dependency tab to be shown.
+     */
     public void showRevDependencies() {
 	pip.showRevDependencies(currentPackage);
     }
 
+    /**
+     * Cause the detailed view of contents to be shown.
+     */
     public void showDetailedView() {
 	pip.showDetailedView();
     }

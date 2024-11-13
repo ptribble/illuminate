@@ -92,6 +92,11 @@ public class PackageInformationPanel extends JTabbedPane {
 	}
     }
 
+    /**
+     * Show information on the requested package.
+     *
+     * @param pkg the package to be displayed
+     */
     public void showPkg(SVR4Package pkg) {
 	setOvlTab(PkgResources.getString("PKG.OVERLAYS"));
 	if (pkg.isInstalled()) {
@@ -112,6 +117,11 @@ public class PackageInformationPanel extends JTabbedPane {
 	}
     }
 
+    /**
+     * Show information on the requested overlay.
+     *
+     * @param ovl the overlay to be displayed
+     */
     public void showOverlay(Overlay ovl) {
 	setOvlTab(PkgResources.getString("PKG.PACKAGES"));
 	setInfoText(PkgUtils.infoTable(ovl),
@@ -121,6 +131,11 @@ public class PackageInformationPanel extends JTabbedPane {
 	disableFilesTab();
     }
 
+    /**
+     * Show information on the requested filename.
+     *
+     * @param fname the name of the file to be displayed
+     */
     public void showFile(String fname) {
 	setOvlTab(PkgResources.getString("PKG.OVERLAYS"));
 	if (cp == null) {

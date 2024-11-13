@@ -79,6 +79,13 @@ public class PkgList extends TreeSet<SVR4Package> {
 	return pkgMap.get(name);
     }
 
+    /**
+     * Get the dependants of the given package.
+     *
+     * @param pkg the package to query
+     *
+     * @return a Set of packages that depend on the given package
+     */
     public Set<SVR4Package> getDependantSet(String pkg) {
 	return (revDependencies == null) ? null : revDependencies.get(pkg);
     }

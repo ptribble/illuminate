@@ -156,6 +156,11 @@ public class SmfService implements Comparable<SmfService> {
 	return svcs.getOut();
     }
 
+    /**
+     * Get the service properties of this SmfService.
+     *
+     * @return null for a legacy service, the output of svcprop otherwise
+     */
     public String getSvcProperties() {
 	if ("legacy_run".equals(status)) {
 	    return null;

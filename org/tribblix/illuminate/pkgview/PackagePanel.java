@@ -48,6 +48,12 @@ public class PackagePanel extends JPanel {
     private transient SVR4Package currentPackage;
     final JTable ptable;
 
+    /**
+     * Create a new PackagePanel allowing the details of any of a list
+     * of packages to be displayed.
+     *
+     * @param pkghdl a PackageHandler to query for information
+     */
     public PackagePanel(PackageHandler pkghdl) {
 
 	setLayout(new BorderLayout());
@@ -93,10 +99,16 @@ public class PackagePanel extends JPanel {
 	}
     }
 
+    /**
+     * Show the reverse dependency tab.
+     */
     public void showRevDependencies() {
 	pip.showRevDependencies(currentPackage);
     }
 
+    /**
+     * Cause the detailed view of package contents to be shown.
+     */
     public void showDetailedView() {
 	pip.showDetailedView();
     }

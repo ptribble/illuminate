@@ -74,10 +74,23 @@ public class OverlayList {
 	return ovlexists;
     }
 
+    /**
+     * Return a Set of the system's overlays.
+     *
+     * @return a Set of the system's overlays
+     */
     public Set<Overlay> getOverlays() {
 	return ovlist;
     }
 
+    /**
+     * Get the overlay of the given name.
+     *
+     * @param name the name of the Overlay to be retrieved
+     *
+     * @return the Overlay of the given name, or null if there is no such
+     * overlay
+     */
     public Overlay getOverlay(String name) {
 	return ovMap.get(name);
     }

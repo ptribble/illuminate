@@ -60,6 +60,11 @@ public class OverlayTree extends JTree {
 	}
     }
 
+    /**
+     * Notification of a package change, propagated to the model.
+     *
+     * @param pkg the package that's changed
+     */
     public void nodeChanged(SVR4Package pkg) {
 	NodeSet ns = pkgmap.get(pkg);
 	if (ns != null) {
@@ -69,6 +74,11 @@ public class OverlayTree extends JTree {
 	}
     }
 
+    /**
+     * Notification of an overlay change, propagated to the model.
+     *
+     * @param ovl the overlay that's changed
+     */
     public void nodeChanged(Overlay ovl) {
 	NodeSet ns = ovmap.get(ovl);
 	if (ns != null) {

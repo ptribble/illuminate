@@ -44,6 +44,10 @@ public class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
     private static ImageIcon partIcon;
     private static ImageIcon warnIcon;
 
+    /**
+     * Create a custom tree cell renderer. It will decorate the cells
+     * depending on the installed state of the overlay in each cell.
+     */
     public OverlayTreeCellRenderer() {
 	noneIcon = createImageIcon("/images/none.png");
 	selectedIcon = createImageIcon("/images/selected.png");

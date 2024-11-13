@@ -44,6 +44,10 @@ public class SysTreeCellRenderer extends DefaultTreeCellRenderer {
     private static ImageIcon warnIcon;
     private static ImageIcon unknownIcon;
 
+    /**
+     * Create a new SysTreeCellRenderer, that adds an icon to each item
+     * in the tree to denote its status.
+     */
     public SysTreeCellRenderer() {
 	failIcon = createImageIcon("/images/fail.png");
 	warnIcon = createImageIcon("/images/warn.png");

@@ -147,11 +147,27 @@ public final class PkgUtils {
 	return sbh.toString() + wrapTable(sb);
     }
 
+    /**
+     * Produce a html table displaying the dependencies of the requested
+     * package.
+     *
+     * @param pkg the package to display
+     *
+     * @return a formatted html table
+     */
     public static String dependencyTable(SVR4Package pkg) {
 	return dependencyTable(pkg.getDependencySet(), pkg.getRDependencySet(),
 			pkg.getIncompatibleSet());
     }
 
+    /**
+     * Produce a html table displaying the overlays that the requested
+     * overlay depends on.
+     *
+     * @param ovl the overlay to display
+     *
+     * @return a formatted html table
+     */
     public static String dependencyTable(Overlay ovl) {
 	StringBuilder sb = new StringBuilder(128);
 	headRow2(sb, "This Overlay depends on");
@@ -161,6 +177,14 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
+    /**
+     * Produce a html table displaying the packages that are members
+     * of an overlay.
+     *
+     * @param ovl the overlay to display
+     *
+     * @return a formatted html table
+     */
     public static String overlayMembers(Overlay ovl) {
 	StringBuilder sb = new StringBuilder(256);
 	headRow2(sb, "This Overlay contains the following packages");
@@ -195,6 +219,15 @@ public final class PkgUtils {
 	}
     }
 
+    /**
+     * Produce a html table displaying the details of a ContentsPackage.
+     * This gives the number of entries of different types - files,
+     * directories, soft and hard links, and space used.
+     *
+     * @param cpp a ContentsPackage to display
+     *
+     * @return a formatted html table
+     */
     public static String detailTable(ContentsPackage cpp) {
 	StringBuilder sb = new StringBuilder();
 	if (cpp != null) {
@@ -204,6 +237,14 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
+    /**
+     * Produce a textual list of the files in a ContentsPackage.
+     * Not html, as that's too expensive to display.
+     *
+     * @param cpp a ContentsPackage to display
+     *
+     * @return a textual list of filenames
+     */
     public static String doTextFileList(ContentsPackage cpp) {
 	StringBuilder sb = new StringBuilder(80);
 	if (cpp != null) {
@@ -231,6 +272,14 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
+    /**
+     * Produce a html table displaying a Set of packages.
+     * The title row contains "Depending on this overlay:"
+     *
+     * @param ovls a Set of overlays
+     *
+     * @return a formatted html table
+     */
     public static String ovlDeps(Set<Overlay> ovls) {
 	StringBuilder sb = new StringBuilder(105);
 	headRow2(sb, "Depending on this overlay:");
@@ -242,6 +291,14 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
+    /**
+     * Produce a html table displaying a Set of packages.
+     * The title row contains "Depending on this package:"
+     *
+     * @param pkgs a Set of packages
+     *
+     * @return a formatted html table
+     */
     public static String revDeps(Set<SVR4Package> pkgs) {
 	StringBuilder sb = new StringBuilder(93);
 	headRow(sb, "Depending on this package:");
@@ -253,6 +310,15 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
+    /**
+     * Produce a html table describing the details of a given file.
+     * This includes type, ownership, permissions, size, and package
+     * membership.
+     *
+     * @param cfd a ContentsFileDetail representing a file
+     *
+     * @return a formatted html table
+     */
     public static String fileDetailTable(ContentsFileDetail cfd) {
 	StringBuilder sb = new StringBuilder(400);
 	headRow2(sb, "Path name: " + cfd.getName());
@@ -276,6 +342,15 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
+    /**
+     * Produce a html table describing the overlays the given file
+     * is a member of.
+     *
+     * @param ovlist an OverlayList enumerating all overlays
+     * @param cfd a ContentsFileDetail representing a file
+     *
+     * @return a formatted html table
+     */
     public static String overlayMembership(OverlayList ovlist,
 					   ContentsFileDetail cfd) {
 	StringBuilder sb = new StringBuilder();
@@ -287,6 +362,15 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
+    /**
+     * Produce a html table describing the overlays the given package
+     * is a member of.
+     *
+     * @param pkg the package to display
+     * @param ovlist an OverlayList enumerating all overlays
+     *
+     * @return a formatted html table
+     */
     public static String overlayMembership(SVR4Package pkg,
 		OverlayList ovlist) {
 	StringBuilder sb = new StringBuilder(80);

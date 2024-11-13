@@ -290,6 +290,9 @@ public class CpuStatePanel extends JPanel implements ActionListener {
 	panl.add(agp, BorderLayout.WEST);
     }
 
+    /**
+     * Stop the application updating, by telling all the accessories to stop.
+     */
     public void stopLoop() {
 	for (KstatAccessoryPanel kap : kaplist) {
 	    kap.stopLoop();
