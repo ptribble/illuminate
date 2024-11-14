@@ -27,7 +27,7 @@
       <exclude name="AssignmentToNonFinalStatic"/>
       <exclude name="CompareObjectsWithEquals"/>
       <exclude name="EmptyCatchBlock"/>
-      <exclude name="SwitchStmtsShouldHaveDefault"/>
+      <exclude name="NonExhaustiveSwitch"/>
       <exclude name="LooseCoupling"/>
       <exclude name="LocalVariableNamingConventions"/>
       <exclude name="UncommentedEmptyConstructor"/>
@@ -54,7 +54,7 @@
     </rule>
     <rule ref="category/java/bestpractices.xml">
       <exclude name="ReplaceVectorWithList"/>
-      <exclude name="SwitchStmtsShouldHaveDefault"/>
+      <exclude name="NonExhaustiveSwitch"/>
       <exclude name="SystemPrintln"/>
       <exclude name="UseVarargs"/>
       <exclude name="LooseCoupling"/>
