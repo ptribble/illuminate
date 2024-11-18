@@ -190,7 +190,7 @@ public class CpuInfoPanel extends InfoPanel {
     private void addAccessory() {
 	Kstat ks = hi.getKstat();
 	if (ks != null) {
-	    Kstat ksc = proctree.makeCpuKstat(ks);
+	    Kstat ksc = ProcessorTree.makeCpuKstat(ks);
 	    kap = new AccessoryCpuPanel(ksc, 1, jkstat);
 	    JPanel jp = new JPanel(new BorderLayout());
 	    jp.add(kap);

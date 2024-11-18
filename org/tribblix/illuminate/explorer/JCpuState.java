@@ -52,6 +52,8 @@ import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import uk.co.petertribble.jkstat.gui.KstatAreaChartFrame;
 import uk.co.petertribble.jkstat.gui.KstatTableFrame;
 import org.tribblix.illuminate.IlluminateResources;
+import uk.co.petertribble.jkstat.demo.ProcessorChip;
+import uk.co.petertribble.jkstat.demo.ProcessorCore;
 import uk.co.petertribble.jkstat.demo.ProcessorTree;
 import uk.co.petertribble.jkstat.demo.JKdemo;
 import java.util.ArrayList;
@@ -247,28 +249,30 @@ public class JCpuState extends JKdemo implements ActionListener {
 	if (proctree.isMulticore()) {
 	    // iterate over chips, showing aggregates over cores
 	    int nchips = 0;
-	    for (Long l : proctree.getChips()) {
-		Set<Kstat> kschip = proctree.chipStats(l);
+	    for (ProcessorChip chip : proctree.getProcessorChips()) {
+		Set<Kstat> kschip =
+		    ProcessorTree.makeCpuKstats(chip.infoStats());
 		JPanel cpanl = new JPanel(new BorderLayout());
 		cpanl.setBackground(cpanl.getBackground().darker());
 		nchips++;
 		addChipNew(kschip, dchip, cpanl);
-		JLabel clabel = new JLabel(chipText + l, JLabel.CENTER);
+		JLabel clabel = new JLabel(chipText + chip.getChipid(),
+					   JLabel.CENTER);
 		cpanl.add(clabel, BorderLayout.SOUTH);
 		if (proctree.isThreaded()) {
 		    // multicore and multithreaded
 		    // tpanl holds all the core panels
-		    // JPanel tpnl = new JPanel(new SpringLayout());
 		    JPanel tpnl = new JPanel(new GridLayout());
-		    for (Long ll : proctree.getCores(l)) {
-			Set<Kstat> kscore = proctree.coreStats(l, ll);
+		    for (ProcessorCore core : chip.getCores()) {
+			Set<Kstat> kscore =
+			    ProcessorTree.makeCpuKstats(core.infoStats());
 			// mpanl is the outer panel for this core
 			JPanel mpanl = new JPanel(new BorderLayout());
 			mpanl.setBackground(mpanl.getBackground().brighter());
 			// core aggregate goes on the left
 			addChipNew(kscore, dcore, mpanl);
 			// label across the bottom
-			mpanl.add(new JLabel(coreText + ll.toString(),
+			mpanl.add(new JLabel(coreText + core.getCoreid(),
 				JLabel.CENTER), BorderLayout.SOUTH);
 			// add the panel with the threads
 			mpanl.add(multiPanel(kscore));
@@ -290,12 +294,14 @@ public class JCpuState extends JKdemo implements ActionListener {
 	    // single core threaded cpus
 	    // iterate over chips, showing aggregates over threads
 	    int nchips = 0;
-	    for (Long l : proctree.getChips()) {
+	    for (ProcessorChip chip : proctree.getProcessorChips()) {
 		JPanel cpanl = new JPanel(new BorderLayout());
 		nchips++;
-		Set<Kstat> kschip = proctree.chipStats(l);
+		Set<Kstat> kschip =
+		    ProcessorTree.makeCpuKstats(chip.infoStats());
 		addChipNew(kschip, dchip, cpanl);
-		JLabel clabel = new JLabel(chipText + l, JLabel.CENTER);
+		JLabel clabel = new JLabel(chipText + chip.getChipid(),
+					   JLabel.CENTER);
 		cpanl.add(clabel, BorderLayout.SOUTH);
 		cpanl.add(multiPanel(kschip));
 		mainPanel.add(cpanl);
@@ -339,16 +345,18 @@ public class JCpuState extends JKdemo implements ActionListener {
     private void populateOld() {
 	if (proctree.isMulticore()) {
 	    // iterate over chips, showing aggregates over cores
-	    for (Long l : proctree.getChips()) {
-		Set<Kstat> kschip = proctree.chipStats(l);
+	    for (ProcessorChip chip : proctree.getProcessorChips()) {
+		Set<Kstat> kschip =
+		    ProcessorTree.makeCpuKstats(chip.infoStats());
 		if (showChips) {
-		    addChip(kschip, chipText, l, dchip);
+		    addChip(kschip, chipText, chip.getChipid(), dchip);
 		}
 		if (proctree.isThreaded()) {
-		    for (Long ll : proctree.getCores(l)) {
-			Set<Kstat> kscore = proctree.coreStats(l, ll);
+		    for (ProcessorCore core : chip.getCores()) {
+			Set<Kstat> kscore =
+			    ProcessorTree.makeCpuKstats(core.infoStats());
 			if (showCores) {
-			    addChip(kscore, coreText, ll, dcore);
+			    addChip(kscore, coreText, core.getCoreid(), dcore);
 			}
 			if (showThreads) {
 			    // show the individual threads in that core
@@ -370,10 +378,11 @@ public class JCpuState extends JKdemo implements ActionListener {
 	} else if (proctree.isThreaded()) {
 	    // single core cpus
 	    // iterate over chips, showing aggregates over threads
-	    for (Long l : proctree.getChips()) {
-		Set<Kstat> kschip = proctree.chipStats(l);
+	    for (ProcessorChip chip : proctree.getProcessorChips()) {
+		Set<Kstat> kschip =
+		    ProcessorTree.makeCpuKstats(chip.infoStats());
 		if (showChips) {
-		    addChip(kschip, chipText, l, dchip);
+		    addChip(kschip, chipText, chip.getChipid(), dchip);
 		}
 		if (showThreads) {
 		    // show the individual threads in that chip
