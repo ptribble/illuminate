@@ -34,6 +34,8 @@ import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatFilter;
 import uk.co.petertribble.jkstat.api.KstatSet;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
+import uk.co.petertribble.jkstat.demo.ProcessorChip;
+import uk.co.petertribble.jkstat.demo.ProcessorCore;
 import uk.co.petertribble.jkstat.demo.ProcessorTree;
 import org.tribblix.illuminate.IlluminateResources;
 
@@ -96,36 +98,38 @@ public class SysTree extends JTree {
 	root.add(htn);
 
 	// loop over chips
-	for (Long l : proctree.getChips()) {
+	for (ProcessorChip chip : proctree.getProcessorChips()) {
+	    Long l = chip.getChipid();
 	    SysItem hi2 = new SysItem(SysItem.CPU);
 	    hi2.addAttribute("ptree", proctree);
-	    hi2.addAttribute("chip", l);
+	    hi2.addAttribute("chip", chip);
 	    SysTreeNode htnchip = new SysTreeNode(hi2, "CPU " + l.toString());
 	    if (proctree.isMulticore()) {
 		// multicore, loop over cores
-		for (Long ll : proctree.getCores(l)) {
+		for (ProcessorCore core : chip.getCores()) {
+		    Long ll = core.getCoreid();
 		    SysItem hi3 = new SysItem(SysItem.CPU_CORE);
 		    SysTreeNode htncore = new SysTreeNode(hi3,
 						    "Core " + ll.toString());
 		    hi3.addAttribute("ptree", proctree);
-		    hi3.addAttribute("chip", l);
-		    hi3.addAttribute("core", ll);
+		    hi3.addAttribute("chip", chip);
+		    hi3.addAttribute("core", core);
 		    if (proctree.isThreaded()) {
 			// multithreaded, loop over threads
-			for (Kstat ks : proctree.coreInfoStats(l, ll)) {
+			for (Kstat ks : core.infoStats()) {
 			    SysItem hi4 = new SysItem(SysItem.CPU_THREAD);
 			    hi4.setKstat(ks);
 			    hi4.addAttribute("ptree", proctree);
 			    hi4.addAttribute("thread", ks.getInst());
-			    hi4.addAttribute("core", ll);
-			    hi4.addAttribute("chip", l);
+			    hi4.addAttribute("core", core);
+			    hi4.addAttribute("chip", chip);
 			    htncore.add(new SysTreeNode(hi4,
 						"Thread " + ks.getInstance()));
 			}
 		    } else {
 			// single thread
 			// we should go round the loop exactly once
-			for (Kstat ks : proctree.coreInfoStats(l, ll)) {
+			for (Kstat ks : core.infoStats()) {
 			    hi3.setKstat(ks);
 			}
 		    }
@@ -135,18 +139,18 @@ public class SysTree extends JTree {
 		// single core
 		if (proctree.isThreaded()) {
 		    // multithreaded, loop over threads
-		    for (Kstat ks : proctree.chipInfoStats(l)) {
+		    for (Kstat ks : chip.infoStats()) {
 			SysItem hi3 = new SysItem(SysItem.CPU_THREAD);
 			hi3.setKstat(ks);
 			hi3.addAttribute("ptree", proctree);
 			hi3.addAttribute("thread", ks.getInst());
-			hi3.addAttribute("chip", l);
+			hi3.addAttribute("chip", chip);
 			htnchip.add(new SysTreeNode(hi3,
 						ks.getInstance()));
 		    }
 		} else {
 		    // single thread
-		    for (Kstat ks : proctree.chipInfoStats(l)) {
+		    for (Kstat ks : chip.infoStats()) {
 			hi2.setKstat(ks);
 		    }
 		}

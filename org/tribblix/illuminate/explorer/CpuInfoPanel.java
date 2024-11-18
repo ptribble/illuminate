@@ -35,6 +35,8 @@ import uk.co.petertribble.jkstat.gui.KstatBaseChart;
 import uk.co.petertribble.jkstat.gui.KstatAreaChart;
 import uk.co.petertribble.jkstat.gui.KstatAggregateAreaChart;
 import uk.co.petertribble.jkstat.gui.MPstatTable;
+import uk.co.petertribble.jkstat.demo.ProcessorChip;
+import uk.co.petertribble.jkstat.demo.ProcessorCore;
 import uk.co.petertribble.jkstat.demo.ProcessorTree;
 import java.util.Set;
 import java.util.List;
@@ -118,32 +120,32 @@ public class CpuInfoPanel extends InfoPanel {
 
     /*
      * Note on types: See SysTree.java, where the "core" and "chip"
-     * attributes are Long, whereas the "thread" is an int.
+     * attributes are the respective classes, whereas the "thread" is an int.
      */
 
     /*
      * A processor chip.
      */
     private void displayChip() {
-	Long l = (Long) hi.getAttribute("chip");
+	ProcessorChip chip = (ProcessorChip) hi.getAttribute("chip");
 	StringBuilder sb = new StringBuilder(40);
-	sb.append("Processor ").append(l);
+	sb.append("Processor ").append(chip.getChipid());
 	if (proctree.isMulticore()) {
-	    sb.append(" (").append(proctree.numCores(l)).append(" cores");
+	    sb.append(" (").append(chip.numCores()).append(" cores");
 	    if (proctree.isThreaded()) {
-		sb.append(", ").append(proctree.numThreads(l))
+		sb.append(", ").append(chip.numThreads())
 		    .append(" threads)");
 	    } else {
 		sb.append(')');
 	    }
 	} else {
 	    if (proctree.isThreaded()) {
-		sb.append(" (").append(proctree.numThreads(l))
+		sb.append(" (").append(chip.numThreads())
 		    .append(" threads)");
 	    }
 	}
 	addLabel(sb.toString());
-	addLabel(proctree.getBrand(l));
+	addLabel(chip.getBrand());
 	if (proctree.isMulticore()) {
 	    addChipAccessory();
 	} else {
@@ -155,11 +157,13 @@ public class CpuInfoPanel extends InfoPanel {
      * A processor core.
      */
     private void displayCore() {
-	Long lcore = (Long) hi.getAttribute("core");
-	Long lchip = (Long) hi.getAttribute("chip");
+	ProcessorChip chip = (ProcessorChip) hi.getAttribute("chip");
+	ProcessorCore core = (ProcessorCore) hi.getAttribute("core");
+	Long lcore = core.getCoreid();
+	Long lchip = chip.getChipid();
 	if (proctree.isThreaded()) {
 	    addLabel("Core " + lcore
-		     + " (" + proctree.numThreads(lchip, lcore)
+		     + " (" + core.numThreads()
 		     + " threads) on processor " + lchip);
 	    addCoreAccessory();
 	} else {
@@ -173,13 +177,17 @@ public class CpuInfoPanel extends InfoPanel {
      * A processor thread.
      */
     private void displayThread() {
+	ProcessorChip chip = (ProcessorChip) hi.getAttribute("chip");
+	ProcessorCore core = (ProcessorCore) hi.getAttribute("core");
+	Long lcore = core.getCoreid();
+	Long lchip = chip.getChipid();
 	if (proctree.isMulticore()) {
 	    addLabel("Thread " + hi.getAttribute("thread")
-		+ " of core " + hi.getAttribute("core")
-		+ " on processor " + hi.getAttribute("chip"));
+		+ " of core " + lcore
+		+ " on processor " + lchip);
 	} else {
 	    addLabel("Thread " + hi.getAttribute("thread")
-		+ " on processor " + hi.getAttribute("chip"));
+		+ " on processor " + lchip);
 	}
 	addAccessory();
     }
@@ -206,11 +214,11 @@ public class CpuInfoPanel extends InfoPanel {
      * Add an accessory aggregated over threads if we can.
      */
     private void addCoreAccessory() {
-	Set<Kstat> kss = proctree.coreStats((Long) hi.getAttribute("chip"),
-					(Long) hi.getAttribute("core"));
+	ProcessorCore core = (ProcessorCore) hi.getAttribute("core");
+	Set<Kstat> kss = ProcessorTree.makeCpuKstats(core.infoStats());
 	if (!kss.isEmpty()) {
 	    addAggregateAccessory(new KstatAggregate(jkstat, kss,
-					"core " + hi.getAttribute("core")));
+					    "core " + core.getCoreid()));
 	}
     }
 
@@ -218,10 +226,11 @@ public class CpuInfoPanel extends InfoPanel {
      * Add an accessory aggregated over cores if we can.
      */
     private void addChipAccessory() {
-	Set<Kstat> kss = proctree.chipStats((Long) hi.getAttribute("chip"));
+	ProcessorChip chip = (ProcessorChip) hi.getAttribute("chip");
+	Set<Kstat> kss = ProcessorTree.makeCpuKstats(chip.infoStats());
 	if (!kss.isEmpty()) {
 	    addAggregateAccessory(new KstatAggregate(jkstat, kss,
-					"chip " + hi.getAttribute("chip")));
+					    "chip " + chip.getChipid()));
 	}
     }
 
@@ -241,14 +250,14 @@ public class CpuInfoPanel extends InfoPanel {
     }
 
     /*
-     * How many threads per core? If it's the same for all cores, return
-     * that, otherwise -1. This for one chip.
+     * How many threads per core? If it's the same for all cores in a chip,
+     * return that, otherwise -1. This for one chip.
      */
-    private int threadsPerCore(Long chip) {
+    private int threadsPerCore(ProcessorChip chip) {
 	int imin = 0;
 	int imax = Integer.MAX_VALUE;
-	for (Long l : proctree.getCores(chip)) {
-	    int i = proctree.numThreads(chip, l);
+	for (ProcessorCore core : chip.getCores()) {
+	    int i = core.numThreads();
 	    if (i > imin) {
 		imin = i;
 	    }
@@ -265,28 +274,29 @@ public class CpuInfoPanel extends InfoPanel {
      */
     private String chipDetails() {
 	StringBuilder sb = new StringBuilder();
-	Long ll = 0L;
-	for (Long l : proctree.getChips()) {
-	    sb.append(chipDetails(l));
-	    ll = l;
+	String brand = "";
+	for (ProcessorChip chip : proctree.getProcessorChips()) {
+	    sb.append(chipDetails(chip));
+	    brand = chip.getBrand();
 	}
-	sb.append("    ").append(proctree.getBrand(ll));
+	sb.append("    ").append(brand);
 	return sb.toString();
     }
 
-    private String chipDetails(Long l) {
-	if (threadsPerCore(l) > 1) {
+    private String chipDetails(ProcessorChip chip) {
+	if (threadsPerCore(chip) > 1) {
 	    StringBuilder sb = new StringBuilder(64);
-	    sb.append("Physical processor ").append(l).append(" has ");
-	    if (proctree.numCores(l) == 1) {
+	    sb.append("Physical processor ").append(chip.getChipid())
+		.append(" has ");
+	    if (chip.numCores() == 1) {
 		sb.append("1 core with ");
 	    } else {
-		sb.append(proctree.numCores(l)).append(" cores with ");
+		sb.append(chip.numCores()).append(" cores with ");
 	    }
-	    sb.append(threadsPerCore(l)).append(" threads per core\n");
+	    sb.append(threadsPerCore(chip)).append(" threads per core\n");
 	    return sb.toString();
 	} else {
-	    return proctree.chipDetails(l);
+	    return proctree.chipDetails(chip);
 	}
     }
 }
