@@ -122,7 +122,7 @@ public class Zpool {
      * Walk through the datasets to define relationships.
      *
      * If it contains a / then strip off one level and add it to its parent.
-     * The pop-level filesystem is recorded separately as the parent.
+     * The top-level filesystem is recorded separately as the parent.
      */
     private void relateFs() {
 	for (Zfilesys zfs : zfilesys) {
