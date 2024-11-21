@@ -27,7 +27,7 @@ package org.tribblix.illuminate.explorer;
  * @author Peter Tribble
  * @version 1.0
  */
-public class Zproperty {
+public class Zproperty implements Comparable<Zproperty> {
 
     private String property;
     private String value;
@@ -81,5 +81,18 @@ public class Zproperty {
     @Override
     public String toString() {
 	return property + "|" + value + "|" + source;
+    }
+
+    /**
+     * Compare this Zproperty to the given Zproperty.
+     *
+     * @param otherzprop the Zproperty to be compared
+     *
+     * @return an int representing whether this Zproperty's name is less
+     * than, equal to, or greater than the name of the supplied Zproperty
+     */
+    @Override
+    public int compareTo(Zproperty otherzprop) {
+	return property.compareTo(otherzprop.getProperty());
     }
 }

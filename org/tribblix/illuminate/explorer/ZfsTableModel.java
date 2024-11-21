@@ -23,6 +23,7 @@
 package org.tribblix.illuminate.explorer;
 
 import java.util.Set;
+import java.util.TreeSet;
 import javax.swing.table.AbstractTableModel;
 
 /**
@@ -46,7 +47,7 @@ public class ZfsTableModel extends AbstractTableModel {
      */
     public ZfsTableModel(Set<Zproperty> props) {
 	nrows = props.size();
-	zprops = props.toArray(new Zproperty[0]);
+	zprops = new TreeSet<>(props).toArray(new Zproperty[0]);
     }
 
     @Override
