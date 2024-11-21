@@ -94,7 +94,8 @@ public class Zpool {
 		    zfilesys.add(zfs);
 		    zmap.put(ds[0], zfs);
 		} else {
-		    System.out.println("Unable to parse zfs output");
+		    System.out.println("Unable to parse zfs filesystem output "
+				       + ds[0]);
 		    System.out.println(line);
 		}
 	    }
@@ -109,7 +110,8 @@ public class Zpool {
 		    zvolumes.add(zfs);
 		    // FIXME zmap.put(ds[0], zfs);
 		} else {
-		    System.out.println("Unable to parse zfs output");
+		    System.out.println("Unable to parse zfs volume output "
+				       + ds[0]);
 		    System.out.println(line);
 		}
 	    }
