@@ -26,8 +26,9 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Set;
 import java.io.BufferedReader;
-import java.io.FileReader;
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 
 /**
  * We parse the contents file and create two hashes.
@@ -73,8 +74,8 @@ public final class ContentsParser {
      */
     private void parse(PackageHandler pkghdl) {
 	try (BufferedReader in
-		= new BufferedReader(
-		    new FileReader(pkghdl.getRoot() + CONTENTS_FILE))) {
+		= Files.newBufferedReader(
+		    Paths.get(pkghdl.getRoot() + CONTENTS_FILE))) {
 	    String s;
 	    while ((s = in.readLine()) != null) {
 		if (s.charAt(0) == '/') {
