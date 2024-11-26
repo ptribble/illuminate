@@ -32,7 +32,7 @@ import java.awt.Component;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfListCellRenderer extends DefaultListCellRenderer {
+public final class SmfListCellRenderer extends DefaultListCellRenderer {
 
     private static final long serialVersionUID = 1L;
 

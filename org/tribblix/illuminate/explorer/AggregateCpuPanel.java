@@ -40,7 +40,7 @@ import javax.swing.SwingConstants;
  * @author Peter Tribble
  * @version 1.0
  */
-public class AggregateCpuPanel extends KstatAccessoryPanel {
+public final class AggregateCpuPanel extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 

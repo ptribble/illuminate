@@ -32,7 +32,7 @@ import java.net.URL;
  * @author Peter Tribble
  * @version 1.1
  */
-public class RunBrowser {
+public final class RunBrowser {
 
     private static String browserbin;
     /*

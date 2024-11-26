@@ -37,7 +37,7 @@ import java.awt.Color;
  * @author Peter Tribble
  * @version 1.0
  */
-public class AggregateCpuChart extends KstatAccessoryPanel {
+public final class AggregateCpuChart extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 

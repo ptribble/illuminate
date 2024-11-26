@@ -35,7 +35,7 @@ import java.net.URL;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfTreeCellRenderer extends DefaultTreeCellRenderer {
+public final class SmfTreeCellRenderer extends DefaultTreeCellRenderer {
 
     private static final long serialVersionUID = 1L;
 

@@ -31,7 +31,7 @@ import java.util.TreeSet;
  * @author Peter Tribble
  * @version 1.0
  */
-public class Overlay implements Comparable<Overlay> {
+public final class Overlay implements Comparable<Overlay> {
 
     private PackageHandler pkghdl;
 

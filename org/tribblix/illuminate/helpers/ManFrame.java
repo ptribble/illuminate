@@ -29,7 +29,7 @@ import javax.swing.JFrame;
 /**
  * A window to display a manual page.
  */
-public class ManFrame extends JFrame {
+public final class ManFrame extends JFrame {
 
     private static final long serialVersionUID = 1L;
 

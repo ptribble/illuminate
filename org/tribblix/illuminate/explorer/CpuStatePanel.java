@@ -62,7 +62,7 @@ import uk.co.petertribble.jingle.SpringUtilities;
  *
  * @author Peter Tribble
  */
-public class CpuStatePanel extends JPanel implements ActionListener {
+public final class CpuStatePanel extends JPanel implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

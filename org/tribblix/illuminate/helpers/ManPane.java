@@ -44,7 +44,7 @@ import java.util.Locale;
  *
  * @author Peter C. Tribble (peter.tribble@gmail.com)
  */
-public class ManPane extends JEditorPane
+public final class ManPane extends JEditorPane
 		implements ActionListener, HyperlinkListener {
 
     private static final long serialVersionUID = 1L;

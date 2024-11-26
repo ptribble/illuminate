@@ -48,7 +48,7 @@ import org.jfree.chart.ChartPanel;
  * @author Peter Tribble
  * @version 1.0
  */
-public class CpuInfoPanel extends InfoPanel {
+public final class CpuInfoPanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 

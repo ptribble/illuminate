@@ -42,7 +42,7 @@ import org.tribblix.illuminate.IlluminateResources;
  * @author Peter Tribble
  * @version 1.0
  */
-public class JFSstat extends JKdemo implements ActionListener {
+public final class JFSstat extends JKdemo implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

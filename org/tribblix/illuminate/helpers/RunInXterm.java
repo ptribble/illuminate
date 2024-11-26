@@ -30,7 +30,7 @@ import java.io.IOException;
  * @author Peter Tribble
  * @version 1.1
  */
-public class RunInXterm {
+public final class RunInXterm {
 
     private static String xtermbin;
     /*

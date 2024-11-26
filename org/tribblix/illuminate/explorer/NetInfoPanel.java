@@ -40,7 +40,7 @@ import org.jfree.chart.ChartPanel;
  * @version 1.0
  *
  */
-public class NetInfoPanel extends InfoPanel {
+public final class NetInfoPanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 

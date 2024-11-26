@@ -33,7 +33,7 @@ import uk.co.petertribble.jproc.api.JProcessFilter;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ProcessInfoPanel extends InfoPanel {
+public final class ProcessInfoPanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 

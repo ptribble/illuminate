@@ -31,7 +31,7 @@ import javax.swing.table.AbstractTableModel;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ZfsTableModel extends AbstractTableModel {
+public final class ZfsTableModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 1L;
 

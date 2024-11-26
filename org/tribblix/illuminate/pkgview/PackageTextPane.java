@@ -35,7 +35,8 @@ import org.tribblix.illuminate.helpers.RunBrowser;
  *
  * @author Peter C. Tribble (peter.tribble@gmail.com)
  */
-public class PackageTextPane extends JEditorPane implements HyperlinkListener {
+public final class PackageTextPane extends JEditorPane
+        implements HyperlinkListener {
 
     private static final long serialVersionUID = 1L;
 

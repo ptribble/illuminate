@@ -46,7 +46,7 @@ import org.jfree.data.general.DefaultPieDataset;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ArcStatPanel extends JPanel implements ActionListener {
+public final class ArcStatPanel extends JPanel implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

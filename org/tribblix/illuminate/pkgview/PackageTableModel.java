@@ -32,7 +32,7 @@ import javax.swing.table.AbstractTableModel;
  * @author Peter Tribble
  * @version 2.0
  */
-public class PackageTableModel extends AbstractTableModel {
+public final class PackageTableModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 1L;
 

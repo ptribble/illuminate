@@ -37,7 +37,7 @@ import java.io.File;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ContentsFileTree extends JTree {
+public final class ContentsFileTree extends JTree {
 
     private static final long serialVersionUID = 1L;
 

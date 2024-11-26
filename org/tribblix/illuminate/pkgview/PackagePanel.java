@@ -40,7 +40,7 @@ import uk.co.petertribble.jingle.TableSorter;
  * @author Peter Tribble
  * @version 2.0
  */
-public class PackagePanel extends JPanel {
+public final class PackagePanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 

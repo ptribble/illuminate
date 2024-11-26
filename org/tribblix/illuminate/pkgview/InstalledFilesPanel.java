@@ -40,7 +40,7 @@ import java.io.File;
  * @author Peter Tribble
  * @version 2.0
  */
-public class InstalledFilesPanel extends JPanel {
+public final class InstalledFilesPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 

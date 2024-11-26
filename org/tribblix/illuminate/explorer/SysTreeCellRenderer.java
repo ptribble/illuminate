@@ -36,7 +36,7 @@ import java.net.URL;
  * @version 1.0
  *
  */
-public class SysTreeCellRenderer extends DefaultTreeCellRenderer {
+public final class SysTreeCellRenderer extends DefaultTreeCellRenderer {
 
     private static final long serialVersionUID = 1L;
 

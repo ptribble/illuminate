@@ -43,7 +43,7 @@ import java.util.ArrayList;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SummaryPanel extends InfoPanel {
+public final class SummaryPanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 

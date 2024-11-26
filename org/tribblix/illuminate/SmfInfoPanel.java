@@ -49,7 +49,7 @@ import uk.co.petertribble.jumble.JumbleFile;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfInfoPanel extends JPanel implements ActionListener {
+public final class SmfInfoPanel extends JPanel implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

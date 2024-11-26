@@ -37,7 +37,7 @@ import java.io.File;
  * @author Peter Tribble
  * @version 1.0
  */
-public class IllumosToolsMenu extends JMenu implements ActionListener {
+public final class IllumosToolsMenu extends JMenu implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

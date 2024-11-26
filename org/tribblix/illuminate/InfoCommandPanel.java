@@ -47,7 +47,7 @@ import uk.co.petertribble.jingle.JingleTextPane;
  * can be shown on the left and a panel showing the informational output on
  * the right.
  */
-public class InfoCommandPanel extends JPanel implements ActionListener {
+public final class InfoCommandPanel extends JPanel implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

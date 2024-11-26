@@ -32,7 +32,7 @@ import java.util.HashSet;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfTreeNode extends DefaultMutableTreeNode {
+public final class SmfTreeNode extends DefaultMutableTreeNode {
 
     private static final long serialVersionUID = 1L;
 

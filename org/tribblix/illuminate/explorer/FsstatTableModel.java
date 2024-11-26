@@ -43,7 +43,7 @@ import uk.co.petertribble.jkstat.api.KstatSet;
  * @author Peter Tribble
  * @version 1.0
  */
-public class FsstatTableModel extends AbstractTableModel
+public final class FsstatTableModel extends AbstractTableModel
 		implements ActionListener {
 
     private static final long serialVersionUID = 1L;

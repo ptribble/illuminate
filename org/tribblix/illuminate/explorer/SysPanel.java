@@ -39,7 +39,7 @@ import org.tribblix.illuminate.InfoCommand;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SysPanel extends JPanel {
+public final class SysPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 

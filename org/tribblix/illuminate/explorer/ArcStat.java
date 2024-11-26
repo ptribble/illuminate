@@ -31,7 +31,7 @@ import uk.co.petertribble.jkstat.demo.JKdemo;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ArcStat extends JKdemo {
+public final class ArcStat extends JKdemo {
 
     private static final long serialVersionUID = 1L;
 

@@ -44,7 +44,7 @@ import java.awt.event.MouseListener;
  * information can be shown on the left and a panel showing the information
  * about those services on the right.
  */
-public class SmfPanel extends JPanel {
+public final class SmfPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 

@@ -33,7 +33,7 @@ import java.io.IOException;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ContentsFileTreeNode extends DefaultMutableTreeNode {
+public final class ContentsFileTreeNode extends DefaultMutableTreeNode {
 
     private static final long serialVersionUID = 1L;
 

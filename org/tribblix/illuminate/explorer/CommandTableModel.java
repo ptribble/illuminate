@@ -30,7 +30,7 @@ import javax.swing.table.AbstractTableModel;
  * @author Peter Tribble
  * @version 1.0
  */
-public class CommandTableModel extends AbstractTableModel {
+public final class CommandTableModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 1L;
 

@@ -22,7 +22,7 @@ import uk.co.petertribble.jingle.JingleInfoFrame;
  * @author Peter Tribble
  * @version 1.0
  */
-public class MultiView extends JFrame implements ActionListener {
+public final class MultiView extends JFrame implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

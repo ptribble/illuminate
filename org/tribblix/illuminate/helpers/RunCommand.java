@@ -32,7 +32,7 @@ import java.io.IOException;
  * @author Peter Tribble
  * @version 1.0
  */
-public class RunCommand {
+public final class RunCommand {
 
     private StringBuilder stdout; //NOPMD
     private StringBuilder stderr; //NOPMD

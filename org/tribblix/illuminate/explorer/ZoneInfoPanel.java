@@ -49,7 +49,7 @@ import uk.co.petertribble.jkstat.gui.KstatTable;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ZoneInfoPanel extends InfoPanel implements ActionListener {
+public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 

@@ -29,7 +29,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SysTreeNode extends DefaultMutableTreeNode
+public final class SysTreeNode extends DefaultMutableTreeNode
     implements Comparable<SysTreeNode> {
 
     private static final long serialVersionUID = 1L;

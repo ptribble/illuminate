@@ -33,7 +33,7 @@ import org.tribblix.illuminate.InfoCommand;
  * @author Peter Tribble
  * @version 1.0
  */
-public class FsInfoPanel extends InfoPanel {
+public final class FsInfoPanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 
