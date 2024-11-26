@@ -38,6 +38,7 @@ import uk.co.petertribble.jkstat.demo.ProcessorChip;
 import uk.co.petertribble.jkstat.demo.ProcessorCore;
 import uk.co.petertribble.jkstat.demo.ProcessorTree;
 import org.tribblix.illuminate.IlluminateResources;
+import org.tribblix.illuminate.InfoCommand;
 
 /**
  * SysTree - shows a hierarchical hardware view.
@@ -214,16 +215,52 @@ public class SysTree extends JTree {
 				IlluminateResources.getString("HARD.NETWORK"));
 	root.add(htn);
 
-	// enumerate networks
+	// first map any vnics to the link they're over
+	Map<String, String> vnicMap = new HashMap<>();
+	InfoCommand ic = new InfoCommand("VN", "/usr/sbin/dladm",
+					 "show-vnic -p -o link,over");
+	if (ic.exists()) {
+	    for (String line : ic.getOutputLines()) {
+		String[] ds = line.split(":");
+		vnicMap.put(ds[0], ds[1]);
+	    }
+	}
+
+	// store nodes for physical links so we can attach vnics later
+	Map<String, SysTreeNode> linkNodeMap = new HashMap<>();
+
+	// enumerate networks, add physical links
+	// skip vnics in this pass
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.setFilterClass("net");
 	ksf.addFilter(":::rbytes64");
 	ksf.addNegativeFilter("::mac");
 	for (Kstat ks : ksf.getKstats(true)) {
-	    SysItem hi = new SysItem(SysItem.NET_INTERFACE);
-	    hi.setKstat(ks);
-	    htn.add(new SysTreeNode(hi, ks.getName()));
-	    netMap.put(ks.getName(), ks);
+	    String ifname = ks.getName();
+	    netMap.put(ifname, ks);
+	    if (!vnicMap.containsKey(ifname)) {
+		SysItem hi = new SysItem(SysItem.NET_INTERFACE);
+		hi.setKstat(ks);
+		SysTreeNode linkNode = new SysTreeNode(hi, ifname);
+		htn.add(linkNode);
+		linkNodeMap.put(ifname, linkNode);
+	    }
+	}
+
+	// go through the list again, assigning vnics
+	// to the links they're running over
+	for (Kstat ks : ksf.getKstats(true)) {
+	    String ifname = ks.getName();
+	    if (vnicMap.containsKey(ifname)) {
+		SysItem hi = new SysItem(SysItem.NET_INTERFACE);
+		String overName = vnicMap.get(ifname);
+		hi.setKstat(ks);
+		hi.addAttribute("over", overName);
+		SysTreeNode overNode = linkNodeMap.get(overName);
+		if (overNode != null) {
+		    overNode.add(new SysTreeNode(hi, ifname));
+		}
+	    }
 	}
 
 	// add network protocols

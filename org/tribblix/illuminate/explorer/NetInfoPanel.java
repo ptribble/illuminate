@@ -195,10 +195,18 @@ public final class NetInfoPanel extends InfoPanel {
 
     /*
      * A network interface
+     *
+     * If the "over" property is set, then we have a vnic over that link
      */
     private void displayInterface(Kstat ks) {
 	if (ks != null) {
-	    addLabel("Details of Network Interface " + ks.getName());
+	    String overName = (String) hi.getAttribute("over");
+	    if (overName == null) {
+		addLabel("Details of Network Interface " + ks.getName());
+	    } else {
+		addLabel("Details of VNIC " + ks.getName() + " over "
+			 + overName);
+	    }
 	    addAccessory(ks);
 	}
     }
