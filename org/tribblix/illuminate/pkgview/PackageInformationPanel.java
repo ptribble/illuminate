@@ -42,13 +42,13 @@ public class PackageInformationPanel extends JTabbedPane {
 
     private transient PackageHandler pkghdl;
 
-    private PackageTextPane tp_info;
-    private PackageTextPane tp_dep;
-    private PackageTextPane tp_rdep;
-    private PackageTextPane tp_ovl;
-    private JScrollPane jp_ovl;
-    private JingleTextPane tp_filehead;
-    private JingleTextPane tp_filelist;
+    private PackageTextPane infoPane;
+    private PackageTextPane dependPane;
+    private PackageTextPane revdepPane;
+    private PackageTextPane overlayPane;
+    private JScrollPane overlayScrollPane;
+    private JingleTextPane filehPane;
+    private JingleTextPane flistPane;
     private boolean showfiles;
     private transient OverlayList ovlist;
     private transient ContentsParser cp;
@@ -75,20 +75,20 @@ public class PackageInformationPanel extends JTabbedPane {
 	ovlist = pkghdl.getOverlayList();
 	zc = pkghdl.getZapConfig();
 
-	tp_info = new PackageTextPane();
-	tp_dep = new PackageTextPane();
-	tp_rdep = new PackageTextPane();
-	tp_ovl = new PackageTextPane();
-	tp_filehead = new JingleTextPane();
-	tp_filelist = new JingleTextPane("text/plain");
-	add(PkgResources.getString("PKG.INFO"), new JScrollPane(tp_info));
+	infoPane = new PackageTextPane();
+	dependPane = new PackageTextPane();
+	revdepPane = new PackageTextPane();
+	overlayPane = new PackageTextPane();
+	filehPane = new JingleTextPane();
+	flistPane = new JingleTextPane("text/plain");
+	add(PkgResources.getString("PKG.INFO"), new JScrollPane(infoPane));
 	if (showdependencies) {
 	    add(PkgResources.getString("PKG.DEPENDENCIES"),
-		new JScrollPane(tp_dep));
+		new JScrollPane(dependPane));
 	}
 	if (ovlist.exists()) {
-	    jp_ovl = new JScrollPane(tp_ovl);
-	    add(PkgResources.getString("PKG.OVERLAYS"), jp_ovl);
+	    overlayScrollPane = new JScrollPane(overlayPane);
+	    add(PkgResources.getString("PKG.OVERLAYS"), overlayScrollPane);
 	}
     }
 
@@ -166,13 +166,13 @@ public class PackageInformationPanel extends JTabbedPane {
     }
 
     private void setInfoText(String si, String sd, String srd) {
-	tp_info.setText(si);
-	tp_dep.setText(sd);
-	tp_rdep.setText(srd);
+	infoPane.setText(si);
+	dependPane.setText(sd);
+	revdepPane.setText(srd);
     }
 
     private void setOverlayText(String s) {
-	tp_ovl.setText(s);
+	overlayPane.setText(s);
     }
 
     private void setFilesText(String shead, String slist) {
@@ -180,8 +180,8 @@ public class PackageInformationPanel extends JTabbedPane {
 	    showFilesTab();
 	}
 	enableFiles();
-	tp_filehead.setText(shead);
-	tp_filelist.setText(slist);
+	filehPane.setText(shead);
+	flistPane.setText(slist);
     }
 
     /**
@@ -191,7 +191,7 @@ public class PackageInformationPanel extends JTabbedPane {
      */
     public void showRevDependencies(SVR4Package pkg) {
 	add(PkgResources.getString("PKG.DEPENDANTS"),
-	    new JScrollPane(tp_rdep));
+	    new JScrollPane(revdepPane));
 	if (pkg != null) {
 	    showPkg(pkg);
 	}
@@ -202,8 +202,8 @@ public class PackageInformationPanel extends JTabbedPane {
      */
     private void showFilesTab() {
 	JPanel jfp = new JPanel(new BorderLayout());
-	jfp.add(tp_filehead, BorderLayout.PAGE_START);
-	jfp.add(tp_filelist, BorderLayout.CENTER);
+	jfp.add(filehPane, BorderLayout.PAGE_START);
+	jfp.add(flistPane, BorderLayout.CENTER);
 	add(PkgResources.getString("PKG.CONTENTS"), new JScrollPane(jfp));
 	showfiles = true;
     }
@@ -236,7 +236,7 @@ public class PackageInformationPanel extends JTabbedPane {
      * displays overlays, if displaying an overlay, then the tab shows packages
      */
     private void setOvlTab(String s) {
-	int i = indexOfComponent(jp_ovl);
+	int i = indexOfComponent(overlayScrollPane);
 	if (i >= 0) {
 	    setTitleAt(i, s);
 	}

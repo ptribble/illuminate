@@ -87,33 +87,33 @@ public final class FsstatTableModel extends AbstractTableModel
     static {
 	// standard choices for columns
 	// read/write
-	String title_1 = "I/O operations";
-	String[] names_1 = {"nread", "nwrite", "nreaddir",
+	String title1 = "I/O operations";
+	String[] names1 = {"nread", "nwrite", "nreaddir",
 		"read_bytes", "write_bytes", "readdir_bytes"};
 	// create/remove
-	String title_2 = "Create/Remove";
-	String[] names_2 = {"ncreate", "nremove", "nmkdir",
+	String title2 = "Create/Remove";
+	String[] names2 = {"ncreate", "nremove", "nmkdir",
 		"nrmdir", "nlink", "nsymlink"};
 	// file status
-	String title_3 = "File access";
-	String[] names_3 = {"nlookup", "naccess", "npathconf",
+	String title3 = "File access";
+	String[] names3 = {"nlookup", "naccess", "npathconf",
 		"nreadlink"};
 	// attributes - this is exactly fsstat -a
-	String title_4 = "Attributes";
-	String[] names_4 = {"ngetattr", "nsetattr",
+	String title4 = "Attributes";
+	String[] names4 = {"ngetattr", "nsetattr",
 		 "ngetsecattr", "nsetsecattr"};
 	// map - this is exactly fsstat -v
-	String title_5 = "fsstat -v";
-	String[] names_5 = {"nmap", "naddmap", "ndelmap",
+	String title5 = "fsstat -v";
+	String[] names5 = {"nmap", "naddmap", "ndelmap",
 		"ngetpage", "nputpage", "npageio"};
 	COLUMN_MAP = new HashMap<>();
-	COLUMN_MAP.put(title_1, names_1);
-	COLUMN_MAP.put(title_2, names_2);
-	COLUMN_MAP.put(title_3, names_3);
-	COLUMN_MAP.put(title_4, names_4);
-	COLUMN_MAP.put(title_5, names_5);
-	deftitle = title_1;
-	defnames = names_1;
+	COLUMN_MAP.put(title1, names1);
+	COLUMN_MAP.put(title2, names2);
+	COLUMN_MAP.put(title3, names3);
+	COLUMN_MAP.put(title4, names4);
+	COLUMN_MAP.put(title5, names5);
+	deftitle = title1;
+	defnames = names1;
     }
 
     /**
