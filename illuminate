@@ -108,7 +108,7 @@ man)
 		exec $JAVA -cp "${SVJAR}" org.tribblix.illuminate.helpers.ManViewer "${NMAN}"
 	    else
 		echo "Usage: $0 man manpage.section"
-		exit 1
+		exit 2
 	    fi
 	    ;;
     esac
@@ -163,3 +163,4 @@ cpustate [ chart | vertical ] - show the enhanced jcpustate demo
 fsstat - show the jfsstat demo
 arcstat - display zfs arc statistics
 EOF
+exit 2
