@@ -1,3 +1,5 @@
+Update jfreechart 1.5.5
+
 Refactor 2 copies of browser launching into a RunBrowser class
 
 Add Network routing information

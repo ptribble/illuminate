@@ -41,7 +41,7 @@ case $# in
 esac
 
 SVJAR=${JARLIBDIR}/illuminate.jar
-JFJAR=${JARLIBDIR}/jfreechart-1.5.4.jar
+JFJAR=${JARLIBDIR}/jfreechart-1.5.5.jar
 JINGLEJAR=${JARLIBDIR}/jingle.jar
 JUMBLEJAR=${JARLIBDIR}/jumble.jar
 JKJAR=${JARLIBDIR}/jkstat.jar
