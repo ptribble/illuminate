@@ -95,7 +95,7 @@ public final class CommandTableModel extends AbstractTableModel {
 	    String[] items = rows[i].trim().split("\\s+", colmax);
 	    // and if not the right length?
 	    if (items.length == columnNames.length) {
-		data[i-1] = items;
+		data[i - 1] = items;
 	    }
 	}
     }

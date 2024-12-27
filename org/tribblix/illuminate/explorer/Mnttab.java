@@ -143,7 +143,7 @@ public class Mnttab {
 	    if (si.startsWith(sopt)) {
 		int i = si.indexOf('=');
 		if (i > 0) {
-		    sval = si.substring(i+1);
+		    sval = si.substring(i + 1);
 		}
 	    }
 	}

@@ -87,7 +87,7 @@ public final class PkgUtils {
 	    if (!"".equals(v)) {
 		String s = entry.getKey();
 		if ("ZAP_URL".equals(s)) {
-		    addRow(sb, s, "<a href=\"" + v + "\">" + v +"</a>");
+		    addRow(sb, s, "<a href=\"" + v + "\">" + v + "</a>");
 		} else {
 		    addRow(sb, s, v);
 		}
@@ -103,7 +103,7 @@ public final class PkgUtils {
 		    addRow(sb, "Update status", "(Package not in catalog)");
 		} else {
 		    addRow(sb, "Update status",
-			"New version "+ cver +" available");
+			"New version " + cver + " available");
 		}
 	    }
 	}

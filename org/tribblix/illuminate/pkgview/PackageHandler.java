@@ -173,7 +173,7 @@ public class PackageHandler {
 	    for (File f : ovldirf.listFiles()) {
 		if (f.getName().endsWith(".ovl")) {
 		    String fname = f.getName();
-		    String rootname = fname.substring(0, fname.length()-4);
+		    String rootname = fname.substring(0, fname.length() - 4);
 		    File f2 = new File(ovldirf, rootname + ".pkgs");
 		    if (f2.exists()) {
 			onamelist.add(rootname);
@@ -196,12 +196,12 @@ public class PackageHandler {
     }
 
     protected String[] getPkgDepend(String name) {
-	return JumbleFile.getLines(new File(pkgdirf, name+"/install/depend"));
+	return JumbleFile.getLines(new File(pkgdirf, name + "/install/depend"));
     }
 
     protected String getPkgInfo(String name) {
 	return JumbleFile.getStringContents(
-		new File(pkgdirf, name+"/pkginfo"));
+		new File(pkgdirf, name + "/pkginfo"));
     }
 
     protected boolean isOvlInstalled(String name) {
@@ -210,11 +210,11 @@ public class PackageHandler {
     }
 
     protected String[] getOvlPkgs(String name) {
-	return JumbleFile.getLines(new File(ovldirf, name+".pkgs"));
+	return JumbleFile.getLines(new File(ovldirf, name + ".pkgs"));
     }
 
     protected String[] getOvlOvl(String name) {
-	return JumbleFile.getLines(new File(ovldirf, name+".ovl"));
+	return JumbleFile.getLines(new File(ovldirf, name + ".ovl"));
     }
 
     protected String[] getRepository(String repo) {

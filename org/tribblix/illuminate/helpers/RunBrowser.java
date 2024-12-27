@@ -67,7 +67,7 @@ public final class RunBrowser {
 		    String[] fullcmd = {browserbin, url.toString()};
 		    Runtime.getRuntime().exec(fullcmd);
 		}
-	    } catch (IOException ioe) {}
+	    } catch (IOException ioe) { }
 	}
     }
 }

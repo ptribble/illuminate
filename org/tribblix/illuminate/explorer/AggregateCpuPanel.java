@@ -127,8 +127,8 @@ public final class AggregateCpuPanel extends KstatAccessoryPanel {
 	double w = d.width;
 	double x = 0.0d;
 	double dscale = ((orientation == SwingConstants.VERTICAL) ? h : w)
-	    /(duser + dsys + dwait + didle);
-	double dx = dscale*didle;
+	    / (duser + dsys + dwait + didle);
+	double dx = dscale * didle;
 	g2.setPaint(Color.BLUE);
 	if (orientation == SwingConstants.VERTICAL) {
 	    g2.fill(new Rectangle2D.Double(0.0d, x, w, dx));
@@ -136,7 +136,7 @@ public final class AggregateCpuPanel extends KstatAccessoryPanel {
 	    g2.fill(new Rectangle2D.Double(x, 0.0d, dx, h));
 	}
 	x += dx;
-	dx = dscale*dwait;
+	dx = dscale * dwait;
 	g2.setPaint(Color.RED);
 	if (orientation == SwingConstants.VERTICAL) {
 	    g2.fill(new Rectangle2D.Double(0.0d, x, w, dx));
@@ -144,7 +144,7 @@ public final class AggregateCpuPanel extends KstatAccessoryPanel {
 	    g2.fill(new Rectangle2D.Double(x, 0.0d, dx, h));
 	}
 	x += dx;
-	dx = dscale*duser;
+	dx = dscale * duser;
 	g2.setPaint(Color.GREEN);
 	if (orientation == SwingConstants.VERTICAL) {
 	    g2.fill(new Rectangle2D.Double(0.0d, x, w, dx));
@@ -152,7 +152,7 @@ public final class AggregateCpuPanel extends KstatAccessoryPanel {
 	    g2.fill(new Rectangle2D.Double(x, 0.0d, dx, h));
 	}
 	x += dx;
-	dx = dscale*dsys;
+	dx = dscale * dsys;
 	g2.setPaint(Color.YELLOW);
 	if (orientation == SwingConstants.VERTICAL) {
 	    g2.fill(new Rectangle2D.Double(0.0d, x, w, dx));

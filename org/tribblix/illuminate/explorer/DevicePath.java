@@ -81,7 +81,7 @@ public final class DevicePath {
 	for (String s1: JumbleFile.getLines(new File("/etc/path_to_inst"))) {
 	    String[] ds = s1.split("\"");
 	    if (ds.length > 3) {
-		pMap.put(ds[1], ds[3]+ds[2].trim());
+		pMap.put(ds[1], ds[3] + ds[2].trim());
 	    }
 	}
     }
@@ -99,7 +99,7 @@ public final class DevicePath {
 		    if (pMap.containsKey(p)) {
 			String dev = f.getName();
 			// the substring here is the slice or partition
-			String kname = pMap.get(p) + "," + s.substring(i+1);
+			String kname = pMap.get(p) + "," + s.substring(i + 1);
 			if (kMap.containsKey(kname)) {
 			    addAlternate(dev, kMap.get(kname));
 			}
@@ -117,7 +117,7 @@ public final class DevicePath {
 			}
 		    }
 		}
-	    } catch (IOException ioe) {}
+	    } catch (IOException ioe) { }
 	}
     }
 

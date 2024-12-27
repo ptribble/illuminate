@@ -78,7 +78,7 @@ public class SmfTree extends JTree {
 	    treeMap.put(sb.toString(), stn);
 	    root.add(stn);
 	}
-	for (int i = 1; i < parts.length-1; i++) {
+	for (int i = 1; i < parts.length - 1; i++) {
 	    sb.append('/').append(parts[i]);
 	    SmfTreeNode stn2 = treeMap.get(sb.toString());
 	    if (stn2 == null) {
@@ -89,6 +89,6 @@ public class SmfTree extends JTree {
 	    stn = stn2;
 	}
 	// the last is special too
-	stn.add(new SmfTreeNode(svc, parts[parts.length-1]));
+	stn.add(new SmfTreeNode(svc, parts[parts.length - 1]));
     }
 }

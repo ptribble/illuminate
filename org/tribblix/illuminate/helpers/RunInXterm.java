@@ -66,6 +66,6 @@ public final class RunInXterm {
 	try {
 	    String[] fullcmd = {xtermbin, "-e", cmd};
 	    Runtime.getRuntime().exec(fullcmd);
-	} catch (IOException ioe) {}
+	} catch (IOException ioe) { }
     }
 }

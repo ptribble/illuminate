@@ -166,18 +166,18 @@ public final class NetInfoPanel extends InfoPanel {
      * dladm
      */
     private void displayDladm(String dltype) {
-	addLabel("Output from dladm show-"+dltype);
+	addLabel("Output from dladm show-" + dltype);
 
-	addText(new InfoCommand("IF", "/usr/sbin/dladm", "show-"+dltype));
+	addText(new InfoCommand("IF", "/usr/sbin/dladm", "show-" + dltype));
     }
 
     /*
      * ipadm
      */
     private void displayIpadm(String iptype) {
-	addLabel("Output from ipadm show-"+iptype);
+	addLabel("Output from ipadm show-" + iptype);
 
-	addText(new InfoCommand("IF", "/usr/sbin/ipadm", "show-"+iptype));
+	addText(new InfoCommand("IF", "/usr/sbin/ipadm", "show-" + iptype));
     }
 
     /*

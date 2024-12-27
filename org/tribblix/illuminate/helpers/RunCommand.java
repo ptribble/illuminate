@@ -63,9 +63,9 @@ public final class RunCommand {
 		}
 		try {
 		    p.waitFor();
-		} catch (InterruptedException ie) {}
-	    } catch (IOException ioe1) {}
-	} catch (IOException ioe) {}
+		} catch (InterruptedException ie) { }
+	    } catch (IOException ioe1) { }
+	} catch (IOException ioe) { }
     }
 
     /**

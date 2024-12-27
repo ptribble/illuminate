@@ -135,7 +135,7 @@ public final class FsstatTableModel extends AbstractTableModel
      */
     public FsstatTableModel(JKstat jkstat, int interval, int filtermask) {
 	this.jkstat = jkstat;
-	delay = interval*1000;
+	delay = interval * 1000;
 	this.filtermask = filtermask;
 
 	/*
@@ -240,7 +240,7 @@ public final class FsstatTableModel extends AbstractTableModel
 	if (interval <= 0) {
 	    stopLoop();
 	} else {
-	    delay = interval*1000;
+	    delay = interval * 1000;
 	    if (timer != null) {
 		timer.setDelay(delay);
 	    }

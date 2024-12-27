@@ -45,7 +45,7 @@ public class Zvolume extends Zdataset {
 	this.name = name;
 	int j = name.lastIndexOf('/');
 	if (j >= 0) {
-	    shortname = name.substring(j+1);
+	    shortname = name.substring(j + 1);
 	} else {
 	    shortname = name;
 	}

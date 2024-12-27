@@ -50,7 +50,7 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
-    private static final long MB = 1024*1024;
+    private static final long MB = 1024 * 1024;
 
     private JKstat jkstat;
 
@@ -391,12 +391,12 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
     }
 
     private String mbstring(long lval) {
-	return Long.toString(lval/MB) + " MB";
+	return Long.toString(lval / MB) + " MB";
     }
 
     private int hitrate(long hits, long misses) {
-	if ((hits+misses) > 0) {
-	    return (int) (100L*hits / (hits+misses));
+	if ((hits + misses) > 0) {
+	    return (int) (100L * hits / (hits + misses));
 	} else {
 	    return 0;
 	}
@@ -427,7 +427,7 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
      * @param interval the desired update interval, in seconds
      */
     public void setDelay(int interval) {
-	delay = interval*1000;
+	delay = interval * 1000;
 	if (timer != null) {
 	    timer.setDelay(delay);
 	}

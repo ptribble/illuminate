@@ -150,7 +150,7 @@ public final class FsInfoPanel extends InfoPanel {
 	}
 	String beuuid = (beprop == null) ? "" : beprop.getValue();
 	String bename = beadm.getBE(beuuid);
-	String bedesc = (bename == null) ? "" : " (in BE "+bename+")";
+	String bedesc = (bename == null) ? "" : " (in BE " + bename + ")";
 	addLabel("ZFS properties for " + zfs.getName() + bedesc);
 	addScrollPane(new JTable(new ZfsTableModel(zfs.getProperties())));
     }

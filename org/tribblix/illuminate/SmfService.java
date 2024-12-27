@@ -264,10 +264,10 @@ public class SmfService implements Comparable<SmfService> {
 	sb.append("<h3>")
 	    .append(getName())
 	    .append("</h3><p bgcolor=\"#cccccc\">"
-		    +"<b>Services this service depends on</b></p><pre>")
+		    + "<b>Services this service depends on</b></p><pre>")
 	    .append(getDependencies())
 	    .append("</pre><p bgcolor=\"#cccccc\">"
-		    +"<b>Services that depend on this service</b></p><pre>")
+		    + "<b>Services that depend on this service</b></p><pre>")
 	    .append(getDependents())
 	    .append("</pre>");
 	return sb.toString();

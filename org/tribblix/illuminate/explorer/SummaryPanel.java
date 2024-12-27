@@ -156,12 +156,12 @@ public final class SummaryPanel extends InfoPanel {
 	    npanel.add(new JLabel("In: "));
 	    SparkRateAccessory kap =
 		new SparkRateAccessory(ks, -1, jkstat, "rbytes64");
-	    kap.enableTips("Current kb/s in:", 1.0/1024.0);
+	    kap.enableTips("Current kb/s in:", 1.0 / 1024.0);
 	    npanel.add(kap);
 	    kaplist.add(kap);
 	    npanel.add(new JLabel("  Out: "));
 	    kap = new SparkRateAccessory(ks, -1, jkstat, "obytes64");
-	    kap.enableTips("Current kb/s out:", 1.0/1024.0);
+	    kap.enableTips("Current kb/s out:", 1.0 / 1024.0);
 	    npanel.add(kap);
 	    kaplist.add(kap);
 	    npanel.setBorder(BorderFactory.createTitledBorder(
@@ -181,12 +181,12 @@ public final class SummaryPanel extends InfoPanel {
 	lpanel.add(new JLabel("1min: "));
 	SparkValueAccessory kap =
 		new SparkValueAccessory(ks, -1, jkstat, "avenrun_1min");
-	kap.enableTips("Current load:", 1.0/256.0);
+	kap.enableTips("Current load:", 1.0 / 256.0);
 	lpanel.add(kap);
 	kaplist.add(kap);
 	lpanel.add(new JLabel("  15min: "));
 	kap = new SparkValueAccessory(ks, -1, jkstat, "avenrun_15min");
-	kap.enableTips("Current load:", 1.0/256.0);
+	kap.enableTips("Current load:", 1.0 / 256.0);
 	lpanel.add(kap);
 	kaplist.add(kap);
 	lpanel.setBorder(BorderFactory.createTitledBorder("Load Average"));

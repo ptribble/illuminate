@@ -213,7 +213,7 @@ public class PkgCheck {
 	if (f.exists()) {
 	    if (cfd.isRegular()) {
 		if (f.isFile()) {
-		    long fmodtime = f.lastModified()/1000;
+		    long fmodtime = f.lastModified() / 1000;
 		    long pmodtime = cfd.lastModified();
 		    if (f.length() != cfd.getSize()) {
 			if (cfd.isEditable()) {

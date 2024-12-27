@@ -91,7 +91,7 @@ public final class ContentsParser {
 		    }
 		}
 	    }
-	} catch (IOException ioe) {}
+	} catch (IOException ioe) { }
     }
 
     /**

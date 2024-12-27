@@ -134,9 +134,9 @@ public final class ManPane extends JEditorPane
     private void goBack() {
 	int s = historyList.size();
 	if (s > 1) {
-	    historyList.remove(s-1);
-	    File f = historyList.get(s-2);
-	    historyList.remove(s-2);
+	    historyList.remove(s - 1);
+	    File f = historyList.get(s - 2);
+	    historyList.remove(s - 2);
 	    showMan(f);
 	}
     }
@@ -164,7 +164,7 @@ public final class ManPane extends JEditorPane
 	 * Cross references invariably use the uppercase form of the section
 	 * ie 1M rather than 1m, so lowercase it
 	 */
-	String ext = m.substring(i+1).toLowerCase(Locale.ENGLISH);
+	String ext = m.substring(i + 1).toLowerCase(Locale.ENGLISH);
 	String name = m.substring(0, i);
 	for (String dir : MANPATH) {
 	    File f = new File(dir + "/man" + ext + "/" + name + "." + ext);

@@ -114,7 +114,8 @@ public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
 	jtb.setFloatable(false);
 	jtb.setRollover(true);
 	jtb.setLayout(new BorderLayout());
-	jtb.add(new JLabel("Details of "+ze.getState()+" zone "+ze.getName()),
+	jtb.add(new JLabel(
+		"Details of " + ze.getState() + " zone " + ze.getName()),
 		BorderLayout.LINE_START);
 	jtb.addSeparator();
 	jmb = new JButton("About " + ze.getBrand() + " zones");
@@ -171,12 +172,12 @@ public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
 		npanel.add(new JLabel("In: "));
 		SparkRateAccessory kap =
 		    new SparkRateAccessory(ks, -1, jkstat, "rbytes64");
-		kap.enableTips("Current kb/s in:", 1.0/1024.0);
+		kap.enableTips("Current kb/s in:", 1.0 / 1024.0);
 		npanel.add(kap);
 		kaplist.add(kap);
 		npanel.add(new JLabel("  Out: "));
 		kap = new SparkRateAccessory(ks, -1, jkstat, "obytes64");
-		kap.enableTips("Current kb/s out:", 1.0/1024.0);
+		kap.enableTips("Current kb/s out:", 1.0 / 1024.0);
 		npanel.add(kap);
 		kaplist.add(kap);
 		opanel.add(npanel);

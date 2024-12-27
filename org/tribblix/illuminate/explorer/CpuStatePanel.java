@@ -246,7 +246,7 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
 	    if (lfont == null) {
 		Font f = jl.getFont();
 		lfont = new Font(f.getName(), f.getStyle(),
-				f.getSize()+fontScale);
+				f.getSize() + fontScale);
 	    }
 	    jl.setFont(lfont);
 	    ppanl.add(jl);
@@ -310,18 +310,18 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     public void actionPerformed(ActionEvent e) {
 	for (int i = 0; i < ncpus; i++) {
 	    if (e.getSource() == aboutCpuItem[i]) {
-		new KstatTableFrame("cpu_info", cpuID[i], "cpu_info"+cpuID[i],
+		new KstatTableFrame("cpu_info", cpuID[i], "cpu_info" + cpuID[i],
 				    -1, jkstat);
 	    }
 	    if (e.getSource() == extendedCpuItem[i]) {
-		new KstatTableFrame("cpu_stat", cpuID[i], "cpu_stat"+cpuID[i],
+		new KstatTableFrame("cpu_stat", cpuID[i], "cpu_stat" + cpuID[i],
 				    1, jkstat);
 	    }
 	    if (e.getSource() == chartCpuItem[i]) {
 		List<String> stats = Arrays.asList("user", "kernel", "idle");
 		new KstatAreaChartFrame(jkstat,
 			new Kstat("cpu_stat", Integer.parseInt(cpuID[i]),
-				"cpu_stat"+cpuID[i]),
+				"cpu_stat" + cpuID[i]),
 			stats, true);
 	    }
 	}
