@@ -23,7 +23,9 @@
 package org.tribblix.illuminate;
 
 import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.MutableTreeNode;
 import java.util.Enumeration;
+import java.util.Collections;
 import java.util.Set;
 import java.util.HashSet;
 
@@ -32,7 +34,8 @@ import java.util.HashSet;
  * @author Peter Tribble
  * @version 1.0
  */
-public final class SmfTreeNode extends DefaultMutableTreeNode {
+public final class SmfTreeNode extends DefaultMutableTreeNode
+    implements Comparable<SmfTreeNode> {
 
     private static final long serialVersionUID = 1L;
 
@@ -64,6 +67,13 @@ public final class SmfTreeNode extends DefaultMutableTreeNode {
      */
     public SmfTreeNode(String node) {
 	this.node = node;
+    }
+
+    @Override
+    @SuppressWarnings("unchecked")
+    public void add(MutableTreeNode newChild) {
+	super.add(newChild);
+	Collections.sort(this.children);
     }
 
     @Override
@@ -109,5 +119,18 @@ public final class SmfTreeNode extends DefaultMutableTreeNode {
 	    return statusses.stream().findFirst().get();
 	}
 	return null;
+    }
+
+    /**
+     * For Comparable.
+     *
+     * @param othernode the SmfTreeNode to compare with this SmfTreeNode
+     *
+     * @return whether the name of the given SmfTreeNode is greater than
+     * or less than the name of this SmfTreeNode
+     */
+    @Override
+    public int compareTo(SmfTreeNode othernode) {
+	return node.compareTo(othernode.toString());
     }
 }
