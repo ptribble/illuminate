@@ -61,6 +61,9 @@ public class InfoCommandList extends Vector<InfoCommand> {
 	ic = new InfoCommand(IlluminateResources.getString("INFO.DF"),
 		"/usr/sbin/df", "-kl");
 	addCommand(ic, "df.8");
+	ic = new InfoCommand(IlluminateResources.getString("INFO.DLLED"),
+		"/usr/lib/dl/dlled");
+	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.IOSTAT"),
 		"/usr/bin/iostat", "-En");
 	addCommand(ic, "iostat.8");
