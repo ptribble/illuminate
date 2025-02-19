@@ -55,6 +55,9 @@ public class InfoCommandList extends Vector<InfoCommand> {
 	ic = new InfoCommand(IlluminateResources.getString("INFO.CORE"),
 		"/usr/bin/coreadm");
 	addCommand(ic, "coreadm.8");
+	ic = new InfoCommand(IlluminateResources.getString("INFO.CPUID"),
+		"/usr/bin/cpuid");
+	addCommand(ic);
 	ic = new InfoCommand(IlluminateResources.getString("INFO.DF"),
 		"/usr/sbin/df", "-kl");
 	addCommand(ic, "df.8");
