@@ -2,6 +2,10 @@
 #
 # SPDX-License-Identifier: CDDL-1.0
 #
+# Copyright 2025 Peter Tribble
+#
+
+#
 # build illuminate
 #
 
@@ -49,13 +53,13 @@ javadoc)
 	env CLASSPATH=.:"${JKJAR}":"${JPJAR}" javadoc -Xdoclint:all -Xmaxwarns 300 -d javadoc org.tribblix.illuminate org.tribblix.illuminate.helpers org.tribblix.illuminate.explorer org.tribblix.illuminate.pkgview
 	;;
 
-clean|-clean)
+clean)
 	rm -f $(find org/tribblix -type f -name '*.class')
 	rm -f $(find . -type f -name '*~')
 	rm -fr javadoc
 	;;
 
-pmd|-pmd)
+pmd)
 	if [ ! -d "${HOME}/.pmd" ]; then
 	    mkdir -p "${HOME}/.pmd"
 	fi
