@@ -148,6 +148,12 @@ public class PackageHandler {
      * Functions below are helpers.
      */
 
+    /**
+     * Return a Set of Strings, containing the names of all the packages
+     * installed in this OS instance.
+     *
+     * @return A Set of Strings representing the installed package names
+     */
     protected Set<String> listPackageNames() {
 	Set<String> pnamelist = new TreeSet<>();
 
@@ -164,6 +170,12 @@ public class PackageHandler {
 	return pnamelist;
     }
 
+    /**
+     * Return a Set of Strings, containing the names of all the overlays
+     * installed in this OS instance.
+     *
+     * @return A Set of Strings representing the installed overlay names
+     */
     protected Set<String> listOverlayNames() {
 	Set<String> onamelist = new TreeSet<>();
 
@@ -182,6 +194,13 @@ public class PackageHandler {
 	return onamelist;
     }
 
+    /**
+     * Return a String array, containing the names of all the package
+     * repositories configured in this OS instance.
+     *
+     * @return A String array representing the names of the configured
+     * repositories
+     */
     protected String[] listRepositories() {
 	if (zapdirf.exists()) {
 	    return JumbleFile.getLines(new File(zapdirf, "repo.list"));
@@ -189,32 +208,89 @@ public class PackageHandler {
 	return new String[0];
     }
 
+    /**
+     * Returns whether the package of interest is installed.
+     *
+     * @param name the name of the package of interest
+     *
+     * @return whether the package is installed
+     */
     protected boolean isPkgInstalled(String name) {
 	return new File(pkgdirf, name).exists();
     }
 
+    /**
+     * Returns the contents of the given package's depend file, as an
+     * array of Strings.
+     *
+     * @param name the name of the package of interest
+     *
+     * @return A String array containing the lines of the named package's
+     * depend file
+     */
     protected String[] getPkgDepend(String name) {
 	return JumbleFile.getLines(new File(pkgdirf, name + "/install/depend"));
     }
 
+    /**
+     * Returns the contents of the given package's pkginfo file, as a
+     * multiline String.
+     *
+     * @param name the name of the package of interest
+     *
+     * @return A String containing the contents of the named package's
+     * pkginfo file
+     */
     protected String getPkgInfo(String name) {
 	return JumbleFile.getStringContents(
 		new File(pkgdirf, name + "/pkginfo"));
     }
 
+    /**
+     * Returns whether the overlay of interest is installed.
+     *
+     * @param name the name of the overlay of interest
+     *
+     * @return whether the overlay is installed
+     */
     protected boolean isOvlInstalled(String name) {
 	File f2 = new File(ovldirf, "installed");
 	return new File(f2, name).exists();
     }
 
+    /**
+     * Returns the name of the packages that are members of the given overlay,
+     * as an array of Strings.
+     *
+     * @param name the name of the overlay of interest
+     *
+     * @return A String array containing the names of the packages that are
+     * members of the given overlay
+     */
     protected String[] getOvlPkgs(String name) {
 	return JumbleFile.getLines(new File(ovldirf, name + ".pkgs"));
     }
 
+    /**
+     * Returns the metadata of the given overlay, as an array of Strings.
+     *
+     * @param name the name of the overlay of interest
+     *
+     * @return A String array containing the lines of the given overlay's
+     * metadata file
+     */
     protected String[] getOvlOvl(String name) {
 	return JumbleFile.getLines(new File(ovldirf, name + ".ovl"));
     }
 
+    /**
+     * Returns the metadata of the given repository, as an array of Strings.
+     *
+     * @param repo the name of the repository of interest
+     *
+     * @return A String array containing the lines of the given repository's
+     * metadata file
+     */
     protected String[] getRepository(String repo) {
 	File f = new File(altroot + ZAP_ROOT
 			+ "/repositories", repo + ".repo");
@@ -224,6 +300,15 @@ public class PackageHandler {
 	return new String[0];
     }
 
+    /**
+     * Returns the given repository's package catalog, as an
+     * array of Strings.
+     *
+     * @param repo the name of the repository of interest
+     *
+     * @return A String array containing the lines of the named repository's
+     * catalog
+     */
     protected String[] getCatalog(String repo) {
 	return JumbleFile.getLines(new File(altroot
 		+ ZAP_ROOT + "/repositories/" + repo + ".catalog"));
