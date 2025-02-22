@@ -21,12 +21,12 @@
 package org.tribblix.illuminate.pkgview;
 
 import javax.swing.JEditorPane;
-import java.awt.Insets;
 import java.awt.Desktop;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import org.tribblix.illuminate.helpers.ManFrame;
 import org.tribblix.illuminate.helpers.RunBrowser;
+import uk.co.petertribble.jingle.JingleUtils;
 
 /**
  * A Scrollable panel containing Text.
@@ -59,7 +59,7 @@ public final class PackageTextPane extends JEditorPane
     @Override
     public void setText(String s) {
 	super.setText(s);
-	setMargin(new Insets(5, 5, 5, 5));
+	setMargin(JingleUtils.defInsets());
 	setCaretPosition(0);
 	setEditable(false);
     }

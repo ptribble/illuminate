@@ -28,7 +28,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JToolBar;
 import java.awt.BorderLayout;
 import java.awt.Desktop;
-import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import javax.swing.event.HyperlinkEvent;
@@ -36,6 +35,7 @@ import javax.swing.event.HyperlinkListener;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
+import uk.co.petertribble.jingle.JingleUtils;
 
 /**
  * A Scrollable panel displaying a man page, with minimal navigation.
@@ -113,7 +113,7 @@ public final class ManPane extends JEditorPane
 	    RunCommand rc =
 		new RunCommand("/usr/bin/mandoc -T html -O man='%N.%S' " + m);
 	    jep.setText(rc.getOut());
-	    jep.setMargin(new Insets(5, 5, 5, 5));
+	    jep.setMargin(JingleUtils.defInsets());
 	    jep.setCaretPosition(0);
 	    jep.setEditable(false);
 	    historyList.add(f);
