@@ -87,14 +87,11 @@ public class Zpool {
 	if (ic.exists()) {
 	    for (String line : ic.getOutputLines()) {
 		String[] ds = line.split("\\s+");
+		// ignore any lines that aren't right, including empty lines
 		if (ds.length == 5) {
 		    Zfilesys zfs = new Zfilesys(ds[0]);
 		    zfilesys.add(zfs);
 		    zmap.put(ds[0], zfs);
-		} else {
-		    System.out.println("Unable to parse zfs filesystem output "
-				       + ds[0]);
-		    System.out.println(line);
 		}
 	    }
 	}
@@ -103,14 +100,11 @@ public class Zpool {
 	if (ic.exists()) {
 	    for (String line : ic.getOutputLines()) {
 		String[] ds = line.split("\\s+");
+		// ignore any lines that aren't right, including empty lines
 		if (ds.length == 5) {
 		    Zvolume zfs = new Zvolume(ds[0]);
 		    zvolumes.add(zfs);
 		    // FIXME zmap.put(ds[0], zfs);
-		} else {
-		    System.out.println("Unable to parse zfs volume output "
-				       + ds[0]);
-		    System.out.println(line);
 		}
 	    }
 	}
