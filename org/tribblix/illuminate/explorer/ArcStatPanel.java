@@ -53,19 +53,19 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
     private JKstat jkstat;
 
     // labels for sizes
-    private JLabel arc_size_label;
-    private JLabel target_size_label;
-    private JLabel arc_min_size_label;
-    private JLabel arc_max_size_label;
-    private JLabel mru_size_label;
-    private JLabel mfu_size_label;
+    private JLabel arcSizeLabel;
+    private JLabel targetSizeLabel;
+    private JLabel arcMinSizeLabel;
+    private JLabel arcMaxSizeLabel;
+    private JLabel mruSizeLabel;
+    private JLabel mfuSizeLabel;
 
     // bars for current hit rates
-    private JProgressBar arc_hit_bar;
-    private JProgressBar demand_hit_bar;
-    private JProgressBar pf_hit_bar;
-    private JProgressBar mdemand_hit_bar;
-    private JProgressBar mpf_hit_bar;
+    private JProgressBar arcHitBar;
+    private JProgressBar demandHitBar;
+    private JProgressBar pfHitBar;
+    private JProgressBar mdemandHitBar;
+    private JProgressBar mpfHitBar;
 
     // cache hit/miss data
     private DefaultPieDataset<String> totalCacheHitsDataset;
@@ -77,21 +77,21 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 
     // saved statistics
     // naming: pf = prefetch; md = metadata
-    private long arc_hits;
-    private long arc_misses;
-    private long mfu_hits;
-    private long mru_hits;
-    private long mfu_ghost_hits;
-    private long mru_ghost_hits;
-    private long anon_hits;
-    private long demand_data_hits;
-    private long demand_md_hits;
-    private long pf_data_hits;
-    private long pf_md_hits;
-    private long demand_data_misses;
-    private long demand_md_misses;
-    private long pf_data_misses;
-    private long pf_md_misses;
+    private long arcHits;
+    private long arcMisses;
+    private long mfuHits;
+    private long mruHits;
+    private long mfuGhostHits;
+    private long mruGhostHits;
+    private long anonHits;
+    private long demandDataHits;
+    private long demandMdHits;
+    private long pfDataHits;
+    private long pfMdHits;
+    private long demandDataMisses;
+    private long demandMdMisses;
+    private long pfDataMisses;
+    private long pfMdMisses;
 
     private Timer timer;
     private int delay = 5000;
@@ -172,26 +172,26 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 
 	// cache hit rates, in a separate panel with bars.
 
-	arc_hit_bar = new JProgressBar(0, 100);
-	arc_hit_bar.setStringPainted(true);
-	demand_hit_bar = new JProgressBar(0, 100);
-	demand_hit_bar.setStringPainted(true);
-	pf_hit_bar = new JProgressBar(0, 100);
-	pf_hit_bar.setStringPainted(true);
-	mdemand_hit_bar = new JProgressBar(0, 100);
-	mdemand_hit_bar.setStringPainted(true);
-	mpf_hit_bar = new JProgressBar(0, 100);
-	mpf_hit_bar.setStringPainted(true);
+	arcHitBar = new JProgressBar(0, 100);
+	arcHitBar.setStringPainted(true);
+	demandHitBar = new JProgressBar(0, 100);
+	demandHitBar.setStringPainted(true);
+	pfHitBar = new JProgressBar(0, 100);
+	pfHitBar.setStringPainted(true);
+	mdemandHitBar = new JProgressBar(0, 100);
+	mdemandHitBar.setStringPainted(true);
+	mpfHitBar = new JProgressBar(0, 100);
+	mpfHitBar.setStringPainted(true);
 	hitPanel.add(new JLabel("ARC hit rate"));
-	hitPanel.add(arc_hit_bar);
+	hitPanel.add(arcHitBar);
 	hitPanel.add(new JLabel("Demand data hit rate"));
-	hitPanel.add(demand_hit_bar);
+	hitPanel.add(demandHitBar);
 	hitPanel.add(new JLabel("Prefetch data hit rate"));
-	hitPanel.add(pf_hit_bar);
+	hitPanel.add(pfHitBar);
 	hitPanel.add(new JLabel("Demand metadata hit rate"));
-	hitPanel.add(mdemand_hit_bar);
+	hitPanel.add(mdemandHitBar);
 	hitPanel.add(new JLabel("Prefetch metadata hit rate"));
-	hitPanel.add(mpf_hit_bar);
+	hitPanel.add(mpfHitBar);
 	hitPanel.setBorder(BorderFactory.createTitledBorder("Cache Hit Rates"));
 
 	Dimension dchart = new Dimension(320, 240);
@@ -209,23 +209,23 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 	cp3b.setPreferredSize(dchart);
 
 	infoPanel.add(new JLabel("Current size"));
-	arc_size_label = new JLabel();
-	infoPanel.add(arc_size_label);
+	arcSizeLabel = new JLabel();
+	infoPanel.add(arcSizeLabel);
 	infoPanel.add(new JLabel("Target size"));
-	target_size_label = new JLabel();
-	infoPanel.add(target_size_label);
+	targetSizeLabel = new JLabel();
+	infoPanel.add(targetSizeLabel);
 	infoPanel.add(new JLabel("Min size"));
-	arc_min_size_label = new JLabel();
-	infoPanel.add(arc_min_size_label);
+	arcMinSizeLabel = new JLabel();
+	infoPanel.add(arcMinSizeLabel);
 	infoPanel.add(new JLabel("Max size"));
-	arc_max_size_label = new JLabel();
-	infoPanel.add(arc_max_size_label);
+	arcMaxSizeLabel = new JLabel();
+	infoPanel.add(arcMaxSizeLabel);
 	infoPanel.add(new JLabel("MRU size"));
-	mru_size_label = new JLabel();
-	infoPanel.add(mru_size_label);
+	mruSizeLabel = new JLabel();
+	infoPanel.add(mruSizeLabel);
 	infoPanel.add(new JLabel("MFU size"));
-	mfu_size_label = new JLabel();
-	infoPanel.add(mfu_size_label);
+	mfuSizeLabel = new JLabel();
+	infoPanel.add(mfuSizeLabel);
 	infoPanel.setBorder(BorderFactory.createTitledBorder("Statistics"));
 
 	cacheByListPanel.add(cp1a);
@@ -256,22 +256,22 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 	    return;
 	}
 
-	long n_arc_hits = ks.longData("hits");
-	long n_arc_misses = ks.longData("misses");
-	long n_mfu_hits = ks.longData("mfu_hits");
-	long n_mru_hits = ks.longData("mru_hits");
-	long n_mfu_ghost_hits = ks.longData("mfu_ghost_hits");
-	long n_mru_ghost_hits = ks.longData("mru_ghost_hits");
-	long n_anon_hits = n_arc_hits - (n_mfu_hits + n_mru_hits
-				    + n_mfu_ghost_hits + n_mru_ghost_hits);
-	long n_demand_data_hits = ks.longData("demand_data_hits");
-	long n_demand_md_hits = ks.longData("demand_metadata_hits");
-	long n_pf_data_hits = ks.longData("prefetch_data_hits");
-	long n_pf_md_hits = ks.longData("prefetch_metadata_hits");
-	long n_demand_data_misses = ks.longData("demand_data_misses");
-	long n_demand_md_misses = ks.longData("demand_metadata_misses");
-	long n_pf_data_misses = ks.longData("prefetch_data_misses");
-	long n_pf_md_misses = ks.longData("prefetch_metadata_misses");
+	long n_arcHits = ks.longData("hits");
+	long n_arcMisses = ks.longData("misses");
+	long n_mfuHits = ks.longData("mfuHits");
+	long n_mruHits = ks.longData("mruHits");
+	long n_mfuGhostHits = ks.longData("mfuGhostHits");
+	long n_mruGhostHits = ks.longData("mruGhostHits");
+	long n_anonHits = n_arcHits - (n_mfuHits + n_mruHits
+				    + n_mfuGhostHits + n_mruGhostHits);
+	long n_demandDataHits = ks.longData("demandDataHits");
+	long n_demandMdHits = ks.longData("demand_metadata_hits");
+	long n_pfDataHits = ks.longData("prefetch_data_hits");
+	long n_pfMdHits = ks.longData("prefetch_metadata_hits");
+	long n_demandDataMisses = ks.longData("demandDataMisses");
+	long n_demandMdMisses = ks.longData("demand_metadata_misses");
+	long n_pfDataMisses = ks.longData("prefetch_data_misses");
+	long n_pfMdMisses = ks.longData("prefetch_metadata_misses");
 	// sizes
 	long arc_size = ks.longData("size");
 	long target_size = ks.longData("c");
@@ -281,111 +281,111 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 	long mfu_size = target_size - mru_size;
 
 	// summary labels
-	arc_size_label.setText(mbstring(arc_size));
-	target_size_label.setText(mbstring(target_size));
-	arc_min_size_label.setText(mbstring(arc_min_size));
-	arc_max_size_label.setText(mbstring(arc_max_size));
-	mru_size_label.setText(mbstring(mru_size));
-	mfu_size_label.setText(mbstring(mfu_size));
+	arcSizeLabel.setText(mbstring(arc_size));
+	targetSizeLabel.setText(mbstring(target_size));
+	arcMinSizeLabel.setText(mbstring(arc_min_size));
+	arcMaxSizeLabel.setText(mbstring(arc_max_size));
+	mruSizeLabel.setText(mbstring(mru_size));
+	mfuSizeLabel.setText(mbstring(mfu_size));
 
 	// create deltas
-	long d_arc_hits = n_arc_hits - arc_hits;
-	long d_arc_misses = n_arc_misses - arc_misses;
-	long d_mfu_hits = n_mfu_hits - mfu_hits;
-	long d_mru_hits = n_mru_hits - mru_hits;
-	long d_mfu_ghost_hits = n_mfu_ghost_hits - mfu_ghost_hits;
-	long d_mru_ghost_hits = n_mru_ghost_hits - mru_ghost_hits;
-	long d_anon_hits = n_anon_hits - anon_hits;
-	long d_demand_data_hits = n_demand_data_hits - demand_data_hits;
-	long d_demand_md_hits = n_demand_md_hits - demand_md_hits;
-	long d_pf_data_hits = n_pf_data_hits - pf_data_hits;
-	long d_pf_md_hits = n_pf_md_hits - pf_md_hits;
-	long d_demand_data_misses = n_demand_data_misses - demand_data_misses;
-	long d_demand_md_misses = n_demand_md_misses - demand_md_misses;
-	long d_pf_data_misses = n_pf_data_misses - pf_data_misses;
-	long d_pf_md_misses = n_pf_md_misses - pf_md_misses;
+	long d_arcHits = n_arcHits - arcHits;
+	long d_arcMisses = n_arcMisses - arcMisses;
+	long d_mfuHits = n_mfuHits - mfuHits;
+	long d_mruHits = n_mruHits - mruHits;
+	long d_mfuGhostHits = n_mfuGhostHits - mfuGhostHits;
+	long d_mruGhostHits = n_mruGhostHits - mruGhostHits;
+	long d_anonHits = n_anonHits - anonHits;
+	long d_demandDataHits = n_demandDataHits - demandDataHits;
+	long d_demandMdHits = n_demandMdHits - demandMdHits;
+	long d_pfDataHits = n_pfDataHits - pfDataHits;
+	long d_pfMdHits = n_pfMdHits - pfMdHits;
+	long d_demandDataMisses = n_demandDataMisses - demandDataMisses;
+	long d_demandMdMisses = n_demandMdMisses - demandMdMisses;
+	long d_pfDataMisses = n_pfDataMisses - pfDataMisses;
+	long d_pfMdMisses = n_pfMdMisses - pfMdMisses;
 
 	// save values
-	arc_hits = n_arc_hits;
-	arc_misses = n_arc_misses;
-	mfu_hits = n_mfu_hits;
-	mru_hits = n_mru_hits;
-	mfu_ghost_hits = n_mfu_ghost_hits;
-	mru_ghost_hits = n_mru_ghost_hits;
-	anon_hits = n_anon_hits;
-	demand_data_hits = n_demand_data_hits;
-	demand_md_hits = n_demand_md_hits;
-	pf_data_hits = n_pf_data_hits;
-	pf_md_hits = n_pf_md_hits;
-	demand_data_misses = n_demand_data_misses;
-	demand_md_misses = n_demand_md_misses;
-	pf_data_misses = n_pf_data_misses;
-	pf_md_misses = n_pf_md_misses;
+	arcHits = n_arcHits;
+	arcMisses = n_arcMisses;
+	mfuHits = n_mfuHits;
+	mruHits = n_mruHits;
+	mfuGhostHits = n_mfuGhostHits;
+	mruGhostHits = n_mruGhostHits;
+	anonHits = n_anonHits;
+	demandDataHits = n_demandDataHits;
+	demandMdHits = n_demandMdHits;
+	pfDataHits = n_pfDataHits;
+	pfMdHits = n_pfMdHits;
+	demandDataMisses = n_demandDataMisses;
+	demandMdMisses = n_demandMdMisses;
+	pfDataMisses = n_pfDataMisses;
+	pfMdMisses = n_pfMdMisses;
 
-	arc_hit_bar.setValue(hitrate(d_arc_hits, d_arc_misses));
-	demand_hit_bar.setValue(hitrate(d_demand_data_hits,
-					d_demand_data_misses));
-	pf_hit_bar.setValue(hitrate(d_pf_data_hits, d_pf_data_misses));
-	mdemand_hit_bar.setValue(hitrate(d_demand_md_hits, d_demand_md_misses));
-	mpf_hit_bar.setValue(hitrate(d_pf_md_hits, d_pf_md_misses));
+	arcHitBar.setValue(hitrate(d_arcHits, d_arcMisses));
+	demandHitBar.setValue(hitrate(d_demandDataHits,
+					d_demandDataMisses));
+	pfHitBar.setValue(hitrate(d_pfDataHits, d_pfDataMisses));
+	mdemandHitBar.setValue(hitrate(d_demandMdHits, d_demandMdMisses));
+	mpfHitBar.setValue(hitrate(d_pfMdHits, d_pfMdMisses));
 
 	// hits by list
 	totalCacheHitsDataset.setValue("Anon",
-					anon_hits);
+					anonHits);
 	totalCacheHitsDataset.setValue("Recently Used",
-					mru_hits);
+					mruHits);
 	totalCacheHitsDataset.setValue("Frequently Used",
-					mfu_hits);
+					mfuHits);
 	totalCacheHitsDataset.setValue("Recently Used Ghost",
-					mru_ghost_hits);
+					mruGhostHits);
 	totalCacheHitsDataset.setValue("Frequently Used Ghost",
-					mfu_ghost_hits);
+					mfuGhostHits);
 	currentCacheHitsDataset.setValue("Anon",
-					d_anon_hits);
+					d_anonHits);
 	currentCacheHitsDataset.setValue("Recently Used",
-					d_mru_hits);
+					d_mruHits);
 	currentCacheHitsDataset.setValue("Frequently Used",
-					d_mfu_hits);
+					d_mfuHits);
 	currentCacheHitsDataset.setValue("Recently Used Ghost",
-					d_mru_ghost_hits);
+					d_mruGhostHits);
 	currentCacheHitsDataset.setValue("Frequently Used Ghost",
-					d_mfu_ghost_hits);
+					d_mfuGhostHits);
 
 	// totals by type
 	totalCacheHitsByTypeDataset.setValue("Demand Data Hits",
-					demand_data_hits);
+					demandDataHits);
 	totalCacheHitsByTypeDataset.setValue("Demand Metadata Hits",
-					demand_md_hits);
+					demandMdHits);
 	totalCacheHitsByTypeDataset.setValue("Prefetch Data Hits",
-					pf_data_hits);
+					pfDataHits);
 	totalCacheHitsByTypeDataset.setValue("Prefetch Metadata Hits",
-					pf_md_hits);
+					pfMdHits);
 	totalCacheMissesByTypeDataset.setValue("Demand Data Misses",
-					demand_data_misses);
+					demandDataMisses);
 	totalCacheMissesByTypeDataset.setValue("Demand Metadata Misses",
-					demand_md_misses);
+					demandMdMisses);
 	totalCacheMissesByTypeDataset.setValue("Prefetch Data Misses",
-					pf_data_misses);
+					pfDataMisses);
 	totalCacheMissesByTypeDataset.setValue("Prefetch Metadata Misses",
-					pf_md_misses);
+					pfMdMisses);
 
 	// current activity by type
 	currentCacheHitsByTypeDataset.setValue("Demand Data Hits",
-					d_demand_data_hits);
+					d_demandDataHits);
 	currentCacheHitsByTypeDataset.setValue("Demand Metadata Hits",
-					d_demand_md_hits);
+					d_demandMdHits);
 	currentCacheHitsByTypeDataset.setValue("Prefetch Data Hits",
-					d_pf_data_hits);
+					d_pfDataHits);
 	currentCacheHitsByTypeDataset.setValue("Prefetch Metadata Hits",
-					d_pf_md_hits);
+					d_pfMdHits);
 	currentCacheMissesByTypeDataset.setValue("Demand Data Misses",
-					d_demand_data_misses);
+					d_demandDataMisses);
 	currentCacheMissesByTypeDataset.setValue("Demand Metadata Misses",
-					d_demand_md_misses);
+					d_demandMdMisses);
 	currentCacheMissesByTypeDataset.setValue("Prefetch Data Misses",
-					d_pf_data_misses);
+					d_pfDataMisses);
 	currentCacheMissesByTypeDataset.setValue("Prefetch Metadata Misses",
-					d_pf_md_misses);
+					d_pfMdMisses);
     }
 
     private String mbstring(long lval) {
