@@ -220,7 +220,9 @@ public class SysTree extends JTree {
 	if (ic.exists()) {
 	    for (String line : ic.getOutputLines()) {
 		String[] ds = line.split(":");
-		vnicMap.put(ds[0], ds[1]);
+		if (ds.length == 2) {
+		    vnicMap.put(ds[0], ds[1]);
+		}
 	    }
 	}
 
