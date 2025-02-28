@@ -1,7 +1,7 @@
 PKG="TRIBilluminate"
 NAME="Information Viewer for illumos"
 ARCH="sparc"
-VERSION="1.0"
+VERSION="1.1"
 CATEGORY="application"
 VENDOR="Peter Tribble"
 EMAIL="peter.tribble@gmail.com"
