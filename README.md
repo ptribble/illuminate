@@ -20,10 +20,10 @@ Licensing
 =========
 
 illuminate is licensed under CDDL, just like the bulk of OpenSolaris - see
-the file LICENSE
+the file LICENSE-CDDL.txt (also as help/CDDL.txt) for details
 
 illuminate incorporates JFreeChart, Copyright 2000-present by David Gilbert and
-Contributors. JFreeChart is covered by the LGPL - see the file LGPL.txt,
+Contributors. JFreeChart is covered by the LGPL - see the file LICENSE-LGPL.txt,
 and can be obtained from https://www.jfree.org/jfreechart/.
 
 illuminate incorporates a couple of sets of utility classes. See
