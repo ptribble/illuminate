@@ -13,9 +13,6 @@ SVDIR=${0%/*}
 LIBDIR=${SVDIR}/lib
 JARLIBDIR=${LIBDIR}/java
 
-XFLAGS="-Xlint -Xlint:-rawtypes"
-
-
 SVJAR=${JARLIBDIR}/illuminate.jar
 JINGLEJAR=${JARLIBDIR}/jingle.jar
 JUMBLEJAR=${JARLIBDIR}/jumble.jar
@@ -39,7 +36,7 @@ PMDCACHE="${HOME}/.pmd/cache.illuminate"
 
 case $# in
 0)
-	javac ${XFLAGS} -classpath .:"${BUILDJARS}" $(find org/tribblix -name '*.java')
+	javac -Xlint -Xlint:-rawtypes -classpath .:"${BUILDJARS}" $(find org/tribblix -name '*.java')
 	jar -cmf illuminate.manifest "${SVJAR}" images/*.png pixmaps/* properties/*.properties help/*.html help/CDDL.txt $(find org/tribblix -name '*.class')
 	exit 0
 	;;
