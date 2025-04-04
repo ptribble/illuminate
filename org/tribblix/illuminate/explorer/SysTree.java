@@ -302,26 +302,26 @@ public class SysTree extends JTree {
 	SysTreeNode htnd = new SysTreeNode(new SysItem(SysItem.NET_DLADM),
 				"dladm");
 	htn.add(htnd);
-	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DLADM_PHYS), "phys"));
-	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DLADM_LINK), "link"));
-	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DLADM_LINKPROP),
+	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DL_PHYS), "phys"));
+	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DL_LINK), "link"));
+	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DL_LINKPROP),
 				"linkprop"));
-	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DLADM_VNIC), "vnic"));
-	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DLADM_ETHERSTUB),
+	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DL_VNIC), "vnic"));
+	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DL_ETHERSTUB),
 				"etherstub"));
-	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DLADM_AGGR), "aggr"));
+	htnd.add(new SysTreeNode(new SysItem(SysItem.NET_DL_AGGR), "aggr"));
 
 	// dladm output
 	SysTreeNode htni = new SysTreeNode(new SysItem(SysItem.NET_IPADM),
 				"ipadm");
 	htn.add(htni);
-	htni.add(new SysTreeNode(new SysItem(SysItem.NET_IPADM_IF), "if"));
-	htni.add(new SysTreeNode(new SysItem(SysItem.NET_IPADM_IFPROP),
+	htni.add(new SysTreeNode(new SysItem(SysItem.NET_IP_IF), "if"));
+	htni.add(new SysTreeNode(new SysItem(SysItem.NET_IP_IFPROP),
 				"ifprop"));
-	htni.add(new SysTreeNode(new SysItem(SysItem.NET_IPADM_ADDR), "addr"));
-	htni.add(new SysTreeNode(new SysItem(SysItem.NET_IPADM_ADDRPROP),
+	htni.add(new SysTreeNode(new SysItem(SysItem.NET_IP_ADDR), "addr"));
+	htni.add(new SysTreeNode(new SysItem(SysItem.NET_IP_ADDRPROP),
 				"addrprop"));
-	htni.add(new SysTreeNode(new SysItem(SysItem.NET_IPADM_PROP), "prop"));
+	htni.add(new SysTreeNode(new SysItem(SysItem.NET_IP_PROP), "prop"));
 
 	// Routing
 	SysTreeNode htnr = new SysTreeNode(new SysItem(SysItem.NET_ROUTE),

@@ -68,12 +68,12 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
     private JProgressBar mpfHitBar;
 
     // cache hit/miss data
-    private DefaultPieDataset<String> totalCacheHitsDataset;
-    private DefaultPieDataset<String> currentCacheHitsDataset;
-    private DefaultPieDataset<String> totalCacheHitsByTypeDataset;
-    private DefaultPieDataset<String> currentCacheHitsByTypeDataset;
-    private DefaultPieDataset<String> totalCacheMissesByTypeDataset;
-    private DefaultPieDataset<String> currentCacheMissesByTypeDataset;
+    private DefaultPieDataset<String> totHitsDS;
+    private DefaultPieDataset<String> curHitsDS;
+    private DefaultPieDataset<String> totHitsByTypeDS;
+    private DefaultPieDataset<String> curHitsByTypeDS;
+    private DefaultPieDataset<String> totMissByTypeDS;
+    private DefaultPieDataset<String> curMissByTypeDS;
 
     // saved statistics
     // naming: pf = prefetch; md = metadata
@@ -113,48 +113,48 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 	setLayout(new SpringLayout());
 
 	// initialise the datasets
-	totalCacheHitsDataset = new DefaultPieDataset<String>();
-	currentCacheHitsDataset = new DefaultPieDataset<String>();
-	totalCacheHitsByTypeDataset = new DefaultPieDataset<String>();
-	currentCacheHitsByTypeDataset = new DefaultPieDataset<String>();
-	totalCacheMissesByTypeDataset = new DefaultPieDataset<String>();
-	currentCacheMissesByTypeDataset = new DefaultPieDataset<String>();
+	totHitsDS = new DefaultPieDataset<String>();
+	curHitsDS = new DefaultPieDataset<String>();
+	totHitsByTypeDS = new DefaultPieDataset<String>();
+	curHitsByTypeDS = new DefaultPieDataset<String>();
+	totMissByTypeDS = new DefaultPieDataset<String>();
+	curMissByTypeDS = new DefaultPieDataset<String>();
 
 	// initialise the pie charts
 	// args: title, dataset, legend?, tooltips?, urls?
-	JFreeChart totalCacheChart = ChartFactory.createPieChart(
+	JFreeChart totCacheChart = ChartFactory.createPieChart(
 				"Total Cache Hits By List",
-				totalCacheHitsDataset,
+				totHitsDS,
 				false,
 				true,
 				false);
-	JFreeChart currentCacheChart = ChartFactory.createPieChart(
+	JFreeChart curCacheChart = ChartFactory.createPieChart(
 				"Current Cache Hits By List",
-				currentCacheHitsDataset,
+				curHitsDS,
 				false,
 				true,
 				false);
-	JFreeChart totalCacheHitsByTypeChart = ChartFactory.createPieChart(
+	JFreeChart totHitsTypeChart = ChartFactory.createPieChart(
 				"Total Cache Hits By Type",
-				totalCacheHitsByTypeDataset,
+				totHitsByTypeDS,
 				false,
 				true,
 				false);
-	JFreeChart currentCacheHitsByTypeChart = ChartFactory.createPieChart(
+	JFreeChart curHitsTypeChart = ChartFactory.createPieChart(
 				"Current Cache Hits By Type",
-				currentCacheHitsByTypeDataset,
+				curHitsByTypeDS,
 				false,
 				true,
 				false);
-	JFreeChart totalCacheMissesByTypeChart = ChartFactory.createPieChart(
+	JFreeChart totMissTypeChart = ChartFactory.createPieChart(
 				"Total Cache Misses By Type",
-				totalCacheMissesByTypeDataset,
+				totMissByTypeDS,
 				false,
 				true,
 				false);
-	JFreeChart currentCacheMissesByTypeChart = ChartFactory.createPieChart(
+	JFreeChart curMissTypeChart = ChartFactory.createPieChart(
 				"Current Cache Misses By Type",
-				currentCacheMissesByTypeDataset,
+				curMissByTypeDS,
 				false,
 				true,
 				false);
@@ -167,8 +167,8 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 	JPanel infoPanel = new JPanel(new GridLayout(0, 2));
 	JPanel hitPanel = new JPanel(new GridLayout(0, 2));
 	JPanel cacheByListPanel = new JPanel(new GridLayout(1, 2));
-	JPanel cacheHitByTypePanel = new JPanel(new GridLayout(1, 2));
-	JPanel cacheMissByTypePanel = new JPanel(new GridLayout(1, 2));
+	JPanel hitByTypePanel = new JPanel(new GridLayout(1, 2));
+	JPanel missByTypePanel = new JPanel(new GridLayout(1, 2));
 
 	// cache hit rates, in a separate panel with bars.
 
@@ -195,17 +195,17 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 	hitPanel.setBorder(BorderFactory.createTitledBorder("Cache Hit Rates"));
 
 	Dimension dchart = new Dimension(320, 240);
-	ChartPanel cp1a = new ChartPanel(totalCacheChart);
+	ChartPanel cp1a = new ChartPanel(totCacheChart);
 	cp1a.setPreferredSize(dchart);
-	ChartPanel cp1b = new ChartPanel(currentCacheChart);
+	ChartPanel cp1b = new ChartPanel(curCacheChart);
 	cp1b.setPreferredSize(dchart);
-	ChartPanel cp2a = new ChartPanel(totalCacheHitsByTypeChart);
+	ChartPanel cp2a = new ChartPanel(totHitsTypeChart);
 	cp2a.setPreferredSize(dchart);
-	ChartPanel cp2b = new ChartPanel(currentCacheHitsByTypeChart);
+	ChartPanel cp2b = new ChartPanel(curHitsTypeChart);
 	cp2b.setPreferredSize(dchart);
-	ChartPanel cp3a = new ChartPanel(totalCacheMissesByTypeChart);
+	ChartPanel cp3a = new ChartPanel(totMissTypeChart);
 	cp3a.setPreferredSize(dchart);
-	ChartPanel cp3b = new ChartPanel(currentCacheMissesByTypeChart);
+	ChartPanel cp3b = new ChartPanel(curMissTypeChart);
 	cp3b.setPreferredSize(dchart);
 
 	infoPanel.add(new JLabel("Current size"));
@@ -230,16 +230,16 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 
 	cacheByListPanel.add(cp1a);
 	cacheByListPanel.add(cp1b);
-	cacheHitByTypePanel.add(cp2a);
-	cacheHitByTypePanel.add(cp2b);
-	cacheMissByTypePanel.add(cp3a);
-	cacheMissByTypePanel.add(cp3b);
+	hitByTypePanel.add(cp2a);
+	hitByTypePanel.add(cp2b);
+	missByTypePanel.add(cp3a);
+	missByTypePanel.add(cp3b);
 
 	add(infoPanel);
 	add(hitPanel);
 	add(cacheByListPanel);
-	add(cacheHitByTypePanel);
-	add(cacheMissByTypePanel);
+	add(hitByTypePanel);
+	add(missByTypePanel);
 
 	SpringUtilities.makeCompactGrid(this, 5, 1, 3, 3, 3, 3);
 
@@ -330,61 +330,61 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 	mpfHitBar.setValue(hitrate(dPfMdHits, dPfMdMisses));
 
 	// hits by list
-	totalCacheHitsDataset.setValue("Anon",
+	totHitsDS.setValue("Anon",
 					anonHits);
-	totalCacheHitsDataset.setValue("Recently Used",
+	totHitsDS.setValue("Recently Used",
 					mruHits);
-	totalCacheHitsDataset.setValue("Frequently Used",
+	totHitsDS.setValue("Frequently Used",
 					mfuHits);
-	totalCacheHitsDataset.setValue("Recently Used Ghost",
+	totHitsDS.setValue("Recently Used Ghost",
 					mruGhostHits);
-	totalCacheHitsDataset.setValue("Frequently Used Ghost",
+	totHitsDS.setValue("Frequently Used Ghost",
 					mfuGhostHits);
-	currentCacheHitsDataset.setValue("Anon",
+	curHitsDS.setValue("Anon",
 					dAnonHits);
-	currentCacheHitsDataset.setValue("Recently Used",
+	curHitsDS.setValue("Recently Used",
 					dMruHits);
-	currentCacheHitsDataset.setValue("Frequently Used",
+	curHitsDS.setValue("Frequently Used",
 					dMfuHits);
-	currentCacheHitsDataset.setValue("Recently Used Ghost",
+	curHitsDS.setValue("Recently Used Ghost",
 					dMruGhostHits);
-	currentCacheHitsDataset.setValue("Frequently Used Ghost",
+	curHitsDS.setValue("Frequently Used Ghost",
 					dMfuGhostHits);
 
 	// totals by type
-	totalCacheHitsByTypeDataset.setValue("Demand Data Hits",
+	totHitsByTypeDS.setValue("Demand Data Hits",
 					demandDataHits);
-	totalCacheHitsByTypeDataset.setValue("Demand Metadata Hits",
+	totHitsByTypeDS.setValue("Demand Metadata Hits",
 					demandMdHits);
-	totalCacheHitsByTypeDataset.setValue("Prefetch Data Hits",
+	totHitsByTypeDS.setValue("Prefetch Data Hits",
 					pfDataHits);
-	totalCacheHitsByTypeDataset.setValue("Prefetch Metadata Hits",
+	totHitsByTypeDS.setValue("Prefetch Metadata Hits",
 					pfMdHits);
-	totalCacheMissesByTypeDataset.setValue("Demand Data Misses",
+	totMissByTypeDS.setValue("Demand Data Misses",
 					demandDataMisses);
-	totalCacheMissesByTypeDataset.setValue("Demand Metadata Misses",
+	totMissByTypeDS.setValue("Demand Metadata Misses",
 					demandMdMisses);
-	totalCacheMissesByTypeDataset.setValue("Prefetch Data Misses",
+	totMissByTypeDS.setValue("Prefetch Data Misses",
 					pfDataMisses);
-	totalCacheMissesByTypeDataset.setValue("Prefetch Metadata Misses",
+	totMissByTypeDS.setValue("Prefetch Metadata Misses",
 					pfMdMisses);
 
 	// current activity by type
-	currentCacheHitsByTypeDataset.setValue("Demand Data Hits",
+	curHitsByTypeDS.setValue("Demand Data Hits",
 					dDemandDataHits);
-	currentCacheHitsByTypeDataset.setValue("Demand Metadata Hits",
+	curHitsByTypeDS.setValue("Demand Metadata Hits",
 					dDemandMdHits);
-	currentCacheHitsByTypeDataset.setValue("Prefetch Data Hits",
+	curHitsByTypeDS.setValue("Prefetch Data Hits",
 					dPfDataHits);
-	currentCacheHitsByTypeDataset.setValue("Prefetch Metadata Hits",
+	curHitsByTypeDS.setValue("Prefetch Metadata Hits",
 					dPfMdHits);
-	currentCacheMissesByTypeDataset.setValue("Demand Data Misses",
+	curMissByTypeDS.setValue("Demand Data Misses",
 					dDemandDataMisses);
-	currentCacheMissesByTypeDataset.setValue("Demand Metadata Misses",
+	curMissByTypeDS.setValue("Demand Metadata Misses",
 					dDemandMdMisses);
-	currentCacheMissesByTypeDataset.setValue("Prefetch Data Misses",
+	curMissByTypeDS.setValue("Prefetch Data Misses",
 					dPfDataMisses);
-	currentCacheMissesByTypeDataset.setValue("Prefetch Metadata Misses",
+	curMissByTypeDS.setValue("Prefetch Metadata Misses",
 					dPfMdMisses);
     }
 

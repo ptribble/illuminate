@@ -82,40 +82,40 @@ public final class NetInfoPanel extends InfoPanel {
 	    case SysItem.NET_DLADM:
 		displayManual("dladm.8");
 		break;
-	    case SysItem.NET_DLADM_PHYS:
+	    case SysItem.NET_DL_PHYS:
 		displayDladm("phys");
 		break;
-	    case SysItem.NET_DLADM_LINK:
+	    case SysItem.NET_DL_LINK:
 		displayDladm("link");
 		break;
-	    case SysItem.NET_DLADM_LINKPROP:
+	    case SysItem.NET_DL_LINKPROP:
 		displayDladm("linkprop");
 		break;
-	    case SysItem.NET_DLADM_VNIC:
+	    case SysItem.NET_DL_VNIC:
 		displayDladm("vnic");
 		break;
-	    case SysItem.NET_DLADM_ETHERSTUB:
+	    case SysItem.NET_DL_ETHERSTUB:
 		displayDladm("etherstub");
 		break;
-	    case SysItem.NET_DLADM_AGGR:
+	    case SysItem.NET_DL_AGGR:
 		displayDladm("aggr");
 		break;
 	    case SysItem.NET_IPADM:
 		displayManual("ipadm.8");
 		break;
-	    case SysItem.NET_IPADM_IF:
+	    case SysItem.NET_IP_IF:
 		displayIpadm("if");
 		break;
-	    case SysItem.NET_IPADM_IFPROP:
+	    case SysItem.NET_IP_IFPROP:
 		displayIpadm("ifprop");
 		break;
-	    case SysItem.NET_IPADM_ADDR:
+	    case SysItem.NET_IP_ADDR:
 		displayIpadm("addr");
 		break;
-	    case SysItem.NET_IPADM_ADDRPROP:
+	    case SysItem.NET_IP_ADDRPROP:
 		displayIpadm("addrprop");
 		break;
-	    case SysItem.NET_IPADM_PROP:
+	    case SysItem.NET_IP_PROP:
 		displayIpadm("prop");
 		break;
 	    case SysItem.NET_ROUTE_TABLE:

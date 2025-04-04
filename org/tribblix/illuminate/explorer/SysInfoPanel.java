@@ -92,18 +92,18 @@ public class SysInfoPanel extends JPanel {
 	    case SysItem.NET_PROTO_SCTP:
 	    case SysItem.NET_STAT:
 	    case SysItem.NET_DLADM:
-	    case SysItem.NET_DLADM_PHYS:
-	    case SysItem.NET_DLADM_LINK:
-	    case SysItem.NET_DLADM_LINKPROP:
-	    case SysItem.NET_DLADM_VNIC:
-	    case SysItem.NET_DLADM_ETHERSTUB:
-	    case SysItem.NET_DLADM_AGGR:
+	    case SysItem.NET_DL_PHYS:
+	    case SysItem.NET_DL_LINK:
+	    case SysItem.NET_DL_LINKPROP:
+	    case SysItem.NET_DL_VNIC:
+	    case SysItem.NET_DL_ETHERSTUB:
+	    case SysItem.NET_DL_AGGR:
 	    case SysItem.NET_IPADM:
-	    case SysItem.NET_IPADM_IF:
-	    case SysItem.NET_IPADM_IFPROP:
-	    case SysItem.NET_IPADM_ADDR:
-	    case SysItem.NET_IPADM_ADDRPROP:
-	    case SysItem.NET_IPADM_PROP:
+	    case SysItem.NET_IP_IF:
+	    case SysItem.NET_IP_IFPROP:
+	    case SysItem.NET_IP_ADDR:
+	    case SysItem.NET_IP_ADDRPROP:
+	    case SysItem.NET_IP_PROP:
 	    case SysItem.NET_ROUTE_TABLE:
 	    case SysItem.NET_ROUTE_ADM:
 		ip = new NetInfoPanel(hi, jkstat);

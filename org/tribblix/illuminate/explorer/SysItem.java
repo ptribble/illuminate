@@ -113,27 +113,27 @@ public class SysItem {
     /**
      * Represents a dladm physical interface.
      */
-    public static final int NET_DLADM_PHYS = 311;
+    public static final int NET_DL_PHYS = 311;
     /**
      * Represents a dladm link.
      */
-    public static final int NET_DLADM_LINK = 312;
+    public static final int NET_DL_LINK = 312;
     /**
      * Represents a dladm link property.
      */
-    public static final int NET_DLADM_LINKPROP = 313;
+    public static final int NET_DL_LINKPROP = 313;
     /**
      * Represents a dladm vnic.
      */
-    public static final int NET_DLADM_VNIC = 314;
+    public static final int NET_DL_VNIC = 314;
     /**
      * Represents a dladm etherstub.
      */
-    public static final int NET_DLADM_ETHERSTUB = 315;
+    public static final int NET_DL_ETHERSTUB = 315;
     /**
      * Represents a dladm aggregation.
      */
-    public static final int NET_DLADM_AGGR = 316;
+    public static final int NET_DL_AGGR = 316;
     /**
      * Represents an ipadm object.
      */
@@ -141,23 +141,23 @@ public class SysItem {
     /**
      * Represents an ipadm interface.
      */
-    public static final int NET_IPADM_IF = 321;
+    public static final int NET_IP_IF = 321;
     /**
      * Represents an ipadm interface property.
      */
-    public static final int NET_IPADM_IFPROP = 322;
+    public static final int NET_IP_IFPROP = 322;
     /**
      * Represents an ipadm address.
      */
-    public static final int NET_IPADM_ADDR = 323;
+    public static final int NET_IP_ADDR = 323;
     /**
      * Represents an ipadm address property.
      */
-    public static final int NET_IPADM_ADDRPROP = 324;
+    public static final int NET_IP_ADDRPROP = 324;
     /**
      * Represents an ipadm property.
      */
-    public static final int NET_IPADM_PROP = 325;
+    public static final int NET_IP_PROP = 325;
     /**
      * Represents routing.
      */

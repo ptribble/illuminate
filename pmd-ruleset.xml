@@ -18,7 +18,6 @@
       <exclude name="FieldNamingConventions"/>
       <exclude name="LocalVariableCouldBeFinal"/>
       <exclude name="LocalVariableNamingConventions"/>
-      <exclude name="LongVariable"/>
       <exclude name="MethodArgumentCouldBeFinal"/>
       <exclude name="OnlyOneReturn"/>
       <exclude name="ShortVariable"/>
