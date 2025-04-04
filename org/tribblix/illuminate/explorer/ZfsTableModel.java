@@ -33,7 +33,7 @@ public final class ZfsTableModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 1L;
 
-    private final String[] columnNames = {"PROPERTY", "VALUE", "SOURCE"};
+    private static final String[] COLUMNS = {"PROPERTY", "VALUE", "SOURCE"};
     private int nrows;
     private Zproperty[] zprops;
 
@@ -50,7 +50,7 @@ public final class ZfsTableModel extends AbstractTableModel {
 
     @Override
     public int getColumnCount() {
-	return columnNames.length;
+	return COLUMNS.length;
     }
 
     @Override
@@ -74,7 +74,7 @@ public final class ZfsTableModel extends AbstractTableModel {
 
     @Override
     public String getColumnName(int col) {
-	return columnNames[col];
+	return COLUMNS[col];
     }
 
     @Override
