@@ -26,6 +26,8 @@ import java.util.Comparator;
  * A Comparator for SmfTreeNodes. The children() of an SmfTreeNode are
  * typed as a Vector of TreeNode, so when sorting with Collections.sort()
  * we need to supply an explicit Comparator with the correct types.
+ *
+ * @param <T> the type of elements we compare, always a TreeNode
  */
 public final class SmfComparator<T extends TreeNode>
         implements Comparator<TreeNode> {
