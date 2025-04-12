@@ -71,7 +71,7 @@ public final class SmfTreeNode extends DefaultMutableTreeNode
     @SuppressWarnings("unchecked")
     public void add(MutableTreeNode newChild) {
 	super.add(newChild);
-	Collections.sort(this.children);
+	Collections.sort(this.children, SmfComparator.getInstance());
     }
 
     @Override
