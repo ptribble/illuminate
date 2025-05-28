@@ -35,7 +35,7 @@ import uk.co.petertribble.jumble.JumbleFile;
  * @author Peter Tribble
  * @version 1.0
  */
-public class Mnttab {
+public final class Mnttab {
 
     private Map<String, String> devmap = new HashMap<>();
     private Map<String, String> fsmap = new HashMap<>();

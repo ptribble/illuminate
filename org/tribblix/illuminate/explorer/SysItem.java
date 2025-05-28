@@ -29,7 +29,7 @@ import uk.co.petertribble.jkstat.api.Kstat;
  * @author Peter Tribble
  * @version 1.3
  */
-public class SysItem {
+public final class SysItem {
 
     /*
      * The following are types of items

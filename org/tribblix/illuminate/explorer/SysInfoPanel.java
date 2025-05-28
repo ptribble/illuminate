@@ -30,12 +30,12 @@ import uk.co.petertribble.jkstat.api.JKstat;
  * @version 1.0
  *
  */
-public class SysInfoPanel extends JPanel {
+public final class SysInfoPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
     private InfoPanel ip;
-    private JKstat jkstat;
+    private transient JKstat jkstat;
 
     /**
      * Display an Sys information panel.

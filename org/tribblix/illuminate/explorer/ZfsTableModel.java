@@ -35,7 +35,7 @@ public final class ZfsTableModel extends AbstractTableModel {
 
     private static final String[] COLUMNS = {"PROPERTY", "VALUE", "SOURCE"};
     private int nrows;
-    private Zproperty[] zprops;
+    private transient Zproperty[] zprops;
 
     /**
      * Create a ZfsTableModel from the given input.

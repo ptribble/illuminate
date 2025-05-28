@@ -30,7 +30,7 @@ import org.tribblix.illuminate.explorer.CommandTableModel;
  * @author Peter Tribble
  * @version 1.0
  */
-public class IPSSoftwarePanel extends InfoPanel {
+public final class IPSSoftwarePanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 

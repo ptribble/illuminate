@@ -50,7 +50,7 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 
     private static final long MB = 1024 * 1024;
 
-    private JKstat jkstat;
+    private transient JKstat jkstat;
 
     // labels for sizes
     private JLabel arcSizeLabel;

@@ -46,8 +46,8 @@ public final class SummaryPanel extends InfoPanel {
     private static final long serialVersionUID = 1L;
 
     private transient KstatAccessorySet kas;
-    private List<KstatAccessoryPanel> kaplist;
-    private JKstat jkstat;
+    private transient List<KstatAccessoryPanel> kaplist;
+    private transient JKstat jkstat;
 
     /**
      * Display a summary information panel.

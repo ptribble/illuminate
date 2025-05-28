@@ -29,7 +29,7 @@ import org.tribblix.illuminate.explorer.ZoneConfig;
  * @author Peter Tribble
  * @version 1.0
  */
-public class InfoCommandList extends Vector<InfoCommand> {
+public final class InfoCommandList extends Vector<InfoCommand> {
 
     private static final long serialVersionUID = 1L;
 

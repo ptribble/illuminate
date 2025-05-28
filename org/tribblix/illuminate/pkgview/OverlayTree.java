@@ -34,13 +34,13 @@ import java.util.HashSet;
  * @author Peter Tribble
  * @version 1.0
  */
-public class OverlayTree extends JTree {
+public final class OverlayTree extends JTree {
 
     private static final long serialVersionUID = 1L;
 
     private DefaultTreeModel model;
-    private Map<SVR4Package, NodeSet> pkgmap = new HashMap<>();
-    private Map<Overlay, NodeSet> ovmap = new HashMap<>();
+    private transient Map<SVR4Package, NodeSet> pkgmap = new HashMap<>();
+    private transient Map<Overlay, NodeSet> ovmap = new HashMap<>();
 
     /**
      * Create a tree from an overlay list and add it to the parent node.

@@ -30,7 +30,7 @@ import uk.co.petertribble.jingle.JingleTextPane;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SysCmdPanel extends JPanel {
+public final class SysCmdPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 

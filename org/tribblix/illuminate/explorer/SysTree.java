@@ -43,12 +43,12 @@ import org.tribblix.illuminate.InfoCommand;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SysTree extends JTree {
+public final class SysTree extends JTree {
 
     private static final long serialVersionUID = 1L;
 
-    private Map<String, Kstat> netMap = new HashMap<>();
-    private JKstat jkstat;
+    private transient Map<String, Kstat> netMap = new HashMap<>();
+    private transient JKstat jkstat;
 
     /**
      * Display a tree of hardware items.

@@ -32,12 +32,12 @@ import java.util.TreeSet;
  * @author Peter Tribble
  * @version 2.0
  */
-public class PkgList extends TreeSet<SVR4Package> {
+public final class PkgList extends TreeSet<SVR4Package> {
 
     private static final long serialVersionUID = 1L;
 
-    private Map<String, SVR4Package> pkgMap = new HashMap<>();
-    private Map<String, Set<SVR4Package>> revDependencies;
+    private transient Map<String, SVR4Package> pkgMap = new HashMap<>();
+    private transient Map<String, Set<SVR4Package>> revDependencies;
 
     /**
      * Create a package list.

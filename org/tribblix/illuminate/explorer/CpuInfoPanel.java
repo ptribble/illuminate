@@ -53,8 +53,8 @@ public final class CpuInfoPanel extends InfoPanel {
     private transient ProcessorTree proctree;
     private MPstatTable mptable;
     private KstatAccessoryPanel kap;
-    private KstatBaseChart kbc;
-    private JKstat jkstat;
+    private transient KstatBaseChart kbc;
+    private transient JKstat jkstat;
     private static final List<String> MYSTATS =
 		Arrays.asList("kernel", "user", "idle");
     private static final List<Color> MYCOLORS =

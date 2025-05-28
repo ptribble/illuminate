@@ -32,7 +32,7 @@ import javax.swing.SwingWorker;
  * @author Peter Tribble
  * @version 2.0
  */
-public class InstalledSoftwarePanel extends JTabbedPane {
+public final class InstalledSoftwarePanel extends JTabbedPane {
 
     private static final long serialVersionUID = 1L;
 

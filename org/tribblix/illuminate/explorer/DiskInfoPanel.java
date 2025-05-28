@@ -41,7 +41,7 @@ public final class DiskInfoPanel extends InfoPanel {
     private static final long serialVersionUID = 1L;
 
     private AccessoryIOPanel acp;
-    private JKstat jkstat;
+    private transient JKstat jkstat;
     private Kstat ks;
     private KstatTable kt;
     private IOstatTable iot;

@@ -51,10 +51,10 @@ public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
-    private JKstat jkstat;
+    private transient JKstat jkstat;
     private transient KstatAccessorySet kas;
     private KstatTable kt;
-    private List<KstatAccessoryPanel> kaplist;
+    private transient List<KstatAccessoryPanel> kaplist;
     private JButton jmb;
 
     /**

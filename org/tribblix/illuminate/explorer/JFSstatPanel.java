@@ -33,7 +33,7 @@ import java.util.Set;
  * @author Peter Tribble
  * @version 1.0
  */
-public class JFSstatPanel extends JPanel {
+public final class JFSstatPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 

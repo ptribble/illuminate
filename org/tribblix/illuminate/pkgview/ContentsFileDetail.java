@@ -27,7 +27,8 @@ import java.util.Arrays;
 /**
  * Parse a line of the SVR4 packaging contents file.
  */
-public class ContentsFileDetail implements Comparable<ContentsFileDetail> {
+public final class ContentsFileDetail
+    implements Comparable<ContentsFileDetail> {
 
     private PackageHandler pkghdl;
 

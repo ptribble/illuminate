@@ -28,7 +28,7 @@ import org.tribblix.illuminate.helpers.RunCommand;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfServiceList extends Vector<SmfService> {
+public final class SmfServiceList extends Vector<SmfService> {
 
     private static final long serialVersionUID = 1L;
 

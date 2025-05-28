@@ -42,7 +42,7 @@ public final class IllumosToolsMenu extends JMenu implements ActionListener {
     /**
      * A Map to track the tools that have been successfully added.
      */
-    private final Map<String, String> toolMap = new HashMap<>();
+    private final transient Map<String, String> toolMap = new HashMap<>();
 
     /**
      * Create an IllumosToolsMenu.

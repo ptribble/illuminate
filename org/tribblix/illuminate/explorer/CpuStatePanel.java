@@ -66,10 +66,10 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
 
     private static int orientation = SwingConstants.VERTICAL;
 
-    private JKstat jkstat;
+    private transient JKstat jkstat;
 
     private transient ProcessorTree proctree;
-    private Set<Kstat> kstats;
+    private transient Set<Kstat> kstats;
     private int ncpus;
     private int ncpu;
 
@@ -77,7 +77,7 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     private JMenuItem[] extendedCpuItem;
     private JMenuItem[] chartCpuItem;
     private String[] cpuID;
-    private List<KstatAccessoryPanel> kaplist;
+    private transient List<KstatAccessoryPanel> kaplist;
 
     private Dimension dchip;
     private Dimension dcore;

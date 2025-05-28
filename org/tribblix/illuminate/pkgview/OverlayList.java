@@ -31,7 +31,7 @@ import java.util.TreeSet;
  * @author Peter Tribble
  * @version 1.0
  */
-public class OverlayList {
+public final class OverlayList {
 
     private boolean ovlexists;
 

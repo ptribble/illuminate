@@ -31,7 +31,7 @@ import java.util.HashMap;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfTree extends JTree {
+public final class SmfTree extends JTree {
 
     private static final long serialVersionUID = 1L;
 
@@ -39,7 +39,7 @@ public class SmfTree extends JTree {
      * A Map to track the services so we can find relationships when
      * building the tree.
      */
-    private final Map<String, SmfTreeNode> treeMap = new HashMap<>();
+    private final transient Map<String, SmfTreeNode> treeMap = new HashMap<>();
 
     /**
      * Display a tree of SMF services.

@@ -43,9 +43,9 @@ public final class NetInfoPanel extends InfoPanel {
     private static final long serialVersionUID = 1L;
 
     private AccessoryNetPanel acp;
-    private JKstat jkstat;
+    private transient JKstat jkstat;
     private KstatTable kt;
-    private KstatBaseChart kbc;
+    private transient KstatBaseChart kbc;
 
     /**
      * Display a network information panel.

@@ -28,7 +28,7 @@ import javax.swing.JList;
  * @author Peter Tribble
  * @version 1.0
  */
-public class SmfList extends JList<SmfService> {
+public final class SmfList extends JList<SmfService> {
 
     private static final long serialVersionUID = 1L;
 

@@ -75,10 +75,10 @@ public final class JCpuState extends JKdemo implements ActionListener {
     private static int style = STYLE_BASIC;
     private static int orientation = SwingConstants.HORIZONTAL;
 
-    private JKstat jkstat;
+    private transient JKstat jkstat;
 
     private transient ProcessorTree proctree;
-    private Set<Kstat> kstats;
+    private transient Set<Kstat> kstats;
     private int ncpus;
     private int naggr;
     private int ncpu;
@@ -89,7 +89,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
     private JMenuItem[] extendedCpuItem;
     private JMenuItem[] chartCpuItem;
     private String[] cpuID;
-    private List<KstatAccessoryPanel> kaplist;
+    private transient List<KstatAccessoryPanel> kaplist;
 
     private Dimension dchip;
     private Dimension dcore;
