@@ -62,7 +62,7 @@ public final class ManViewer extends JFrame {
 	if (args.length == 1) {
 	    new ManViewer(args[0]);
 	} else {
-	    System.err.println("Usage: ManViewer filename"); //NOPMD
+	    System.err.println("Usage: ManViewer filename");
 	}
     }
 }

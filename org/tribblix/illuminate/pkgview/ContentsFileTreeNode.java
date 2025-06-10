@@ -107,7 +107,7 @@ public final class ContentsFileTreeNode extends DefaultMutableTreeNode {
 		for (File child : children) {
 		    add(new ContentsFileTreeNode(child));
 		}
-	    } catch (Exception e) { //NOPMD
+	    } catch (Exception e) {
 	    }
 
 	    explored = true;

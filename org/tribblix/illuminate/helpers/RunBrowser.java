@@ -59,7 +59,7 @@ public final class RunBrowser {
     public RunBrowser(URL url) {
 	try {
 	    Desktop.getDesktop().browse(url.toURI());
-	} catch (Exception e) { //NOPMD
+	} catch (Exception e) {
 	    try {
 		if (browserbin != null) {
 		    String[] fullcmd = {browserbin, url.toString()};
