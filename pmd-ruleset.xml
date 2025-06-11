@@ -15,9 +15,7 @@
       <exclude name="AtLeastOneConstructor"/>
       <exclude name="CallSuperInConstructor"/>
       <exclude name="CommentDefaultAccessModifier"/>
-      <exclude name="FieldNamingConventions"/>
       <exclude name="LocalVariableCouldBeFinal"/>
-      <exclude name="LocalVariableNamingConventions"/>
       <exclude name="MethodArgumentCouldBeFinal"/>
       <exclude name="OnlyOneReturn"/>
       <exclude name="ShortVariable"/>
@@ -28,7 +26,6 @@
       <exclude name="EmptyCatchBlock"/>
       <exclude name="NonExhaustiveSwitch"/>
       <exclude name="LooseCoupling"/>
-      <exclude name="LocalVariableNamingConventions"/>
       <exclude name="UncommentedEmptyConstructor"/>
     </rule>
     <rule ref="category/java/performance.xml">
@@ -47,7 +44,6 @@
       <exclude name="AssignmentToNonFinalStatic"/>
       <exclude name="CompareObjectsWithEquals"/>
       <exclude name="EmptyCatchBlock"/>
-      <exclude name="AssignmentInOperand"/>
       <exclude name="NullAssignment"/>
     </rule>
     <rule ref="category/java/bestpractices.xml">

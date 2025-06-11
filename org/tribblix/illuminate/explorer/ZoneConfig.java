@@ -61,7 +61,7 @@ public final class ZoneConfig {
 	if (ic.exists()) {
 	    for (String line : ic.getOutputLines()) {
 		String[] lentries = line.split(":");
-		int izone = 0;
+		int izone;
 		/*
 		 * If the zone is running it has a numeric ID
 		 * but if not, it gets "-", catch that and set

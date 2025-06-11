@@ -32,7 +32,6 @@ public class PkgCheck {
 
     private PackageHandler pkghdl;
 
-    private boolean check = true;
     private boolean list;
     private boolean verbose;
     private boolean dopaths;
@@ -79,7 +78,6 @@ public class PkgCheck {
 	for (String arg : args) {
 	    if ("-l".equals(arg)) {
 		list = true;
-		check = false;
 	    } else if ("-o".equals(arg)) {
 		checkovl = true;
 	    } else if ("-v".equals(arg)) {
@@ -263,8 +261,7 @@ public class PkgCheck {
 	}
 	if (list) {
 	    listFile(cfd);
-	}
-	if (check) {
+	} else {
 	    checkFile(cfd);
 	}
     }
