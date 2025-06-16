@@ -44,7 +44,7 @@ public class InfoPanel extends JPanel {
      */
     protected transient SysItem hi;
 
-    /*
+    /**
      * The panel into which the item display is placed.
      */
     private JingleVPanel jvp;

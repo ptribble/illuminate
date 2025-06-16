@@ -52,48 +52,146 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 
     private transient JKstat jkstat;
 
-    // labels for sizes
+    /**
+     * Label for ARC size.
+     */
     private JLabel arcSizeLabel;
+    /**
+     * Label for ARC target size.
+     */
     private JLabel targetSizeLabel;
+    /**
+     * Label for ARC min size.
+     */
     private JLabel arcMinSizeLabel;
+    /**
+     * Label for ARC max size.
+     */
     private JLabel arcMaxSizeLabel;
+    /**
+     * Label for MRU size.
+     */
     private JLabel mruSizeLabel;
+    /**
+     * Label for MFU size.
+     */
     private JLabel mfuSizeLabel;
 
-    // bars for current hit rates
+    /**
+     * Bar for ARC hit rate.
+     */
     private JProgressBar arcHitBar;
+    /**
+     * Bar for demand data hit rate.
+     */
     private JProgressBar demandHitBar;
+    /**
+     * Bar for prefetch hit rate.
+     */
     private JProgressBar pfHitBar;
+    /**
+     * Bar for demand metadata hit rate.
+     */
     private JProgressBar mdemandHitBar;
+    /**
+     * Bar for prefetch metadata hit rate.
+     */
     private JProgressBar mpfHitBar;
 
-    // cache hit/miss data
+    /**
+     * Dataset for total hits.
+     */
     private DefaultPieDataset<String> totHitsDS;
+    /**
+     * Dataset for current hits.
+     */
     private DefaultPieDataset<String> curHitsDS;
+    /**
+     * Dataset for total hits by type.
+     */
     private DefaultPieDataset<String> totHitsByTypeDS;
+    /**
+     * Dataset for current hits by type.
+     */
     private DefaultPieDataset<String> curHitsByTypeDS;
+    /**
+     * Dataset for total misses by type.
+     */
     private DefaultPieDataset<String> totMissByTypeDS;
+    /**
+     * Dataset for current misses by type.
+     */
     private DefaultPieDataset<String> curMissByTypeDS;
 
-    // saved statistics
     // naming: pf = prefetch; md = metadata
+    /**
+     * Saved value of ARC hits.
+     */
     private long arcHits;
+    /**
+     * Saved value of ARC misses.
+     */
     private long arcMisses;
+    /**
+     * Saved value of MFU hits.
+     */
     private long mfuHits;
+    /**
+     * Saved value of MRU hits.
+     */
     private long mruHits;
+    /**
+     * Saved value of ghost MFU hits.
+     */
     private long mfuGhostHits;
+    /**
+     * Saved value of ghost MRU hits.
+     */
     private long mruGhostHits;
+    /**
+     * Saved value of anon hits.
+     */
     private long anonHits;
+    /**
+     * Saved value of demand data hits.
+     */
     private long demandDataHits;
+    /**
+     * Saved value of demand metadata hits.
+     */
     private long demandMdHits;
+    /**
+     * Saved value of prefetch data hits.
+     */
     private long pfDataHits;
+    /**
+     * Saved value of prefetch metadata hits.
+     */
     private long pfMdHits;
+    /**
+     * Saved value of demand data misses.
+     */
     private long demandDataMisses;
+    /**
+     * Saved value of demand metadata misses.
+     */
     private long demandMdMisses;
+    /**
+     * Saved value of prefetch data misses.
+     */
     private long pfDataMisses;
+    /**
+     * Saved value of prefetch metadata misses.
+     */
     private long pfMdMisses;
 
+    /**
+     * A Timer to update the display in a loop.
+     */
     private Timer timer;
+    /**
+     * The current update delay, in ms.
+     */
     private int delay = 5000;
 
     /**

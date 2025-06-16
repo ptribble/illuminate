@@ -35,7 +35,13 @@ public final class ProcessInfoPanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * A table for information by process.
+     */
     private JPinfoTable jpip;
+    /**
+     * A table for information by zone.
+     */
     private ZoneInfoTable zit;
 
     /**

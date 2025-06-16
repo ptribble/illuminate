@@ -33,6 +33,9 @@ public final class SysTreeNode extends DefaultMutableTreeNode
     private static final long serialVersionUID = 1L;
 
     private transient SysItem hi;
+    /**
+     * The displayed name of this node.
+     */
     private String node;
 
     /**

@@ -33,6 +33,9 @@ public final class ArcStat extends JKdemo {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The main display panel.
+     */
     private ArcStatPanel mainPanel;
 
     /**

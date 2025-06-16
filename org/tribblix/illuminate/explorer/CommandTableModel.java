@@ -32,8 +32,17 @@ public final class CommandTableModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The names of the columns.
+     */
     private String[] columnNames;
+    /**
+     * Parsed textual data from the command.
+     */
     private String[][] data;
+    /**
+     * How many rows of data we have.
+     */
     private int nrows;
 
     /**

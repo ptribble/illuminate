@@ -37,6 +37,9 @@ public final class JFSstatPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The underlying model.
+     */
     private FsstatTableModel ftm;
 
     /**

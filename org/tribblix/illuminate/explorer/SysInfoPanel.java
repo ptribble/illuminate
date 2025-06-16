@@ -34,6 +34,9 @@ public final class SysInfoPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * A display panel, displaying whatever is selected.
+     */
     private InfoPanel ip;
     private transient JKstat jkstat;
 

@@ -42,6 +42,9 @@ public final class InstalledFilesPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * A panel to show the package information.
+     */
     private PackageInformationPanel pip;
 
     /**

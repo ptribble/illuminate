@@ -40,14 +40,39 @@ public final class PackageInformationPanel extends JTabbedPane {
 
     private transient PackageHandler pkghdl;
 
+    /**
+     * A panel for information.
+     */
     private PackageTextPane infoPane;
+    /**
+     * A panel to show dependencies.
+     */
     private PackageTextPane dependPane;
+    /**
+     * A panel to show reverse dependencies.
+     */
     private PackageTextPane revdepPane;
+    /**
+     * A panel to show overlays for this package.
+     */
     private PackageTextPane overlayPane;
+    /**
+     * A scrollable panel to hold the overlays.
+     */
     private JScrollPane overlayScrollPane;
+    /**
+     * Shows the header for the file list.
+     */
     private JingleTextPane filehPane;
+    /**
+     * Shows the actual list of files.
+     */
     private JingleTextPane flistPane;
+    /**
+     * Whether the files in the package should be shown.
+     */
     private boolean showfiles;
+
     private transient OverlayList ovlist;
     private transient ContentsParser cp;
     private transient ZapConfig zc;

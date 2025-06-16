@@ -39,6 +39,9 @@ public final class ContentsFileTree extends JTree {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The backing TreeModel.
+     */
     private DefaultTreeModel model;
 
     /**

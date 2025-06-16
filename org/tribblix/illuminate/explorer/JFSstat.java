@@ -46,9 +46,17 @@ public final class JFSstat extends JKdemo implements ActionListener {
 
     private static final String SVERSION = "JFSstat version 1.0";
     private transient Set<JRadioButtonMenuItem> displayset = new HashSet<>();
+    /**
+     * A menu item to toggle hiding of data.
+     */
     private JCheckBoxMenuItem hiddenItem;
+    /**
+     * A menu item to toggle aggregates.
+     */
     private JCheckBoxMenuItem aggrItem;
-
+    /**
+     * The main panel.
+     */
     private JFSstatPanel mainPanel;
 
     /**

@@ -43,15 +43,42 @@ public final class AggregateCpuPanel extends KstatAccessoryPanel {
     private static final long serialVersionUID = 1L;
 
     private transient KstatAggregate ksa;
+    /**
+     * Saved user time.
+     */
     private long luser;
+    /**
+     * Saved system time.
+     */
     private long lsys;
+    /**
+     * Saved wait time.
+     */
     private long lwait;
+    /**
+     * Saved idle time.
+     */
     private long lidle;
+    /**
+     * Change in user time.
+     */
     private double duser;
+    /**
+     * Change in system time.
+     */
     private double dsys;
+    /**
+     * Change in wait time.
+     */
     private double dwait;
+    /**
+     * Change in idle time.
+     */
     private double didle;
 
+    /**
+     * Current display orientation.
+     */
     private int orientation;
 
     /**

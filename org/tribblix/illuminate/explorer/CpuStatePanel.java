@@ -70,26 +70,69 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
 
     private transient ProcessorTree proctree;
     private transient Set<Kstat> kstats;
+    /**
+     * How many cpus we have.
+     */
     private int ncpus;
+    /**
+     * Temp counter.
+     */
     private int ncpu;
 
+    /**
+     * Menu items for about popup.
+     */
     private JMenuItem[] aboutCpuItem;
+    /**
+     * Menu items for extended information popup.
+     */
     private JMenuItem[] extendedCpuItem;
+    /**
+     * Menu items for chart popup.
+     */
     private JMenuItem[] chartCpuItem;
+    /**
+     * Save the id of each cpu.
+     */
     private String[] cpuID;
     private transient List<KstatAccessoryPanel> kaplist;
 
+    /**
+     * The size of a chip widget.
+     */
     private Dimension dchip;
+    /**
+     * The size of a core widget.
+     */
     private Dimension dcore;
+    /**
+     * The size of a thread widget.
+     */
     private Dimension dthread;
-    // localised via properties
+    /**
+     * Text for chip label, localised via properties.
+     */
     private String chipText;
+    /**
+     * Text for core label, localised via properties.
+     */
     private String coreText;
+    /**
+     * Text for cpu label, localised via properties.
+     */
     private String cpuLabel;
+    /**
+     * Text for chart label, localised via properties.
+     */
     private String cpuChartLabel;
+    /**
+     * Save the font scaling, depends on layout.
+     */
     private int fontScale;
-    // save this once, for reuse
-    private Font lfont;
+    /**
+     * Font, save this once, for reuse.
+     */
+     private Font lfont;
 
     /**
      * Create a CpuStatePanel.

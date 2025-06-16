@@ -244,10 +244,25 @@ public final class SysItem {
      * the health or quality of this item.
      */
 
+    /**
+     * A status code indicating this item is OK.
+     */
     public static final int OK = 0;
+    /**
+     * A status code indicating this item is FAILed.
+     */
     public static final int FAIL = 1;
+    /**
+     * A status code indicating this item has some sort of warning.
+     */
     public static final int WARN = 2;
+    /**
+     * A status code indicating this item's status is unknown.
+     */
     public static final int UNKNOWN = 3;
+    /**
+     * A status code indicating a BLANK status that can be ignored..
+     */
     public static final int BLANK = 99;
 
     private Map<String, Object> attributes;

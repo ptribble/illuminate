@@ -31,7 +31,13 @@ import org.tribblix.illuminate.InfoCommand;
  */
 public class BootEnvironments {
 
+    /**
+     * A Map of BEs, from name to uuid.
+     */
     protected Map<String, String> forwardmap;
+    /**
+     * A Map of BEs, from uuid to name.
+     */
     protected Map<String, String> backwardmap;
 
     /*

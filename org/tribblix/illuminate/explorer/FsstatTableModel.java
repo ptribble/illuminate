@@ -52,7 +52,13 @@ public final class FsstatTableModel extends AbstractTableModel
     // read/write
     private static String deftitle;
     private static String[] defnames;
+    /**
+     * The currently displaying columns.
+     */
     private String[] columnNames;
+    /**
+     * The short name for the currently displaying columns.
+     */
     private String columnTitle;
 
     private static final Map<String, String[]> COLUMN_MAP;
@@ -60,13 +66,21 @@ public final class FsstatTableModel extends AbstractTableModel
     private transient List<ChartableKstat> fsdata = new ArrayList<>();
     private transient Map<ChartableKstat, String> fsnames = new HashMap<>();
 
+    /**
+     * A Timer to update the display in a loop.
+     */
     private Timer timer;
+    /**
+     * The update delay, in ms.
+     */
     private int delay = 1000;
     private transient JKstat jkstat;
     private transient KstatSet kss;
     private transient Mnttab mnttab;
 
-    // display masks
+    /**
+     * Display mask, for filtering.
+     */
     private int filtermask;
     // don't include anything with the ignore option
     private static final int MASK_IGNORE = 1;

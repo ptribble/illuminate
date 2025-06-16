@@ -36,6 +36,9 @@ public final class FsInfoPanel extends InfoPanel {
     private static final long serialVersionUID = 1L;
 
     private transient JKstat jkstat;
+    /**
+     * A panel used for fsstat statistics.
+     */
     private JFSstatPanel fsPanel;
     private transient BootEnvironments beadm;
 

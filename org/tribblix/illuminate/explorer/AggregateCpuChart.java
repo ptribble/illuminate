@@ -40,10 +40,22 @@ public final class AggregateCpuChart extends KstatAccessoryPanel {
     private static final long serialVersionUID = 1L;
 
     private transient KstatAggregate ksa;
+    /**
+     * Saved user time.
+     */
     private long luser;
+    /**
+     * Saved system time.
+     */
     private long lsys;
+    /**
+     * Saved idle time.
+     */
     private long lidle;
 
+    /**
+     * Stripchart displaying the aggregate data.
+     */
     private JStackedStripChart2 jsc;
 
     /**

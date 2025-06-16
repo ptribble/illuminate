@@ -36,8 +36,8 @@ public final class PackageTableModel extends AbstractTableModel {
 
     private transient List<SVR4Package> pkgs;
 
-    /*
-     * Columns to show
+    /**
+     * Columns to show.
      */
     private String[] columnNames = {"Name", "Version", "Description"};
 

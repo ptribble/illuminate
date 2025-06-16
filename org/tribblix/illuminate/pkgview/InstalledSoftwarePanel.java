@@ -38,9 +38,21 @@ public final class InstalledSoftwarePanel extends JTabbedPane {
 
     transient PackageHandler pkghdl;
 
+    /**
+     * The list of packages.
+     */
     PkgList plist;
+    /**
+     * A panel displaying installed packages.
+     */
     PackagePanel ipp;
+    /**
+     * A panel displaying overlays.
+     */
     OverlayPanel ovp;
+    /**
+     * A panel displaying installed files.
+     */
     InstalledFilesPanel ifp;
 
     /**

@@ -33,8 +33,17 @@ import org.tribblix.illuminate.InfoCommand;
  */
 public class Zdataset {
 
+    /**
+     * The name of this dataset.
+     */
     protected String name;
+    /**
+     * A set of all this dataset's properties.
+     */
     protected Set<Zproperty> propset;
+    /**
+     * This dataset's properties, keyed by name.
+     */
     protected Map<String, Zproperty> propmap;
 
     /**

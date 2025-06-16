@@ -41,6 +41,9 @@ public final class SysPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The main display panel.
+     */
     private SysInfoPanel hip;
 
     /**

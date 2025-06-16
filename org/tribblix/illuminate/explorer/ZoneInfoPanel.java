@@ -53,8 +53,14 @@ public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
 
     private transient JKstat jkstat;
     private transient KstatAccessorySet kas;
+    /**
+     * A table for kstat data.
+     */
     private KstatTable kt;
     private transient List<KstatAccessoryPanel> kaplist;
+    /**
+     * A button to show the zone brand manual page.
+     */
     private JButton jmb;
 
     /**

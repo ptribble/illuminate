@@ -38,6 +38,9 @@ public final class OverlayTree extends JTree {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The backing TreeModel.
+     */
     private DefaultTreeModel model;
     private transient Map<SVR4Package, NodeSet> pkgmap = new HashMap<>();
     private transient Map<Overlay, NodeSet> ovmap = new HashMap<>();

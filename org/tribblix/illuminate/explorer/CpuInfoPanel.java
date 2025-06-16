@@ -51,7 +51,13 @@ public final class CpuInfoPanel extends InfoPanel {
     private static final long serialVersionUID = 1L;
 
     private transient ProcessorTree proctree;
+    /**
+     * A table to show mpstat data.
+     */
     private MPstatTable mptable;
+    /**
+     * An accessory for this cpu.
+     */
     private KstatAccessoryPanel kap;
     private transient KstatBaseChart kbc;
     private transient JKstat jkstat;

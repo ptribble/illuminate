@@ -39,7 +39,13 @@ public final class OverlayPanel extends JPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The tree of overlays.
+     */
     final OverlayTree tree;
+    /**
+     * A panel to show the package information.
+     */
     private PackageInformationPanel pip;
     private transient SVR4Package currentPackage;
 

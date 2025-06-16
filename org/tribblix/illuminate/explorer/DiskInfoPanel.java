@@ -40,10 +40,22 @@ public final class DiskInfoPanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * A panel for an IO accessory.
+     */
     private AccessoryIOPanel acp;
     private transient JKstat jkstat;
+    /**
+     * This panel's kstat.
+     */
     private Kstat ks;
+    /**
+     * A table to display the current kstat.
+     */
     private KstatTable kt;
+    /**
+     * A table to display the current IO kstat.
+     */
     private IOstatTable iot;
     private transient Mnttab mnttab = new Mnttab();
 

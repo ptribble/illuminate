@@ -35,7 +35,13 @@ public final class ContentsFileTreeNode extends DefaultMutableTreeNode {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * Whether this node has been visited.
+     */
     private boolean explored;
+    /**
+     * The underlying File represented by this node.
+     */
     private File file;
 
     /**
