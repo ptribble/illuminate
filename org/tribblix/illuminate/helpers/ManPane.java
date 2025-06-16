@@ -110,8 +110,9 @@ public final class ManPane extends JEditorPane
     private void showMan(File f) {
 	if (f != null) {
 	    String m = f.toString();
-	    RunCommand rc =
-		new RunCommand("/usr/bin/mandoc -T html -O man='%N.%S' " + m);
+	    String[] fullcmd =
+		{"/usr/bin/mandoc", "-T", "html","-O", "man='%N.%S'", m};
+	    RunCommand rc = new RunCommand(fullcmd);
 	    jep.setText(rc.getOut());
 	    jep.setMargin(JingleUtils.defInsets());
 	    jep.setCaretPosition(0);

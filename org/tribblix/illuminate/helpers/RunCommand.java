@@ -38,14 +38,14 @@ public final class RunCommand {
     /**
      * Run a command and record its output.
      *
-     * @param cmd The command to run
+     * @param cmdarray The command to run
      */
-    public RunCommand(String cmd) {
+    public RunCommand(String[] cmdarray) {
 	stdout = new StringBuilder();
 	stderr = new StringBuilder();
 	try {
-	    Process p = Runtime.getRuntime().exec(cmd, (String[]) null,
-						new File("/tmp"));
+	    Process p = Runtime.getRuntime().exec(cmdarray,
+				(String[]) null, new File("/tmp"));
 
 	    try (BufferedReader reader1 =
 		new BufferedReader(new InputStreamReader(p.getInputStream()));

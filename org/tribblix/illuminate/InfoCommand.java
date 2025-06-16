@@ -109,7 +109,7 @@ public class InfoCommand {
      * @return The output from running this command
      */
     public String getOutput() {
-	return exists() ? new RunCommand(fullcmd).getOut()
+	return exists() ? new RunCommand(fullcmd.split("\\s+")).getOut()
 	    : "Command not found";
     }
 

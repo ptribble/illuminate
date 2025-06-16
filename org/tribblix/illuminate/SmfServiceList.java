@@ -36,7 +36,8 @@ public final class SmfServiceList extends Vector<SmfService> {
      * Create a list of SMF services for the current system.
      */
     public SmfServiceList() {
-	RunCommand svcs = new RunCommand("/usr/bin/svcs -aH");
+	String[] fullcmd = {"/usr/bin/svcs", "-aH"};
+	RunCommand svcs = new RunCommand(fullcmd);
 	// parse the svcs output to get the service name and status
 	for (String s : svcs.getOut().split("\n")) {
 	    String[] ds = s.split("\\s+", 3);

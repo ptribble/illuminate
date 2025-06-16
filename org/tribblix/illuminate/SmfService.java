@@ -150,7 +150,8 @@ public class SmfService implements Comparable<SmfService> {
     }
 
     private String getSVCS(String s) {
-	RunCommand svcs = new RunCommand("/usr/bin/svcs " + s + " " + fmri);
+	String[] fullcmd = {"/usr/bin/svcs", s, fmri};
+	RunCommand svcs = new RunCommand(fullcmd);
 	return svcs.getOut();
     }
 
@@ -163,7 +164,8 @@ public class SmfService implements Comparable<SmfService> {
 	if ("legacy_run".equals(status)) {
 	    return null;
 	}
-	RunCommand svcs = new RunCommand("/usr/bin/svcprop " + fmri);
+	String[] fullcmd = {"/usr/bin/svcprop", fmri};
+	RunCommand svcs = new RunCommand(fullcmd);
 	return svcs.getOut();
     }
 
