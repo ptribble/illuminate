@@ -48,12 +48,14 @@ javadoc)
 	rm -fr javadoc
 	mkdir javadoc
 	env CLASSPATH=.:"${JKJAR}":"${JPJAR}" javadoc -Xdoclint:all -Xmaxwarns 300 -d javadoc org.tribblix.illuminate org.tribblix.illuminate.helpers org.tribblix.illuminate.explorer org.tribblix.illuminate.pkgview
+	exit 0
 	;;
 
 clean)
 	rm -f $(find org/tribblix -type f -name '*.class')
 	rm -f $(find . -type f -name '*~')
 	rm -fr javadoc
+	exit 0
 	;;
 
 pmd)
