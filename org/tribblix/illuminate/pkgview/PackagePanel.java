@@ -28,7 +28,6 @@ import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import java.awt.BorderLayout;
-import uk.co.petertribble.jingle.TableSorter;
 
 /**
  * Show a table inside a Scroll pane, displaying the packages installed.
@@ -66,10 +65,9 @@ public final class PackagePanel extends JPanel {
 
 	JPanel jpp = new JPanel(new BorderLayout());
 	final PackageTableModel ptm = new PackageTableModel(plist);
-	final TableSorter sortedModel = new TableSorter(ptm);
-	ptable = new JTable(sortedModel);
+	ptable = new JTable(ptm);
+	ptable.setAutoCreateRowSorter(true);
 	jpp.add(new JScrollPane(ptable));
-	sortedModel.setTableHeader(ptable.getTableHeader());
 
 	pip = new PackageInformationPanel(pkghdl);
 
@@ -88,8 +86,8 @@ public final class PackagePanel extends JPanel {
 		    int irow = ptable.getSelectedRow();
 		    if (irow >= 0) {
 			// sorted table, need to convert the index
-			int imod = sortedModel.modelIndex(irow);
-			showPkg(ptm.getPackageAtRow(imod));
+			showPkg(ptm.getPackageAtRow(
+			    ptable.convertRowIndexToModel(irow)));
 		    }
 		}
 	    }

@@ -25,7 +25,6 @@ import javax.swing.JScrollPane;
 import javax.swing.JTable;
 import java.awt.BorderLayout;
 import uk.co.petertribble.jkstat.api.JKstat;
-import uk.co.petertribble.jingle.TableSorter;
 import java.util.Set;
 
 /**
@@ -52,10 +51,9 @@ public final class JFSstatPanel extends JPanel {
 	setLayout(new BorderLayout());
 
 	ftm = new FsstatTableModel(jkstat, interval);
-	TableSorter sortedModel = new TableSorter(ftm);
-	JTable sftmtable = new JTable(sortedModel);
+	JTable sftmtable = new JTable(ftm);
+	sftmtable.setAutoCreateRowSorter(true);
 	add(new JScrollPane(sftmtable));
-	sortedModel.setTableHeader(sftmtable.getTableHeader());
     }
 
     /**
