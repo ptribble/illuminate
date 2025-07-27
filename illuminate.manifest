@@ -1,2 +1,2 @@
 Main-Class: org.tribblix.illuminate.Illuminate
-Class-Path: jingle.jar jumble.jar jkstat.jar jproc.jar jfreechart-1.5.5.jar
+Class-Path: jingle.jar jumble.jar jkstat.jar jproc.jar jfreechart-1.5.6.jar
