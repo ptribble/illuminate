@@ -20,6 +20,7 @@
 
 package org.tribblix.illuminate.explorer;
 
+import javax.swing.JScrollPane;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.demo.JKdemo;
@@ -56,7 +57,7 @@ public final class ArcStat extends JKdemo {
 	super("ArcStat", standalone);
 
 	mainPanel = new ArcStatPanel(jkstat, DEFAULT_INTERVAL);
-	setContentPane(mainPanel);
+	setContentPane(new JScrollPane(mainPanel));
 
 	pack();
 	setVisible(true);

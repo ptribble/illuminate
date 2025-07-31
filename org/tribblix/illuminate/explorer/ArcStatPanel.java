@@ -24,15 +24,15 @@ import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.SpringLayout;
 import javax.swing.Timer;
 import java.awt.Dimension;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
-import uk.co.petertribble.jingle.SpringUtilities;
 
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
@@ -208,7 +208,8 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 	// FIXME all labels need to be localized
 
 	// create a main panel
-	setLayout(new SpringLayout());
+	setLayout(new GridBagLayout());
+	GridBagConstraints c = new GridBagConstraints();
 
 	// initialise the datasets
 	totHitsDS = new DefaultPieDataset<String>();
@@ -333,13 +334,17 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 	missByTypePanel.add(cp3a);
 	missByTypePanel.add(cp3b);
 
-	add(infoPanel);
-	add(hitPanel);
-	add(cacheByListPanel);
-	add(hitByTypePanel);
-	add(missByTypePanel);
-
-	SpringUtilities.makeCompactGrid(this, 5, 1, 3, 3, 3, 3);
+	// stack the panels above each other
+	c.fill = GridBagConstraints.BOTH;
+	add(infoPanel, c);
+	c.gridy = 1;
+	add(hitPanel, c);
+	c.gridy = 2;
+	add(cacheByListPanel, c);
+	c.gridy = 3;
+	add(hitByTypePanel, c);
+	c.gridy = 4;
+	add(missByTypePanel, c);
 
 	update();
 	startLoop();
