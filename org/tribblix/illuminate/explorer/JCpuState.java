@@ -32,7 +32,10 @@ import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
 import java.awt.GridLayout;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
@@ -390,10 +393,23 @@ public final class JCpuState extends JKdemo implements ActionListener {
      * above a line of labels.
      */
     private JPanel multiPanel(Set<Kstat> kss) {
-	JPanel ppanl = new JPanel(new SpringLayout());
+	JPanel ppanl = new JPanel();
+	ppanl.setLayout(new GridBagLayout());
+	GridBagConstraints c = new GridBagConstraints();
+	c.gridx = 0;
+	c.gridy = 0;
+	c.insets = new Insets(3, 1, 1, 3);
+	c.weightx = 0.0;
+	c.weighty = 0.5;
+	c.fill = GridBagConstraints.BOTH;
 	for (Kstat ks : kss) {
-	    addProcessor(ks, ppanl);
+	    addProcessor(ks, ppanl, c);
+	    c.gridx = c.gridx + 1;
 	}
+	c.gridx = 0;
+	c.gridy = 1;
+	c.weightx = 0.0;
+	c.weighty = 0.0;
 	for (Kstat ks : kss) {
 	    JLabel jl = new JLabel(ks.getInstance(), JLabel.CENTER);
 	    if (lfont == null) {
@@ -402,9 +418,9 @@ public final class JCpuState extends JKdemo implements ActionListener {
 				f.getSize() + fontScale);
 	    }
 	    jl.setFont(lfont);
-	    ppanl.add(jl);
+	    ppanl.add(jl, c);
+	    c.gridx = c.gridx + 1;
 	}
-	SpringUtilities.makeCompactGrid(ppanl, 2, kss.size(), 6, 3, 3, 3);
 	return ppanl;
     }
 
@@ -546,6 +562,13 @@ public final class JCpuState extends JKdemo implements ActionListener {
      * Add a processor to the given panel.
      */
     private void addProcessor(Kstat ks, JPanel ppanel) {
+	addProcessor(ks, ppanel, (GridBagConstraints) null);
+    }
+
+    /*
+     * Add a processor to the given panel.
+     */
+    private void addProcessor(Kstat ks, JPanel ppanel, GridBagConstraints c) {
 	String scpu = ks.getInstance();
 	// only add the label here if we're horizontal
 	if (orientation != SwingConstants.VERTICAL) {
@@ -565,7 +588,11 @@ public final class JCpuState extends JKdemo implements ActionListener {
 	// make wider and thinner than normal
 	acp.setMinimumSize(dthread);
 	acp.setPreferredSize(dthread);
-	ppanel.add(acp);
+	if (c == null) {
+	    ppanel.add(acp);
+	} else {
+	    ppanel.add(acp, c);
+	}
 	// add a popup menu to each one
 	JPopupMenu jpm = new JPopupMenu();
 	cpuID[ncpu] = scpu;
