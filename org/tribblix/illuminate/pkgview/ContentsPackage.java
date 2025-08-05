@@ -38,6 +38,7 @@ public class ContentsPackage {
      * Create a new empty ContentsPackage.
      */
     public ContentsPackage() {
+	// intentionally left empty
     }
 
     /**

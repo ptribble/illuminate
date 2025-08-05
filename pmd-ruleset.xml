@@ -32,7 +32,6 @@ SPDX-License-Identifier: CDDL-1.0
       <exclude name="EmptyCatchBlock"/>
       <exclude name="NonExhaustiveSwitch"/>
       <exclude name="LooseCoupling"/>
-      <exclude name="UncommentedEmptyConstructor"/>
     </rule>
     <rule ref="category/java/performance.xml">
       <exclude name="AvoidInstantiatingObjectsInLoops"/>
