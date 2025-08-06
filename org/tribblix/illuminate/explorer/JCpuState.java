@@ -167,7 +167,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
      */
     private boolean showCores = true;
     /**
-     * Whether indiviual threads are shown.
+     * Whether individual threads are shown.
      */
     private boolean showThreads = true;
     /**
