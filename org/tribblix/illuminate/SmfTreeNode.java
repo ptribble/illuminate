@@ -99,22 +99,22 @@ public final class SmfTreeNode extends DefaultMutableTreeNode
 	if (svc != null) {
 	    return svc.getStatus();
 	}
-	Set<String> statusses = new HashSet<>();
+	Set<String> statuses = new HashSet<>();
 	for (Enumeration e = children(); e.hasMoreElements();) {
 	    SmfTreeNode stn = (SmfTreeNode) e.nextElement();
-	    statusses.add(stn.getStatus());
+	    statuses.add(stn.getStatus());
 	}
-	if (statusses.contains("maintenance")) {
+	if (statuses.contains("maintenance")) {
 	    return "maintenance";
 	}
-	if (statusses.contains("offline")) {
+	if (statuses.contains("offline")) {
 	    return "offline";
 	}
 	// ignore disabled ones, they shouldn't make things look bad
-	statusses.remove("disabled");
-	statusses.remove(null);
-	if (statusses.size() == 1) {
-	    return statusses.stream().findFirst().get();
+	statuses.remove("disabled");
+	statuses.remove(null);
+	if (statuses.size() == 1) {
+	    return statuses.stream().findFirst().get();
 	}
 	return null;
     }
