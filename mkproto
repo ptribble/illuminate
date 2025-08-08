@@ -85,7 +85,7 @@ else
 	pname=${path##*/}
 	echo "s none /${JARDIR}/${pname}=../jfreechart-${JFCVERS}/${pname}"
   done
-  for path in lib/java/jingle.jar lib/java/jksta* lib/java/jstripchart.jar lib/java/jumble.jar lib/java/json-20240303.jar
+  for path in lib/java/jingle.jar lib/java/jksta* lib/java/jstripchart.jar lib/java/jumble.jar lib/java/openjson-1.0.13.jar
   do
 	pname=${path##*/}
 	echo "s none /${JARDIR}/${pname}=../jkstat/${pname}"
