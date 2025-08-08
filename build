@@ -38,6 +38,7 @@ case $# in
 0)
 	javac -Xlint -Xlint:-rawtypes -classpath .:"${BUILDJARS}" $(find org/tribblix -name '*.java')
 	jar -cmf illuminate.manifest "${SVJAR}" images/*.png pixmaps/* properties/*.properties help/*.html help/CDDL.txt $(find org/tribblix -name '*.class')
+	rm -f $(find org/tribblix -type f -name '*.class')
 	exit 0
 	;;
 esac
@@ -71,8 +72,9 @@ spotbugs)
 	#
 	# spotbugs works on the class files, so those need to be available
 	#
-	./build
+	javac -Xlint -Xlint:-rawtypes -classpath .:"${BUILDJARS}" $(find org/tribblix -name '*.java')
 	spotbugs -auxclasspath $(echo lib/java/* | sed 's= =:=g') org
+	rm -f $(find org/tribblix -type f -name '*.class')
 	exit 0
 	;;
 
