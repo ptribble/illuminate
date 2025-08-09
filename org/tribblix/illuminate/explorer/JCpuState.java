@@ -61,7 +61,6 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
-import uk.co.petertribble.jingle.SpringUtilities;
 
 /**
  * A graphical kstat demo, like an enhanced xcpustate that also shows
