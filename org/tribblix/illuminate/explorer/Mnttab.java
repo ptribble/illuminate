@@ -64,7 +64,7 @@ public final class Mnttab {
 	    return;
 	}
 	modified = f.lastModified();
-	for (String line : JumbleFile.getLines(f)) {
+	for (String line : JumbleFile.readAllLines(f)) {
 	    // line is: [0]device [1]name [2]type [3]options [4]timestamp
 	    String[] st = line.split("\\s+");
 	    // parsed, add to data structures

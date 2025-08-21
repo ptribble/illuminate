@@ -21,6 +21,7 @@
 package org.tribblix.illuminate.pkgview;
 
 import java.io.File;
+import java.util.List;
 import java.util.Set;
 import java.util.TreeSet;
 import uk.co.petertribble.jumble.JumbleFile;
@@ -195,17 +196,14 @@ public class PackageHandler {
     }
 
     /**
-     * Return a String array, containing the names of all the package
+     * Return a List of Strings, containing the names of all the package
      * repositories configured in this OS instance.
      *
-     * @return A String array representing the names of the configured
+     * @return A List of String representing the names of the configured
      * repositories
      */
-    protected String[] listRepositories() {
-	if (zapdirf.exists()) {
-	    return JumbleFile.getLines(new File(zapdirf, "repo.list"));
-	}
-	return new String[0];
+    protected List<String> listRepositories() {
+	return JumbleFile.readAllLines(zapdirf, "repo.list");
     }
 
     /**
@@ -220,16 +218,16 @@ public class PackageHandler {
     }
 
     /**
-     * Returns the contents of the given package's depend file, as an
-     * array of Strings.
+     * Returns the contents of the given package's depend file, as a
+     * List of Strings.
      *
      * @param name the name of the package of interest
      *
-     * @return A String array containing the lines of the named package's
+     * @return A List of String containing the lines of the named package's
      * depend file
      */
-    protected String[] getPkgDepend(String name) {
-	return JumbleFile.getLines(new File(pkgdirf, name + "/install/depend"));
+    protected List<String> getPkgDepend(String name) {
+	return JumbleFile.readAllLines(pkgdirf, name + "/install/depend");
     }
 
     /**
@@ -242,8 +240,7 @@ public class PackageHandler {
      * pkginfo file
      */
     protected String getPkgInfo(String name) {
-	return JumbleFile.getStringContents(
-		new File(pkgdirf, name + "/pkginfo"));
+	return JumbleFile.getStringContents(pkgdirf, name + "/pkginfo");
     }
 
     /**
@@ -259,58 +256,54 @@ public class PackageHandler {
     }
 
     /**
-     * Returns the name of the packages that are members of the given overlay,
-     * as an array of Strings.
+     * Returns the names of the packages that are members of the given overlay,
+     * as a List of Strings.
      *
      * @param name the name of the overlay of interest
      *
-     * @return A String array containing the names of the packages that are
+     * @return A List of String containing the names of the packages that are
      * members of the given overlay
      */
-    protected String[] getOvlPkgs(String name) {
-	return JumbleFile.getLines(new File(ovldirf, name + ".pkgs"));
+    protected List<String> getOvlPkgs(String name) {
+	return JumbleFile.readAllLines(ovldirf, name + ".pkgs");
     }
 
     /**
-     * Returns the metadata of the given overlay, as an array of Strings.
+     * Returns the metadata of the given overlay, as a List of Strings.
      *
      * @param name the name of the overlay of interest
      *
-     * @return A String array containing the lines of the given overlay's
+     * @return A List of String containing the lines of the given overlay's
      * metadata file
      */
-    protected String[] getOvlOvl(String name) {
-	return JumbleFile.getLines(new File(ovldirf, name + ".ovl"));
+    protected List<String> getOvlOvl(String name) {
+	return JumbleFile.readAllLines(ovldirf, name + ".ovl");
     }
 
     /**
-     * Returns the metadata of the given repository, as an array of Strings.
+     * Returns the metadata of the given repository, as a List of Strings.
      *
      * @param repo the name of the repository of interest
      *
-     * @return A String array containing the lines of the given repository's
+     * @return A List of String containing the lines of the given repository's
      * metadata file
      */
-    protected String[] getRepository(String repo) {
-	File f = new File(altroot + ZAP_ROOT
-			+ "/repositories", repo + ".repo");
-	if (f.exists()) {
-	    return JumbleFile.getLines(f);
-	}
-	return new String[0];
+    protected List<String> getRepository(String repo) {
+	return JumbleFile.readAllLines(altroot + ZAP_ROOT
+			+ "/repositories/" + repo + ".repo");
     }
 
     /**
-     * Returns the given repository's package catalog, as an
-     * array of Strings.
+     * Returns the given repository's package catalog, as a
+     * List of Strings.
      *
      * @param repo the name of the repository of interest
      *
-     * @return A String array containing the lines of the named repository's
+     * @return A List of String containing the lines of the named repository's
      * catalog
      */
-    protected String[] getCatalog(String repo) {
-	return JumbleFile.getLines(new File(altroot
-		+ ZAP_ROOT + "/repositories/" + repo + ".catalog"));
+    protected List<String> getCatalog(String repo) {
+	return JumbleFile.readAllLines(altroot + ZAP_ROOT
+			+ "/repositories/" + repo + ".catalog");
     }
 }

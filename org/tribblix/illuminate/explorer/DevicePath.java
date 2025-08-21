@@ -76,7 +76,7 @@ public final class DevicePath {
      * and the driver is between 3 and 4.
      */
     private static void readPathToInst() {
-	for (String s1: JumbleFile.getLines(new File("/etc/path_to_inst"))) {
+	for (String s1: JumbleFile.readAllLines("/etc/path_to_inst")) {
 	    String[] ds = s1.split("\"");
 	    if (ds.length > 3) {
 		pMap.put(ds[1], ds[3] + ds[2].trim());
