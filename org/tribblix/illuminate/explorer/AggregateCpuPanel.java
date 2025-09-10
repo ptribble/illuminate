@@ -84,9 +84,9 @@ public final class AggregateCpuPanel extends KstatAccessoryPanel {
     /**
      * Create a panel showing the cpu activity.
      *
-     * @param ksa  a KstatAggregate containing aggregate cpu statistics
-     * @param interval  the update interval in seconds
-     * @param jkstat  a JKstat
+     * @param ksa a KstatAggregate containing aggregate cpu statistics
+     * @param interval the update interval in seconds
+     * @param jkstat a JKstat
      */
     public AggregateCpuPanel(KstatAggregate ksa, int interval, JKstat jkstat) {
 	this(ksa, interval, jkstat, SwingConstants.HORIZONTAL);
@@ -95,9 +95,9 @@ public final class AggregateCpuPanel extends KstatAccessoryPanel {
     /**
      * Create a panel showing the cpu activity.
      *
-     * @param ksa  a KstatAggregate containing aggregate cpu statistics
-     * @param interval  the update interval in seconds
-     * @param jkstat  a JKstat
+     * @param ksa a KstatAggregate containing aggregate cpu statistics
+     * @param interval the update interval in seconds
+     * @param jkstat a JKstat
      * @param orientation The desired orientation of the accessory, which
      * should be either SwingConstants.VERTICAL or SwingConstants.HORIZONTAL
      */

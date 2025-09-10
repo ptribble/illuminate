@@ -37,7 +37,7 @@ public class ZapRepository {
      * Create a zap repository configuration.
      *
      * @param pkghdl a PackageHandler for this OS image
-     * @param repo  The repository represented by this ZapRepository
+     * @param repo the repository represented by this ZapRepository
      */
     public ZapRepository(PackageHandler pkghdl, String repo) {
 	for (String line : pkghdl.getRepository(repo)) {

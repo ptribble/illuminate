@@ -36,9 +36,9 @@ public final class IlluminateResources {
     /**
      * Return the translated String associated with the given key.
      *
-     * @param key  The key to look up.
+     * @param key the key to look up.
      *
-     * @return  The matching String.
+     * @return the matching String.
      */
     public static String getString(String key) {
 	return ILLUMINATERES.getString(key);

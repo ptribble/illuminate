@@ -66,8 +66,8 @@ public class ZapConfig {
      * Returns a CatalogPackage for the available package, as listed
      * in the catalogs.
      *
-     * @param name  The name of the desired package
-     * @return  The CatalogPackage for the desired package, or null if the
+     * @param name the name of the desired package
+     * @return the CatalogPackage for the desired package, or null if the
      * package cannot be found
      */
     public CatalogPackage getPackage(String name) {
@@ -83,8 +83,8 @@ public class ZapConfig {
     /**
      * Returns the currently available version of a package.
      *
-     * @param name  The name of the desired package
-     * @return  The currently available version of the desired package
+     * @param name the name of the desired package
+     * @return the currently available version of the desired package
      *
      */
     public String currentVersion(String name) {

@@ -40,7 +40,7 @@ public class PkgDepend {
      * Create an SVR4 pkg dependency container.
      *
      * @param pkghdl a PackageHandler for this OS image
-     * @param name  The name of the package.
+     * @param name the name of the package.
      */
     public PkgDepend(PackageHandler pkghdl, String name) {
 	this.pkghdl = pkghdl;

@@ -34,7 +34,7 @@ public class CatalogParser {
      * Parse a package catalog.
      *
      * @param pkghdl a PackageHandler for this OS image
-     * @param reponame  The repository represented by this catalog
+     * @param reponame the repository represented by this catalog
      */
     public CatalogParser(PackageHandler pkghdl, String reponame) {
 	/*

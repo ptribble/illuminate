@@ -62,7 +62,7 @@ public final class DevicePath {
     /**
      * Returns the singleton DevicePath.
      *
-     * @return  The singleton DevicePath.
+     * @return the singleton DevicePath.
      */
     public static DevicePath getInstance() {
 	return INSTANCE;

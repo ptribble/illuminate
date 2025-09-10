@@ -253,7 +253,7 @@ public class SmfService implements Comparable<SmfService> {
      * Produce an html formatted table containing dependency information for
      * this service.
      *
-     * @return  an html formatted table containing dependency information for
+     * @return an html formatted table containing dependency information for
      * the given service
      */
     public String getDepInfo() {

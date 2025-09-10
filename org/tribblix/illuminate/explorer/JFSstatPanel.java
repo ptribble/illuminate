@@ -75,7 +75,7 @@ public final class JFSstatPanel extends JPanel {
     /**
      * Set the update delay.
      *
-     * @param i  the desired update delay, in seconds
+     * @param i the desired update delay, in seconds
      */
     public void setDelay(int i) {
 	ftm.setDelay(i);

@@ -78,7 +78,7 @@ public class PackageHandler {
     /**
      * Create a new PackageHandler, at the given root.
      *
-     * @param altroot  An alternate root directory for this OS image
+     * @param altroot an alternate root directory for this OS image
      */
     public PackageHandler(String altroot) {
 	this.altroot = altroot;

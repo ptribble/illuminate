@@ -42,7 +42,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * Create an SVR4 package container.
      *
      * @param pkghdl a PackageHandler for this OS image
-     * @param name  The name of the package.
+     * @param name the name of the package
      */
     public SVR4Package(PackageHandler pkghdl, String name) {
 	this.pkghdl = pkghdl;

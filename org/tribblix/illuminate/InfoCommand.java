@@ -115,7 +115,7 @@ public class InfoCommand {
 
     /**
      * Return the textual output from executing this informational command,
-     * broken up  into lines as a String array.
+     * broken up into lines as a String array.
      *
      * @return The output from running this command, as an array of lines
      */

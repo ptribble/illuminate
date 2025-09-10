@@ -44,7 +44,7 @@ public final class Overlay implements Comparable<Overlay> {
      * Create an Overlay object. To be useful, you must call populate().
      *
      * @param pkghdl a PackageHandler for this OS image
-     * @param name  The name of this Overlay.
+     * @param name the name of this Overlay.
      */
     public Overlay(PackageHandler pkghdl, String name) {
 	this.pkghdl = pkghdl;

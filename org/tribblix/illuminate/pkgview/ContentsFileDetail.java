@@ -50,7 +50,7 @@ public final class ContentsFileDetail
      * Create a set of details from a line of the contents file.
      *
      * @param pkghdl a PackageHandler for this OS image
-     * @param s  One line of the contents file
+     * @param s one line of the contents file
      */
     public ContentsFileDetail(PackageHandler pkghdl, String s) {
 	this.pkghdl = pkghdl;
@@ -127,7 +127,7 @@ public final class ContentsFileDetail
     /**
      * Return the owner of a file.
      *
-     * @return  The file owner
+     * @return the file owner
      */
     public String getOwner() {
 	return owner;
@@ -172,7 +172,7 @@ public final class ContentsFileDetail
     /**
      * Return the list of names of packages that own this entry.
      *
-     * @return  A List of package names that own this entry.
+     * @return a List of package names that own this entry.
      */
     public List<String> getPackageNames() {
 	return pkglist;
@@ -181,7 +181,7 @@ public final class ContentsFileDetail
     /**
      * Return the list of packages that own this entry.
      *
-     * @return  A List of packages that own this entry.
+     * @return a List of packages that own this entry.
      */
     public List<SVR4Package> getPackages() {
 	List<SVR4Package> lp = new ArrayList<>();

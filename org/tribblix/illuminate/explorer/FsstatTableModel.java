@@ -246,7 +246,7 @@ public final class FsstatTableModel extends AbstractTableModel
      * If a zero or negative delay is requested, stop the updates
      * and remember the previous delay.
      *
-     * @param interval  The desired delay interval in seconds.
+     * @param interval the desired delay interval in seconds.
      */
     public void setDelay(int interval) {
 	if (interval <= 0) {

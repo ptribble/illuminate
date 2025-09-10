@@ -155,7 +155,7 @@ public final class SmfInfoPanel extends JPanel implements ActionListener {
     /**
      * Update the information shown to correspond to the given service.
      *
-     * @param svc  The SmfService to show information on.
+     * @param svc the SmfService to show information on.
      */
     public void setInfo(SmfService svc) {
 	tp.setText(svc.getHtmlInfo());

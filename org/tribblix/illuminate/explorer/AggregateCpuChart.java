@@ -62,9 +62,9 @@ public final class AggregateCpuChart extends KstatAccessoryPanel {
      * Create a panel showing a strip chart of the aggregate cpu utilization
      * that updates every interval seconds.
      *
-     * @param ksa  a KstatAggregate containing aggregate cpu statistics
-     * @param interval  the update interval in seconds
-     * @param jkstat  a JKstat
+     * @param ksa a KstatAggregate containing aggregate cpu statistics
+     * @param interval the update interval in seconds
+     * @param jkstat a JKstat
      */
     public AggregateCpuChart(KstatAggregate ksa, int interval, JKstat jkstat) {
 	super(new Kstat("", 0, ""), interval, jkstat);

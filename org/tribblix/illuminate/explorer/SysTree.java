@@ -454,7 +454,7 @@ public final class SysTree extends JTree {
 		Kstat ks =
 		    jkstat.getKstat("zones", ze.getZoneid(), ze.getName());
 		if (ks != null) {
-		    zitem  = new SysItem(SysItem.ZONE_KSTAT);
+		    zitem = new SysItem(SysItem.ZONE_KSTAT);
 		    zitem.addAttribute("zoneentry", ze);
 		    zitem.setKstat(ks);
 		    zptn = new SysTreeNode(zitem,
