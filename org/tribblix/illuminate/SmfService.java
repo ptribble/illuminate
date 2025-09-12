@@ -336,4 +336,31 @@ public class SmfService implements Comparable<SmfService> {
     public int compareTo(SmfService ss) {
 	return fmri.compareTo(ss.getFMRI());
     }
+
+    /**
+     * For Comparable.
+     *
+     * @param o the object to check for equality with this SmfService
+     *
+     * @return whether the given object is equal to this SmfService
+     */
+    @Override
+    public boolean equals(final Object o) {
+	if (o instanceof SmfService) {
+	    SmfService ss = (SmfService) o;
+	    return fmri.equals(ss.getFMRI());
+        }
+        return false;
+    }
+
+    /**
+     * For Comparable. As the unique property of an SmfService is its
+     * FMRI, use the hashCode of the underlying FMRI.
+     *
+     * @return a unique hashcode for this SmfService
+     */
+    @Override
+    public int hashCode() {
+	return fmri.hashCode();
+    }
 }

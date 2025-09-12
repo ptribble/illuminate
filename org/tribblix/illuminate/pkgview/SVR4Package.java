@@ -180,4 +180,31 @@ public class SVR4Package implements Comparable<SVR4Package> {
     public int compareTo(SVR4Package p) {
 	return name.compareTo(p.getName());
     }
+
+    /**
+     * For Comparable.
+     *
+     * @param o the object to check for equality with this SVR4Package
+     *
+     * @return whether the given object is equal to this SVR4Package
+     */
+    @Override
+    public boolean equals(final Object o) {
+	if (o instanceof SVR4Package) {
+	    SVR4Package p = (SVR4Package) o;
+	    return name.equals(p.getName());
+        }
+        return false;
+    }
+
+    /**
+     * For Comparable. As the unique property of an SVR4Package is its
+     * name, use the hashCode of the underlying name.
+     *
+     * @return a unique hashcode for this SVR4Package
+     */
+    @Override
+    public int hashCode() {
+	return name.hashCode();
+    }
 }

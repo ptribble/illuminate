@@ -261,9 +261,41 @@ public final class Overlay implements Comparable<Overlay> {
 
     /**
      * For Comparable.
+     *
+     * @param ovl the Overlay to compare with this Overlay
+     *
+     * @return whether the given Overlay is greater than or less than this
+     * Overlay
      */
     @Override
     public int compareTo(Overlay ovl) {
 	return name.compareTo(ovl.getName());
+    }
+
+    /**
+     * For Comparable.
+     *
+     * @param o the object to check for equality with this SmfService
+     *
+     * @return whether the given object is equal to this SmfService
+     */
+    @Override
+    public boolean equals(final Object o) {
+	if (o instanceof Overlay) {
+	    Overlay ss = (Overlay) o;
+	    return name.equals(ss.getName());
+        }
+        return false;
+    }
+
+    /**
+     * For Comparable. As the unique property of an Overlay is its
+     * name, use the hashCode of the underlying name.
+     *
+     * @return a unique hashcode for this Overlay
+     */
+    @Override
+    public int hashCode() {
+	return name.hashCode();
     }
 }

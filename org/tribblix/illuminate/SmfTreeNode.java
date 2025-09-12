@@ -131,4 +131,32 @@ public final class SmfTreeNode extends DefaultMutableTreeNode
     public int compareTo(SmfTreeNode othernode) {
 	return node.compareTo(othernode.toString());
     }
+
+    /**
+     * For Comparable.
+     *
+     * @param o the object to check for equality with this
+     * SmfTreeNode
+     *
+     * @return whether the given object is equal to this SmfTreeNode
+     */
+    @Override
+    public boolean equals(final Object o) {
+	if (o instanceof SmfTreeNode) {
+	    SmfTreeNode othernode = (SmfTreeNode) o;
+	    return node.equals(othernode.toString());
+        }
+        return false;
+    }
+
+    /**
+     * For Comparable. As the unique property of an SmfTreeNode is its
+     * name, use the hashCode of the underlying node name.
+     *
+     * @return a unique hashcode for this SmfTreeNode
+     */
+    @Override
+    public int hashCode() {
+	return node.hashCode();
+    }
 }

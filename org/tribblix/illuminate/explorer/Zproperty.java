@@ -82,7 +82,11 @@ public class Zproperty implements Comparable<Zproperty> {
     }
 
     /**
-     * Compare this Zproperty to the given Zproperty.
+     * Compare this Zproperty to the given Zproperty. Note that this
+     * comparison, and the implementation of equals and hashCode that
+     * are consistent with it, are only valid for properties of the same
+     * dataset - the same properties from different datasets should not
+     * be compared.
      *
      * @param otherzprop the Zproperty to be compared
      *
@@ -92,5 +96,32 @@ public class Zproperty implements Comparable<Zproperty> {
     @Override
     public int compareTo(Zproperty otherzprop) {
 	return property.compareTo(otherzprop.getProperty());
+    }
+
+    /**
+     * For Comparable.
+     *
+     * @param o the object to check for equality with this Zproperty
+     *
+     * @return whether the given object is equal to this Zproperty
+     */
+    @Override
+    public boolean equals(final Object o) {
+	if (o instanceof Zproperty) {
+	    Zproperty otherzprop = (Zproperty) o;
+	    return property.equals(otherzprop.getProperty());
+        }
+        return false;
+    }
+
+    /**
+     * For Comparable. As the unique property of an Zproperty is its
+     * name, use the hashCode of the underlying node name.
+     *
+     * @return a unique hashcode for this Zproperty
+     */
+    @Override
+    public int hashCode() {
+	return property.hashCode();
     }
 }

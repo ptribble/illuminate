@@ -70,4 +70,32 @@ public final class SysTreeNode extends DefaultMutableTreeNode
     public int compareTo(SysTreeNode othernode) {
 	return node.compareTo(othernode.toString());
     }
+
+    /**
+     * For Comparable.
+     *
+     * @param o the SysTreeNode to check for equality with this
+     * SysTreeNode
+     *
+     * @return whether the given object is equal to this SysTreeNode
+     */
+    @Override
+    public boolean equals(final Object o) {
+	if (o instanceof SysTreeNode) {
+	    SysTreeNode othernode = (SysTreeNode) o;
+	    return node.equals(othernode.toString());
+        }
+        return false;
+    }
+
+    /**
+     * For Comparable. As the unique property of an SysTreeNode is its
+     * name, use the hashCode of the underlying node name.
+     *
+     * @return a unique hashcode for this SysTreeNode
+     */
+    @Override
+    public int hashCode() {
+	return node.hashCode();
+    }
 }

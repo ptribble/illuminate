@@ -93,14 +93,18 @@ public final class ContentsFileDetail
 	    // skip major and minor device numbers
 	    i += 2;
 	}
-	mode = st[i++];
-	owner = st[i++];
-	group = st[i++];
+	mode = st[i];
+	i++;
+	owner = st[i];
+	i++;
+	group = st[i];
+	i++;
 	if (isRegular()) {
 	    size = Long.parseLong(st[i]);
 	    // increment, skip cksum
 	    i += 2;
-	    modtime = Long.parseLong(st[i++]);
+	    modtime = Long.parseLong(st[i]);
+	    i++;
 	}
 	// anything left is a package
 	pkglist = Arrays.asList(Arrays.copyOfRange(st, i, st.length));
@@ -354,4 +358,30 @@ public final class ContentsFileDetail
 	return filename.compareTo(cfd.getName());
     }
 
+    /**
+     * For Comparable.
+     *
+     * @param o the object to check for equality with this ContentsFileDetail
+     *
+     * @return whether the given object is equal to this ContentsFileDetail
+     */
+    @Override
+    public boolean equals(final Object o) {
+	if (o instanceof ContentsFileDetail) {
+	    ContentsFileDetail cfd = (ContentsFileDetail) o;
+	    return filename.equals(cfd.getName());
+        }
+        return false;
+    }
+
+    /**
+     * For Comparable. As the unique property of a ContentsFileDetail is its
+     * filename, use the hashCode of the underlying filename.
+     *
+     * @return a unique hashcode for this ContentsFileDetail
+     */
+    @Override
+    public int hashCode() {
+	return filename.hashCode();
+    }
 }
