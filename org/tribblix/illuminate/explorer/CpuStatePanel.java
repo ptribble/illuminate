@@ -140,7 +140,7 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
      *
      * @param jkstat a JKstat object
      */
-    public CpuStatePanel(JKstat jkstat) {
+    public CpuStatePanel(final JKstat jkstat) {
 	this.jkstat = jkstat;
 
 	KstatFilter ksf = new KstatFilter(jkstat);
@@ -278,7 +278,7 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
      * Put a set of kstats into a panel: line of vertical accessories
      * above a line of labels.
      */
-    private JPanel multiPanel(Set<Kstat> kss) {
+    private JPanel multiPanel(final Set<Kstat> kss) {
 	JPanel ppanl = new JPanel();
 	ppanl.setLayout(new GridBagLayout());
 	GridBagConstraints c = new GridBagConstraints();
@@ -313,14 +313,15 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     /*
      * Add a processor to the given panel.
      */
-    private void addProcessor(Kstat ks, JPanel ppanel) {
+    private void addProcessor(final Kstat ks, final JPanel ppanel) {
 	addProcessor(ks, ppanel, (GridBagConstraints) null);
     }
 
     /*
      * Add a processor to the given panel.
      */
-    private void addProcessor(Kstat ks, JPanel ppanel, GridBagConstraints c) {
+    private void addProcessor(final Kstat ks, final JPanel ppanel,
+			      final GridBagConstraints c) {
 	String scpu = ks.getInstance();
 	KstatAccessoryPanel acp =
 	    new AccessoryCpuPanel(ks, 1, jkstat, orientation);
@@ -353,7 +354,8 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     /*
      * Only used in the vertical layout
      */
-    private void addChipNew(Set<Kstat> ksc, Dimension d, JPanel panl) {
+    private void addChipNew(final Set<Kstat> ksc, final Dimension d,
+			    final JPanel panl) {
 	KstatAggregate ksa = new KstatAggregate(jkstat, ksc);
 	KstatAccessoryPanel agp =
 	    new AggregateCpuPanel(ksa, 1, jkstat, orientation);
@@ -373,7 +375,7 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	for (int i = 0; i < ncpus; i++) {
 	    if (e.getSource() == aboutCpuItem[i]) {
 		new KstatTableFrame("cpu_info", cpuID[i], "cpu_info" + cpuID[i],
@@ -399,21 +401,21 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     static class PopupListener extends MouseAdapter {
 	private JPopupMenu popup;
 
-	PopupListener(JPopupMenu popup) {
+	PopupListener(final JPopupMenu popup) {
 	    this.popup = popup;
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(final MouseEvent e) {
 	    showPopup(e);
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(final MouseEvent e) {
 	    showPopup(e);
 	}
 
-	private void showPopup(MouseEvent e) {
+	private void showPopup(final MouseEvent e) {
 	    if (e.isPopupTrigger()) {
 		popup.show(e.getComponent(), e.getX(), e.getY());
 	    }

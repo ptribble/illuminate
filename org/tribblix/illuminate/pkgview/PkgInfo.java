@@ -42,7 +42,7 @@ public class PkgInfo {
      * @param pkghdl a PackageHandler for this OS image
      * @param name the name of the package
      */
-    public PkgInfo(PackageHandler pkghdl, String name) {
+    public PkgInfo(final PackageHandler pkghdl, final String name) {
 	this.pkghdl = pkghdl;
 	this.name = name;
     }
@@ -69,7 +69,7 @@ public class PkgInfo {
      *
      * @return the value of the desired entry
      */
-    public String getInfoItem(String s) {
+    public String getInfoItem(final String s) {
 	if (pkginfomap == null) {
 	    parseInfo();
 	}

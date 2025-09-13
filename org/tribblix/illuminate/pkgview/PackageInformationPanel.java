@@ -82,7 +82,7 @@ public final class PackageInformationPanel extends JTabbedPane {
      *
      * @param pkghdl a PackageHandler for this OS image
      */
-    public PackageInformationPanel(PackageHandler pkghdl) {
+    public PackageInformationPanel(final PackageHandler pkghdl) {
 	this(pkghdl, true);
     }
 
@@ -92,8 +92,8 @@ public final class PackageInformationPanel extends JTabbedPane {
      * @param pkghdl a PackageHandler for this OS image
      * @param showdependencies a boolean determining if dependencies are shown
      */
-    public PackageInformationPanel(PackageHandler pkghdl,
-				boolean showdependencies) {
+    public PackageInformationPanel(final PackageHandler pkghdl,
+				final boolean showdependencies) {
 	this.pkghdl = pkghdl;
 	ovlist = pkghdl.getOverlayList();
 	zc = pkghdl.getZapConfig();
@@ -120,7 +120,7 @@ public final class PackageInformationPanel extends JTabbedPane {
      *
      * @param pkg the package to be displayed
      */
-    public void showPkg(SVR4Package pkg) {
+    public void showPkg(final SVR4Package pkg) {
 	setOvlTab(PkgResources.getString("PKG.OVERLAYS"));
 	if (pkg.isInstalled()) {
 	    setInfoText(PkgUtils.infoTable(pkg, zc),
@@ -145,7 +145,7 @@ public final class PackageInformationPanel extends JTabbedPane {
      *
      * @param ovl the overlay to be displayed
      */
-    public void showOverlay(Overlay ovl) {
+    public void showOverlay(final Overlay ovl) {
 	setOvlTab(PkgResources.getString("PKG.PACKAGES"));
 	setInfoText(PkgUtils.infoTable(ovl),
 		    PkgUtils.dependencyTable(ovl),
@@ -159,7 +159,7 @@ public final class PackageInformationPanel extends JTabbedPane {
      *
      * @param fname the name of the file to be displayed
      */
-    public void showFile(String fname) {
+    public void showFile(final String fname) {
 	setOvlTab(PkgResources.getString("PKG.OVERLAYS"));
 	if (cp == null) {
 	    infoOnly("Package information not available.");
@@ -183,22 +183,23 @@ public final class PackageInformationPanel extends JTabbedPane {
      * tabs - info, dep, rdep, ovl, files
      */
 
-    private void infoOnly(String s) {
+    private void infoOnly(final String s) {
 	setInfoText(s, "", "");
 	setOverlayText("");
     }
 
-    private void setInfoText(String si, String sd, String srd) {
+    private void setInfoText(final String si, final String sd,
+			     final String srd) {
 	infoPane.setText(si);
 	dependPane.setText(sd);
 	revdepPane.setText(srd);
     }
 
-    private void setOverlayText(String s) {
+    private void setOverlayText(final String s) {
 	overlayPane.setText(s);
     }
 
-    private void setFilesText(String shead, String slist) {
+    private void setFilesText(final String shead, final String slist) {
 	if (!showfiles) {
 	    showFilesTab();
 	}
@@ -212,7 +213,7 @@ public final class PackageInformationPanel extends JTabbedPane {
      *
      * @param pkg the package to show
      */
-    public void showRevDependencies(SVR4Package pkg) {
+    public void showRevDependencies(final SVR4Package pkg) {
 	add(PkgResources.getString("PKG.DEPENDANTS"),
 	    new JScrollPane(revdepPane));
 	if (pkg != null) {
@@ -258,7 +259,7 @@ public final class PackageInformationPanel extends JTabbedPane {
      * Change the title of the overlays tab: if displaying a package, that tab
      * displays overlays, if displaying an overlay, then the tab shows packages
      */
-    private void setOvlTab(String s) {
+    private void setOvlTab(final String s) {
 	int i = indexOfComponent(overlayScrollPane);
 	if (i >= 0) {
 	    setTitleAt(i, s);

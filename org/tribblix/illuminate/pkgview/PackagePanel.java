@@ -57,7 +57,7 @@ public final class PackagePanel extends JPanel {
      *
      * @param pkghdl a PackageHandler to query for information
      */
-    public PackagePanel(PackageHandler pkghdl) {
+    public PackagePanel(final PackageHandler pkghdl) {
 
 	setLayout(new BorderLayout());
 
@@ -80,7 +80,7 @@ public final class PackagePanel extends JPanel {
 	ptable.getSelectionModel().addListSelectionListener(
 		new ListSelectionListener() {
 	    @Override
-	    public void valueChanged(ListSelectionEvent e) {
+	    public void valueChanged(final ListSelectionEvent e) {
 		if (e.getSource() instanceof DefaultListSelectionModel
 			&& !e.getValueIsAdjusting()) {
 		    int irow = ptable.getSelectedRow();
@@ -94,7 +94,7 @@ public final class PackagePanel extends JPanel {
 	});
     }
 
-    void showPkg(SVR4Package pkg) {
+    void showPkg(final SVR4Package pkg) {
 	pip.showPkg(pkg);
 	if (pkg.isInstalled()) {
 	    currentPackage = pkg;

@@ -134,7 +134,7 @@ public final class FsstatTableModel extends AbstractTableModel
      * @param jkstat a JKstat object
      * @param interval the desired update interval, in seconds
      */
-    public FsstatTableModel(JKstat jkstat, int interval) {
+    public FsstatTableModel(final JKstat jkstat, final int interval) {
 	this(jkstat, interval, MASK_IGNORE | MASK_ALLAGGR);
     }
 
@@ -145,7 +145,8 @@ public final class FsstatTableModel extends AbstractTableModel
      * @param interval the desired update interval, in seconds
      * @param filtermask a mask to filter out undesired statistics
      */
-    public FsstatTableModel(JKstat jkstat, int interval, int filtermask) {
+    public FsstatTableModel(final JKstat jkstat, final int interval,
+			    final int filtermask) {
 	this.jkstat = jkstat;
 	delay = interval * 1000;
 	this.filtermask = filtermask;
@@ -175,7 +176,7 @@ public final class FsstatTableModel extends AbstractTableModel
      *
      * @param b true if ignored filesystems should be shown.
      */
-    public void showIgnored(boolean b) {
+    public void showIgnored(final boolean b) {
 	if (b) {
 	    setMask(filtermask & ~MASK_IGNORE);
 	} else {
@@ -188,7 +189,7 @@ public final class FsstatTableModel extends AbstractTableModel
      *
      * @param b true if the aggregates by filesystem type should be shown.
      */
-    public void showAggregates(boolean b) {
+    public void showAggregates(final boolean b) {
 	if (b) {
 	    setMask(filtermask & ~MASK_ALLAGGR);
 	} else {
@@ -201,7 +202,7 @@ public final class FsstatTableModel extends AbstractTableModel
      *
      * @param b if true, only show the fs types in the showfstypes list
      */
-    public void showTypes(boolean b) {
+    public void showTypes(final boolean b) {
 	if (b) {
 	    setMask(filtermask & ~MASK_BYTYPE);
 	} else {
@@ -214,7 +215,7 @@ public final class FsstatTableModel extends AbstractTableModel
      *
      * @param filtermask the new filter mask
      */
-    private void setMask(int filtermask) {
+    private void setMask(final int filtermask) {
 	this.filtermask = filtermask;
 	updateFilter();
 	fireTableDataChanged();
@@ -248,7 +249,7 @@ public final class FsstatTableModel extends AbstractTableModel
      *
      * @param interval the desired delay interval in seconds.
      */
-    public void setDelay(int interval) {
+    public void setDelay(final int interval) {
 	if (interval <= 0) {
 	    stopLoop();
 	} else {
@@ -260,7 +261,7 @@ public final class FsstatTableModel extends AbstractTableModel
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	updateKstat();
     }
 
@@ -270,7 +271,7 @@ public final class FsstatTableModel extends AbstractTableModel
      * @param zs the name of the zone to filter on
      * @param b if true, add the given zone to the display list, else remove it
      */
-    public void showZone(String zs, boolean b) {
+    public void showZone(final String zs, final boolean b) {
 	if (b) {
 	    if (!showzones.contains(zs)) {
 		showzones.add(zs);
@@ -287,7 +288,7 @@ public final class FsstatTableModel extends AbstractTableModel
      * @param b if true, add the given filesystem type to the display list,
      * else remove it
      */
-    public void showFstype(String fs, boolean b) {
+    public void showFstype(final String fs, final boolean b) {
 	if (b) {
 	    if (!showfstypes.contains(fs)) {
 		showfstypes.add(fs);
@@ -312,7 +313,7 @@ public final class FsstatTableModel extends AbstractTableModel
      * A separate method to check if we pass the filter, as this code is
      * called from both updateFilter() and updateKstat()
      */
-    private void addIfFiltered(ChartableKstat cks) {
+    private void addIfFiltered(final ChartableKstat cks) {
 	Kstat ks = cks.getKstat();
 	boolean doadd = true;
 	String dev2 = ks.getName().substring(VOP_PREFIX.length());
@@ -383,7 +384,7 @@ public final class FsstatTableModel extends AbstractTableModel
      *
      * @param s the display to show
      */
-    public void setNames(String s) {
+    public void setNames(final String s) {
 	columnTitle = s;
 	columnNames = COLUMN_MAP.get(columnTitle);
 	if (columnNames == null) {
@@ -431,19 +432,19 @@ public final class FsstatTableModel extends AbstractTableModel
     }
 
     @Override
-    public String getColumnName(int col) {
+    public String getColumnName(final int col) {
 	return (col == columnNames.length) ? "Device" : columnNames[col];
     }
 
     @Override
-    public Object getValueAt(int row, int col) {
+    public Object getValueAt(final int row, final int col) {
 	return (col == columnNames.length)
 	    ? fsnames.get(fsdata.get(row))
 	    : fsdata.get(row).getRate(columnNames[col]);
     }
 
     @Override
-    public Class<?> getColumnClass(int c) {
+    public Class<?> getColumnClass(final int c) {
 	return (c ==  columnNames.length) ? String.class : Double.class;
     }
 }

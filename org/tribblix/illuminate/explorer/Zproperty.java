@@ -38,7 +38,8 @@ public class Zproperty implements Comparable<Zproperty> {
      * @param value the value of the ZFS property
      * @param source the source of the ZFS property
      */
-    public Zproperty(String property, String value, String source) {
+    public Zproperty(final String property, final String value,
+		     final String source) {
 	this.property = property;
 	this.value = value;
 	this.source = source;
@@ -94,7 +95,7 @@ public class Zproperty implements Comparable<Zproperty> {
      * than, equal to, or greater than the name of the supplied Zproperty
      */
     @Override
-    public int compareTo(Zproperty otherzprop) {
+    public int compareTo(final Zproperty otherzprop) {
 	return property.compareTo(otherzprop.getProperty());
     }
 

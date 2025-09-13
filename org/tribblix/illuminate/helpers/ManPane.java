@@ -76,7 +76,7 @@ public final class ManPane extends JEditorPane
      *
      * @param m The name of the man page
      */
-    public ManPane(String m) {
+    public ManPane(final String m) {
 	setLayout(new BorderLayout());
 
 	JToolBar jtb = new JToolBar();
@@ -103,11 +103,11 @@ public final class ManPane extends JEditorPane
      *
      * @param m the name of the new manual page to be displayed.
      */
-    public void showMan(String m) {
+    public void showMan(final String m) {
 	showMan(findManPage(m));
     }
 
-    private void showMan(File f) {
+    private void showMan(final File f) {
 	if (f != null) {
 	    String m = f.toString();
 	    String[] fullcmd =
@@ -146,7 +146,7 @@ public final class ManPane extends JEditorPane
      *
      * return null if we can't find anything
      */
-    private File findManPage(String mpage) {
+    private File findManPage(final String mpage) {
 	/*
 	 * The Hyperlink event is quoted, so dequote
 	 */
@@ -175,12 +175,12 @@ public final class ManPane extends JEditorPane
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	goBack();
     }
 
     @Override
-    public void hyperlinkUpdate(HyperlinkEvent ev) {
+    public void hyperlinkUpdate(final HyperlinkEvent ev) {
 	if (ev.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
 	    File f = findManPage(ev.getDescription());
 	    if (f != null) {

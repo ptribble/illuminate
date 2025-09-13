@@ -48,7 +48,7 @@ public final class FsInfoPanel extends InfoPanel {
      * @param hi The item to display
      * @param jkstat A JKstat object
      */
-    public FsInfoPanel(SysItem hi, JKstat jkstat) {
+    public FsInfoPanel(final SysItem hi, final JKstat jkstat) {
 	super(hi);
 	this.jkstat = jkstat;
 

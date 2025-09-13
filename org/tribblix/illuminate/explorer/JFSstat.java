@@ -73,7 +73,7 @@ public final class JFSstat extends JKdemo implements ActionListener {
      * @param standalone if false, indicates that this demo is being called
      * from another application
      */
-    public JFSstat(JKstat jkstat, boolean standalone) {
+    public JFSstat(final JKstat jkstat, final boolean standalone) {
 	super("jfsstat", standalone);
 
 	mainPanel = new JFSstatPanel(jkstat, DEFAULT_INTERVAL);
@@ -116,7 +116,7 @@ public final class JFSstat extends JKdemo implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	super.actionPerformed(e);
 	JMenuItem jmi = (JMenuItem) e.getSource();
 	if (displayset.contains(jmi)) {
@@ -134,7 +134,7 @@ public final class JFSstat extends JKdemo implements ActionListener {
     }
 
     @Override
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	mainPanel.setDelay(i);
 	setLabelDelay(i);
     }
@@ -144,7 +144,7 @@ public final class JFSstat extends JKdemo implements ActionListener {
      *
      * @param args Command line arguments, unused
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new JFSstat();
     }
 }

@@ -46,7 +46,7 @@ public final class ZfsTableModel extends AbstractTableModel {
      * @param props a Set of zfs properties whose output will be converted to
      * tabular form
      */
-    public ZfsTableModel(Set<Zproperty> props) {
+    public ZfsTableModel(final Set<Zproperty> props) {
 	nrows = props.size();
 	zprops = new TreeSet<>(props).toArray(new Zproperty[0]);
     }
@@ -62,7 +62,7 @@ public final class ZfsTableModel extends AbstractTableModel {
     }
 
     @Override
-    public Object getValueAt(int row, int col) {
+    public Object getValueAt(final int row, final int col) {
 	Zproperty zp = zprops[row];
 	if (col == 0) {
 	    return zp.getProperty();
@@ -76,12 +76,12 @@ public final class ZfsTableModel extends AbstractTableModel {
     }
 
     @Override
-    public String getColumnName(int col) {
+    public String getColumnName(final int col) {
 	return COLUMNS[col];
     }
 
     @Override
-    public Class<?> getColumnClass(int c) {
+    public Class<?> getColumnClass(final int c) {
 	return String.class;
     }
 }

@@ -46,7 +46,7 @@ public final class Overlay implements Comparable<Overlay> {
      * @param pkghdl a PackageHandler for this OS image
      * @param name the name of this Overlay.
      */
-    public Overlay(PackageHandler pkghdl, String name) {
+    public Overlay(final PackageHandler pkghdl, final String name) {
 	this.pkghdl = pkghdl;
 	this.name = name;
     }
@@ -57,12 +57,12 @@ public final class Overlay implements Comparable<Overlay> {
      * @param plist a PkgList object
      * @param ovlist an OverlayList object
      */
-    public void populate(PkgList plist, OverlayList ovlist) {
+    public void populate(final PkgList plist, final OverlayList ovlist) {
 	parseOVL(ovlist);
 	parsePKGS(plist);
     }
 
-    private void parseOVL(OverlayList ovlist) {
+    private void parseOVL(final OverlayList ovlist) {
 	for (String line : pkghdl.getOvlOvl(name)) {
 	    String[] ds = line.split("=", 2);
 	    if ("VERSION".equals(ds[0])) {
@@ -83,7 +83,7 @@ public final class Overlay implements Comparable<Overlay> {
 	}
     }
 
-    private void parsePKGS(PkgList plist) {
+    private void parsePKGS(final PkgList plist) {
 	for (String line : pkghdl.getOvlPkgs(name)) {
 	    SVR4Package pkg = plist.getPackage(line);
 	    packages.add(pkg == null ? new SVR4Package(pkghdl, line) : pkg);
@@ -219,7 +219,7 @@ public final class Overlay implements Comparable<Overlay> {
      *
      * @return true if the given overlay is required by this overlay
      */
-    public boolean containsOverlay(Overlay ovl) {
+    public boolean containsOverlay(final Overlay ovl) {
 	return overlays.contains(ovl) || containsOverlay(ovl.getName());
     }
 
@@ -231,7 +231,7 @@ public final class Overlay implements Comparable<Overlay> {
      *
      * @return true if the given overlay is required by this overlay
      */
-    public boolean containsOverlay(String oname) {
+    public boolean containsOverlay(final String oname) {
 	// check if any names match
 	for (Overlay ovl : overlays) {
 	    if (ovl.getName().equals(oname)) {
@@ -249,7 +249,7 @@ public final class Overlay implements Comparable<Overlay> {
      *
      * @return true if the given package is contained in this overlay
      */
-    public boolean containsPackage(String pname) {
+    public boolean containsPackage(final String pname) {
 	// check if any names match
 	for (SVR4Package pkg : packages) {
 	    if (pkg.getName().equals(pname)) {
@@ -268,7 +268,7 @@ public final class Overlay implements Comparable<Overlay> {
      * Overlay
      */
     @Override
-    public int compareTo(Overlay ovl) {
+    public int compareTo(final Overlay ovl) {
 	return name.compareTo(ovl.getName());
     }
 

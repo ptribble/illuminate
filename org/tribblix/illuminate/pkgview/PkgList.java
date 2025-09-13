@@ -48,7 +48,7 @@ public final class PkgList extends TreeSet<SVR4Package> {
      *
      * @param pkghdl a PackageHandler for this OS image
      */
-    public PkgList(PackageHandler pkghdl) {
+    public PkgList(final PackageHandler pkghdl) {
         for (String s : pkghdl.listPackageNames()) {
 	    SVR4Package sp = new SVR4Package(pkghdl, s);
 	    add(sp);
@@ -73,7 +73,7 @@ public final class PkgList extends TreeSet<SVR4Package> {
      * @return the SVR4Package of the name, or null if no such package
      * is installed.
      */
-    public SVR4Package getPackage(String name) {
+    public SVR4Package getPackage(final String name) {
 	return pkgMap.get(name);
     }
 
@@ -84,7 +84,7 @@ public final class PkgList extends TreeSet<SVR4Package> {
      *
      * @return a Set of packages that depend on the given package
      */
-    public Set<SVR4Package> getDependantSet(String pkg) {
+    public Set<SVR4Package> getDependantSet(final String pkg) {
 	return (revDependencies == null) ? null : revDependencies.get(pkg);
     }
 

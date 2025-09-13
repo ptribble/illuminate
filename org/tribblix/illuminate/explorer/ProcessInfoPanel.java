@@ -49,7 +49,7 @@ public final class ProcessInfoPanel extends InfoPanel {
      *
      * @param hi The item to display
      */
-    public ProcessInfoPanel(SysItem hi) {
+    public ProcessInfoPanel(final SysItem hi) {
 	super(hi);
 
 	if (hi.getType() == SysItem.PROCESS_CONTAINER) {

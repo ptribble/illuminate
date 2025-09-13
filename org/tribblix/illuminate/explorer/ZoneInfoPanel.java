@@ -69,7 +69,7 @@ public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
      * @param hi The item to display
      * @param jkstat A JKstat object
      */
-    public ZoneInfoPanel(SysItem hi, JKstat jkstat) {
+    public ZoneInfoPanel(final SysItem hi, final JKstat jkstat) {
 	super(hi);
 	this.jkstat = jkstat;
 	kaplist = new ArrayList<>();
@@ -193,7 +193,7 @@ public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == jmb) {
 	    new ManFrame(jmb.getName());
 	}

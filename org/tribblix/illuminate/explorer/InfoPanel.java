@@ -57,7 +57,7 @@ public class InfoPanel extends JPanel {
      *
      * @param hi The item to display
      */
-    public InfoPanel(SysItem hi) {
+    public InfoPanel(final SysItem hi) {
 	this.hi = hi;
 	setLayout(new BorderLayout());
 	jvp = new JingleVPanel();
@@ -78,7 +78,7 @@ public class InfoPanel extends JPanel {
      *
      * @param text The text to place on the label
      */
-    protected void addLabel(String text) {
+    protected void addLabel(final String text) {
 	JLabel jl = new JLabel(text);
 	jl.setAlignmentX(CENTER_ALIGNMENT);
 	jvp.add(jl);
@@ -89,7 +89,7 @@ public class InfoPanel extends JPanel {
      *
      * @param jc The JComponent to add
      */
-    protected void addComponent(JComponent jc) {
+    protected void addComponent(final JComponent jc) {
 	jvp.add(jc);
     }
 
@@ -98,7 +98,7 @@ public class InfoPanel extends JPanel {
      *
      * @param jc The JComponent to add
      */
-    protected void addScrollPane(JComponent jc) {
+    protected void addScrollPane(final JComponent jc) {
 	jvp.add(new JScrollPane(jc));
     }
 
@@ -107,7 +107,7 @@ public class InfoPanel extends JPanel {
      *
      * @param ic The InfoCommand to display the output of
      */
-    protected void addText(InfoCommand ic) {
+    protected void addText(final InfoCommand ic) {
 	if (ic.exists()) {
 	    addScrollPane(new SysCmdPanel(ic));
 	}
@@ -118,7 +118,7 @@ public class InfoPanel extends JPanel {
      *
      * @param ct The CommandTableModel to display the output of
      */
-    protected void addText(CommandTableModel ct) {
+    protected void addText(final CommandTableModel ct) {
 	addScrollPane(new JTable(ct));
     }
 
@@ -127,7 +127,7 @@ public class InfoPanel extends JPanel {
      *
      * @param s The text to display
      */
-    protected void addText(String s) {
+    protected void addText(final String s) {
         addScrollPane(new SysCmdPanel(s));
     }
 }

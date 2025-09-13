@@ -44,7 +44,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * @param pkghdl a PackageHandler for this OS image
      * @param name the name of the package
      */
-    public SVR4Package(PackageHandler pkghdl, String name) {
+    public SVR4Package(final PackageHandler pkghdl, final String name) {
 	this.pkghdl = pkghdl;
 	this.name = name;
 	pkginfo = new PkgInfo(pkghdl, name);
@@ -132,7 +132,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      *
      * @param depSet the Set of dependant packages
      */
-    public void setDependantSet(Set<SVR4Package> depSet) {
+    public void setDependantSet(final Set<SVR4Package> depSet) {
 	this.depSet = depSet;
     }
 
@@ -159,7 +159,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
     /*
      * Get the specified property from the pkginfo file.
      */
-    private String getInfoItem(String s) {
+    private String getInfoItem(final String s) {
 	return pkginfo.getInfoItem(s);
     }
 
@@ -177,7 +177,7 @@ public class SVR4Package implements Comparable<SVR4Package> {
      * For Comparable.
      */
     @Override
-    public int compareTo(SVR4Package p) {
+    public int compareTo(final SVR4Package p) {
 	return name.compareTo(p.getName());
     }
 

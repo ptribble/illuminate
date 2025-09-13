@@ -45,7 +45,7 @@ public final class SysInfoPanel extends JPanel {
      *
      * @param jkstat A JKstat object
      */
-    public SysInfoPanel(JKstat jkstat) {
+    public SysInfoPanel(final JKstat jkstat) {
 	this.jkstat = jkstat;
 	setLayout(new BorderLayout());
 
@@ -60,7 +60,7 @@ public final class SysInfoPanel extends JPanel {
      *
      * @param hi The item to display
      */
-    public void display(SysItem hi) {
+    public void display(final SysItem hi) {
 	if (ip != null) {
 	    ip.stopLoop();
 	}

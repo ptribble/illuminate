@@ -41,7 +41,7 @@ public class InfoCommand {
      * @param text The name of the command
      * @param cmd The full path to the command
      */
-    public InfoCommand(String text, String cmd) {
+    public InfoCommand(final String text, final String cmd) {
 	this(text, cmd, (String) null);
     }
 
@@ -52,7 +52,7 @@ public class InfoCommand {
      * @param cmd The full path to the command
      * @param args The arguments to the command
      */
-    public InfoCommand(String text, String cmd, String args) {
+    public InfoCommand(final String text, final String cmd, final String args) {
 	this.text = text;
 	this.cmd = cmd;
 	fullcmd = (args == null) ? cmd : cmd + " " + args;
@@ -63,7 +63,7 @@ public class InfoCommand {
      *
      * @param manpage the manpage, with section appended
      */
-    public void setManpage(String manpage) {
+    public void setManpage(final String manpage) {
 	this.manpage = manpage;
     }
 

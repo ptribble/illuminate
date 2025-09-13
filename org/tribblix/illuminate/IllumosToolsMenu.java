@@ -64,7 +64,8 @@ public final class IllumosToolsMenu extends JMenu implements ActionListener {
      * exists, and if it hasn't been added already. If called multiple times
      * with different paths, the first location found will be used.
      */
-    private void addItem(String text, String cmd, String args) {
+    private void addItem(final String text, final String cmd,
+			 final String args) {
 	if (new File(cmd).exists()
 			&& !toolMap.containsKey(text)) {
 	    toolMap.put(text, (args == null) ? cmd : cmd + " " + args);
@@ -75,7 +76,7 @@ public final class IllumosToolsMenu extends JMenu implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	new RunInXterm(toolMap.get(((JMenuItem) e.getSource()).getText()));
     }
 }

@@ -42,7 +42,7 @@ public class PkgDepend {
      * @param pkghdl a PackageHandler for this OS image
      * @param name the name of the package.
      */
-    public PkgDepend(PackageHandler pkghdl, String name) {
+    public PkgDepend(final PackageHandler pkghdl, final String name) {
 	this.pkghdl = pkghdl;
 	this.name = name;
     }

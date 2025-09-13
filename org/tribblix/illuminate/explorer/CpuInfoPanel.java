@@ -72,7 +72,7 @@ public final class CpuInfoPanel extends InfoPanel {
      * @param hi The item to display
      * @param jkstat A JKstat object
      */
-    public CpuInfoPanel(SysItem hi, JKstat jkstat) {
+    public CpuInfoPanel(final SysItem hi, final JKstat jkstat) {
 	super(hi);
 	this.jkstat = jkstat;
 
@@ -241,7 +241,7 @@ public final class CpuInfoPanel extends InfoPanel {
     /*
      * Common aggregate accessory.
      */
-    private void addAggregateAccessory(KstatAggregate ksa) {
+    private void addAggregateAccessory(final KstatAggregate ksa) {
 	kap = new AggregateCpuPanel(ksa, 1, jkstat);
 	JPanel jp = new JPanel(new BorderLayout());
 	jp.add(kap);
@@ -257,7 +257,7 @@ public final class CpuInfoPanel extends InfoPanel {
      * How many threads per core? If it's the same for all cores in a chip,
      * return that, otherwise -1. This for one chip.
      */
-    private int threadsPerCore(ProcessorChip chip) {
+    private int threadsPerCore(final ProcessorChip chip) {
 	int imin = 0;
 	int imax = Integer.MAX_VALUE;
 	for (ProcessorCore core : chip.getCores()) {
@@ -287,7 +287,7 @@ public final class CpuInfoPanel extends InfoPanel {
 	return sb.toString();
     }
 
-    private String chipDetails(ProcessorChip chip) {
+    private String chipDetails(final ProcessorChip chip) {
 	if (threadsPerCore(chip) > 1) {
 	    StringBuilder sb = new StringBuilder(64);
 	    sb.append("Physical processor ").append(chip.getChipid())

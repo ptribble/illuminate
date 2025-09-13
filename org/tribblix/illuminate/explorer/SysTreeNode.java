@@ -44,7 +44,7 @@ public final class SysTreeNode extends DefaultMutableTreeNode
      * @param hi the SysItem represented by this node
      * @param node the displayed name of this node
      */
-    public SysTreeNode(SysItem hi, String node) {
+    public SysTreeNode(final SysItem hi, final String node) {
 	this.hi = hi;
 	this.node = node;
     }
@@ -67,7 +67,7 @@ public final class SysTreeNode extends DefaultMutableTreeNode
      * @return an int representing the result of the comparison
      */
     @Override
-    public int compareTo(SysTreeNode othernode) {
+    public int compareTo(final SysTreeNode othernode) {
 	return node.compareTo(othernode.toString());
     }
 

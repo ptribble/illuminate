@@ -124,7 +124,7 @@ public final class DevicePath {
      * same real device. We keep a Set of all equivalent alternate device
      * names, and keep it in a Map, using all possible names as keys.
      */
-    private static void addAlternate(String dev1, String dev2) {
+    private static void addAlternate(final String dev1, final String dev2) {
 	if (altMap.containsKey(dev1)) {
 	    altMap.get(dev1).add(dev2);
 	} else {
@@ -154,7 +154,7 @@ public final class DevicePath {
      * @return the driver name matching the given device, or null if no such
      * driver can be found
      */
-    public String getDriverName(String device) {
+    public String getDriverName(final String device) {
 	return dMap.get(device);
     }
 
@@ -166,7 +166,7 @@ public final class DevicePath {
      *
      * @return the disk or partition matching the given driver
      */
-    public String getDiskName(String driver) {
+    public String getDiskName(final String driver) {
 	return kMap.get(driver);
     }
 
@@ -179,7 +179,7 @@ public final class DevicePath {
      *
      * @return the Set of disk or partition names matching the given driver
      */
-    public Set<String> getDiskNames(String driver) {
+    public Set<String> getDiskNames(final String driver) {
 	return altMap.get(getDiskName(driver));
     }
 }

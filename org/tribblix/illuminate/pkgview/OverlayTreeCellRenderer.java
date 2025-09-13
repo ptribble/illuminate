@@ -54,13 +54,13 @@ public final class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
     }
 
     @Override
-    public Component getTreeCellRendererComponent(JTree tree,
-						  Object value,
-						  boolean sel,
-						  boolean expanded,
-						  boolean leaf,
-						  int row,
-						  boolean hasFocus) {
+    public Component getTreeCellRendererComponent(final JTree tree,
+						  final Object value,
+						  final boolean sel,
+						  final boolean expanded,
+						  final boolean leaf,
+						  final int row,
+						  final boolean hasFocus) {
 
 	super.getTreeCellRendererComponent(tree, value, sel,
 					   expanded, leaf, row,
@@ -90,7 +90,7 @@ public final class OverlayTreeCellRenderer extends DefaultTreeCellRenderer {
     /*
      * Based on the Java Swing tutorial examples.
      */
-    private ImageIcon createImageIcon(String s) {
+    private ImageIcon createImageIcon(final String s) {
 	URL imgURL = getClass().getResource(s);
 	return (imgURL == null) ? null : new ImageIcon(imgURL);
     }

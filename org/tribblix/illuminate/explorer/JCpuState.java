@@ -194,7 +194,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
      *
      * @param args command line arguments
      */
-    public JCpuState(String[] args) {
+    public JCpuState(final String[] args) {
 	this(new NativeJKstat(), args, true);
     }
 
@@ -205,7 +205,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
      * @param standalone if false, indicates that this demo is being called
      * from another application
      */
-    public JCpuState(JKstat jkstat, boolean standalone) {
+    public JCpuState(final JKstat jkstat, final boolean standalone) {
 	this(jkstat, new String[0], standalone);
     }
 
@@ -217,7 +217,8 @@ public final class JCpuState extends JKdemo implements ActionListener {
      * @param standalone if false, indicates that this demo is being called
      * from another application
      */
-    public JCpuState(JKstat jkstat, String[] args, boolean standalone) {
+    public JCpuState(final JKstat jkstat, final String[] args,
+		     final boolean standalone) {
 	super("jcpustate", 1, standalone, false, false);
 
 	this.jkstat = jkstat;
@@ -391,7 +392,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
      * Put a set of kstats into a panel: line of vertical accessories
      * above a line of labels.
      */
-    private JPanel multiPanel(Set<Kstat> kss) {
+    private JPanel multiPanel(final Set<Kstat> kss) {
 	JPanel ppanl = new JPanel();
 	ppanl.setLayout(new GridBagLayout());
 	GridBagConstraints c = new GridBagConstraints();
@@ -553,21 +554,22 @@ public final class JCpuState extends JKdemo implements ActionListener {
     /*
      * Add a processor to the main panel
      */
-    private void addProcessor(Kstat ks) {
+    private void addProcessor(final Kstat ks) {
 	addProcessor(ks, mainPanel);
     }
 
     /*
      * Add a processor to the given panel.
      */
-    private void addProcessor(Kstat ks, JPanel ppanel) {
+    private void addProcessor(final Kstat ks, final JPanel ppanel) {
 	addProcessor(ks, ppanel, (GridBagConstraints) null);
     }
 
     /*
      * Add a processor to the given panel.
      */
-    private void addProcessor(Kstat ks, JPanel ppanel, GridBagConstraints c) {
+    private void addProcessor(final Kstat ks, final JPanel ppanel,
+			      final GridBagConstraints c) {
 	String scpu = ks.getInstance();
 	// only add the label here if we're horizontal
 	if (orientation != SwingConstants.VERTICAL) {
@@ -612,7 +614,8 @@ public final class JCpuState extends JKdemo implements ActionListener {
     /*
      * Only used in the horizontal layout
      */
-    private void addChip(Set<Kstat> ksc, String s, Long l, Dimension d) {
+    private void addChip(final Set<Kstat> ksc, final String s, final Long l,
+			 final Dimension d) {
 	mainPanel.add(new JLabel(s + l));
 	KstatAggregate ksa = new KstatAggregate(jkstat, ksc);
 	KstatAccessoryPanel agp = (style == STYLE_CHART)
@@ -629,7 +632,8 @@ public final class JCpuState extends JKdemo implements ActionListener {
     /*
      * Only used in the vertical layout
      */
-    private void addChipNew(Set<Kstat> ksc, Dimension d, JPanel panl) {
+    private void addChipNew(final Set<Kstat> ksc, final Dimension d,
+			    final JPanel panl) {
 	KstatAggregate ksa = new KstatAggregate(jkstat, ksc);
 	KstatAccessoryPanel agp =
 	    new AggregateCpuPanel(ksa, 1, jkstat, orientation);
@@ -640,7 +644,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
     }
 
     @Override
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	for (KstatAccessoryPanel kap : kaplist) {
 	    kap.setDelay(i);
 	}
@@ -654,7 +658,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	super.actionPerformed(e);
 	if (e.getSource() == showChipItem) {
 	    showChips = showChipItem.isSelected();
@@ -693,21 +697,21 @@ public final class JCpuState extends JKdemo implements ActionListener {
     static class PopupListener extends MouseAdapter {
 	private JPopupMenu popup;
 
-	PopupListener(JPopupMenu popup) {
+	PopupListener(final JPopupMenu popup) {
 	    this.popup = popup;
 	}
 
 	@Override
-	public void mousePressed(MouseEvent e) {
+	public void mousePressed(final MouseEvent e) {
 	    showPopup(e);
 	}
 
 	@Override
-	public void mouseReleased(MouseEvent e) {
+	public void mouseReleased(final MouseEvent e) {
 	    showPopup(e);
 	}
 
-	private void showPopup(MouseEvent e) {
+	private void showPopup(final MouseEvent e) {
 	    if (e.isPopupTrigger()) {
 		popup.show(e.getComponent(), e.getX(), e.getY());
 	    }
@@ -716,7 +720,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
 
 
     // getopts would be nice
-    private void parseArgs(String[] args) {
+    private void parseArgs(final String[] args) {
 	if (args.length > 0) {
 	    showChips = false;
 	    showCores = false;
@@ -754,7 +758,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
      *
      * @param args Command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new JCpuState(args);
     }
 }

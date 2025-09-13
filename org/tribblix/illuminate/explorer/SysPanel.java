@@ -58,7 +58,7 @@ public final class SysPanel extends JPanel {
      *
      * @param jkstat A JKstat object
      */
-    public SysPanel(JKstat jkstat) {
+    public SysPanel(final JKstat jkstat) {
 	/*
 	 * I'm not sure what this will eventually look like. I'm planning
 	 * on something that just has big buttons "cpu" "memory" "storage"
@@ -73,7 +73,7 @@ public final class SysPanel extends JPanel {
 	ptree.setCellRenderer(new SysTreeCellRenderer());
 	ptree.addTreeSelectionListener(new TreeSelectionListener() {
 	    @Override
-	    public void valueChanged(TreeSelectionEvent e) {
+	    public void valueChanged(final TreeSelectionEvent e) {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode)
 		    ptree.getLastSelectedPathComponent();
 
@@ -94,7 +94,7 @@ public final class SysPanel extends JPanel {
 	add(psplit);
     }
 
-    void setInfo(Object o) {
+    void setInfo(final Object o) {
 	if (o instanceof SysItem) {
 	    Cursor c = getCursor();
 	    setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));

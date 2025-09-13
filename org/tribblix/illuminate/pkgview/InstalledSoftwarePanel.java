@@ -60,7 +60,7 @@ public final class InstalledSoftwarePanel extends JTabbedPane {
      *
      * @param altroot An alternate root directory for this OS image
      */
-    public InstalledSoftwarePanel(String altroot) {
+    public InstalledSoftwarePanel(final String altroot) {
 	pkghdl = new PackageHandler(altroot);
 	plist = pkghdl.getPkgList();
 	OverlayList ovlist = pkghdl.getOverlayList();

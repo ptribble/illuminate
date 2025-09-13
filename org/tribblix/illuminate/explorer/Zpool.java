@@ -46,7 +46,7 @@ public class Zpool {
      *
      * @param name The name of the pool.
      */
-    public Zpool(String name) {
+    public Zpool(final String name) {
 	this.name = name;
 	addComponents();
 	parseZfs();
@@ -175,7 +175,7 @@ public class Zpool {
      *
      * @return true if the pool contains a device of the given name
      */
-    public boolean contains(String s) {
+    public boolean contains(final String s) {
 	return zdevices.contains(s);
     }
 }

@@ -49,7 +49,7 @@ public final class ContentsFileTreeNode extends DefaultMutableTreeNode {
      *
      * @param file The File representing the current pathname.
      */
-    public ContentsFileTreeNode(File file) {
+    public ContentsFileTreeNode(final File file) {
 	this.file = file;
 	setUserObject(file);
     }

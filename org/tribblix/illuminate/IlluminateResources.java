@@ -40,7 +40,7 @@ public final class IlluminateResources {
      *
      * @return the matching String.
      */
-    public static String getString(String key) {
+    public static String getString(final String key) {
 	return ILLUMINATERES.getString(key);
     }
 }

@@ -39,7 +39,7 @@ public class Zvolume extends Zdataset {
      *
      * @param name the name of the ZFS volume
      */
-    public Zvolume(String name) {
+    public Zvolume(final String name) {
 	this.name = name;
 	int j = name.lastIndexOf('/');
 	if (j >= 0) {

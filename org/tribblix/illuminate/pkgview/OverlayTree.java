@@ -50,7 +50,7 @@ public final class OverlayTree extends JTree {
      *
      * @param ovlist A list of overlays
      */
-    public OverlayTree(OverlayList ovlist) {
+    public OverlayTree(final OverlayList ovlist) {
 	DefaultMutableTreeNode topmenu = new DefaultMutableTreeNode("Overlays");
 	model = new DefaultTreeModel(topmenu);
 	setModel(model);
@@ -66,7 +66,7 @@ public final class OverlayTree extends JTree {
      *
      * @param pkg the package that's changed
      */
-    public void nodeChanged(SVR4Package pkg) {
+    public void nodeChanged(final SVR4Package pkg) {
 	NodeSet ns = pkgmap.get(pkg);
 	if (ns != null) {
 	    for (DefaultMutableTreeNode node : ns.getNodes()) {
@@ -80,7 +80,7 @@ public final class OverlayTree extends JTree {
      *
      * @param ovl the overlay that's changed
      */
-    public void nodeChanged(Overlay ovl) {
+    public void nodeChanged(final Overlay ovl) {
 	NodeSet ns = ovmap.get(ovl);
 	if (ns != null) {
 	    for (DefaultMutableTreeNode node : ns.getNodes()) {
@@ -89,7 +89,7 @@ public final class OverlayTree extends JTree {
 	}
     }
 
-    private void addMC(DefaultMutableTreeNode node, Overlay ovl) {
+    private void addMC(final DefaultMutableTreeNode node, final Overlay ovl) {
 	for (Overlay ov : ovl.getOverlays()) {
 	    node.add(addNode(ov));
 	}
@@ -98,7 +98,7 @@ public final class OverlayTree extends JTree {
 	}
     }
 
-    private DefaultMutableTreeNode addNode(Overlay ovl) {
+    private DefaultMutableTreeNode addNode(final Overlay ovl) {
 	DefaultMutableTreeNode mitem = new DefaultMutableTreeNode(ovl);
 	for (Overlay ov : ovl.getOverlays()) {
 	    mitem.add(addNode(ov));
@@ -115,7 +115,7 @@ public final class OverlayTree extends JTree {
 	return mitem;
     }
 
-    private DefaultMutableTreeNode addNode(SVR4Package pkg) {
+    private DefaultMutableTreeNode addNode(final SVR4Package pkg) {
 	DefaultMutableTreeNode node = new DefaultMutableTreeNode(pkg);
 	NodeSet ns = pkgmap.get(pkg);
 	if (ns == null) {
@@ -128,7 +128,7 @@ public final class OverlayTree extends JTree {
 
     class NodeSet {
 	private Set<DefaultMutableTreeNode> nodes = new HashSet<>();
-	public void add(DefaultMutableTreeNode node) {
+	public void add(final DefaultMutableTreeNode node) {
 	    nodes.add(node);
 	}
 	public Set<DefaultMutableTreeNode> getNodes() {

@@ -92,7 +92,7 @@ public class Zdataset {
      *
      * @return the requested property
      */
-    public Zproperty getProperty(String key) {
+    public Zproperty getProperty(final String key) {
 	initProperties();
 	return propmap.get(key);
     }

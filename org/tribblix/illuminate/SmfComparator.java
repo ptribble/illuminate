@@ -44,7 +44,7 @@ public final class SmfComparator<T extends TreeNode>
 	return INSTANCE;
     }
     @Override
-    public int compare(TreeNode t1, TreeNode t2) {
+    public int compare(final TreeNode t1, final TreeNode t2) {
 	return t1.toString().compareTo(t2.toString());
     }
 }

@@ -47,7 +47,7 @@ public final class JFSstatPanel extends JPanel {
      * @param jkstat a JKstat object
      * @param interval the desired update interval in seconds
      */
-    public JFSstatPanel(JKstat jkstat, int interval) {
+    public JFSstatPanel(final JKstat jkstat, final int interval) {
 	setLayout(new BorderLayout());
 
 	ftm = new FsstatTableModel(jkstat, interval);
@@ -61,7 +61,7 @@ public final class JFSstatPanel extends JPanel {
      *
      * @param s the display to show
      */
-    public void setNames(String s) {
+    public void setNames(final String s) {
 	ftm.setNames(s);
     }
 
@@ -77,7 +77,7 @@ public final class JFSstatPanel extends JPanel {
      *
      * @param i the desired update delay, in seconds
      */
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	ftm.setDelay(i);
     }
 
@@ -86,7 +86,7 @@ public final class JFSstatPanel extends JPanel {
      *
      * @param b true if ignored filesystems should be shown.
      */
-    public void showIgnored(boolean b) {
+    public void showIgnored(final boolean b) {
 	ftm.showIgnored(b);
     }
 
@@ -95,7 +95,7 @@ public final class JFSstatPanel extends JPanel {
      *
      * @param b true if the aggregates by filesystem type should be shown.
      */
-    public void showAggregates(boolean b) {
+    public void showAggregates(final boolean b) {
 	ftm.showAggregates(b);
     }
 

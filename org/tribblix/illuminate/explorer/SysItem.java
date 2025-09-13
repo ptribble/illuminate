@@ -276,7 +276,7 @@ public final class SysItem {
      *
      * @param type the type of item
      */
-    public SysItem(int type) {
+    public SysItem(final int type) {
 	this.type = type;
 	attributes = new HashMap<>();
     }
@@ -288,7 +288,7 @@ public final class SysItem {
      * @param type the type of item
      * @param flag a String flag
      */
-    public SysItem(int type, String flag) {
+    public SysItem(final int type, final String flag) {
 	this.type = type;
 	attributes = new HashMap<>();
 	addAttribute("flag", flag);
@@ -311,7 +311,7 @@ public final class SysItem {
      * @param key the name of the attribute
      * @param value an Object representing this attribute
      */
-    public void addAttribute(String key, Object value) {
+    public void addAttribute(final String key, final Object value) {
 	attributes.put(key, value);
     }
 
@@ -322,7 +322,7 @@ public final class SysItem {
      *
      * @return the attribute of the given name
      */
-    public Object getAttribute(String key) {
+    public Object getAttribute(final String key) {
 	return attributes.get(key);
     }
 
@@ -334,7 +334,7 @@ public final class SysItem {
      *
      * @param kstat the Kstat to be associated with this item
      */
-    public void setKstat(Kstat kstat) {
+    public void setKstat(final Kstat kstat) {
 	this.kstat = kstat;
     }
 
@@ -356,7 +356,7 @@ public final class SysItem {
      *
      * @param status the new status of this item
      */
-    public void setStatus(int status) {
+    public void setStatus(final int status) {
 	this.status = status;
     }
 

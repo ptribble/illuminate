@@ -55,8 +55,9 @@ public class ZoneEntry {
      * @param zbrand the zone's brand
      * @param ziptype the zone's ip type, shared or exclusive
      */
-    public ZoneEntry(int zid, String zname, String zstate, String zroot,
-		String zuuid, String zbrand, String ziptype) {
+    public ZoneEntry(final int zid, final String zname, final String zstate,
+		     final String zroot, final String zuuid,
+		     final String zbrand, final String ziptype) {
 	this.zid = zid;
 	this.zname = zname;
 	this.zstate = zstate;

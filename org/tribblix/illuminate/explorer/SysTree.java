@@ -55,7 +55,7 @@ public final class SysTree extends JTree {
      *
      * @param title the name of the tree
      */
-    public SysTree(String title) {
+    public SysTree(final String title) {
 	this(new NativeJKstat(), title);
     }
 
@@ -65,7 +65,7 @@ public final class SysTree extends JTree {
      * @param title the name of the tree
      * @param jkstat a JKstat object
      */
-    public SysTree(JKstat jkstat, String title) {
+    public SysTree(final JKstat jkstat, final String title) {
 	this.jkstat = jkstat;
 
 	DefaultMutableTreeNode root = new SysTreeNode(
@@ -74,7 +74,7 @@ public final class SysTree extends JTree {
 	setModel(new DefaultTreeModel(root));
     }
 
-    private void buildTree(DefaultMutableTreeNode root) {
+    private void buildTree(final DefaultMutableTreeNode root) {
 	addProcessors(root);
 	addDisks(root);
 	addNetworks(root);
@@ -85,7 +85,7 @@ public final class SysTree extends JTree {
 	addZones(root);
     }
 
-    private void addProcessors(DefaultMutableTreeNode root) {
+    private void addProcessors(final DefaultMutableTreeNode root) {
 	/*
 	 * Add a node for each processor.
 	 */
@@ -158,7 +158,7 @@ public final class SysTree extends JTree {
 	}
     }
 
-    private void addDisks(DefaultMutableTreeNode root) {
+    private void addDisks(final DefaultMutableTreeNode root) {
 	SysItem diskItem = new SysItem(SysItem.DISK_CONTAINER);
 	SysTreeNode htn = new SysTreeNode(diskItem,
 				IlluminateResources.getString("HARD.DISK"));
@@ -208,7 +208,7 @@ public final class SysTree extends JTree {
 	}
     }
 
-    private void addNetworks(DefaultMutableTreeNode root) {
+    private void addNetworks(final DefaultMutableTreeNode root) {
 	SysTreeNode htn = new SysTreeNode(new SysItem(SysItem.NET_CONTAINER),
 				IlluminateResources.getString("HARD.NETWORK"));
 	root.add(htn);
@@ -336,7 +336,8 @@ public final class SysTree extends JTree {
 	htn.add(new SysTreeNode(new SysItem(SysItem.NET_STAT), "netstat"));
     }
 
-    private void addMemory(DefaultMutableTreeNode root, ZFSconfig zconfig) {
+    private void addMemory(final DefaultMutableTreeNode root,
+			   final ZFSconfig zconfig) {
 	SysTreeNode htn = new SysTreeNode(new SysItem(SysItem.MEM_CONTAINER),
 				IlluminateResources.getString("HARD.MEMORY"));
 	root.add(htn);
@@ -350,8 +351,8 @@ public final class SysTree extends JTree {
 	}
     }
 
-    private void addFilesystems(DefaultMutableTreeNode root,
-				ZFSconfig zconfig) {
+    private void addFilesystems(final DefaultMutableTreeNode root,
+				final ZFSconfig zconfig) {
 	SysTreeNode htn = new SysTreeNode(new SysItem(SysItem.FS_CONTAINER),
 				IlluminateResources.getString("HARD.FS"));
 	root.add(htn);
@@ -372,7 +373,7 @@ public final class SysTree extends JTree {
     /*
      * Add a pool, then its datasets.
      */
-    private void addPool(SysTreeNode stn, Zpool zp) {
+    private void addPool(final SysTreeNode stn, final Zpool zp) {
 	SysItem zpitem = new SysItem(SysItem.ZFS_POOL);
 	zpitem.addAttribute("zpool", zp);
 	SysTreeNode ptn = new SysTreeNode(zpitem, zp.getName());
@@ -385,7 +386,7 @@ public final class SysTree extends JTree {
      * Add a zfs dataset, and then call recursively to add all that
      * dataset's children
      */
-    private void addZnode(SysTreeNode stn, Zfilesys zfs) {
+    private void addZnode(final SysTreeNode stn, final Zfilesys zfs) {
 	SysItem zitem = new SysItem(SysItem.ZFS_FS);
 	zitem.addAttribute("zfs", zfs);
 	SysTreeNode ztn = new SysTreeNode(zitem, zfs.getShortName());
@@ -398,7 +399,7 @@ public final class SysTree extends JTree {
     /*
      * If there are any volumes in this pool, add them, just as a flat list.
      */
-    private void addZvol(SysTreeNode stn, Zpool zp) {
+    private void addZvol(final SysTreeNode stn, final Zpool zp) {
 	Set<Zvolume> svol = zp.volumes();
 	if (!svol.isEmpty()) {
 	    SysItem zitem = new SysItem(SysItem.ZFS_VOLUME);
@@ -416,7 +417,7 @@ public final class SysTree extends JTree {
     /*
      * Add processes
      */
-    private void addProcesses(DefaultMutableTreeNode root) {
+    private void addProcesses(final DefaultMutableTreeNode root) {
 	root.add(new SysTreeNode(new SysItem(SysItem.PROCESS_CONTAINER),
 				IlluminateResources.getString("HARD.PS")));
     }
@@ -425,7 +426,7 @@ public final class SysTree extends JTree {
      * Add zones. Only display the zone tree if we're in the global zone
      * and there are non-global zones.
      */
-    private void addZones(DefaultMutableTreeNode root) {
+    private void addZones(final DefaultMutableTreeNode root) {
 	ZoneConfig zc = ZoneConfig.getInstance();
 	if (!zc.isGlobalZone() || zc.size() == 0) {
 	    return;

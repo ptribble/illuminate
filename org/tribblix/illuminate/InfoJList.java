@@ -37,7 +37,7 @@ public class InfoJList extends JList<InfoCommand> {
      *
      * @param iclist An InfoCommandList
      */
-    public InfoJList(InfoCommandList iclist) {
+    public InfoJList(final InfoCommandList iclist) {
 	super(iclist);
     }
 
@@ -49,7 +49,7 @@ public class InfoJList extends JList<InfoCommand> {
      * @return the tooltip for the command
      */
     @Override
-    public String getToolTipText(MouseEvent me) {
+    public String getToolTipText(final MouseEvent me) {
 	Object o = this.getModel().getElementAt(locationToIndex(me.getPoint()));
 	if (o instanceof InfoCommand) {
 	    return ((InfoCommand) o).getFullCmd();

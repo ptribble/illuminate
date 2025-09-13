@@ -35,10 +35,10 @@ public final class SpringUtilities {
      * @param xPad x padding between cells
      * @param yPad y padding between cells
      */
-    public static void makeGrid(Container parent,
-                                int rows, int cols,
-                                int initialX, int initialY,
-                                int xPad, int yPad) {
+    public static void makeGrid(final Container parent,
+                                final int rows, final int cols,
+                                final int initialX, final int initialY,
+                                final int xPad, final int yPad) {
         SpringLayout layout;
         try {
             layout = (SpringLayout) parent.getLayout();
@@ -116,9 +116,9 @@ public final class SpringUtilities {
 
     /* Used by makeCompactGrid. */
     private static SpringLayout.Constraints getConstraintsForCell(
-                                                int row, int col,
-                                                Container parent,
-                                                int cols) {
+                                                final int row, final int col,
+                                                final Container parent,
+                                                final int cols) {
         SpringLayout layout = (SpringLayout) parent.getLayout();
         Component c = parent.getComponent(row * cols + col);
         return layout.getConstraints(c);
@@ -140,10 +140,10 @@ public final class SpringUtilities {
      * @param xPad x padding between cells
      * @param yPad y padding between cells
      */
-    public static void makeCompactGrid(Container parent,
-                                       int rows, int cols,
-                                       int initialX, int initialY,
-                                       int xPad, int yPad) {
+    public static void makeCompactGrid(final Container parent,
+                                       final int rows, final int cols,
+                                       final int initialX, final int initialY,
+                                       final int xPad, final int yPad) {
         SpringLayout layout;
         try {
             layout = (SpringLayout) parent.getLayout();

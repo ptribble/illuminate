@@ -41,7 +41,7 @@ public class ZapConfig {
      *
      * @param pkghdl a PackageHandler for this OS image
      */
-    public ZapConfig(PackageHandler pkghdl) {
+    public ZapConfig(final PackageHandler pkghdl) {
 	repoMap = new TreeMap<>();
 	catalogMap = new HashMap<>(8);
 	for (String line : pkghdl.listRepositories()) {
@@ -70,7 +70,7 @@ public class ZapConfig {
      * @return the CatalogPackage for the desired package, or null if the
      * package cannot be found
      */
-    public CatalogPackage getPackage(String name) {
+    public CatalogPackage getPackage(final String name) {
 	for (ZapRepository zr : repoMap.values()) {
 	    CatalogPackage cp = catalogMap.get(zr.getName()).getPackage(name);
 	    if (cp != null) {
@@ -87,7 +87,7 @@ public class ZapConfig {
      * @return the currently available version of the desired package
      *
      */
-    public String currentVersion(String name) {
+    public String currentVersion(final String name) {
 	CatalogPackage cp = getPackage(name);
 	return cp == null ? null : cp.getVersion();
     }

@@ -39,7 +39,7 @@ public final class SysCmdPanel extends JPanel {
      *
      * @param ic The InfoCommand to show the output of
      */
-    public SysCmdPanel(InfoCommand ic) {
+    public SysCmdPanel(final InfoCommand ic) {
 	this(ic.getOutput());
     }
 
@@ -48,7 +48,7 @@ public final class SysCmdPanel extends JPanel {
      *
      * @param s The String to display
      */
-    public SysCmdPanel(String s) {
+    public SysCmdPanel(final String s) {
 	setLayout(new BorderLayout());
 	JingleTextPane tp = new JingleTextPane("text/plain");
 	add(tp);

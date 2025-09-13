@@ -157,12 +157,12 @@ public final class InfoCommandList extends Vector<InfoCommand> {
 	}
     }
 
-    private void addCommand(InfoCommand ic, String manpage) {
+    private void addCommand(final InfoCommand ic, final String manpage) {
 	ic.setManpage(manpage);
 	addCommand(ic);
     }
 
-    private void addCommand(InfoCommand ic) {
+    private void addCommand(final InfoCommand ic) {
 	if (ic.exists()) {
 	    add(ic);
 	}

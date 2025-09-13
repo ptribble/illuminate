@@ -40,7 +40,7 @@ public class Zfilesys extends Zdataset {
      *
      * @param name the name of the ZFS filesystem
      */
-    public Zfilesys(String name) {
+    public Zfilesys(final String name) {
 	this.name = name;
 	int j = name.lastIndexOf('/');
 	if (j >= 0) {
@@ -65,7 +65,7 @@ public class Zfilesys extends Zdataset {
      *
      * @param zfs the child filesystem to add
      */
-    public void addChild(Zfilesys zfs) {
+    public void addChild(final Zfilesys zfs) {
 	children.add(zfs);
     }
 

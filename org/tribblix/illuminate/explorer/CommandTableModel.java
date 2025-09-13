@@ -55,7 +55,7 @@ public final class CommandTableModel extends AbstractTableModel {
      * @param ic The InfoCommand whose output will be converted to tabular
      * form
      */
-    public CommandTableModel(InfoCommand ic) {
+    public CommandTableModel(final InfoCommand ic) {
 	this(ic, 0);
     }
 
@@ -71,7 +71,7 @@ public final class CommandTableModel extends AbstractTableModel {
      * @param colmax The maximum number of columns. Columns beyond this
      * will be combined.
      */
-    public CommandTableModel(InfoCommand ic, int colmax) {
+    public CommandTableModel(final InfoCommand ic, final int colmax) {
 	String[] rows = ic.getOutputLines();
 	populateModel(rows, rows[0], colmax);
     }
@@ -90,11 +90,13 @@ public final class CommandTableModel extends AbstractTableModel {
      * @param colmax The maximum number of columns. Columns beyond this
      * will be combined.
      */
-    public CommandTableModel(InfoCommand ic, String hdr, int colmax) {
+    public CommandTableModel(final InfoCommand ic, final String hdr,
+			     final int colmax) {
 	populateModel(ic.getOutputLines(), hdr, colmax);
     }
 
-    private void populateModel(String[] rows, String hdr, int colmax) {
+    private void populateModel(final String[] rows, final String hdr,
+			       final int colmax) {
 	columnNames = hdr.trim().split("\\s+", colmax);
 	nrows = rows.length - 1;
 	data = new String[nrows][columnNames.length];
@@ -118,17 +120,17 @@ public final class CommandTableModel extends AbstractTableModel {
     }
 
     @Override
-    public Object getValueAt(int row, int col) {
+    public Object getValueAt(final int row, final int col) {
 	return data[row][col];
     }
 
     @Override
-    public String getColumnName(int col) {
+    public String getColumnName(final int col) {
 	return columnNames[col];
     }
 
     @Override
-    public Class<?> getColumnClass(int c) {
+    public Class<?> getColumnClass(final int c) {
 	return String.class;
     }
 }

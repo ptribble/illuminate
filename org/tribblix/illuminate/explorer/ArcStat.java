@@ -53,7 +53,7 @@ public final class ArcStat extends JKdemo {
      * @param standalone if false, indicates that this demo is being called
      * from another application
      */
-    public ArcStat(JKstat jkstat, boolean standalone) {
+    public ArcStat(final JKstat jkstat, final boolean standalone) {
 	super("ArcStat", standalone);
 
 	mainPanel = new ArcStatPanel(jkstat, DEFAULT_INTERVAL);
@@ -76,7 +76,7 @@ public final class ArcStat extends JKdemo {
     }
 
     @Override
-    public void setDelay(int i) {
+    public void setDelay(final int i) {
 	mainPanel.setDelay(i);
     }
 
@@ -85,7 +85,7 @@ public final class ArcStat extends JKdemo {
      *
      * @param args Command line arguments, unused
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new ArcStat();
     }
 }

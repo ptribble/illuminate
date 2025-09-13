@@ -52,7 +52,7 @@ public final class ContentsFileDetail
      * @param pkghdl a PackageHandler for this OS image
      * @param s one line of the contents file
      */
-    public ContentsFileDetail(PackageHandler pkghdl, String s) {
+    public ContentsFileDetail(final PackageHandler pkghdl, final String s) {
 	this.pkghdl = pkghdl;
 	parseNewStyle(s);
     }
@@ -73,7 +73,7 @@ public final class ContentsFileDetail
      *
      * @param s a String representing a line in the contents file
      */
-    private void parseNewStyle(String s) {
+    private void parseNewStyle(final String s) {
 	String[] st = s.split(" ");
 	filename = st[0];
 	ftype = st[1].charAt(0);
@@ -354,7 +354,7 @@ public final class ContentsFileDetail
      * For Comparable.
      */
     @Override
-    public int compareTo(ContentsFileDetail cfd) {
+    public int compareTo(final ContentsFileDetail cfd) {
 	return filename.compareTo(cfd.getName());
     }
 

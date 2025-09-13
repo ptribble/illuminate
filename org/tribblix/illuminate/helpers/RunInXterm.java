@@ -60,7 +60,7 @@ public final class RunInXterm {
      *
      * @param cmd The command to run
      */
-    public RunInXterm(String cmd) {
+    public RunInXterm(final String cmd) {
 	try {
 	    String[] fullcmd = {xtermbin, "-e", cmd};
 	    Runtime.getRuntime().exec(fullcmd);

@@ -36,7 +36,7 @@ public class CatalogParser {
      * @param pkghdl a PackageHandler for this OS image
      * @param reponame the repository represented by this catalog
      */
-    public CatalogParser(PackageHandler pkghdl, String reponame) {
+    public CatalogParser(final PackageHandler pkghdl, final String reponame) {
 	/*
 	 * the release repo usually has 3 packages
 	 * the illumos repo has just under 500
@@ -59,7 +59,7 @@ public class CatalogParser {
      * The catalog has lines of the form
      * name|version|depends|size|checksum
      */
-    private void parse(PackageHandler pkghdl, String reponame) {
+    private void parse(final PackageHandler pkghdl, final String reponame) {
 	for (String s : pkghdl.getCatalog(reponame)) {
 	    String[] ds = s.split("\\|", 5);
 	    pkgMap.put(ds[0],
@@ -75,7 +75,7 @@ public class CatalogParser {
      * @return the CatalogPackage for the given package, or null if there
      * is no entry for the requested package.
      */
-    public CatalogPackage getPackage(String name) {
+    public CatalogPackage getPackage(final String name) {
 	return pkgMap.get(name);
     }
 }

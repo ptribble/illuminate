@@ -37,7 +37,7 @@ public final class SmfList extends JList<SmfService> {
      *
      * @param sslist An SmfServiceList
      */
-    public SmfList(SmfServiceList sslist) {
+    public SmfList(final SmfServiceList sslist) {
 	super(sslist);
 	setCellRenderer(new SmfListCellRenderer());
     }
@@ -50,7 +50,7 @@ public final class SmfList extends JList<SmfService> {
      * @return the tooltip for the command
      */
     @Override
-    public String getToolTipText(MouseEvent me) {
+    public String getToolTipText(final MouseEvent me) {
 	Object o = this.getModel().getElementAt(locationToIndex(me.getPoint()));
 	if (o instanceof SmfService) {
 	    return ((SmfService) o).getName();

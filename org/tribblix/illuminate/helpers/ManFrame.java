@@ -36,7 +36,7 @@ public final class ManFrame extends JFrame {
      *
      * @param name the name of the manual page to display
      */
-    public ManFrame(String name) {
+    public ManFrame(final String name) {
 	add(new ManPane(name));
 
 	addWindowListener(new WinExit());
@@ -47,7 +47,7 @@ public final class ManFrame extends JFrame {
 
     class WinExit extends WindowAdapter {
 	@Override
-	public void windowClosing(WindowEvent we) {
+	public void windowClosing(final WindowEvent we) {
 	    dispose();
 	}
     }

@@ -67,7 +67,7 @@ public class BootEnvironments {
      *
      * @return the name of the BE corresponding to the given uuid
      */
-    public String getBE(String uuid) {
+    public String getBE(final String uuid) {
 	initProperties();
 	return backwardmap.get(uuid);
     }
@@ -79,7 +79,7 @@ public class BootEnvironments {
      *
      * @return the requested property
      */
-    public String getUUID(String bename) {
+    public String getUUID(final String bename) {
 	initProperties();
 	return forwardmap.get(bename);
     }

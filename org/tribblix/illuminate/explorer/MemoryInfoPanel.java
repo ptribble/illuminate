@@ -50,7 +50,7 @@ public final class MemoryInfoPanel extends InfoPanel {
      * @param hi The item to display
      * @param jkstat A JKstat object
      */
-    public MemoryInfoPanel(SysItem hi, JKstat jkstat) {
+    public MemoryInfoPanel(final SysItem hi, final JKstat jkstat) {
 	super(hi);
 	this.jkstat = jkstat;
 

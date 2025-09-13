@@ -66,7 +66,7 @@ public final class SmfPanel extends JPanel {
 	ToolTipManager.sharedInstance().registerComponent(ptree);
 	ptree.addTreeSelectionListener(new TreeSelectionListener() {
 	    @Override
-	    public void valueChanged(TreeSelectionEvent e) {
+	    public void valueChanged(final TreeSelectionEvent e) {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode)
 		    ptree.getLastSelectedPathComponent();
 
@@ -92,7 +92,7 @@ public final class SmfPanel extends JPanel {
 	add(psplit);
     }
 
-    void setInfo(SmfService svc) {
+    void setInfo(final SmfService svc) {
 	Cursor c = getCursor();
 	setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	sip.setInfo(svc);
@@ -105,7 +105,7 @@ public final class SmfPanel extends JPanel {
      */
     MouseListener mouseListener = new MouseAdapter() {
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(final MouseEvent e) {
 	    SmfList source = (SmfList) e.getSource();
 	    setInfo(source.getSelectedValue());
 	}
@@ -117,7 +117,7 @@ public final class SmfPanel extends JPanel {
      */
     KeyListener keyListener = new KeyAdapter() {
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(final KeyEvent e) {
 	    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 		SmfList source = (SmfList) e.getSource();
 		setInfo(source.getSelectedValue());

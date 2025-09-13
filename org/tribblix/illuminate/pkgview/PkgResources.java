@@ -42,7 +42,7 @@ public final class PkgResources {
      *
      * @return the text resource matching the specified key
      */
-    public static String getString(String key) {
+    public static String getString(final String key) {
 	return PKGRES.getString(key);
     }
 }

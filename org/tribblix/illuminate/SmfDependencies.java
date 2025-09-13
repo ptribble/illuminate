@@ -36,11 +36,12 @@ public final class SmfDependencies {
     private SmfDependencies() {
     }
 
-    private static void printDependencies(String arg) {
+    private static void printDependencies(final String arg) {
 	printDependencies(arg, "");
     }
 
-    private static void printDependencies(String arg, String inset) {
+    private static void printDependencies(final String arg,
+					  final String inset) {
 	System.out.println(inset + arg);
 	String sdep = DEPMAP.get(arg);
 	if (sdep == null) {
@@ -61,7 +62,7 @@ public final class SmfDependencies {
      *
      * @param args names of smf services you wish to display
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	for (String arg : args) {
 	    printDependencies(arg);
 	}

@@ -49,7 +49,7 @@ public final class ContentsFileTree extends JTree {
      *
      * @param pkghdl a PackageHandler for this OS image
      */
-    public ContentsFileTree(PackageHandler pkghdl) {
+    public ContentsFileTree(final PackageHandler pkghdl) {
 	ContentsFileTreeNode rootNode = new ContentsFileTreeNode(
 						new File(pkghdl.getRoot()));
 	rootNode.explore();
@@ -62,11 +62,11 @@ public final class ContentsFileTree extends JTree {
 
 	addTreeExpansionListener(new TreeExpansionListener() {
 	    @Override
-	    public void treeCollapsed(TreeExpansionEvent e) {
+	    public void treeCollapsed(final TreeExpansionEvent e) {
 		// nothing to do
 	    }
 	    @Override
-	    public void treeExpanded(TreeExpansionEvent e) {
+	    public void treeExpanded(final TreeExpansionEvent e) {
 		TreePath path = e.getPath();
 		if (path != null) {
 		    ContentsFileTreeNode node =
@@ -81,7 +81,7 @@ public final class ContentsFileTree extends JTree {
 
     }
 
-    void explore(ContentsFileTreeNode node) {
+    void explore(final ContentsFileTreeNode node) {
 	Cursor c = getCursor();
 	setCursor(Cursor.getPredefinedCursor(Cursor.WAIT_CURSOR));
 	node.explore();

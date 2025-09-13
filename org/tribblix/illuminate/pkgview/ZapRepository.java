@@ -39,7 +39,7 @@ public class ZapRepository {
      * @param pkghdl a PackageHandler for this OS image
      * @param repo the repository represented by this ZapRepository
      */
-    public ZapRepository(PackageHandler pkghdl, String repo) {
+    public ZapRepository(final PackageHandler pkghdl, final String repo) {
 	for (String line : pkghdl.getRepository(repo)) {
 	    String[] ds = line.split("=", 2);
 	    if ("NAME".equals(ds[0])) {

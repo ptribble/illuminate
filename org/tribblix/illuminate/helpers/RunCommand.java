@@ -41,7 +41,7 @@ public final class RunCommand {
      *
      * @param cmdarray The command to run
      */
-    public RunCommand(String[] cmdarray) {
+    public RunCommand(final String[] cmdarray) {
 	stdout = new StringBuilder();
 	stderr = new StringBuilder();
 	try {

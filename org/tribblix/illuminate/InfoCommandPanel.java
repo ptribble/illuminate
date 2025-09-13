@@ -99,7 +99,7 @@ public final class InfoCommandPanel extends JPanel implements ActionListener {
 	add(psplit);
     }
 
-    void setInfo(InfoCommand ic) {
+    void setInfo(final InfoCommand ic) {
 	currentCmd = ic;
 	jcl.setText(ic.infoLabel());
 	jmb.setEnabled(ic.getManpage() != null);
@@ -121,7 +121,7 @@ public final class InfoCommandPanel extends JPanel implements ActionListener {
      */
     MouseListener mouseListener = new MouseAdapter() {
 	@Override
-	public void mouseClicked(MouseEvent e) {
+	public void mouseClicked(final MouseEvent e) {
 	    @SuppressWarnings("unchecked")
 	    JList<InfoCommand> source = (JList<InfoCommand>) e.getSource();
 	    setInfo(source.getSelectedValue());
@@ -134,7 +134,7 @@ public final class InfoCommandPanel extends JPanel implements ActionListener {
      */
     KeyListener keyListener = new KeyAdapter() {
 	@Override
-	public void keyPressed(KeyEvent e) {
+	public void keyPressed(final KeyEvent e) {
 	    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 		@SuppressWarnings("unchecked")
 		JList<InfoCommand> source =
@@ -145,7 +145,7 @@ public final class InfoCommandPanel extends JPanel implements ActionListener {
     };
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == jmb) {
 	    showMan();
 	}

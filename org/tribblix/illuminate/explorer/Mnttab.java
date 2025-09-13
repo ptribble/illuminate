@@ -83,7 +83,7 @@ public final class Mnttab {
      *
      * @return The device the given filesystem is mounted on
      */
-    public String getDevice(String fs) {
+    public String getDevice(final String fs) {
 	return devmap.get(fs);
     }
 
@@ -96,7 +96,7 @@ public final class Mnttab {
      *
      * @return The filesystem mounted on the given device
      */
-    public String getFs(String device) {
+    public String getFs(final String device) {
 	return fsmap.get(device);
     }
 
@@ -108,7 +108,7 @@ public final class Mnttab {
      *
      * @return The type of the given filesystem
      */
-    public String getFsType(String fs) {
+    public String getFsType(final String fs) {
 	return fstypemap.get(fs);
     }
 
@@ -120,7 +120,7 @@ public final class Mnttab {
      *
      * @return The mount options of the given filesystem
      */
-    public List<String> getOptions(String fs) {
+    public List<String> getOptions(final String fs) {
 	return optmap.get(fs);
     }
 
@@ -135,7 +135,7 @@ public final class Mnttab {
      *
      * @return The value of the requested mount option of the given filesystem
      */
-    private String getOptionValue(String fs, String sopt) {
+    private String getOptionValue(final String fs, final String sopt) {
 	String sval = null;
 	for (String si : getOptions(fs)) {
 	    if (si.startsWith(sopt)) {
@@ -156,7 +156,7 @@ public final class Mnttab {
      *
      * @return The name of the zone that the given filesystem is mounted in.
      */
-    public String getZoneName(String fs) {
+    public String getZoneName(final String fs) {
 	String sz = getOptionValue(fs, "zone");
 	return (sz == null) ? "global" : sz;
     }
@@ -168,7 +168,7 @@ public final class Mnttab {
      *
      * @return The device id of the given filesystem
      */
-    public String getDeviceID(String fs) {
+    public String getDeviceID(final String fs) {
 	return getOptionValue(fs, "dev");
     }
 
@@ -180,7 +180,7 @@ public final class Mnttab {
      *
      * @return Whether the given filesystem has the ignore flag set
      */
-    public boolean getIgnore(String fs) {
+    public boolean getIgnore(final String fs) {
 	List<String> v = optmap.get(fs);
 	return v != null && v.contains("ignore");
     }
@@ -193,7 +193,7 @@ public final class Mnttab {
      *
      * @return The name of the first filesystem with the given device id
      */
-    public String getFSforDevice(String s) {
+    public String getFSforDevice(final String s) {
 	for (String fs : fsList) {
 	    if (!"lofs".equals(getFsType(fs)) && s.equals(getDeviceID(fs))) {
 		return fs;
@@ -231,7 +231,7 @@ public final class Mnttab {
      *
      * @return A List of filesystems that the given zone has mounted
      */
-    public List<String> getFSforZone(String myzone) {
+    public List<String> getFSforZone(final String myzone) {
 	List<String> v = new ArrayList<>();
 	for (String fs : fsList) {
 	    if (getZoneName(fs).equals(myzone)) {
@@ -263,7 +263,7 @@ public final class Mnttab {
      *
      * @return A List of filesystems of the given filesystem type
      */
-    public List<String> getFSforFstype(String ftype) {
+    public List<String> getFSforFstype(final String ftype) {
 	List<String> v = new ArrayList<>();
 	for (Map.Entry<String, String> entry : fstypemap.entrySet()) {
 	    if (entry.getValue().equals(ftype)) {
@@ -280,7 +280,7 @@ public final class Mnttab {
      *
      * @return A List of device IDs for the given filesystem type
      */
-    public List<String> getIDforFstype(String ftype) {
+    public List<String> getIDforFstype(final String ftype) {
 	List<String> v = new ArrayList<>();
 	for (Map.Entry<String, String> entry : fstypemap.entrySet()) {
 	    if (entry.getValue().equals(ftype)) {

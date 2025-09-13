@@ -45,7 +45,7 @@ public final class OverlayList {
      *
      * @param pkghdl a PackageHandler for this OS image
      */
-    public OverlayList(PackageHandler pkghdl) {
+    public OverlayList(final PackageHandler pkghdl) {
 	PkgList plist = pkghdl.getPkgList();
 
 	// first create a list of empty overlays
@@ -89,7 +89,7 @@ public final class OverlayList {
      * @return the Overlay of the given name, or null if there is no such
      * overlay
      */
-    public Overlay getOverlay(String name) {
+    public Overlay getOverlay(final String name) {
 	return ovMap.get(name);
     }
 
@@ -100,7 +100,7 @@ public final class OverlayList {
      *
      * @return the Set of overlays requiring the given overlay
      */
-    public Set<Overlay> containingOverlays(Overlay ovl) {
+    public Set<Overlay> containingOverlays(final Overlay ovl) {
 	Set<Overlay> h = new TreeSet<>();
 	for (Overlay ov1 : ovlist) {
 	    if (ov1.containsOverlay(ovl)) {
@@ -117,7 +117,7 @@ public final class OverlayList {
      *
      * @return the Set of overlays containing the given package
      */
-    public Set<Overlay> containingOverlays(SVR4Package pkg) {
+    public Set<Overlay> containingOverlays(final SVR4Package pkg) {
 	Set<Overlay> h = new TreeSet<>();
 	for (Overlay ovl : ovlist) {
 	    if (ovl.containsPackage(pkg.getName())) {
@@ -134,7 +134,7 @@ public final class OverlayList {
      *
      * @return the Set of overlays containing the given packages
      */
-    public Set<Overlay> containingOverlays(List<SVR4Package> pkglist) {
+    public Set<Overlay> containingOverlays(final List<SVR4Package> pkglist) {
 	Set<Overlay> h = new TreeSet<>();
 	for (SVR4Package pkg : pkglist) {
 	    h.addAll(containingOverlays(pkg));

@@ -125,7 +125,7 @@ public final class ZoneConfig {
      *
      * @return the named zone's ZoneEntry
      */
-    public ZoneEntry getZoneEntry(String zname) {
+    public ZoneEntry getZoneEntry(final String zname) {
 	return zmap.get(zname);
     }
 }

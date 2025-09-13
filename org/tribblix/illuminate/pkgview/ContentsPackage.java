@@ -48,7 +48,7 @@ public class ContentsPackage {
      * @param ovl the overlay whose files will populate this ContentsPackage
      * @param cp a ContentsParser
      */
-    public ContentsPackage(Overlay ovl, ContentsParser cp) {
+    public ContentsPackage(final Overlay ovl, final ContentsParser cp) {
 	addPkgFiles(ovl, cp);
     }
 
@@ -57,17 +57,17 @@ public class ContentsPackage {
      *
      * @param cfd the ContentsFileDetail to add.
      */
-    public void addFile(ContentsFileDetail cfd) {
+    public void addFile(final ContentsFileDetail cfd) {
 	fileset.add(cfd);
     }
 
-    private void addPkgFiles(Overlay ovl, ContentsParser cp) {
+    private void addPkgFiles(final Overlay ovl, final ContentsParser cp) {
 	for (SVR4Package pkg : ovl.getPackages()) {
 	    addPkgFiles(pkg, cp);
 	}
     }
 
-    private void addPkgFiles(SVR4Package pkg, ContentsParser cp) {
+    private void addPkgFiles(final SVR4Package pkg, final ContentsParser cp) {
 	ContentsPackage cpp = cp.getPackage(pkg.getName());
 	if (cpp != null) {
 	    fileset.addAll(cpp.getDetails());

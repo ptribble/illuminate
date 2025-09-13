@@ -41,8 +41,9 @@ public final class SmfListCellRenderer extends DefaultListCellRenderer {
     private static final Color OFFCOLOR = Color.ORANGE;
 
     @Override
-    public Component getListCellRendererComponent(JList list,
-	    Object value, int index, boolean isSelected, boolean cellHasFocus) {
+    public Component getListCellRendererComponent(final JList list,
+	    final Object value, final int index,
+	    final boolean isSelected, final boolean cellHasFocus) {
 
 	super.getListCellRendererComponent(list, value, index, isSelected,
 						cellHasFocus);
@@ -60,7 +61,7 @@ public final class SmfListCellRenderer extends DefaultListCellRenderer {
 	return this;
     }
 
-    private Color getStatusColor(SmfService svc) {
+    private Color getStatusColor(final SmfService svc) {
 	if ("online".equals(svc.getStatus())) {
 	    return ONCOLOR;
 	} else if ("offline".equals(svc.getStatus())) {

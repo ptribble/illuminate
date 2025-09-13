@@ -152,13 +152,13 @@ public final class Illuminate extends JFrame implements ActionListener {
 
     class WinExit extends WindowAdapter {
 	@Override
-	public void windowClosing(WindowEvent we) {
+	public void windowClosing(final WindowEvent we) {
 	    JingleMultiFrame.unregister(Illuminate.this);
 	}
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() == cloneItem) {
 	    new Illuminate();
 	}
@@ -183,7 +183,7 @@ public final class Illuminate extends JFrame implements ActionListener {
      *
      * @param args command line arguments, ignored
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	new Illuminate();
     }
 }

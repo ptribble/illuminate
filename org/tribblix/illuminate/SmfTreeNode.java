@@ -53,7 +53,7 @@ public final class SmfTreeNode extends DefaultMutableTreeNode
      * @param svc The SmfService represented by this SmfTreeNode
      * @param node The display name of this SmfTreeNode
      */
-    public SmfTreeNode(SmfService svc, String node) {
+    public SmfTreeNode(final SmfService svc, final String node) {
 	this.svc = svc;
 	this.node = node;
     }
@@ -63,13 +63,13 @@ public final class SmfTreeNode extends DefaultMutableTreeNode
      *
      * @param node The display name of this SmfTreeNode
      */
-    public SmfTreeNode(String node) {
+    public SmfTreeNode(final String node) {
 	this.node = node;
     }
 
     @Override
     @SuppressWarnings("unchecked")
-    public void add(MutableTreeNode newChild) {
+    public void add(final MutableTreeNode newChild) {
 	super.add(newChild);
 	Collections.sort(this.children, SmfComparator.getInstance());
     }
@@ -128,7 +128,7 @@ public final class SmfTreeNode extends DefaultMutableTreeNode
      * or less than the name of this SmfTreeNode
      */
     @Override
-    public int compareTo(SmfTreeNode othernode) {
+    public int compareTo(final SmfTreeNode othernode) {
 	return node.compareTo(othernode.toString());
     }
 

@@ -46,7 +46,7 @@ public final class PackageTableModel extends AbstractTableModel {
      *
      * @param plist a PkgList
      */
-    public PackageTableModel(PkgList plist) {
+    public PackageTableModel(final PkgList plist) {
 	pkgs = new ArrayList<>(plist);
     }
 
@@ -61,7 +61,7 @@ public final class PackageTableModel extends AbstractTableModel {
     }
 
     @Override
-    public String getColumnName(int col) {
+    public String getColumnName(final int col) {
 	return columnNames[col];
     }
 
@@ -76,7 +76,7 @@ public final class PackageTableModel extends AbstractTableModel {
      * @return the Object at the selected cell
      */
     @Override
-    public Object getValueAt(int row, int col) {
+    public Object getValueAt(final int row, final int col) {
 	SVR4Package pkg = pkgs.get(row);
 	if (col == 0) {
 	    return pkg.getName();
@@ -88,7 +88,7 @@ public final class PackageTableModel extends AbstractTableModel {
     }
 
     @Override
-    public Class<?> getColumnClass(int col) {
+    public Class<?> getColumnClass(final int col) {
 	return String.class;
     }
 
@@ -99,7 +99,7 @@ public final class PackageTableModel extends AbstractTableModel {
      *
      * @return the SVR4Package on the given row
      */
-    public SVR4Package getPackageAtRow(int row) {
+    public SVR4Package getPackageAtRow(final int row) {
 	return pkgs.get(row);
     }
 }

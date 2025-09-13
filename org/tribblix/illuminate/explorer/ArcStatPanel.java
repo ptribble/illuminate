@@ -200,7 +200,7 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
      * @param jkstat a JKstat object
      * @param interval the desired display update interval in seconds
      */
-    public ArcStatPanel(JKstat jkstat, int interval) {
+    public ArcStatPanel(final JKstat jkstat, final int interval) {
 	this.jkstat = jkstat;
 
 	setDelay(interval);
@@ -491,11 +491,11 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 					dPfMdMisses);
     }
 
-    private String mbstring(long lval) {
+    private String mbstring(final long lval) {
 	return Long.toString(lval / MB) + " MB";
     }
 
-    private int hitrate(long hits, long misses) {
+    private int hitrate(final long hits, final long misses) {
 	if ((hits + misses) > 0) {
 	    return (int) (100L * hits / (hits + misses));
 	} else {
@@ -527,7 +527,7 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
      *
      * @param interval the desired update interval, in seconds
      */
-    public void setDelay(int interval) {
+    public void setDelay(final int interval) {
 	delay = interval * 1000;
 	if (timer != null) {
 	    timer.setDelay(delay);
@@ -535,7 +535,7 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	update();
     }
 }

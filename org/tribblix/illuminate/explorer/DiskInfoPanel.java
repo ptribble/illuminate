@@ -65,7 +65,7 @@ public final class DiskInfoPanel extends InfoPanel {
      * @param hi The item to display
      * @param jkstat A JKstat object
      */
-    public DiskInfoPanel(SysItem hi, JKstat jkstat) {
+    public DiskInfoPanel(final SysItem hi, final JKstat jkstat) {
 	super(hi);
 	this.jkstat = jkstat;
 	ks = hi.getKstat();
@@ -149,7 +149,7 @@ public final class DiskInfoPanel extends InfoPanel {
     /*
      * Is this a zfs pool?
      */
-    private boolean isPool(String s) {
+    private boolean isPool(final String s) {
 	for (Zpool pool : ZFSconfig.getInstance().pools()) {
 	    if (pool.getName().equals(s)) {
 		return true;
@@ -192,7 +192,7 @@ public final class DiskInfoPanel extends InfoPanel {
 	}
     }
 
-    private void showAka(String devname, ZFSconfig zconfig) {
+    private void showAka(final String devname, final ZFSconfig zconfig) {
 	for (Zpool pool : zconfig.pools()) {
 	    if (pool.contains(devname)) {
 		addLabel("Part of ZFS pool " + pool.getName());

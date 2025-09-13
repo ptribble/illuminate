@@ -32,7 +32,7 @@ public class Zsnapshot extends Zdataset {
      *
      * @param name the name of the ZFS snapshot
      */
-    public Zsnapshot(String name) {
+    public Zsnapshot(final String name) {
 	this.name = name;
     }
 }

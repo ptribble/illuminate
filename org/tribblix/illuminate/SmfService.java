@@ -50,7 +50,7 @@ public class SmfService implements Comparable<SmfService> {
      * @param fmri the FMRI of this SMF service
      * @param status the current status of this service
      */
-    public SmfService(String fmri, String status) {
+    public SmfService(final String fmri, final String status) {
 	this.fmri = fmri;
 	this.status = status;
     }
@@ -144,12 +144,12 @@ public class SmfService implements Comparable<SmfService> {
      * Get the i'th field of svcs -vH output. 0=status 1=nstate
      * 2=start time 3=ctid 4=fmri
      */
-    private String getDetails(int i) {
+    private String getDetails(final int i) {
 	String[] ds = getSVCS("-vH").split("\\s+", 5);
 	return ds[i];
     }
 
-    private String getSVCS(String s) {
+    private String getSVCS(final String s) {
 	String[] fullcmd = {"/usr/bin/svcs", s, fmri};
 	RunCommand svcs = new RunCommand(fullcmd);
 	return svcs.getOut();
@@ -200,7 +200,7 @@ public class SmfService implements Comparable<SmfService> {
      * This is done automatically and saved if the explanation is
      * requested, to avoid having to call getExplanation() repeatedly
      */
-    private void parseManpages(String explanation) {
+    private void parseManpages(final String explanation) {
 	manpages = new HashMap<>();
 	for (String line : explanation.split("\n")) {
 	    String[] ds = line.trim().split("\\s+", 7);
@@ -233,7 +233,7 @@ public class SmfService implements Comparable<SmfService> {
      * svcs -l broken into keys and values. This is only valid for unique
      * keys, so you can't get dependency information this way.
      */
-    private String getProperty(String s) {
+    private String getProperty(final String s) {
 	if (props == null) {
 	    props = new HashMap<>();
 	    /*
@@ -333,7 +333,7 @@ public class SmfService implements Comparable<SmfService> {
      * SmfService
      */
     @Override
-    public int compareTo(SmfService ss) {
+    public int compareTo(final SmfService ss) {
 	return fmri.compareTo(ss.getFMRI());
     }
 

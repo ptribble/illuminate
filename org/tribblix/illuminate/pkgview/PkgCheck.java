@@ -47,7 +47,7 @@ public class PkgCheck {
      * @param altroot an alternate root of the package tree
      * @param args a list of package, overlay, or file names
      */
-    public PkgCheck(String altroot, String[] args) {
+    public PkgCheck(final String altroot, final String[] args) {
 	pkghdl = new PackageHandler(altroot);
 	PkgList plist = pkghdl.getPkgList();
 	Set<String> names = parseArgs(args);
@@ -73,7 +73,7 @@ public class PkgCheck {
 	}
     }
 
-    private Set<String> parseArgs(String[] args) {
+    private Set<String> parseArgs(final String[] args) {
 	Set<String> names = new HashSet<>();
 	for (String arg : args) {
 	    if ("-l".equals(arg)) {
@@ -114,7 +114,7 @@ public class PkgCheck {
 	return names;
     }
 
-    private void doPathNames(Set<String> names) {
+    private void doPathNames(final Set<String> names) {
 	for (String name : names) {
 	    ContentsFileDetail cfd = cp.getFileDetail(name);
 	    if (cfd == null) {
@@ -125,7 +125,7 @@ public class PkgCheck {
 	}
     }
 
-    private void doPartPathNames(Set<String> names) {
+    private void doPartPathNames(final Set<String> names) {
 	for (String path : cp.getPaths()) {
 	    for (String name : names) {
 		if (path.indexOf(name) > 0) {
@@ -135,7 +135,7 @@ public class PkgCheck {
 	}
     }
 
-    private void doOverlays(Set<String> names) {
+    private void doOverlays(final Set<String> names) {
 	OverlayList ovlist = pkghdl.getOverlayList();
 	if (names.isEmpty()) {
 	    for (Overlay ovl : ovlist.getOverlays()) {
@@ -153,7 +153,7 @@ public class PkgCheck {
 	}
     }
 
-    private void checkOverlay(Overlay ovl) {
+    private void checkOverlay(final Overlay ovl) {
 	if (ovl.isInstalled() && !ovl.isComplete()) {
 	    System.out.println("Overlay " + ovl
 			+ " is installed but incomplete");
@@ -175,7 +175,7 @@ public class PkgCheck {
     /*
      * Shows a nicely formatted list of packages that own the given file.
      */
-    private void showOwningPkgs(ContentsFileDetail cfd) {
+    private void showOwningPkgs(final ContentsFileDetail cfd) {
 	System.out.print("Path " + cfd.getName() + " belongs to the following");
 	System.out.println(cfd.isShared() ? " packages:" : " package:");
 	int i = 0;
@@ -191,7 +191,7 @@ public class PkgCheck {
 	System.out.println();
     }
 
-    private void listFile(ContentsFileDetail cfd) {
+    private void listFile(final ContentsFileDetail cfd) {
 	System.out.print("  " + cfd.getName());
 	if (verbose) {
 	    System.out.print(" owner=" + cfd.getOwner());
@@ -204,7 +204,7 @@ public class PkgCheck {
 	System.out.println();
     }
 
-    private void checkFile(ContentsFileDetail cfd) {
+    private void checkFile(final ContentsFileDetail cfd) {
 	File f = new File(pkghdl.getRoot(), cfd.getName());
 	if (f.exists()) {
 	    if (cfd.isRegular()) {
@@ -255,7 +255,7 @@ public class PkgCheck {
 	}
     }
 
-    private void showFile(ContentsFileDetail cfd) {
+    private void showFile(final ContentsFileDetail cfd) {
 	if (dopaths || partpaths) {
 	    showOwningPkgs(cfd);
 	}
@@ -266,7 +266,7 @@ public class PkgCheck {
 	}
     }
 
-    private void doProcess(String pkg) {
+    private void doProcess(final String pkg) {
 	ContentsPackage cpp = cp.getPackage(pkg);
 	if (cpp != null) {
 	    for (ContentsFileDetail cfd : cpp.getDetails()) {
@@ -287,7 +287,7 @@ public class PkgCheck {
      *
      * @param args Command line arguments
      */
-    public static void main(String[] args) {
+    public static void main(final String[] args) {
 	if (args.length == 0) {
 	    usage();
 	}

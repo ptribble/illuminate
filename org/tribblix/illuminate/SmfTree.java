@@ -46,7 +46,7 @@ public final class SmfTree extends JTree {
      *
      * @param sslist An SmfServiceList
      */
-    public SmfTree(SmfServiceList sslist) {
+    public SmfTree(final SmfServiceList sslist) {
 	DefaultMutableTreeNode root = new DefaultMutableTreeNode(
 				IlluminateResources.getString("SMF.SERVICES"));
 
@@ -59,7 +59,8 @@ public final class SmfTree extends JTree {
 	setCellRenderer(new SmfTreeCellRenderer());
     }
 
-    private void addService(SmfService svc, DefaultMutableTreeNode root) {
+    private void addService(final SmfService svc,
+			    final DefaultMutableTreeNode root) {
 	/*
 	 * We first break up the String into its components and then walk
 	 * through them. The last component is the leaf node.

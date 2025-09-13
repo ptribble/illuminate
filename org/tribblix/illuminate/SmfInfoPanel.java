@@ -143,7 +143,7 @@ public final class SmfInfoPanel extends JPanel implements ActionListener {
 	 */
 	jtp.addChangeListener(new ChangeListener() {
 	    @Override
-	    public void stateChanged(ChangeEvent ce) {
+	    public void stateChanged(final ChangeEvent ce) {
 		JTabbedPane jtpc = (JTabbedPane) ce.getSource();
 		if (jtpc.getSelectedIndex() == 2) {
 		    displayLog();
@@ -157,7 +157,7 @@ public final class SmfInfoPanel extends JPanel implements ActionListener {
      *
      * @param svc the SmfService to show information on.
      */
-    public void setInfo(SmfService svc) {
+    public void setInfo(final SmfService svc) {
 	tp.setText(svc.getHtmlInfo());
 	setManButtons(svc);
 	setDep(svc.getDepInfo());
@@ -168,7 +168,7 @@ public final class SmfInfoPanel extends JPanel implements ActionListener {
 	jpi.setContract(svc.getContract());
     }
 
-    private void setManButtons(SmfService svc) {
+    private void setManButtons(final SmfService svc) {
 	Map<String, String> manmap = svc.getManPages();
 	manButtonPanel.removeAll();
 	for (String s : manmap.keySet()) {
@@ -181,7 +181,7 @@ public final class SmfInfoPanel extends JPanel implements ActionListener {
 	manButtonPanel.revalidate();
     }
 
-    private void setDep(String s) {
+    private void setDep(final String s) {
 	if (s == null) {
 	    jtp.setEnabledAt(1, false);
 	    jtp.setSelectedIndex(0);
@@ -191,7 +191,7 @@ public final class SmfInfoPanel extends JPanel implements ActionListener {
 	}
     }
 
-    private void setProps(String s) {
+    private void setProps(final String s) {
 	if (s == null) {
 	    jtp.setEnabledAt(3, false);
 	    jtp.setSelectedIndex(0);
@@ -201,7 +201,7 @@ public final class SmfInfoPanel extends JPanel implements ActionListener {
 	}
     }
 
-    private void setLog(File f) {
+    private void setLog(final File f) {
 	logfile = f;
 	if (f == null) {
 	    jtp.setEnabledAt(2, false);
@@ -222,7 +222,7 @@ public final class SmfInfoPanel extends JPanel implements ActionListener {
     }
 
     @Override
-    public void actionPerformed(ActionEvent e) {
+    public void actionPerformed(final ActionEvent e) {
 	if (e.getSource() instanceof JButton) {
 	    JButton jb = (JButton) e.getSource();
 	    new ManFrame(jb.getName());

@@ -52,7 +52,7 @@ public final class InstalledFilesPanel extends JPanel {
      *
      * @param pkghdl a PackageHandler for this OS image
      */
-    public InstalledFilesPanel(PackageHandler pkghdl) {
+    public InstalledFilesPanel(final PackageHandler pkghdl) {
 	setLayout(new BorderLayout());
 
 	JPanel jptree = new JPanel(new BorderLayout());
@@ -67,7 +67,7 @@ public final class InstalledFilesPanel extends JPanel {
 	final JTree cft = new ContentsFileTree(pkghdl);
 	cft.addTreeSelectionListener(new TreeSelectionListener() {
 	    @Override
-	    public void valueChanged(TreeSelectionEvent e) {
+	    public void valueChanged(final TreeSelectionEvent e) {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode)
 		    cft.getLastSelectedPathComponent();
 
@@ -80,7 +80,7 @@ public final class InstalledFilesPanel extends JPanel {
 	jptree.add(new JScrollPane(cft));
     }
 
-    void showFile(File f) {
+    void showFile(final File f) {
 	pip.showFile(f.toString());
     }
 

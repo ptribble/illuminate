@@ -51,7 +51,7 @@ public final class ContentsParser {
      *
      * @param pkghdl a PackageHandler for this OS image
      */
-    public ContentsParser(PackageHandler pkghdl) {
+    public ContentsParser(final PackageHandler pkghdl) {
 	parse(pkghdl);
     }
 
@@ -70,7 +70,7 @@ public final class ContentsParser {
      * So the actual parse is pretty quick - it's populating the maps
      * that really adds to the cost.
      */
-    private void parse(PackageHandler pkghdl) {
+    private void parse(final PackageHandler pkghdl) {
 	try (BufferedReader in
 		= Files.newBufferedReader(
 		    Paths.get(pkghdl.getRoot() + CONTENTS_FILE))) {
@@ -108,7 +108,7 @@ public final class ContentsParser {
      *
      * @return the corresponding ContentsFileDetail
      */
-    public ContentsFileDetail getFileDetail(String s) {
+    public ContentsFileDetail getFileDetail(final String s) {
 	return fileHash.get(s);
     }
 
@@ -119,7 +119,7 @@ public final class ContentsParser {
      *
      * @return the corresponding ContentsPackage
      */
-    public ContentsPackage getPackage(String pkgname) {
+    public ContentsPackage getPackage(final String pkgname) {
 	return pkgHash.get(pkgname);
     }
 
@@ -130,7 +130,7 @@ public final class ContentsParser {
      *
      * @return the corresponding ContentsPackage
      */
-    public ContentsPackage getOverlay(Overlay ovl) {
+    public ContentsPackage getOverlay(final Overlay ovl) {
 	return new ContentsPackage(ovl, this);
     }
 }

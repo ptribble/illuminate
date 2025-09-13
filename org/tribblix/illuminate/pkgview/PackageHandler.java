@@ -80,7 +80,7 @@ public class PackageHandler {
      *
      * @param altroot an alternate root directory for this OS image
      */
-    public PackageHandler(String altroot) {
+    public PackageHandler(final String altroot) {
 	this.altroot = altroot;
 	pkgdirf = new File(altroot + PKG_ROOT);
 	ovldirf = new File(altroot + OVL_ROOT);
@@ -213,7 +213,7 @@ public class PackageHandler {
      *
      * @return whether the package is installed
      */
-    protected boolean isPkgInstalled(String name) {
+    protected boolean isPkgInstalled(final String name) {
 	return new File(pkgdirf, name).exists();
     }
 
@@ -226,7 +226,7 @@ public class PackageHandler {
      * @return A List of String containing the lines of the named package's
      * depend file
      */
-    protected List<String> getPkgDepend(String name) {
+    protected List<String> getPkgDepend(final String name) {
 	return JumbleFile.readAllLines(pkgdirf, name + "/install/depend");
     }
 
@@ -239,7 +239,7 @@ public class PackageHandler {
      * @return A String containing the contents of the named package's
      * pkginfo file
      */
-    protected String getPkgInfo(String name) {
+    protected String getPkgInfo(final String name) {
 	return JumbleFile.getStringContents(pkgdirf, name + "/pkginfo");
     }
 
@@ -250,7 +250,7 @@ public class PackageHandler {
      *
      * @return whether the overlay is installed
      */
-    protected boolean isOvlInstalled(String name) {
+    protected boolean isOvlInstalled(final String name) {
 	File f2 = new File(ovldirf, "installed");
 	return new File(f2, name).exists();
     }
@@ -264,7 +264,7 @@ public class PackageHandler {
      * @return A List of String containing the names of the packages that are
      * members of the given overlay
      */
-    protected List<String> getOvlPkgs(String name) {
+    protected List<String> getOvlPkgs(final String name) {
 	return JumbleFile.readAllLines(ovldirf, name + ".pkgs");
     }
 
@@ -276,7 +276,7 @@ public class PackageHandler {
      * @return A List of String containing the lines of the given overlay's
      * metadata file
      */
-    protected List<String> getOvlOvl(String name) {
+    protected List<String> getOvlOvl(final String name) {
 	return JumbleFile.readAllLines(ovldirf, name + ".ovl");
     }
 
@@ -288,7 +288,7 @@ public class PackageHandler {
      * @return A List of String containing the lines of the given repository's
      * metadata file
      */
-    protected List<String> getRepository(String repo) {
+    protected List<String> getRepository(final String repo) {
 	return JumbleFile.readAllLines(altroot + ZAP_ROOT
 			+ "/repositories/" + repo + ".repo");
     }
@@ -302,7 +302,7 @@ public class PackageHandler {
      * @return A List of String containing the lines of the named repository's
      * catalog
      */
-    protected List<String> getCatalog(String repo) {
+    protected List<String> getCatalog(final String repo) {
 	return JumbleFile.readAllLines(altroot + ZAP_ROOT
 			+ "/repositories/" + repo + ".catalog");
     }

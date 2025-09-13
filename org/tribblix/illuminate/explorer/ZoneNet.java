@@ -41,8 +41,8 @@ public class ZoneNet {
      * @param physical the name of the interface
      * @param defrouter the default router associated with this interface
      */
-    public ZoneNet(String address, String allowedaddress, String physical,
-			String defrouter) {
+    public ZoneNet(final String address, final String allowedaddress,
+		   final String physical, final String defrouter) {
 	this.address = address;
 	this.allowedaddress = allowedaddress;
 	this.physical = physical;

@@ -59,7 +59,7 @@ public final class NetInfoPanel extends InfoPanel {
      * @param hi The item to display
      * @param jkstat A JKstat object
      */
-    public NetInfoPanel(SysItem hi, JKstat jkstat) {
+    public NetInfoPanel(final SysItem hi, final JKstat jkstat) {
 	super(hi);
 	this.jkstat = jkstat;
 
@@ -169,7 +169,7 @@ public final class NetInfoPanel extends InfoPanel {
     /*
      * dladm
      */
-    private void displayDladm(String dltype) {
+    private void displayDladm(final String dltype) {
 	addLabel("Output from dladm show-" + dltype);
 
 	addText(new InfoCommand("IF", "/usr/sbin/dladm", "show-" + dltype));
@@ -178,7 +178,7 @@ public final class NetInfoPanel extends InfoPanel {
     /*
      * ipadm
      */
-    private void displayIpadm(String iptype) {
+    private void displayIpadm(final String iptype) {
 	addLabel("Output from ipadm show-" + iptype);
 
 	addText(new InfoCommand("IF", "/usr/sbin/ipadm", "show-" + iptype));
@@ -187,7 +187,7 @@ public final class NetInfoPanel extends InfoPanel {
     /*
      * Routing
      */
-    private void displayRoute(int rtype) {
+    private void displayRoute(final int rtype) {
 	if (rtype == SysItem.NET_ROUTE_TABLE) {
 	    addLabel("Output from netstat -nr");
 	    addText(new InfoCommand("RT", "/usr/bin/netstat", "-nr"));
@@ -202,7 +202,7 @@ public final class NetInfoPanel extends InfoPanel {
      *
      * If the "over" property is set, then we have a vnic over that link
      */
-    private void displayInterface(Kstat ks) {
+    private void displayInterface(final Kstat ks) {
 	if (ks != null) {
 	    String overName = (String) hi.getAttribute("over");
 	    if (overName == null) {
@@ -218,7 +218,7 @@ public final class NetInfoPanel extends InfoPanel {
     /*
      * Generic protocol handler.
      */
-    private void displayProto(String proto) {
+    private void displayProto(final String proto) {
 	String sflag = (String) hi.getAttribute("flag");
 	if ("man".equals(sflag)) {
 	    displayManual(proto + ".4p");
@@ -244,7 +244,7 @@ public final class NetInfoPanel extends InfoPanel {
     /*
      * Display a man page
      */
-    private void displayManual(String manpage) {
+    private void displayManual(final String manpage) {
 	add(new ManPane(manpage));
     }
 
@@ -252,7 +252,7 @@ public final class NetInfoPanel extends InfoPanel {
      * Add an accessory if we can.
      * NOTE: we've already checked for ks being non-null above
      */
-    private void addAccessory(Kstat ks) {
+    private void addAccessory(final Kstat ks) {
 	acp = new AccessoryNetPanel(ks, 5, jkstat);
 	addComponent(acp);
 	List<String> statistics = Arrays.asList("rbytes64", "obytes64");

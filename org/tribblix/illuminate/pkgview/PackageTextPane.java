@@ -50,14 +50,14 @@ public final class PackageTextPane extends JEditorPane
      *
      * @param contentType the desired content type of the panel
      */
-    public PackageTextPane(String contentType) {
+    public PackageTextPane(final String contentType) {
 	super();
 	setContentType(contentType);
 	addHyperlinkListener(this);
     }
 
     @Override
-    public void setText(String s) {
+    public void setText(final String s) {
 	super.setText(s);
 	setMargin(JingleUtils.defInsets());
 	setCaretPosition(0);
@@ -65,7 +65,7 @@ public final class PackageTextPane extends JEditorPane
     }
 
     @Override
-    public void hyperlinkUpdate(HyperlinkEvent ev) {
+    public void hyperlinkUpdate(final HyperlinkEvent ev) {
 	if (ev.getEventType() == HyperlinkEvent.EventType.ACTIVATED) {
 	    /*
 	     * Is this a regular URL?

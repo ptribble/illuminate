@@ -55,7 +55,7 @@ public final class OverlayPanel extends JPanel {
      *
      * @param pkghdl a PackageHandler to query for information
      */
-    public OverlayPanel(PackageHandler pkghdl) {
+    public OverlayPanel(final PackageHandler pkghdl) {
 	setLayout(new BorderLayout());
 	OverlayList ovlist = pkghdl.getOverlayList();
 
@@ -72,7 +72,7 @@ public final class OverlayPanel extends JPanel {
 	// Listen for when the selection changes.
 	tree.addTreeSelectionListener(new TreeSelectionListener() {
 	    @Override
-	    public void valueChanged(TreeSelectionEvent e) {
+	    public void valueChanged(final TreeSelectionEvent e) {
 		DefaultMutableTreeNode node = (DefaultMutableTreeNode)
 		    tree.getLastSelectedPathComponent();
 
@@ -99,12 +99,12 @@ public final class OverlayPanel extends JPanel {
 	add(psplit);
     }
 
-    void showOverlay(Overlay ovl) {
+    void showOverlay(final Overlay ovl) {
 	currentPackage = null;
 	pip.showOverlay(ovl);
     }
 
-    void showPkg(SVR4Package pkg) {
+    void showPkg(final SVR4Package pkg) {
 	pip.showPkg(pkg);
 	if (pkg.isInstalled()) {
 	    currentPackage = pkg;

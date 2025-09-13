@@ -66,7 +66,8 @@ public final class AggregateCpuChart extends KstatAccessoryPanel {
      * @param interval the update interval in seconds
      * @param jkstat a JKstat
      */
-    public AggregateCpuChart(KstatAggregate ksa, int interval, JKstat jkstat) {
+    public AggregateCpuChart(final KstatAggregate ksa, final int interval,
+			     final JKstat jkstat) {
 	super(new Kstat("", 0, ""), interval, jkstat);
 	this.ksa = ksa;
 	init();

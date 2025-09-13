@@ -56,7 +56,7 @@ public final class RunBrowser {
      *
      * @param url The URL to open
      */
-    public RunBrowser(URL url) {
+    public RunBrowser(final URL url) {
 	try {
 	    Desktop.getDesktop().browse(url.toURI());
 	} catch (Exception e) {
