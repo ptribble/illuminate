@@ -68,15 +68,15 @@ public final class MultiView extends JFrame implements ActionListener {
      *
      * @param stitle a String to use as the window title
      * @param hlabel a String to use for the help menu button
-     * @param helpfile a String naming the help file to use
+     * @param hfile a String naming the help file to use
      * @param mypixmap a String naming the application icon to use
      * @param panel The panel to display
      */
     public MultiView(final String stitle, final String hlabel,
-		     final String helpfile, final String mypixmap,
+		     final String hfile, final String mypixmap,
 		     final JComponent panel) {
 	super(IlluminateResources.getString(stitle));
-	this.helpfile = helpfile;
+	helpfile = hfile;
 
 	addWindowListener(new WinExit());
 	getContentPane().add(panel, BorderLayout.CENTER);

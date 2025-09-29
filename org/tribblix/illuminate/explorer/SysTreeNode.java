@@ -41,12 +41,12 @@ public final class SysTreeNode extends DefaultMutableTreeNode
     /**
      * Create a Node to store information in the system tree.
      *
-     * @param hi the SysItem represented by this node
-     * @param node the displayed name of this node
+     * @param hitem the SysItem represented by this node
+     * @param nodename the displayed name of this node
      */
-    public SysTreeNode(final SysItem hi, final String node) {
-	this.hi = hi;
-	this.node = node;
+    public SysTreeNode(final SysItem hitem, final String nodename) {
+	hi = hitem;
+	node = nodename;
     }
 
     @Override

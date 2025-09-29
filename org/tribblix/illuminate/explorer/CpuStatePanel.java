@@ -138,10 +138,10 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     /**
      * Create a CpuStatePanel.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      */
-    public CpuStatePanel(final JKstat jkstat) {
-	this.jkstat = jkstat;
+    public CpuStatePanel(final JKstat njkstat) {
+	jkstat = njkstat;
 
 	KstatFilter ksf = new KstatFilter(jkstat);
 	ksf.setFilterClass("misc");
@@ -401,8 +401,8 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     static class PopupListener extends MouseAdapter {
 	private JPopupMenu popup;
 
-	PopupListener(final JPopupMenu popup) {
-	    this.popup = popup;
+	PopupListener(final JPopupMenu npopup) {
+	    popup = npopup;
 	}
 
 	@Override

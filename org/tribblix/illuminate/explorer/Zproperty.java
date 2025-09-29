@@ -34,15 +34,15 @@ public class Zproperty implements Comparable<Zproperty> {
     /**
      * Create a new Zproperty object, to store details of a ZFS property.
      *
-     * @param property the name of the ZFS property
-     * @param value the value of the ZFS property
-     * @param source the source of the ZFS property
+     * @param prop the name of the ZFS property
+     * @param val the value of the ZFS property
+     * @param src the source of the ZFS property
      */
-    public Zproperty(final String property, final String value,
-		     final String source) {
-	this.property = property;
-	this.value = value;
-	this.source = source;
+    public Zproperty(final String prop, final String val,
+		     final String src) {
+	property = prop;
+	value = val;
+	source = src;
     }
 
     /**

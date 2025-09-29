@@ -49,11 +49,11 @@ public final class ContentsFileDetail
     /**
      * Create a set of details from a line of the contents file.
      *
-     * @param pkghdl a PackageHandler for this OS image
+     * @param phdl a PackageHandler for this OS image
      * @param s one line of the contents file
      */
-    public ContentsFileDetail(final PackageHandler pkghdl, final String s) {
-	this.pkghdl = pkghdl;
+    public ContentsFileDetail(final PackageHandler phdl, final String s) {
+	pkghdl = phdl;
 	parseNewStyle(s);
     }
 

@@ -78,10 +78,10 @@ public class PackageHandler {
     /**
      * Create a new PackageHandler, at the given root.
      *
-     * @param altroot an alternate root directory for this OS image
+     * @param nroot an alternate root directory for this OS image
      */
-    public PackageHandler(final String altroot) {
-	this.altroot = altroot;
+    public PackageHandler(final String nroot) {
+	altroot = nroot;
 	pkgdirf = new File(altroot + PKG_ROOT);
 	ovldirf = new File(altroot + OVL_ROOT);
 	zapdirf = new File(altroot + ZAP_ROOT);

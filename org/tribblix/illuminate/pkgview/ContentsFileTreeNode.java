@@ -47,10 +47,10 @@ public final class ContentsFileTreeNode extends DefaultMutableTreeNode {
     /**
      * Create a node for the given pathname.
      *
-     * @param file The File representing the current pathname.
+     * @param filename The File representing the current pathname.
      */
-    public ContentsFileTreeNode(final File file) {
-	this.file = file;
+    public ContentsFileTreeNode(final File filename) {
+	file = filename;
 	setUserObject(file);
     }
 

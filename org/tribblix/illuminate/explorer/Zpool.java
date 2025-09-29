@@ -44,10 +44,10 @@ public class Zpool {
     /**
      * Create a Zpool object representing a ZFS pool.
      *
-     * @param name The name of the pool.
+     * @param poolname The name of the pool.
      */
-    public Zpool(final String name) {
-	this.name = name;
+    public Zpool(final String poolname) {
+	name = poolname;
 	addComponents();
 	parseZfs();
 	relateFs();

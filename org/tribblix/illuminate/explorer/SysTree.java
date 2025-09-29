@@ -63,10 +63,10 @@ public final class SysTree extends JTree {
      * Display a tree of hardware items.
      *
      * @param title the name of the tree
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      */
-    public SysTree(final JKstat jkstat, final String title) {
-	this.jkstat = jkstat;
+    public SysTree(final JKstat njkstat, final String title) {
+	jkstat = njkstat;
 
 	DefaultMutableTreeNode root = new SysTreeNode(
 					new SysItem(SysItem.HOST), title);

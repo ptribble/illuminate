@@ -55,10 +55,10 @@ public class InfoPanel extends JPanel {
      * and then have code to actually create the panel contents, and
      * then must call startLoop().
      *
-     * @param hi The item to display
+     * @param hitem The item to display
      */
-    public InfoPanel(final SysItem hi) {
-	this.hi = hi;
+    public InfoPanel(final SysItem hitem) {
+	hi = hitem;
 	setLayout(new BorderLayout());
 	jvp = new JingleVPanel();
 	jvp.setLayout(new BoxLayout(jvp, BoxLayout.PAGE_AXIS));

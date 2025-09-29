@@ -38,33 +38,34 @@ public class InfoCommand {
     /**
      * Create an informational command.
      *
-     * @param text The name of the command
-     * @param cmd The full path to the command
+     * @param ntext The name of the command
+     * @param ncmd The full path to the command
      */
-    public InfoCommand(final String text, final String cmd) {
-	this(text, cmd, (String) null);
+    public InfoCommand(final String ntext, final String ncmd) {
+	this(ntext, ncmd, (String) null);
     }
 
     /**
      * Create an informational command, with arguments.
      *
-     * @param text The name of the command
-     * @param cmd The full path to the command
+     * @param ntext The name of the command
+     * @param ncmd The full path to the command
      * @param args The arguments to the command
      */
-    public InfoCommand(final String text, final String cmd, final String args) {
-	this.text = text;
-	this.cmd = cmd;
+    public InfoCommand(final String ntext, final String ncmd,
+		       final String args) {
+	text = ntext;
+	cmd = ncmd;
 	fullcmd = (args == null) ? cmd : cmd + " " + args;
     }
 
     /**
      * Set the manpage for this command.
      *
-     * @param manpage the manpage, with section appended
+     * @param page the manpage, with section appended
      */
-    public void setManpage(final String manpage) {
-	this.manpage = manpage;
+    public void setManpage(final String page) {
+	manpage = page;
     }
 
     /**

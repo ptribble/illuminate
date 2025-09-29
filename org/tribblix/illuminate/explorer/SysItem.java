@@ -274,10 +274,10 @@ public final class SysItem {
     /**
      * A container for a hardware item.
      *
-     * @param type the type of item
+     * @param itype the type of item
      */
-    public SysItem(final int type) {
-	this.type = type;
+    public SysItem(final int itype) {
+	type = itype;
 	attributes = new HashMap<>();
     }
 
@@ -285,11 +285,11 @@ public final class SysItem {
      * A container for a hardware item. Adds a flag, a String that will be
      * added as the attribute for key "flag"
      *
-     * @param type the type of item
+     * @param itype the type of item
      * @param flag a String flag
      */
-    public SysItem(final int type, final String flag) {
-	this.type = type;
+    public SysItem(final int itype, final String flag) {
+	type = itype;
 	attributes = new HashMap<>();
 	addAttribute("flag", flag);
     }
@@ -332,10 +332,10 @@ public final class SysItem {
      *
      * @see #getKstat
      *
-     * @param kstat the Kstat to be associated with this item
+     * @param nkstat the Kstat to be associated with this item
      */
-    public void setKstat(final Kstat kstat) {
-	this.kstat = kstat;
+    public void setKstat(final Kstat nkstat) {
+	kstat = nkstat;
     }
 
     /**
@@ -354,10 +354,10 @@ public final class SysItem {
      *
      * @see #getStatus
      *
-     * @param status the new status of this item
+     * @param nstatus the new status of this item
      */
-    public void setStatus(final int status) {
-	this.status = status;
+    public void setStatus(final int nstatus) {
+	status = nstatus;
     }
 
     /**

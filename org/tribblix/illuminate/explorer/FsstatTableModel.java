@@ -131,25 +131,25 @@ public final class FsstatTableModel extends AbstractTableModel
     /**
      * Create a Table Model to display fsstat kstats.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      * @param interval the desired update interval, in seconds
      */
-    public FsstatTableModel(final JKstat jkstat, final int interval) {
-	this(jkstat, interval, MASK_IGNORE | MASK_ALLAGGR);
+    public FsstatTableModel(final JKstat njkstat, final int interval) {
+	this(njkstat, interval, MASK_IGNORE | MASK_ALLAGGR);
     }
 
     /**
      * Create a Table Model to display fsstat kstats.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      * @param interval the desired update interval, in seconds
-     * @param filtermask a mask to filter out undesired statistics
+     * @param fmask a mask to filter out undesired statistics
      */
-    public FsstatTableModel(final JKstat jkstat, final int interval,
-			    final int filtermask) {
-	this.jkstat = jkstat;
+    public FsstatTableModel(final JKstat njkstat, final int interval,
+			    final int fmask) {
+	jkstat = njkstat;
 	delay = interval * 1000;
-	this.filtermask = filtermask;
+	filtermask = fmask;
 
 	/*
 	 * All fsstat kstats are under unix:0
@@ -213,10 +213,10 @@ public final class FsstatTableModel extends AbstractTableModel
     /*
      * Set the filter mask.
      *
-     * @param filtermask the new filter mask
+     * @param fmask the new filter mask
      */
-    private void setMask(final int filtermask) {
-	this.filtermask = filtermask;
+    private void setMask(final int fmask) {
+	filtermask = fmask;
 	updateFilter();
 	fireTableDataChanged();
     }

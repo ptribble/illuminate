@@ -41,12 +41,12 @@ public class SVR4Package implements Comparable<SVR4Package> {
     /**
      * Create an SVR4 package container.
      *
-     * @param pkghdl a PackageHandler for this OS image
-     * @param name the name of the package
+     * @param phdl a PackageHandler for this OS image
+     * @param pname the name of the package
      */
-    public SVR4Package(final PackageHandler pkghdl, final String name) {
-	this.pkghdl = pkghdl;
-	this.name = name;
+    public SVR4Package(final PackageHandler phdl, final String pname) {
+	pkghdl = phdl;
+	name = pname;
 	pkginfo = new PkgInfo(pkghdl, name);
 	pkgdepend = new PkgDepend(pkghdl, name);
     }
@@ -130,10 +130,10 @@ public class SVR4Package implements Comparable<SVR4Package> {
      *
      * @see #getDependantSet
      *
-     * @param depSet the Set of dependant packages
+     * @param ndepSet the Set of dependant packages
      */
-    public void setDependantSet(final Set<SVR4Package> depSet) {
-	this.depSet = depSet;
+    public void setDependantSet(final Set<SVR4Package> ndepSet) {
+	depSet = ndepSet;
     }
 
     /**

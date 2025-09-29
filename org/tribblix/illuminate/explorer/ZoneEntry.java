@@ -47,24 +47,24 @@ public class ZoneEntry {
      * Create a ZoneEntry to describe a zone's configuration. Basic
      * properties are as given by zoneadm list.
      *
-     * @param zid the zone id
-     * @param zname the zone name
-     * @param zstate the zone state
-     * @param zroot the zone root
-     * @param zuuid the zone's uuid
-     * @param zbrand the zone's brand
-     * @param ziptype the zone's ip type, shared or exclusive
+     * @param id the zone id
+     * @param name the zone name
+     * @param state the zone state
+     * @param root the zone root
+     * @param uuid the zone's uuid
+     * @param brand the zone's brand
+     * @param iptype the zone's ip type, shared or exclusive
      */
-    public ZoneEntry(final int zid, final String zname, final String zstate,
-		     final String zroot, final String zuuid,
-		     final String zbrand, final String ziptype) {
-	this.zid = zid;
-	this.zname = zname;
-	this.zstate = zstate;
-	this.zroot = zroot;
-	this.zuuid = zuuid;
-	this.zbrand = zbrand;
-	this.ziptype = ziptype;
+    public ZoneEntry(final int id, final String name, final String state,
+		     final String root, final String uuid,
+		     final String brand, final String iptype) {
+	zid = id;
+	zname = name;
+	zstate = state;
+	zroot = root;
+	zuuid = uuid;
+	zbrand = brand;
+	ziptype = iptype;
     }
 
     /**

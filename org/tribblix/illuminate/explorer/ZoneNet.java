@@ -36,17 +36,17 @@ public class ZoneNet {
      * Create a ZoneNet object to describe the configuration of a zone's
      * network interface.
      *
-     * @param address the IP address of the interface
-     * @param allowedaddress the address the interface is restricted to
-     * @param physical the name of the interface
-     * @param defrouter the default router associated with this interface
+     * @param ipaddress the IP address of the interface
+     * @param allowedip the address the interface is restricted to
+     * @param ifname the name of the interface
+     * @param router the default router associated with this interface
      */
-    public ZoneNet(final String address, final String allowedaddress,
-		   final String physical, final String defrouter) {
-	this.address = address;
-	this.allowedaddress = allowedaddress;
-	this.physical = physical;
-	this.defrouter = defrouter;
+    public ZoneNet(final String ipaddress, final String allowedip,
+		   final String ifname, final String router) {
+	address = ipaddress;
+	allowedaddress = allowedip;
+	physical = ifname;
+	defrouter = router;
     }
 
     /**

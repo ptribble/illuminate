@@ -63,11 +63,11 @@ public final class DiskInfoPanel extends InfoPanel {
      * Display a Disk information panel.
      *
      * @param hi The item to display
-     * @param jkstat A JKstat object
+     * @param njkstat A JKstat object
      */
-    public DiskInfoPanel(final SysItem hi, final JKstat jkstat) {
+    public DiskInfoPanel(final SysItem hi, final JKstat njkstat) {
 	super(hi);
-	this.jkstat = jkstat;
+	jkstat = njkstat;
 	ks = hi.getKstat();
 
 	switch (hi.getType()) {

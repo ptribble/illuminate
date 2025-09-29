@@ -197,11 +197,11 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
     /**
      * Create a new ArcStatPanel, to display ZFS ARC statistics graphically.
      *
-     * @param jkstat a JKstat object
+     * @param njkstat a JKstat object
      * @param interval the desired display update interval in seconds
      */
-    public ArcStatPanel(final JKstat jkstat, final int interval) {
-	this.jkstat = jkstat;
+    public ArcStatPanel(final JKstat njkstat, final int interval) {
+	jkstat = njkstat;
 
 	setDelay(interval);
 

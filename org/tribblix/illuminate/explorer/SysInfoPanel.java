@@ -43,10 +43,10 @@ public final class SysInfoPanel extends JPanel {
     /**
      * Display an Sys information panel.
      *
-     * @param jkstat A JKstat object
+     * @param njkstat A JKstat object
      */
-    public SysInfoPanel(final JKstat jkstat) {
-	this.jkstat = jkstat;
+    public SysInfoPanel(final JKstat njkstat) {
+	jkstat = njkstat;
 	setLayout(new BorderLayout());
 
 	ip = new SummaryPanel(new SysItem(SysItem.HOST), jkstat);

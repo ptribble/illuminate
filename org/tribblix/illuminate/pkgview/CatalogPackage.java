@@ -40,20 +40,21 @@ public class CatalogPackage {
     /**
      * Create an SVR4 package catalog entry.
      *
-     * @param name the name of the package.
-     * @param pkgvers the version of the package.
-     * @param depends the name of the package.
-     * @param dsize the download size of the package, specifically the size
+     * @param pname the name of the package.
+     * @param pvers the version of the package.
+     * @param dependencies the dependencies of the package.
+     * @param size the download size of the package, specifically the size
      * of the zap file it's distributed in.
-     * @param repo the name of the repository supplying this package.
+     * @param reponame the name of the repository supplying this package.
      */
-    public CatalogPackage(final String name, final String pkgvers,
-		final String depends, final String dsize, final String repo) {
-	this.name = name;
-	this.pkgvers = pkgvers;
-	this.dsize = dsize;
-	this.repo = repo;
-	this.depends = depends;
+    public CatalogPackage(final String pname, final String pvers,
+			  final String dependencies, final String size,
+			  final String reponame) {
+	name = pname;
+	pkgvers = pvers;
+	depends = dependencies;
+	dsize = size;
+	repo = reponame;
     }
 
     /**

@@ -47,12 +47,12 @@ public class SmfService implements Comparable<SmfService> {
     /**
      * Create a new SmfService object.
      *
-     * @param fmri the FMRI of this SMF service
-     * @param status the current status of this service
+     * @param nfmri the FMRI of this SMF service
+     * @param nstatus the current status of this service
      */
-    public SmfService(final String fmri, final String status) {
-	this.fmri = fmri;
-	this.status = status;
+    public SmfService(final String nfmri, final String nstatus) {
+	fmri = nfmri;
+	status = nstatus;
     }
 
     /**

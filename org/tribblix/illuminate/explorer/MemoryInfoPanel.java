@@ -48,11 +48,11 @@ public final class MemoryInfoPanel extends InfoPanel {
      * Display a Memory information panel.
      *
      * @param hi The item to display
-     * @param jkstat A JKstat object
+     * @param njkstat A JKstat object
      */
-    public MemoryInfoPanel(final SysItem hi, final JKstat jkstat) {
+    public MemoryInfoPanel(final SysItem hi, final JKstat njkstat) {
 	super(hi);
-	this.jkstat = jkstat;
+	jkstat = njkstat;
 
 	switch (hi.getType()) {
 	    case SysItem.MEM_ARCSTAT:

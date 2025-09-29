@@ -80,21 +80,21 @@ public final class PackageInformationPanel extends JTabbedPane {
     /**
      * Create a default PackageInformationPanel showing the default tabs.
      *
-     * @param pkghdl a PackageHandler for this OS image
+     * @param phdl a PackageHandler for this OS image
      */
-    public PackageInformationPanel(final PackageHandler pkghdl) {
-	this(pkghdl, true);
+    public PackageInformationPanel(final PackageHandler phdl) {
+	this(phdl, true);
     }
 
     /**
      * Create a PackageInformationPanel showing the specified tabs.
      *
-     * @param pkghdl a PackageHandler for this OS image
+     * @param phdl a PackageHandler for this OS image
      * @param showdependencies a boolean determining if dependencies are shown
      */
-    public PackageInformationPanel(final PackageHandler pkghdl,
+    public PackageInformationPanel(final PackageHandler phdl,
 				final boolean showdependencies) {
-	this.pkghdl = pkghdl;
+	pkghdl = phdl;
 	ovlist = pkghdl.getOverlayList();
 	zc = pkghdl.getZapConfig();
 

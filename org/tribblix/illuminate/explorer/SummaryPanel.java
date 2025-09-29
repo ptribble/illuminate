@@ -53,11 +53,11 @@ public final class SummaryPanel extends InfoPanel {
      * Display a summary information panel.
      *
      * @param hi The item to display
-     * @param jkstat A JKstat object
+     * @param njkstat A JKstat object
      */
-    public SummaryPanel(final SysItem hi, final JKstat jkstat) {
+    public SummaryPanel(final SysItem hi, final JKstat njkstat) {
 	super(hi);
-	this.jkstat = jkstat;
+	jkstat = njkstat;
 	kaplist = new ArrayList<>();
 
 	displaySummary();

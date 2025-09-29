@@ -67,11 +67,11 @@ public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
      * Display a zone information panel.
      *
      * @param hi The item to display
-     * @param jkstat A JKstat object
+     * @param njkstat A JKstat object
      */
-    public ZoneInfoPanel(final SysItem hi, final JKstat jkstat) {
+    public ZoneInfoPanel(final SysItem hi, final JKstat njkstat) {
 	super(hi);
-	this.jkstat = jkstat;
+	jkstat = njkstat;
 	kaplist = new ArrayList<>();
 
 	if (hi.getType() == SysItem.ZONE_CONTAINER) {

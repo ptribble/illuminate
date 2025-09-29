@@ -39,12 +39,12 @@ public class PkgDepend {
     /**
      * Create an SVR4 pkg dependency container.
      *
-     * @param pkghdl a PackageHandler for this OS image
-     * @param name the name of the package.
+     * @param phdl a PackageHandler for this OS image
+     * @param pname the name of the package.
      */
-    public PkgDepend(final PackageHandler pkghdl, final String name) {
-	this.pkghdl = pkghdl;
-	this.name = name;
+    public PkgDepend(final PackageHandler phdl, final String pname) {
+	pkghdl = phdl;
+	name = pname;
     }
 
     /**

@@ -57,11 +57,11 @@ public final class NetInfoPanel extends InfoPanel {
      * Display a network information panel.
      *
      * @param hi The item to display
-     * @param jkstat A JKstat object
+     * @param njkstat A JKstat object
      */
-    public NetInfoPanel(final SysItem hi, final JKstat jkstat) {
+    public NetInfoPanel(final SysItem hi, final JKstat njkstat) {
 	super(hi);
-	this.jkstat = jkstat;
+	jkstat = njkstat;
 
 	switch (hi.getType()) {
 	    case SysItem.NET_INTERFACE:
