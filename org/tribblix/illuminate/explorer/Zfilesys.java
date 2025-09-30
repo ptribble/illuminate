@@ -41,7 +41,6 @@ public class Zfilesys extends Zdataset {
      * @param name the name of the ZFS filesystem
      */
     public Zfilesys(final String name) {
-	this.name = name;
 	int j = name.lastIndexOf('/');
 	if (j >= 0) {
 	    shortname = name.substring(j + 1);

@@ -27,12 +27,14 @@ package org.tribblix.illuminate.explorer;
  */
 public class Zsnapshot extends Zdataset {
 
+    private String snapname;
+
     /**
      * Create a new Zsnapshot object, to store details of a ZFS snapshot.
      *
      * @param name the name of the ZFS snapshot
      */
     public Zsnapshot(final String name) {
-	this.name = name;
+	snapname = name;
     }
 }

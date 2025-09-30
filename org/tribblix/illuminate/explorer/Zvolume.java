@@ -40,7 +40,6 @@ public class Zvolume extends Zdataset {
      * @param name the name of the ZFS volume
      */
     public Zvolume(final String name) {
-	this.name = name;
 	int j = name.lastIndexOf('/');
 	if (j >= 0) {
 	    shortname = name.substring(j + 1);
