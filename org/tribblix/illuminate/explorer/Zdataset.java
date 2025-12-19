@@ -47,6 +47,15 @@ public class Zdataset {
     protected Map<String, Zproperty> propmap;
 
     /**
+     * Set the name of this dataset.
+     *
+     * @return the name of the dataset described by this Zdataset
+     */
+    public void setName(final String newname) {
+	name = newname;
+    }
+
+    /**
      * Return the name of this dataset.
      *
      * @return the name of the dataset described by this Zdataset

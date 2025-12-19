@@ -35,6 +35,7 @@ public class Zsnapshot extends Zdataset {
      * @param name the name of the ZFS snapshot
      */
     public Zsnapshot(final String name) {
+	setName(name);
 	snapname = name;
     }
 }
