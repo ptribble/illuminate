@@ -49,7 +49,7 @@ public class Zdataset {
     /**
      * Set the name of this dataset.
      *
-     * @return the name of the dataset described by this Zdataset
+     * @param newname the name of the dataset described by this Zdataset
      */
     public void setName(final String newname) {
 	name = newname;
