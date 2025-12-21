@@ -29,6 +29,7 @@ import javax.swing.JToolBar;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
@@ -122,11 +123,13 @@ public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
 		"Details of " + ze.getState() + " zone " + ze.getName()),
 		BorderLayout.LINE_START);
 	jtb.addSeparator();
-	jmb = new JButton("About " + ze.getBrand() + " zones");
-	jmb.setEnabled(true);
-	jmb.setName(ze.getBrand() + ".7");
-	jmb.addActionListener(this);
-	jtb.add(jmb, BorderLayout.LINE_END);
+	if (new File("/usr/share/man/man7/" + ze.getBrand() + ".7").exists()) {
+	    jmb = new JButton("About " + ze.getBrand() + " zones");
+	    jmb.setEnabled(true);
+	    jmb.setName(ze.getBrand() + ".7");
+	    jmb.addActionListener(this);
+	    jtb.add(jmb, BorderLayout.LINE_END);
+	}
 
 	addComponent(jtb);
 	addText(ze.getConfig());
