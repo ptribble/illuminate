@@ -24,7 +24,7 @@ the file LICENSES/CDDL-1.0.txt (also as help/CDDL.txt) for details
 
 illuminate incorporates JFreeChart, Copyright 2000-present by David Gilbert and
 Contributors. JFreeChart is covered by the LGPL - see the file
-LICENSES/LGPL-2.1+.txt - and can be obtained from
+LICENSES/LGPL-2.1-or-later.txt - and can be obtained from
 https://www.jfree.org/jfreechart/.
 
 illuminate incorporates a couple of sets of utility classes. See
