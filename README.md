@@ -34,3 +34,6 @@ http://www.petertribble.co.uk/Solaris/jumble.html
 illuminate incorporates openjson https://github.com/openjson/openjson
 See the file LICENSES/Apache-2.0.txt for the details of the license
 for openjson.
+
+illuminate incorporates the SpringUtilities class from the Java Swing tutorial.
+See org/tribblix/illuminate/explorer/SpringUtilities.java for details.
