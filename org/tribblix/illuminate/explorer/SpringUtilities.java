@@ -1,5 +1,6 @@
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
+ * Copyright 2025 Peter Tribble.
  *
  * SPDX-License-Identifier: LicenseRef-JavaTutorial
  *
@@ -29,7 +30,7 @@
  * LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING
  * NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
- */ 
+ */
 
 package org.tribblix.illuminate.explorer;
 
@@ -56,8 +57,10 @@ public final class SpringUtilities {
     /**
      * A debugging utility that prints to stdout the component's
      * minimum, preferred, and maximum sizes.
+     *
+     * @param c Component to print sizes of
      */
-    public static void printSizes(Component c) {
+    public static void printSizes(final Component c) {
         System.out.println("minimumSize = " + c.getMinimumSize());
         System.out.println("preferredSize = " + c.getPreferredSize());
         System.out.println("maximumSize = " + c.getMaximumSize());
@@ -84,9 +87,10 @@ public final class SpringUtilities {
                                 final int xPad, final int yPad) {
         SpringLayout layout;
         try {
-            layout = (SpringLayout)parent.getLayout();
+            layout = (SpringLayout) parent.getLayout();
         } catch (ClassCastException exc) {
-            System.err.println("The first argument to makeGrid must use SpringLayout.");
+            System.err.println("The first argument to makeGrid must use "
+			       + "SpringLayout.");
             return;
         }
 
@@ -189,10 +193,10 @@ public final class SpringUtilities {
                                        final int xPad, final int yPad) {
         SpringLayout layout;
         try {
-            layout = (SpringLayout)parent.getLayout();
+            layout = (SpringLayout) parent.getLayout();
         } catch (ClassCastException exc) {
-            System.err.println("The first argument to makeCompactGrid must " +
-			       "use SpringLayout.");
+            System.err.println("The first argument to makeCompactGrid must "
+			       + "use SpringLayout.");
             return;
         }
 
