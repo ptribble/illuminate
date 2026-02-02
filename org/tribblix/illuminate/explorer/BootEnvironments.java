@@ -29,16 +29,16 @@ import org.tribblix.illuminate.InfoCommand;
  * @author Peter Tribble
  * @version 1.0
  */
-public class BootEnvironments {
+public final class BootEnvironments {
 
     /**
      * A Map of BEs, from name to uuid.
      */
-    protected Map<String, String> forwardmap;
+    private Map<String, String> forwardmap;
     /**
      * A Map of BEs, from uuid to name.
      */
-    protected Map<String, String> backwardmap;
+    private Map<String, String> backwardmap;
 
     /*
      * Initialize all the properties if we haven't already done so.
