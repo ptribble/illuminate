@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -129,6 +129,9 @@ public final class NetInfoPanel extends InfoPanel {
 		break;
 	    case SysItem.NET_ROUTE_ADM:
 		displayRoute(SysItem.NET_ROUTE_ADM);
+		break;
+	    default:
+		System.err.println("Invalid NET type " + hi.getType());
 		break;
 	}
 

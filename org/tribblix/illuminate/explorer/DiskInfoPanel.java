@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -82,6 +82,9 @@ public final class DiskInfoPanel extends InfoPanel {
 		break;
 	    case SysItem.DISK_CONTAINER:
 		displaySummary();
+		break;
+	    default:
+		System.err.println("Invalid DISK type " + hi.getType());
 		break;
 	}
 

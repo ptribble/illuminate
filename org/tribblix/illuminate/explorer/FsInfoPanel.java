@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -72,6 +72,9 @@ public final class FsInfoPanel extends InfoPanel {
 		break;
 	    case SysItem.ZFS_CONTAINER:
 		displayZSummary();
+		break;
+	    default:
+		System.err.println("Invalid FS type " + hi.getType());
 		break;
 	}
 

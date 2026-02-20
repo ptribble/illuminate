@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -449,6 +449,8 @@ public final class PkgUtils {
 		break;
 	    case 3:
 		sb.append(PkgResources.getString("PKGUTILS.GBYTES"));
+		break;
+	    default:
 		break;
 	}
 	return sb.toString();

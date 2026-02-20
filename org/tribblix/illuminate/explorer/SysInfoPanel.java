@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -139,6 +139,9 @@ public final class SysInfoPanel extends JPanel {
 	    case SysItem.PROCESS_CONTAINER:
 		ip = new ProcessInfoPanel(hi);
 		add(ip);
+		break;
+	    default:
+		System.err.println("Unexpected type " + hi.getType());
 		break;
 	}
 	validate();

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -63,6 +63,9 @@ public final class MemoryInfoPanel extends InfoPanel {
 		break;
 	    case SysItem.MEM_CONTAINER:
 		displaySummary();
+		break;
+	    default:
+		System.err.println("Invalid MEM type " + hi.getType());
 		break;
 	}
 
