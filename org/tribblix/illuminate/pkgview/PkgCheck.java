@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -28,9 +28,9 @@ import java.util.HashSet;
 /**
  * PkgCheck - check that what should be installed actually is.
  */
-public class PkgCheck {
+public final class PkgCheck {
 
-    private PackageHandler pkghdl;
+    private final PackageHandler pkghdl;
 
     private boolean list;
     private boolean verbose;

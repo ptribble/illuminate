@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -33,10 +33,10 @@ import java.util.TreeSet;
  */
 public final class OverlayList {
 
-    private boolean ovlexists;
+    private final boolean ovlexists;
 
-    private Set<Overlay> ovlist = new TreeSet<>();
-    private Map<String, Overlay> ovMap = new HashMap<>();
+    private final Set<Overlay> ovlist = new TreeSet<>();
+    private final Map<String, Overlay> ovMap = new HashMap<>();
 
     /**
      * Create an overlay list.

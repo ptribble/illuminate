@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -29,9 +29,9 @@ import org.tribblix.illuminate.InfoCommand;
  * @author Peter Tribble
  * @version 1.0
  */
-public class Zvolume extends Zdataset {
+public final class Zvolume extends Zdataset {
 
-    private String shortname;
+    private final String shortname;
     private Set<Zsnapshot> snapshots;
 
     /**

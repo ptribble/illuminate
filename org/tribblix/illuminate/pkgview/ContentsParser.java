@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -41,8 +41,8 @@ import java.nio.file.Paths;
  */
 public final class ContentsParser {
 
-    private Map<String, ContentsFileDetail> fileHash = new HashMap<>();
-    private Map<String, ContentsPackage> pkgHash = new HashMap<>();
+    private final Map<String, ContentsFileDetail> fileHash = new HashMap<>();
+    private final Map<String, ContentsPackage> pkgHash = new HashMap<>();
 
     private static final String CONTENTS_FILE = "/var/sadm/install/contents";
 

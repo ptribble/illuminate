@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -36,7 +36,7 @@ public final class PkgList extends TreeSet<SVR4Package> {
 
     private static final long serialVersionUID = 1L;
 
-    private transient Map<String, SVR4Package> pkgMap = new HashMap<>();
+    private final transient Map<String, SVR4Package> pkgMap = new HashMap<>();
     private transient Map<String, Set<SVR4Package>> revDependencies;
 
     /**

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -45,7 +45,7 @@ public final class InstalledFilesPanel extends JPanel {
     /**
      * A panel to show the package information.
      */
-    private PackageInformationPanel pip;
+    private final PackageInformationPanel pip;
 
     /**
      * Create a new InstalledFilesPanel.

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -28,10 +28,10 @@ import java.util.TreeSet;
  * @author Peter Tribble
  * @version 1.0
  */
-public class PkgDepend {
+public final class PkgDepend {
 
-    private String name;
-    private PackageHandler pkghdl;
+    private final String name;
+    private final PackageHandler pkghdl;
     private Set<String> dependson;
     private Set<String> rdepends;
     private Set<String> incompatibles;

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -29,13 +29,13 @@ import java.util.TreeSet;
  * @author Peter Tribble
  * @version 1.0
  */
-public class CatalogPackage {
+public final class CatalogPackage {
 
-    private String name;
-    private String pkgvers;
-    private String dsize;
-    private String repo;
-    private String depends;
+    private final String name;
+    private final String pkgvers;
+    private final String dsize;
+    private final String repo;
+    private final String depends;
 
     /**
      * Create an SVR4 package catalog entry.

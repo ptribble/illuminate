@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -32,7 +32,7 @@ import org.tribblix.illuminate.InfoCommand;
 public final class ZFSconfig {
     private static final ZFSconfig INSTANCE = new ZFSconfig();
 
-    private Set<Zpool> zpools = new HashSet<>();
+    private final Set<Zpool> zpools = new HashSet<>();
 
     private ZFSconfig() {
 	parseZpool();

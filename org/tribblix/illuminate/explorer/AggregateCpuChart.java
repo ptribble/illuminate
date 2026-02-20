@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -39,7 +39,7 @@ public final class AggregateCpuChart extends KstatAccessoryPanel {
 
     private static final long serialVersionUID = 1L;
 
-    private transient KstatAggregate ksa;
+    private final transient KstatAggregate ksa;
     /**
      * Saved user time.
      */

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -39,7 +39,7 @@ public final class JFSstatPanel extends JPanel {
     /**
      * The underlying model.
      */
-    private FsstatTableModel ftm;
+    private final FsstatTableModel ftm;
 
     /**
      * Create a new JFSstatPanel.

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -32,11 +32,11 @@ public final class SysTreeNode extends DefaultMutableTreeNode
 
     private static final long serialVersionUID = 1L;
 
-    private transient SysItem hi;
+    private final transient SysItem hi;
     /**
      * The displayed name of this node.
      */
-    private String node;
+    private final String node;
 
     /**
      * Create a Node to store information in the system tree.

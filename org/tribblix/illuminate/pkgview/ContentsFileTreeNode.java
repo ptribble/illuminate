@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -42,7 +42,7 @@ public final class ContentsFileTreeNode extends DefaultMutableTreeNode {
     /**
      * The underlying File represented by this node.
      */
-    private File file;
+    private final File file;
 
     /**
      * Create a node for the given pathname.

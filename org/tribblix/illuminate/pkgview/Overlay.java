@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -31,14 +31,14 @@ import java.util.TreeSet;
  */
 public final class Overlay implements Comparable<Overlay> {
 
-    private PackageHandler pkghdl;
+    private final PackageHandler pkghdl;
 
-    private String name;
+    private final String name;
     private String description;
     private String oversion;
-    private Set<Overlay> overlays = new TreeSet<>();
-    private Set<SVR4Package> packages = new TreeSet<>();
-    private Set<String> services = new TreeSet<>();
+    private final Set<Overlay> overlays = new TreeSet<>();
+    private final Set<SVR4Package> packages = new TreeSet<>();
+    private final Set<String> services = new TreeSet<>();
 
     /**
      * Create an Overlay object. To be useful, you must call populate().

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -26,9 +26,9 @@ import java.util.Map;
 /**
  * We parse the catalog file and create a map of catalog entries.
  */
-public class CatalogParser {
+public final class CatalogParser {
 
-    private Map<String, CatalogPackage> pkgMap;
+    private final Map<String, CatalogPackage> pkgMap;
 
     /**
      * Parse a package catalog.

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -62,9 +62,10 @@ public final class FsstatTableModel extends AbstractTableModel
     private String columnTitle;
 
     private static final Map<String, String[]> COLUMN_MAP;
-    private transient List<ChartableKstat> allfsdata = new ArrayList<>();
-    private transient List<ChartableKstat> fsdata = new ArrayList<>();
-    private transient Map<ChartableKstat, String> fsnames = new HashMap<>();
+    private final transient List<ChartableKstat> allfsdata = new ArrayList<>();
+    private final transient List<ChartableKstat> fsdata = new ArrayList<>();
+    private final transient Map<ChartableKstat, String> fsnames
+	= new HashMap<>();
 
     /**
      * A Timer to update the display in a loop.
@@ -74,7 +75,7 @@ public final class FsstatTableModel extends AbstractTableModel
      * The update delay, in ms.
      */
     private int delay = 1000;
-    private transient JKstat jkstat;
+    private final transient JKstat jkstat;
     private transient KstatSet kss;
     private transient Mnttab mnttab;
 
@@ -93,8 +94,8 @@ public final class FsstatTableModel extends AbstractTableModel
     // don't show any filesystem aggregates at all
     private static final int MASK_ALLAGGR = 16;
     // Lists to hold lists of zones, fstypes to show
-    private transient List<String> showzones = new ArrayList<>();
-    private transient List<String> showfstypes = new ArrayList<>();
+    private final transient List<String> showzones = new ArrayList<>();
+    private final transient List<String> showfstypes = new ArrayList<>();
 
     static {
 	// standard choices for columns

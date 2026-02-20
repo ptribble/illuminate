@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -695,7 +695,7 @@ public final class JCpuState extends JKdemo implements ActionListener {
      * Inner class to handle mouse popups.
      */
     static class PopupListener extends MouseAdapter {
-	private JPopupMenu popup;
+	private final JPopupMenu popup;
 
 	PopupListener(final JPopupMenu jpopup) {
 	    popup = jpopup;

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -52,15 +52,15 @@ public final class InfoCommandPanel extends JPanel implements ActionListener {
     /**
      * The JingleTextPane where we send output.
      */
-    private JingleTextPane tp;
+    private final JingleTextPane tp;
     /**
      * A label for the current command.
      */
-    private JLabel jcl;
+    private final JLabel jcl;
     /**
      * A JButton to display the manual page for the current command.
      */
-    private JButton jmb;
+    private final JButton jmb;
     /**
      * Track the current command we're displaying.
      */

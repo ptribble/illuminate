@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -25,12 +25,12 @@ package org.tribblix.illuminate.explorer;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ZoneNet {
+public final class ZoneNet {
 
-    private String address;
-    private String allowedaddress;
-    private String physical;
-    private String defrouter;
+    private final String address;
+    private final String allowedaddress;
+    private final String physical;
+    private final String defrouter;
 
     /**
      * Create a ZoneNet object to describe the configuration of a zone's

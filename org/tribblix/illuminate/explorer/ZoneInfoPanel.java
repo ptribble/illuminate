@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -52,13 +52,13 @@ public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
 
     private static final long serialVersionUID = 1L;
 
-    private transient JKstat jkstat;
-    private transient KstatAccessorySet kas;
+    private final transient JKstat jkstat;
+    private final transient KstatAccessorySet kas;
     /**
      * A table for kstat data.
      */
     private KstatTable kt;
-    private transient List<KstatAccessoryPanel> kaplist;
+    private final transient List<KstatAccessoryPanel> kaplist;
     /**
      * A button to show the zone brand manual page.
      */

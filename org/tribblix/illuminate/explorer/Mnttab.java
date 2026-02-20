@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -37,11 +37,11 @@ import uk.co.petertribble.jumble.JumbleFile;
  */
 public final class Mnttab {
 
-    private Map<String, String> devmap = new HashMap<>();
-    private Map<String, String> fsmap = new HashMap<>();
-    private Map<String, String> fstypemap = new HashMap<>();
-    private Map<String, List<String>> optmap = new HashMap<>();
-    private Set<String> fsList = new HashSet<>();
+    private final Map<String, String> devmap = new HashMap<>();
+    private final Map<String, String> fsmap = new HashMap<>();
+    private final Map<String, String> fstypemap = new HashMap<>();
+    private final Map<String, List<String>> optmap = new HashMap<>();
+    private final Set<String> fsList = new HashSet<>();
     private long modified;
 
     /**

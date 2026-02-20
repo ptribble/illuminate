@@ -46,7 +46,7 @@ public final class NetInfoPanel extends InfoPanel {
      * A network accessory gadget.
      */
     private AccessoryNetPanel acp;
-    private transient JKstat jkstat;
+    private final transient JKstat jkstat;
     /**
      * A table for network kstats.
      */

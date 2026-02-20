@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -265,8 +265,8 @@ public final class SysItem {
      */
     public static final int BLANK = 99;
 
-    private Map<String, Object> attributes;
-    private int type;
+    private final Map<String, Object> attributes;
+    private final int type;
     private int status = BLANK;
 
     private Kstat kstat;

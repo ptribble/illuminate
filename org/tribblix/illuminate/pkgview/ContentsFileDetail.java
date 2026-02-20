@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -30,7 +30,7 @@ import java.util.Arrays;
 public final class ContentsFileDetail
     implements Comparable<ContentsFileDetail> {
 
-    private PackageHandler pkghdl;
+    private final PackageHandler pkghdl;
 
     private String filename;
     private char ftype;

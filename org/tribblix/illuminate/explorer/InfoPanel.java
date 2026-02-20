@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -47,7 +47,7 @@ public class InfoPanel extends JPanel {
     /**
      * The panel into which the item display is placed.
      */
-    private JingleVPanel jvp;
+    private final JingleVPanel jvp;
 
     /**
      * Create an information panel. Subclasses should call super()

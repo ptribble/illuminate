@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -29,12 +29,12 @@ import java.util.TreeMap;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ZapConfig {
+public final class ZapConfig {
 
-    private boolean zapexists;
+    private final boolean zapexists;
 
-    private Map<Integer, ZapRepository> repoMap;
-    private Map<String, CatalogParser> catalogMap;
+    private final Map<Integer, ZapRepository> repoMap;
+    private final Map<String, CatalogParser> catalogMap;
 
     /**
      * Create a zap configuration.

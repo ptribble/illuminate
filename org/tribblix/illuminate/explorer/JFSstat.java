@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -45,19 +45,20 @@ public final class JFSstat extends JKdemo implements ActionListener {
     private static final long serialVersionUID = 1L;
 
     private static final String SVERSION = "JFSstat version 1.0";
-    private transient Set<JRadioButtonMenuItem> displayset = new HashSet<>();
+    private final transient Set<JRadioButtonMenuItem> displayset
+	= new HashSet<>();
     /**
      * A menu item to toggle hiding of data.
      */
-    private JCheckBoxMenuItem hiddenItem;
+    private final JCheckBoxMenuItem hiddenItem;
     /**
      * A menu item to toggle aggregates.
      */
-    private JCheckBoxMenuItem aggrItem;
+    private final JCheckBoxMenuItem aggrItem;
     /**
      * The main panel.
      */
-    private JFSstatPanel mainPanel;
+    private final JFSstatPanel mainPanel;
 
     /**
      * Create a JFSstat demo.

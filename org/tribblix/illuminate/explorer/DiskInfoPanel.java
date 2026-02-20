@@ -44,11 +44,11 @@ public final class DiskInfoPanel extends InfoPanel {
      * A panel for an IO accessory.
      */
     private AccessoryIOPanel acp;
-    private transient JKstat jkstat;
+    private final transient JKstat jkstat;
     /**
      * This panel's kstat.
      */
-    private Kstat ks;
+    private final Kstat ks;
     /**
      * A table to display the current kstat.
      */
@@ -57,7 +57,7 @@ public final class DiskInfoPanel extends InfoPanel {
      * A table to display the current IO kstat.
      */
     private IOstatTable iot;
-    private transient Mnttab mnttab = new Mnttab();
+    private final transient Mnttab mnttab = new Mnttab();
 
     /**
      * Display a Disk information panel.

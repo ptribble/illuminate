@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -25,9 +25,9 @@ package org.tribblix.illuminate.explorer;
  * @author Peter Tribble
  * @version 1.0
  */
-public class Zsnapshot extends Zdataset {
+public final class Zsnapshot extends Zdataset {
 
-    private String snapname;
+    private final String snapname;
 
     /**
      * Create a new Zsnapshot object, to store details of a ZFS snapshot.

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -41,9 +41,9 @@ public final class OverlayTree extends JTree {
     /**
      * The backing TreeModel.
      */
-    private DefaultTreeModel model;
-    private transient Map<SVR4Package, NodeSet> pkgmap = new HashMap<>();
-    private transient Map<Overlay, NodeSet> ovmap = new HashMap<>();
+    private final DefaultTreeModel model;
+    private final transient Map<SVR4Package, NodeSet> pkgmap = new HashMap<>();
+    private final transient Map<Overlay, NodeSet> ovmap = new HashMap<>();
 
     /**
      * Create a tree from an overlay list and add it to the parent node.
@@ -127,7 +127,7 @@ public final class OverlayTree extends JTree {
     }
 
     class NodeSet {
-	private Set<DefaultMutableTreeNode> nodes = new HashSet<>();
+	private final Set<DefaultMutableTreeNode> nodes = new HashSet<>();
 	public void add(final DefaultMutableTreeNode node) {
 	    nodes.add(node);
 	}

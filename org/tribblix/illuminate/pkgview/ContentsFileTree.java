@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -42,7 +42,7 @@ public final class ContentsFileTree extends JTree {
     /**
      * The backing TreeModel.
      */
-    private DefaultTreeModel model;
+    private final DefaultTreeModel model;
 
     /**
      * Create a JTree representing local files and directories.

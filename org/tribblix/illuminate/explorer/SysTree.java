@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -47,8 +47,8 @@ public final class SysTree extends JTree {
 
     private static final long serialVersionUID = 1L;
 
-    private transient Map<String, Kstat> netMap = new HashMap<>();
-    private transient JKstat jkstat;
+    private final transient Map<String, Kstat> netMap = new HashMap<>();
+    private final transient JKstat jkstat;
 
     /**
      * Display a tree of hardware items.

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -29,13 +29,13 @@ import java.util.Set;
  * @author Peter Tribble
  * @version 2.0
  */
-public class SVR4Package implements Comparable<SVR4Package> {
+public final class SVR4Package implements Comparable<SVR4Package> {
 
-    private PackageHandler pkghdl;
-    private PkgInfo pkginfo;
-    private PkgDepend pkgdepend;
+    private final PackageHandler pkghdl;
+    private final PkgInfo pkginfo;
+    private final PkgDepend pkgdepend;
 
-    private String name;
+    private final String name;
     private Set<SVR4Package> depSet;
 
     /**

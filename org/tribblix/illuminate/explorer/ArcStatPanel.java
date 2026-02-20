@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -50,78 +50,78 @@ public final class ArcStatPanel extends JPanel implements ActionListener {
 
     private static final long MB = 1024 * 1024;
 
-    private transient JKstat jkstat;
+    private final transient JKstat jkstat;
 
     /**
      * Label for ARC size.
      */
-    private JLabel arcSizeLabel;
+    private final JLabel arcSizeLabel;
     /**
      * Label for ARC target size.
      */
-    private JLabel targetSizeLabel;
+    private final JLabel targetSizeLabel;
     /**
      * Label for ARC min size.
      */
-    private JLabel arcMinSizeLabel;
+    private final JLabel arcMinSizeLabel;
     /**
      * Label for ARC max size.
      */
-    private JLabel arcMaxSizeLabel;
+    private final JLabel arcMaxSizeLabel;
     /**
      * Label for MRU size.
      */
-    private JLabel mruSizeLabel;
+    private final JLabel mruSizeLabel;
     /**
      * Label for MFU size.
      */
-    private JLabel mfuSizeLabel;
+    private final JLabel mfuSizeLabel;
 
     /**
      * Bar for ARC hit rate.
      */
-    private JProgressBar arcHitBar;
+    private final JProgressBar arcHitBar;
     /**
      * Bar for demand data hit rate.
      */
-    private JProgressBar demandHitBar;
+    private final JProgressBar demandHitBar;
     /**
      * Bar for prefetch hit rate.
      */
-    private JProgressBar pfHitBar;
+    private final JProgressBar pfHitBar;
     /**
      * Bar for demand metadata hit rate.
      */
-    private JProgressBar mdemandHitBar;
+    private final JProgressBar mdemandHitBar;
     /**
      * Bar for prefetch metadata hit rate.
      */
-    private JProgressBar mpfHitBar;
+    private final JProgressBar mpfHitBar;
 
     /**
      * Dataset for total hits.
      */
-    private DefaultPieDataset<String> totHitsDS;
+    private final DefaultPieDataset<String> totHitsDS;
     /**
      * Dataset for current hits.
      */
-    private DefaultPieDataset<String> curHitsDS;
+    private final DefaultPieDataset<String> curHitsDS;
     /**
      * Dataset for total hits by type.
      */
-    private DefaultPieDataset<String> totHitsByTypeDS;
+    private final DefaultPieDataset<String> totHitsByTypeDS;
     /**
      * Dataset for current hits by type.
      */
-    private DefaultPieDataset<String> curHitsByTypeDS;
+    private final DefaultPieDataset<String> curHitsByTypeDS;
     /**
      * Dataset for total misses by type.
      */
-    private DefaultPieDataset<String> totMissByTypeDS;
+    private final DefaultPieDataset<String> totMissByTypeDS;
     /**
      * Dataset for current misses by type.
      */
-    private DefaultPieDataset<String> curMissByTypeDS;
+    private final DefaultPieDataset<String> curMissByTypeDS;
 
     // naming: pf = prefetch; md = metadata
     /**

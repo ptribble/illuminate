@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -67,14 +67,14 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
 
     private static int orientation = SwingConstants.VERTICAL;
 
-    private transient JKstat jkstat;
+    private final transient JKstat jkstat;
 
-    private transient ProcessorTree proctree;
-    private transient Set<Kstat> kstats;
+    private final transient ProcessorTree proctree;
+    private final transient Set<Kstat> kstats;
     /**
      * How many cpus we have.
      */
-    private int ncpus;
+    private final int ncpus;
     /**
      * Temp counter.
      */
@@ -83,20 +83,20 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     /**
      * Menu items for about popup.
      */
-    private JMenuItem[] aboutCpuItem;
+    private final JMenuItem[] aboutCpuItem;
     /**
      * Menu items for extended information popup.
      */
-    private JMenuItem[] extendedCpuItem;
+    private final JMenuItem[] extendedCpuItem;
     /**
      * Menu items for chart popup.
      */
-    private JMenuItem[] chartCpuItem;
+    private final JMenuItem[] chartCpuItem;
     /**
      * Save the id of each cpu.
      */
-    private String[] cpuID;
-    private transient List<KstatAccessoryPanel> kaplist;
+    private final String[] cpuID;
+    private final transient List<KstatAccessoryPanel> kaplist;
 
     /**
      * The size of a chip widget.
@@ -113,19 +113,19 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     /**
      * Text for chip label, localised via properties.
      */
-    private String chipText;
+    private final String chipText;
     /**
      * Text for core label, localised via properties.
      */
-    private String coreText;
+    private final String coreText;
     /**
      * Text for cpu label, localised via properties.
      */
-    private String cpuLabel;
+    private final String cpuLabel;
     /**
      * Text for chart label, localised via properties.
      */
-    private String cpuChartLabel;
+    private final String cpuChartLabel;
     /**
      * Save the font scaling, depends on layout.
      */
@@ -399,7 +399,7 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
      * Inner class to handle mouse popups.
      */
     static class PopupListener extends MouseAdapter {
-	private JPopupMenu popup;
+	private final JPopupMenu popup;
 
 	PopupListener(final JPopupMenu npopup) {
 	    popup = npopup;

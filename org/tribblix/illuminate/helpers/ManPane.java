@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -50,20 +50,20 @@ public final class ManPane extends JEditorPane
     /**
      * A JLabel with the name of the manual page being displayed.
      */
-    private JLabel manLabel;
+    private final JLabel manLabel;
     /**
      * A JButton to go back to the previous page.
      */
-    private JButton backButton;
+    private final JButton backButton;
     /**
      * The JEditorPane with the man page content.
      */
-    private JEditorPane jep;
+    private final JEditorPane jep;
 
     /**
      * list of opened pages for history.
      */
-    private transient List<File> historyList = new ArrayList<>();
+    private final transient List<File> historyList = new ArrayList<>();
 
     /*
      * This is hard-coded, unfortunately

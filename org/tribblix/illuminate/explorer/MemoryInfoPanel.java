@@ -34,7 +34,7 @@ public final class MemoryInfoPanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 
-    private transient JKstat jkstat;
+    private final transient JKstat jkstat;
     /**
      * A panel to show memory allocations.
      */

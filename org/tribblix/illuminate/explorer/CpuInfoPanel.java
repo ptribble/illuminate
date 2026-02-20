@@ -50,7 +50,7 @@ public final class CpuInfoPanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 
-    private transient ProcessorTree proctree;
+    private final transient ProcessorTree proctree;
     /**
      * A table to show mpstat data.
      */
@@ -60,7 +60,7 @@ public final class CpuInfoPanel extends InfoPanel {
      */
     private KstatAccessoryPanel kap;
     private transient KstatBaseChart kbc;
-    private transient JKstat jkstat;
+    private final transient JKstat jkstat;
     private static final List<String> MYSTATS =
 		Arrays.asList("kernel", "user", "idle");
     private static final List<Color> MYCOLORS =

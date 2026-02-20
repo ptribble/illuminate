@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -30,9 +30,9 @@ import java.util.TreeSet;
  * @author Peter Tribble
  * @version 2.0
  */
-public class ContentsPackage {
+public final class ContentsPackage {
 
-    private Set<ContentsFileDetail> fileset = new HashSet<>();
+    private final Set<ContentsFileDetail> fileset = new HashSet<>();
 
     /**
      * Create a new empty ContentsPackage.

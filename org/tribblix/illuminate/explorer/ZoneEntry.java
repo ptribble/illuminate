@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -29,16 +29,16 @@ import org.tribblix.illuminate.InfoCommand;
  * @author Peter Tribble
  * @version 1.0
  */
-public class ZoneEntry {
+public final class ZoneEntry {
 
     // common attributes
-    private int zid;
-    private String zname;
-    private String zstate;
-    private String zroot;
-    private String zuuid;
-    private String zbrand;
-    private String ziptype;
+    private final int zid;
+    private final String zname;
+    private final String zstate;
+    private final String zroot;
+    private final String zuuid;
+    private final String zbrand;
+    private final String ziptype;
 
     // attributes derived if necessary
     private Set<ZoneNet> netconfig;

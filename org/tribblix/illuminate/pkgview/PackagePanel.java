@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -44,7 +44,7 @@ public final class PackagePanel extends JPanel {
     /**
      * A panel to show the package information.
      */
-    private PackageInformationPanel pip;
+    private final PackageInformationPanel pip;
     private transient SVR4Package currentPackage;
     /**
      * A JTable to show the list of packages.

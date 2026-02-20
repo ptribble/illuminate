@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -32,14 +32,14 @@ import org.tribblix.illuminate.InfoCommand;
  * @author Peter Tribble
  * @version 1.0
  */
-public class Zpool {
+public final class Zpool {
 
-    private String name;
-    private Set<Zfilesys> zfilesys = new HashSet<>();
-    private Set<Zvolume> zvolumes = new HashSet<>();
+    private final String name;
+    private final Set<Zfilesys> zfilesys = new HashSet<>();
+    private final Set<Zvolume> zvolumes = new HashSet<>();
     private Zfilesys zparent;
-    private Map<String, Zfilesys> zmap = new HashMap<>();
-    private Set<String> zdevices = new HashSet<>();
+    private final Map<String, Zfilesys> zmap = new HashMap<>();
+    private final Set<String> zdevices = new HashSet<>();
 
     /**
      * Create a Zpool object representing a ZFS pool.

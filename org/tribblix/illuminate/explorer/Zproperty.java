@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -25,11 +25,11 @@ package org.tribblix.illuminate.explorer;
  * @author Peter Tribble
  * @version 1.0
  */
-public class Zproperty implements Comparable<Zproperty> {
+public final class Zproperty implements Comparable<Zproperty> {
 
-    private String property;
-    private String value;
-    private String source;
+    private final String property;
+    private final String value;
+    private final String source;
 
     /**
      * Create a new Zproperty object, to store details of a ZFS property.

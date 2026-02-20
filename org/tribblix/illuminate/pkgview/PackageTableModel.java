@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -34,12 +34,12 @@ public final class PackageTableModel extends AbstractTableModel {
 
     private static final long serialVersionUID = 1L;
 
-    private transient List<SVR4Package> pkgs;
+    private final transient List<SVR4Package> pkgs;
 
     /**
      * Columns to show.
      */
-    private String[] columnNames = {"Name", "Version", "Description"};
+    private final String[] columnNames = {"Name", "Version", "Description"};
 
     /**
      * Create a new PackageTableModel.

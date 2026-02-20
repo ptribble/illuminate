@@ -38,7 +38,7 @@ public final class SysInfoPanel extends JPanel {
      * A display panel, displaying whatever is selected.
      */
     private InfoPanel ip;
-    private transient JKstat jkstat;
+    private final transient JKstat jkstat;
 
     /**
      * Display an Sys information panel.

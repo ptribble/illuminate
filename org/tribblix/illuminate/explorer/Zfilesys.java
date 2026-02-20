@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -29,10 +29,10 @@ import org.tribblix.illuminate.InfoCommand;
  * @author Peter Tribble
  * @version 1.1
  */
-public class Zfilesys extends Zdataset {
+public final class Zfilesys extends Zdataset {
 
-    private String shortname;
-    private Set<Zfilesys> children = new HashSet<>();
+    private final String shortname;
+    private final Set<Zfilesys> children = new HashSet<>();
     private Set<Zsnapshot> snapshots;
 
     /**

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -37,8 +37,8 @@ public final class ZfsTableModel extends AbstractTableModel {
     /**
      * The number of rows in the table, equal to the number of properties.
      */
-    private int nrows;
-    private transient Zproperty[] zprops;
+    private final int nrows;
+    private final transient Zproperty[] zprops;
 
     /**
      * Create a ZfsTableModel from the given input.

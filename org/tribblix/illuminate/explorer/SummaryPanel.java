@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -45,9 +45,9 @@ public final class SummaryPanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 
-    private transient KstatAccessorySet kas;
-    private transient List<KstatAccessoryPanel> kaplist;
-    private transient JKstat jkstat;
+    private final transient KstatAccessorySet kas;
+    private final transient List<KstatAccessoryPanel> kaplist;
+    private final transient JKstat jkstat;
 
     /**
      * Display a summary information panel.

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -30,10 +30,10 @@ import uk.co.petertribble.jumble.JumbleUtils;
  * @author Peter Tribble
  * @version 1.0
  */
-public class PkgInfo {
+public final class PkgInfo {
 
-    private String name;
-    private PackageHandler pkghdl;
+    private final String name;
+    private final PackageHandler pkghdl;
     private Map<String, String> pkginfomap;
 
     /**

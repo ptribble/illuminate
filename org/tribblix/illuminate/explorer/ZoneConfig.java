@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -34,8 +34,8 @@ import org.tribblix.illuminate.InfoCommand;
 public final class ZoneConfig {
     private static final ZoneConfig INSTANCE = new ZoneConfig();
 
-    private Set<String> zones = new HashSet<>();
-    private Map<String, ZoneEntry> zmap = new HashMap<>();
+    private final Set<String> zones = new HashSet<>();
+    private final Map<String, ZoneEntry> zmap = new HashMap<>();
     private boolean isglobal;
 
     private ZoneConfig() {
