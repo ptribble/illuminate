@@ -37,7 +37,6 @@ import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
@@ -68,7 +67,7 @@ import java.util.Set;
  *
  * @author Peter Tribble
  */
-public final class JCpuState extends JKdemo implements ActionListener {
+public final class JCpuState extends JKdemo {
 
     private static final long serialVersionUID = 1L;
 
