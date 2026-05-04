@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -32,6 +32,7 @@ import java.io.File;
 
 /**
  * IllumosToolsMenu - standard toolbar menu for illuminate tools.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

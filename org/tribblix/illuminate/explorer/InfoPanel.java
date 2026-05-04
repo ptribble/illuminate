@@ -32,6 +32,7 @@ import org.tribblix.illuminate.InfoCommand;
 
 /**
  * A panel to display system information.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

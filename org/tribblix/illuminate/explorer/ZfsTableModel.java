@@ -26,6 +26,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  * A Table Model representing zfs properties.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

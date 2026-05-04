@@ -60,7 +60,7 @@ public final class ManPane extends JEditorPane
      */
     private final JEditorPane jep;
 
-    /**
+    /*
      * list of opened pages for history.
      */
     private final transient List<File> historyList = new ArrayList<>();

@@ -24,6 +24,7 @@ import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  * SysTreeNode - represent an item of hardware as a node in a tree.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

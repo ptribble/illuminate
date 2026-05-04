@@ -33,6 +33,7 @@ public final class SmfComparator<T extends TreeNode>
         implements Comparator<TreeNode> {
     private static final SmfComparator INSTANCE =
 	new SmfComparator<>();
+
     private SmfComparator() {
     }
     /**
@@ -40,9 +41,11 @@ public final class SmfComparator<T extends TreeNode>
      *
      * @return the singleton SmfComparator instance
      */
+
     public static SmfComparator getInstance() {
 	return INSTANCE;
     }
+
     @Override
     public int compare(final TreeNode t1, final TreeNode t2) {
 	return t1.toString().compareTo(t2.toString());

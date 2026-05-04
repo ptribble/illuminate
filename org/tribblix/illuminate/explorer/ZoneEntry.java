@@ -26,6 +26,7 @@ import org.tribblix.illuminate.InfoCommand;
 
 /**
  * ZoneEntry - represent a zone configuration.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

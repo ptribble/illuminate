@@ -34,6 +34,7 @@ import org.jfree.chart.ChartPanel;
 
 /**
  * NetInfoPanel - shows Network status and information.
+ *
  * @author Peter Tribble
  * @version 1.0
  *

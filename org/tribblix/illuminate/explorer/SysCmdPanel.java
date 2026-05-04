@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -27,6 +27,7 @@ import uk.co.petertribble.jingle.JingleTextPane;
 
 /**
  * SysCmdPanel - shows the output from a command.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

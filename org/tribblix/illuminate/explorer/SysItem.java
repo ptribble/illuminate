@@ -26,6 +26,7 @@ import uk.co.petertribble.jkstat.api.Kstat;
 
 /**
  * SysItem - represent an item of hardware.
+ *
  * @author Peter Tribble
  * @version 1.3
  */

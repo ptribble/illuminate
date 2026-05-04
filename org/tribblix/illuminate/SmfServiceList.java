@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -25,6 +25,7 @@ import org.tribblix.illuminate.helpers.RunCommand;
 
 /**
  * SmfServiceList - a list of all SMF services.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

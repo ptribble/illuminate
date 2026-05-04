@@ -38,6 +38,7 @@ import java.util.ArrayList;
 
 /**
  * SummaryPanel - shows overall summary of activity.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

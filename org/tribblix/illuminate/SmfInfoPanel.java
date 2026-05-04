@@ -44,6 +44,7 @@ import uk.co.petertribble.jumble.JumbleFile;
 
 /**
  * SmfInfoPanel - shows smf status.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

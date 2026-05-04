@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -25,6 +25,7 @@ import javax.swing.JList;
 
 /**
  * SmfList - shows SMF services in a JList.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

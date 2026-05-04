@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -25,6 +25,7 @@ import javax.swing.table.AbstractTableModel;
 
 /**
  * A Table Model representing the output from a command.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

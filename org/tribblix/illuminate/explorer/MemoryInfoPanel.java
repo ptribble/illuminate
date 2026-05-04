@@ -26,6 +26,7 @@ import org.tribblix.illuminate.InfoCommand;
 
 /**
  * MemoryInfoPanel - shows Memory status.
+ *
  * @author Peter Tribble
  * @version 1.0
  *

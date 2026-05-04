@@ -717,7 +717,6 @@ public final class JCpuState extends JKdemo {
 	}
     }
 
-
     // getopts would be nice
     private void parseArgs(final String[] args) {
 	if (args.length > 0) {

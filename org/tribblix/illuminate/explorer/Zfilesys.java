@@ -26,6 +26,7 @@ import org.tribblix.illuminate.InfoCommand;
 
 /**
  * Zfilesys - represent a ZFS filesystem.
+ *
  * @author Peter Tribble
  * @version 1.1
  */

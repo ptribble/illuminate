@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -43,6 +43,7 @@ import uk.co.petertribble.jkstat.demo.KstatToolsMenu;
 
 /**
  * Illuminate - shows system information.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

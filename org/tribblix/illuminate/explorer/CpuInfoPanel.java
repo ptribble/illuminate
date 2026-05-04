@@ -43,6 +43,7 @@ import org.jfree.chart.ChartPanel;
 
 /**
  * CpuInfoPanel - shows Cpu status.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

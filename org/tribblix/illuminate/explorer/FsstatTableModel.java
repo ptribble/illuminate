@@ -38,6 +38,7 @@ import uk.co.petertribble.jkstat.api.KstatSet;
 
 /**
  * A Table model describing fsstat statistics.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -25,6 +25,7 @@ import javax.swing.JList;
 
 /**
  * InfoJList - a customized JList with tooltips.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

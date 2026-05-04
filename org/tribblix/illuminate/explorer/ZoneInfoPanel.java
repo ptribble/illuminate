@@ -45,6 +45,7 @@ import uk.co.petertribble.jkstat.gui.KstatTable;
 
 /**
  * ZoneInfoPanel - shows Zone information.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

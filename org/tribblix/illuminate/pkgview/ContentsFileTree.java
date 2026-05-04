@@ -65,6 +65,7 @@ public final class ContentsFileTree extends JTree {
 	    public void treeCollapsed(final TreeExpansionEvent e) {
 		// nothing to do
 	    }
+
 	    @Override
 	    public void treeExpanded(final TreeExpansionEvent e) {
 		TreePath path = e.getPath();

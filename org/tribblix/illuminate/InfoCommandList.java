@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -26,6 +26,7 @@ import org.tribblix.illuminate.explorer.ZoneConfig;
 
 /**
  * InfoCommandList - a List of information commands.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

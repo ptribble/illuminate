@@ -22,6 +22,7 @@ package org.tribblix.illuminate.explorer;
 
 /**
  * Zproperty - represent a ZFS property.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

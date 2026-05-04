@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -31,6 +31,7 @@ import uk.co.petertribble.jumble.JumbleFile;
 /**
  * A class to map disk devices in c#t#d#s# form to the device instances
  * such as sd used by kstats.
+ *
  * @author Peter Tribble
  * @version 1.0
  */
@@ -76,7 +77,7 @@ public final class DevicePath {
      * and the driver is between 3 and 4.
      */
     private static void readPathToInst() {
-	for (String s1: JumbleFile.readAllLines("/etc/path_to_inst")) {
+	for (String s1 : JumbleFile.readAllLines("/etc/path_to_inst")) {
 	    String[] ds = s1.split("\"");
 	    if (ds.length > 3) {
 		pMap.put(ds[1], ds[3] + ds[2].trim());

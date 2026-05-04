@@ -22,6 +22,7 @@ package org.tribblix.illuminate.explorer;
 
 /**
  * Zsnapshot - represent a ZFS snapshot.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

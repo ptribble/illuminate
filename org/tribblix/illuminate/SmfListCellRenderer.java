@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -27,6 +27,7 @@ import java.awt.Component;
 
 /**
  * SmfListCellRenderer - custom cell renderer for SMF services.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

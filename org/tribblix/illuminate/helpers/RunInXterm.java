@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -25,12 +25,14 @@ import java.io.IOException;
 
 /**
  * RunInXterm - run the given command in an xterm.
+ *
  * @author Peter Tribble
  * @version 1.1
  */
 public final class RunInXterm {
 
     private static String xtermbin;
+
     /*
      * We search all the following locations for a terminal emulator. It
      * must support the -e option. If none of them work, we fall back to

@@ -36,6 +36,7 @@ import org.tribblix.illuminate.IlluminateResources;
 
 /**
  * A kstat demo emulating fsstat.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

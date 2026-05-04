@@ -28,7 +28,7 @@ import java.awt.Component;
 import java.net.URL;
 
 /**
- * smfTreeCellRenderer - adds tooltips and custom icons to an SMF tree.
+ * SmfTreeCellRenderer - adds tooltips and custom icons to an SMF tree.
  *
  * @author Peter Tribble
  * @version 1.0

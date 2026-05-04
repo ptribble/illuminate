@@ -40,6 +40,7 @@ import org.tribblix.illuminate.InfoCommand;
 
 /**
  * SysTree - shows a hierarchical hardware view.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

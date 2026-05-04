@@ -28,6 +28,7 @@ import org.tribblix.illuminate.InfoCommand;
 
 /**
  * FsInfoPanel - shows Filesystem status.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

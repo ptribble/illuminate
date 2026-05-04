@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -27,12 +27,14 @@ import java.net.URL;
 
 /**
  * RunBrowser - open a URL in a browser.
+ *
  * @author Peter Tribble
  * @version 1.1
  */
 public final class RunBrowser {
 
     private static String browserbin;
+
     /*
      * We search all the following locations for a browser.
      */

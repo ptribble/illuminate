@@ -33,6 +33,7 @@ import org.tribblix.illuminate.InfoCommand;
 
 /**
  * DiskInfoPanel - shows Disk status.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

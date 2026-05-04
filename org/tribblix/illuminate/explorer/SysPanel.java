@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -34,6 +34,7 @@ import org.tribblix.illuminate.InfoCommand;
 
 /**
  * SysPanel - shows hardware in the system.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

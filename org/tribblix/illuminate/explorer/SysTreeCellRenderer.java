@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -30,6 +30,7 @@ import java.net.URL;
 /**
  * SysTreeCellRenderer - adds tooltips and custom icons to items in the
  * illuminate explorer tree.
+ *
  * @author Peter Tribble
  * @version 1.0
  *

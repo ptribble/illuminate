@@ -133,7 +133,7 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     /**
      * Font, save this once, for reuse.
      */
-     private Font lfont;
+    private Font lfont;
 
     /**
      * Create a CpuStatePanel.

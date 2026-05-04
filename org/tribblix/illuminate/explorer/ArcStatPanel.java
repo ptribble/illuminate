@@ -41,6 +41,7 @@ import org.jfree.data.general.DefaultPieDataset;
 
 /**
  * Display ZFS ARC statistics in a Panel.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

@@ -28,6 +28,7 @@ import java.util.TreeSet;
 
 /**
  * OverlayList - shows available overlays in a JList.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

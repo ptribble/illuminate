@@ -26,6 +26,7 @@ import uk.co.petertribble.jkstat.api.JKstat;
 
 /**
  * SysInfoPanel - shows System status.
+ *
  * @author Peter Tribble
  * @version 1.0
  *

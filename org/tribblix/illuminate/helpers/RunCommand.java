@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -28,6 +28,7 @@ import java.nio.charset.StandardCharsets;
 
 /**
  * RunCommand - run a command and return the output.
+ *
  * @author Peter Tribble
  * @version 1.0
  */

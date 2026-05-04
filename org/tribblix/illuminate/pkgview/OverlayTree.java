@@ -31,6 +31,7 @@ import java.util.HashSet;
 /**
  * A tree structure representing the hierarchical structure of overlays
  * and packages.
+ *
  * @author Peter Tribble
  * @version 1.0
  */
@@ -128,9 +129,11 @@ public final class OverlayTree extends JTree {
 
     class NodeSet {
 	private final Set<DefaultMutableTreeNode> nodes = new HashSet<>();
+
 	public void add(final DefaultMutableTreeNode node) {
 	    nodes.add(node);
 	}
+
 	public Set<DefaultMutableTreeNode> getNodes() {
 	    return nodes;
 	}

@@ -29,6 +29,7 @@ import org.tribblix.illuminate.InfoCommand;
 
 /**
  * Zpool - represent the configuration of ZFS.
+ *
  * @author Peter Tribble
  * @version 1.0
  */
