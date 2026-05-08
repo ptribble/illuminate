@@ -20,9 +20,9 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.util.List;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 
 /**
  * Parse a line of the SVR4 packaging contents file.
@@ -61,7 +61,7 @@ public final class ContentsFileDetail
      * Parse the line. We pick the name and the type, then parse the
      * rest according to the type. From contents(4)
      *
-     * ftype s: path=rpath s class package
+     * <p>ftype s: path=rpath s class package
      * ftype l: path=rpath l class package
      * ftype d: path d class mode owner group package(s)
      * ftype b: path b class major minor mode owner group package

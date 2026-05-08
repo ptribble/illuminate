@@ -20,8 +20,8 @@
 
 package org.tribblix.illuminate.explorer;
 
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 import org.tribblix.illuminate.InfoCommand;
 
 /**

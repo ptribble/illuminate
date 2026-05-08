@@ -20,6 +20,7 @@
 
 package org.tribblix.illuminate.pkgview;
 
+import java.awt.BorderLayout;
 import javax.swing.DefaultListSelectionModel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
@@ -27,7 +28,6 @@ import javax.swing.JSplitPane;
 import javax.swing.JTable;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import java.awt.BorderLayout;
 
 /**
  * Show a table inside a Scroll pane, displaying the packages installed.

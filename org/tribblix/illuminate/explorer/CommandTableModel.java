@@ -20,8 +20,8 @@
 
 package org.tribblix.illuminate.explorer;
 
-import org.tribblix.illuminate.InfoCommand;
 import javax.swing.table.AbstractTableModel;
+import org.tribblix.illuminate.InfoCommand;
 
 /**
  * A Table Model representing the output from a command.

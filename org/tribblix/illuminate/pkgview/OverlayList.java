@@ -20,9 +20,9 @@
 
 package org.tribblix.illuminate.pkgview;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-import java.util.HashMap;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -42,7 +42,7 @@ public final class OverlayList {
     /**
      * Create an overlay list.
      *
-     * There should be a .ovl file and a .pkgs file for each overlay
+     * <p>There should be a .ovl file and a .pkgs file for each overlay
      *
      * @param pkghdl a PackageHandler for this OS image
      */

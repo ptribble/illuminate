@@ -20,12 +20,6 @@
 
 package org.tribblix.illuminate;
 
-import javax.swing.ImageIcon;
-import javax.swing.JFrame;
-import javax.swing.JMenu;
-import javax.swing.JMenuBar;
-import javax.swing.JMenuItem;
-import javax.swing.JTabbedPane;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,11 +27,17 @@ import java.awt.event.KeyEvent;
 import java.awt.event.WindowAdapter;
 import java.awt.event.WindowEvent;
 import java.io.File;
-import uk.co.petertribble.jingle.JingleMultiFrame;
-import uk.co.petertribble.jingle.JingleInfoFrame;
+import javax.swing.ImageIcon;
+import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
+import javax.swing.JTabbedPane;
 import org.tribblix.illuminate.explorer.SysPanel;
-import org.tribblix.illuminate.pkgview.InstalledSoftwarePanel;
 import org.tribblix.illuminate.pkgview.IPSSoftwarePanel;
+import org.tribblix.illuminate.pkgview.InstalledSoftwarePanel;
+import uk.co.petertribble.jingle.JingleInfoFrame;
+import uk.co.petertribble.jingle.JingleMultiFrame;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.demo.KstatToolsMenu;
 

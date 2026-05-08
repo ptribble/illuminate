@@ -20,10 +20,10 @@
 
 package org.tribblix.illuminate.pkgview;
 
+import java.text.DecimalFormat;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
-import java.util.Iterator;
-import java.text.DecimalFormat;
 
 /**
  * PkgUtils - utility methods to format information.

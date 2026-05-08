@@ -20,8 +20,8 @@
 
 package org.tribblix.illuminate;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 
 /**
  * SmfDependents - print the services that depend on this service, in a tree.

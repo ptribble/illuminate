@@ -21,20 +21,20 @@
 package org.tribblix.illuminate.explorer;
 
 import java.awt.Dimension;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.BorderFactory;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
+import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatFilter;
-import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.demo.ProcessorTree;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
+import uk.co.petertribble.jkstat.gui.KstatResources;
 import uk.co.petertribble.jkstat.gui.SparkRateAccessory;
 import uk.co.petertribble.jkstat.gui.SparkValueAccessory;
-import uk.co.petertribble.jkstat.gui.KstatResources;
-import uk.co.petertribble.jkstat.demo.ProcessorTree;
-import java.util.List;
-import java.util.ArrayList;
 
 /**
  * SummaryPanel - shows overall summary of activity.

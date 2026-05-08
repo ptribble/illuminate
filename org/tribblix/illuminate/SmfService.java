@@ -21,8 +21,8 @@
 package org.tribblix.illuminate;
 
 import java.io.File;
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 import org.tribblix.illuminate.helpers.RunCommand;
 import uk.co.petertribble.jumble.JumbleFile;
 

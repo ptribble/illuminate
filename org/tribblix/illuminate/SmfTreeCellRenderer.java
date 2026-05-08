@@ -20,12 +20,12 @@
 
 package org.tribblix.illuminate;
 
+import java.awt.Component;
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
-import java.awt.Component;
-import java.net.URL;
 
 /**
  * SmfTreeCellRenderer - adds tooltips and custom icons to an SMF tree.

@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -29,12 +29,12 @@ import uk.co.petertribble.jumble.JumbleFile;
 /**
  * PackageHandler - central handler for all package requests for information.
  *
- * This class should be referred to in order to retrieve all
+ * <p>This class should be referred to in order to retrieve all
  * information about packaging. A client should ask this class
  * for a copy of the given information, rather than create a
  * new copy itself.
  *
- * Classes are also intended to use this class for reading files
+ * <p>Classes are also intended to use this class for reading files
  * from the filesystem, and shouldn't do so directly themselves.
  *
  * @author Peter Tribble

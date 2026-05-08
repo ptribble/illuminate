@@ -20,12 +20,12 @@
 
 package org.tribblix.illuminate;
 
+import java.util.Collections;
+import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.Set;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.MutableTreeNode;
-import java.util.Enumeration;
-import java.util.Collections;
-import java.util.Set;
-import java.util.HashSet;
 
 /**
  * SmfTreeNode - represent SMF services as nodes in a tree.

@@ -20,10 +20,10 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.util.Map;
 import java.util.HashMap;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Map;
+import java.util.Set;
 import java.util.TreeSet;
 
 /**
@@ -42,7 +42,7 @@ public final class PkgList extends TreeSet<SVR4Package> {
     /**
      * Create a package list.
      *
-     * Packages are in directories, so ignore files
+     * <p>Packages are in directories, so ignore files
      * and anything hidden (starting with a dot) and
      * also the locale directory
      *

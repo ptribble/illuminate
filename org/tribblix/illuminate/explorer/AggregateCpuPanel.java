@@ -14,22 +14,22 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package org.tribblix.illuminate.explorer;
 
-import uk.co.petertribble.jkstat.api.JKstat;
-import uk.co.petertribble.jkstat.api.Kstat;
-import uk.co.petertribble.jkstat.api.KstatAggregate;
-import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.geom.Rectangle2D;
 import javax.swing.SwingConstants;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.KstatAggregate;
+import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 
 /**
  * An accessory panel that graphically represents aggregate cpu activity in the

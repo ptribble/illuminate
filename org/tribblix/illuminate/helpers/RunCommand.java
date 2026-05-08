@@ -20,10 +20,10 @@
 
 package org.tribblix.illuminate.helpers;
 
-import java.io.File;
 import java.io.BufferedReader;
-import java.io.InputStreamReader;
+import java.io.File;
 import java.io.IOException;
+import java.io.InputStreamReader;
 import java.nio.charset.StandardCharsets;
 
 /**
@@ -34,8 +34,8 @@ import java.nio.charset.StandardCharsets;
  */
 public final class RunCommand {
 
-    private StringBuilder stdout; //NOPMD
-    private StringBuilder stderr; //NOPMD
+    private StringBuilder stdout; // NOPMD
+    private StringBuilder stderr; // NOPMD
 
     /**
      * Run a command and record its output.

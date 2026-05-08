@@ -20,9 +20,9 @@
 
 package org.tribblix.illuminate.explorer;
 
+import org.tribblix.illuminate.InfoCommand;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.demo.JKmemPanel;
-import org.tribblix.illuminate.InfoCommand;
 
 /**
  * MemoryInfoPanel - shows Memory status.

@@ -20,12 +20,6 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.BorderFactory;
-import javax.swing.JLabel;
-import javax.swing.JMenuItem;
-import javax.swing.JPanel;
-import javax.swing.JPopupMenu;
-import javax.swing.SwingConstants;
 import java.awt.BorderLayout;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -38,22 +32,28 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseAdapter;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
-import uk.co.petertribble.jkstat.api.JKstat;
-import uk.co.petertribble.jkstat.api.Kstat;
-import uk.co.petertribble.jkstat.api.KstatAggregate;
-import uk.co.petertribble.jkstat.api.KstatFilter;
-import uk.co.petertribble.jkstat.gui.AccessoryCpuPanel;
-import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
-import uk.co.petertribble.jkstat.gui.KstatAreaChartFrame;
-import uk.co.petertribble.jkstat.gui.KstatTableFrame;
-import org.tribblix.illuminate.IlluminateResources;
-import uk.co.petertribble.jkstat.demo.ProcessorChip;
-import uk.co.petertribble.jkstat.demo.ProcessorCore;
-import uk.co.petertribble.jkstat.demo.ProcessorTree;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Set;
+import javax.swing.BorderFactory;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.SwingConstants;
+import org.tribblix.illuminate.IlluminateResources;
+import uk.co.petertribble.jkstat.api.JKstat;
+import uk.co.petertribble.jkstat.api.Kstat;
+import uk.co.petertribble.jkstat.api.KstatAggregate;
+import uk.co.petertribble.jkstat.api.KstatFilter;
+import uk.co.petertribble.jkstat.demo.ProcessorChip;
+import uk.co.petertribble.jkstat.demo.ProcessorCore;
+import uk.co.petertribble.jkstat.demo.ProcessorTree;
+import uk.co.petertribble.jkstat.gui.AccessoryCpuPanel;
+import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
+import uk.co.petertribble.jkstat.gui.KstatAreaChartFrame;
+import uk.co.petertribble.jkstat.gui.KstatTableFrame;
 
 /**
  * A graphical kstat demo, like an enhanced xcpustate that also shows

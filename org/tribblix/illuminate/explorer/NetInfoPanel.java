@@ -20,17 +20,17 @@
 
 package org.tribblix.illuminate.explorer;
 
+import java.util.Arrays;
+import java.util.List;
+import org.jfree.chart.ChartPanel;
+import org.tribblix.illuminate.InfoCommand;
+import org.tribblix.illuminate.helpers.ManPane;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.gui.AccessoryNetPanel;
-import uk.co.petertribble.jkstat.gui.KstatTable;
 import uk.co.petertribble.jkstat.gui.KstatBaseChart;
 import uk.co.petertribble.jkstat.gui.KstatChart;
-import org.tribblix.illuminate.InfoCommand;
-import org.tribblix.illuminate.helpers.ManPane;
-import java.util.List;
-import java.util.Arrays;
-import org.jfree.chart.ChartPanel;
+import uk.co.petertribble.jkstat.gui.KstatTable;
 
 /**
  * NetInfoPanel - shows Network status and information.

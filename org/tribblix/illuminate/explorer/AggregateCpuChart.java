@@ -20,14 +20,14 @@
 
 package org.tribblix.illuminate.explorer;
 
+import java.awt.BorderLayout;
+import java.awt.Color;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatAggregate;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
-import uk.co.petertribble.jstripchart.JStripChart;
 import uk.co.petertribble.jstripchart.JStackedStripChart2;
-import java.awt.BorderLayout;
-import java.awt.Color;
+import uk.co.petertribble.jstripchart.JStripChart;
 
 /**
  * An accessory panel that graphically charts aggregate cpu utilization.

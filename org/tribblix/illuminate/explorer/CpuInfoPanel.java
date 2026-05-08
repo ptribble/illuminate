@@ -20,26 +20,26 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.BorderFactory;
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.util.Arrays;
+import java.util.List;
+import java.util.Set;
+import javax.swing.BorderFactory;
+import javax.swing.JPanel;
+import org.jfree.chart.ChartPanel;
+import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatAggregate;
-import uk.co.petertribble.jkstat.api.JKstat;
-import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
-import uk.co.petertribble.jkstat.gui.AccessoryCpuPanel;
-import uk.co.petertribble.jkstat.gui.KstatBaseChart;
-import uk.co.petertribble.jkstat.gui.KstatAreaChart;
-import uk.co.petertribble.jkstat.gui.KstatAggregateAreaChart;
-import uk.co.petertribble.jkstat.gui.MPstatTable;
 import uk.co.petertribble.jkstat.demo.ProcessorChip;
 import uk.co.petertribble.jkstat.demo.ProcessorCore;
 import uk.co.petertribble.jkstat.demo.ProcessorTree;
-import java.util.Set;
-import java.util.List;
-import java.util.Arrays;
-import org.jfree.chart.ChartPanel;
+import uk.co.petertribble.jkstat.gui.AccessoryCpuPanel;
+import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
+import uk.co.petertribble.jkstat.gui.KstatAggregateAreaChart;
+import uk.co.petertribble.jkstat.gui.KstatAreaChart;
+import uk.co.petertribble.jkstat.gui.KstatBaseChart;
+import uk.co.petertribble.jkstat.gui.MPstatTable;
 
 /**
  * CpuInfoPanel - shows Cpu status.

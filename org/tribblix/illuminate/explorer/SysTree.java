@@ -20,13 +20,15 @@
 
 package org.tribblix.illuminate.explorer;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Set;
 import java.util.TreeSet;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
+import org.tribblix.illuminate.IlluminateResources;
+import org.tribblix.illuminate.InfoCommand;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatFilter;
@@ -35,8 +37,6 @@ import uk.co.petertribble.jkstat.api.NativeJKstat;
 import uk.co.petertribble.jkstat.demo.ProcessorChip;
 import uk.co.petertribble.jkstat.demo.ProcessorCore;
 import uk.co.petertribble.jkstat.demo.ProcessorTree;
-import org.tribblix.illuminate.IlluminateResources;
-import org.tribblix.illuminate.InfoCommand;
 
 /**
  * SysTree - shows a hierarchical hardware view.

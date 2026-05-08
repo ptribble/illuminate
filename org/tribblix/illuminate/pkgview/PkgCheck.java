@@ -22,8 +22,8 @@ package org.tribblix.illuminate.pkgview;
 
 import java.io.File;
 import java.util.Arrays;
-import java.util.Set;
 import java.util.HashSet;
+import java.util.Set;
 
 /**
  * PkgCheck - check that what should be installed actually is.

@@ -14,14 +14,14 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package org.tribblix.illuminate.pkgview;
 
-import javax.swing.JEditorPane;
 import java.awt.Desktop;
+import javax.swing.JEditorPane;
 import javax.swing.event.HyperlinkEvent;
 import javax.swing.event.HyperlinkListener;
 import org.tribblix.illuminate.helpers.ManFrame;

@@ -20,23 +20,23 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Set;
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Set;
 
 /**
  * We parse the contents file and create two hashes.
  *
- * The first hash is by file, or equivalently by line.
+ * <p>The first hash is by file, or equivalently by line.
  * The key is the filename, the value is a ContentsFileDetail
  * which stores the metadata and the list of packages that contain
  * this file.
  *
- * The second hash is by package. The key is the package name,
+ * <p>The second hash is by package. The key is the package name,
  * and the value is a List of ContentsFileDetail's.
  */
 public final class ContentsParser {
@@ -61,13 +61,13 @@ public final class ContentsParser {
      * file indicates that this is a lot faster, so I'm not sure why the
      * overall time gets worse.
      *
-     * On my machine, the time breakdown is like:
+     * <p>On my machine, the time breakdown is like:
      *  - just reading every line, 0.9s
      *  - just parsing every line, 1.5s, so the parsing adds 0.6s
      *  - populating the fileHash adds about 1s
      *  - populating the pkgHash and its contents adds another 1s
      *
-     * So the actual parse is pretty quick - it's populating the maps
+     * <p>So the actual parse is pretty quick - it's populating the maps
      * that really adds to the cost.
      */
     private void parse(final PackageHandler pkghdl) {

@@ -20,11 +20,11 @@
 
 package org.tribblix.illuminate;
 
+import java.util.HashMap;
+import java.util.Map;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeModel;
-import java.util.Map;
-import java.util.HashMap;
 
 /**
  * SmfTree - shows SMF services in a tree.

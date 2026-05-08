@@ -20,15 +20,15 @@
 
 package org.tribblix.illuminate.explorer;
 
+import java.awt.BorderLayout;
+import javax.swing.BoxLayout;
 import javax.swing.JComponent;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.BoxLayout;
-import java.awt.BorderLayout;
-import uk.co.petertribble.jingle.JingleVPanel;
 import org.tribblix.illuminate.InfoCommand;
+import uk.co.petertribble.jingle.JingleVPanel;
 
 /**
  * A panel to display system information.

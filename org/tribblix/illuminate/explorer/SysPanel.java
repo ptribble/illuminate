@@ -20,17 +20,17 @@
 
 package org.tribblix.illuminate.explorer;
 
+import java.awt.BorderLayout;
+import java.awt.Cursor;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
-import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.event.TreeSelectionEvent;
 import javax.swing.event.TreeSelectionListener;
-import java.awt.BorderLayout;
-import java.awt.Cursor;
+import javax.swing.tree.DefaultMutableTreeNode;
+import org.tribblix.illuminate.InfoCommand;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
-import org.tribblix.illuminate.InfoCommand;
 
 /**
  * SysPanel - shows hardware in the system.

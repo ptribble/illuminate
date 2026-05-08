@@ -20,10 +20,10 @@
 
 package org.tribblix.illuminate;
 
-import javax.swing.DefaultListCellRenderer;
-import javax.swing.JList;
 import java.awt.Color;
 import java.awt.Component;
+import javax.swing.DefaultListCellRenderer;
+import javax.swing.JList;
 
 /**
  * SmfListCellRenderer - custom cell renderer for SMF services.

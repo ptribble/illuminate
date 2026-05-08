@@ -20,11 +20,11 @@
 
 package org.tribblix.illuminate.explorer;
 
+import uk.co.petertribble.jproc.api.JProc;
+import uk.co.petertribble.jproc.api.JProcessFilter;
+import uk.co.petertribble.jproc.api.JProcessSet;
 import uk.co.petertribble.jproc.gui.JPinfoTable;
 import uk.co.petertribble.jproc.gui.ZoneInfoTable;
-import uk.co.petertribble.jproc.api.JProc;
-import uk.co.petertribble.jproc.api.JProcessSet;
-import uk.co.petertribble.jproc.api.JProcessFilter;
 
 /**
  * ProcessInfoPanel - shows Process status.

@@ -20,12 +20,6 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.BorderFactory;
-import javax.swing.BoxLayout;
-import javax.swing.JButton;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JToolBar;
 import java.awt.BorderLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -33,6 +27,12 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JToolBar;
 import org.tribblix.illuminate.InfoCommand;
 import org.tribblix.illuminate.helpers.ManFrame;
 import uk.co.petertribble.jkstat.api.JKstat;
@@ -40,8 +40,8 @@ import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.gui.AccessoryNetPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessoryPanel;
 import uk.co.petertribble.jkstat.gui.KstatAccessorySet;
-import uk.co.petertribble.jkstat.gui.SparkRateAccessory;
 import uk.co.petertribble.jkstat.gui.KstatTable;
+import uk.co.petertribble.jkstat.gui.SparkRateAccessory;
 
 /**
  * ZoneInfoPanel - shows Zone information.

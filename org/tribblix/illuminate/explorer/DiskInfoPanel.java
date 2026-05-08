@@ -21,15 +21,15 @@
 package org.tribblix.illuminate.explorer;
 
 import java.util.Set;
+import org.tribblix.illuminate.InfoCommand;
 import uk.co.petertribble.jkstat.api.JKstat;
 import uk.co.petertribble.jkstat.api.Kstat;
 import uk.co.petertribble.jkstat.api.KstatFilter;
 import uk.co.petertribble.jkstat.api.KstatSet;
 import uk.co.petertribble.jkstat.api.KstatType;
 import uk.co.petertribble.jkstat.gui.AccessoryIOPanel;
-import uk.co.petertribble.jkstat.gui.KstatTable;
 import uk.co.petertribble.jkstat.gui.IOstatTable;
-import org.tribblix.illuminate.InfoCommand;
+import uk.co.petertribble.jkstat.gui.KstatTable;
 
 /**
  * DiskInfoPanel - shows Disk status.

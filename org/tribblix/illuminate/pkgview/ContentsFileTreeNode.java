@@ -20,10 +20,10 @@
 
 package org.tribblix.illuminate.pkgview;
 
-import java.util.Arrays;
-import javax.swing.tree.DefaultMutableTreeNode;
 import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import javax.swing.tree.DefaultMutableTreeNode;
 
 /**
  * Represents a Node in a local file tree.

@@ -14,18 +14,18 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 package org.tribblix.illuminate.pkgview;
 
+import java.awt.Component;
+import java.net.URL;
 import javax.swing.ImageIcon;
 import javax.swing.JTree;
 import javax.swing.tree.DefaultMutableTreeNode;
 import javax.swing.tree.DefaultTreeCellRenderer;
-import java.awt.Component;
-import java.net.URL;
 
 /**
  * Adds tooltips and custom icons to an overlay/package tree.

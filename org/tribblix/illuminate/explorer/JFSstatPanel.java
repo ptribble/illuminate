@@ -20,12 +20,12 @@
 
 package org.tribblix.illuminate.explorer;
 
+import java.awt.BorderLayout;
+import java.util.Set;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import java.awt.BorderLayout;
 import uk.co.petertribble.jkstat.api.JKstat;
-import java.util.Set;
 
 /**
  * Display fsstat tabular output in a panel.

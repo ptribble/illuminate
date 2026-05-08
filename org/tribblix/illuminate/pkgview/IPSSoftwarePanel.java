@@ -21,9 +21,9 @@
 package org.tribblix.illuminate.pkgview;
 
 import org.tribblix.illuminate.InfoCommand;
+import org.tribblix.illuminate.explorer.CommandTableModel;
 import org.tribblix.illuminate.explorer.InfoPanel;
 import org.tribblix.illuminate.explorer.SysItem;
-import org.tribblix.illuminate.explorer.CommandTableModel;
 
 /**
  * A simple panel to display IPS information.

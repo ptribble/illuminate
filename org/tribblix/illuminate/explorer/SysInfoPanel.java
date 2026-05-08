@@ -20,8 +20,8 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.JPanel;
 import java.awt.BorderLayout;
+import javax.swing.JPanel;
 import uk.co.petertribble.jkstat.api.JKstat;
 
 /**

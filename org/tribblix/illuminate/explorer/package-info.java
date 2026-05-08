@@ -14,14 +14,14 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
 /**
  * This package provides the explorer view of illuminate.
- * <p>
- * The implementation is based on an identifier for a given object,
+ *
+ * <p>The implementation is based on an identifier for a given object,
  * defined in the SysItem class.
  */
 

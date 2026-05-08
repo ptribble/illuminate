@@ -14,13 +14,13 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble.
+ * Copyright 2026 Peter Tribble.
  */
 
 package org.tribblix.illuminate;
 
-import javax.swing.tree.TreeNode;
 import java.util.Comparator;
+import javax.swing.tree.TreeNode;
 
 /**
  * A Comparator for SmfTreeNodes. The children() of an SmfTreeNode are

@@ -20,12 +20,12 @@
 
 package org.tribblix.illuminate.explorer;
 
-import javax.swing.JTree;
-import javax.swing.ImageIcon;
-import javax.swing.tree.DefaultMutableTreeNode;
-import javax.swing.tree.DefaultTreeCellRenderer;
 import java.awt.Component;
 import java.net.URL;
+import javax.swing.ImageIcon;
+import javax.swing.JTree;
+import javax.swing.tree.DefaultMutableTreeNode;
+import javax.swing.tree.DefaultTreeCellRenderer;
 
 /**
  * SysTreeCellRenderer - adds tooltips and custom icons to items in the

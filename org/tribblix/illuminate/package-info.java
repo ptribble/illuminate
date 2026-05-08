@@ -20,12 +20,12 @@
 
 /**
  * This package forms the core of illuminate.
- * <p>
- * Specifically, the services and information views are in this package.
- * <p>
- * The software view is in the pkgview sub-package.
- * <p>
- * The explorer view is in the explorer sub-package.
+ *
+ * <p>Specifically, the services and information views are in this package.
+ *
+ * <p>The software view is in the pkgview sub-package.
+ *
+ * <p>The explorer view is in the explorer sub-package.
  */
 
 package org.tribblix.illuminate;

@@ -20,8 +20,8 @@
 
 package org.tribblix.illuminate.explorer;
 
-import java.util.Map;
 import java.util.HashMap;
+import java.util.Map;
 import uk.co.petertribble.jkstat.api.Kstat;
 
 /**
