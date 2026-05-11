@@ -175,23 +175,6 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
-    /**
-     * Produce a html table displaying the packages that are members
-     * of an overlay.
-     *
-     * @param ovl the overlay to display
-     *
-     * @return a formatted html table
-     */
-    public static String overlayMembers(final Overlay ovl) {
-	StringBuilder sb = new StringBuilder(256);
-	headRow2(sb, "This Overlay contains the following packages");
-	for (SVR4Package pkg : ovl.getPackages()) {
-	    addRow(sb, pkg.toString(), pkg.getDescription());
-	}
-	return wrapTable(sb);
-    }
-
     /*
      * Common dependency tree code
      */
@@ -216,6 +199,23 @@ public final class PkgUtils {
 	for (String s : depset) {
 	    addRow(sb, s, deptype);
 	}
+    }
+
+    /**
+     * Produce a html table displaying the packages that are members
+     * of an overlay.
+     *
+     * @param ovl the overlay to display
+     *
+     * @return a formatted html table
+     */
+    public static String overlayMembers(final Overlay ovl) {
+	StringBuilder sb = new StringBuilder(256);
+	headRow2(sb, "This Overlay contains the following packages");
+	for (SVR4Package pkg : ovl.getPackages()) {
+	    addRow(sb, pkg.toString(), pkg.getDescription());
+	}
+	return wrapTable(sb);
     }
 
     /**
@@ -382,6 +382,12 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
+    private static void headRow(final StringBuilder sb, final String s) {
+	// adds 37 characters to the string
+	sb.append("<tr bgcolor=\"#eeeeee\"><th>").append(s)
+	    .append("</th></tr>\n");
+    }
+
     private static void headRow(final StringBuilder sb,
 				final String s1, final String s2) {
 	// adds 46 characters to the string
@@ -392,12 +398,6 @@ public final class PkgUtils {
     private static void headRow2(final StringBuilder sb, final String s) {
 	// adds 49 characters to the string
 	sb.append("<tr bgcolor=\"#eeeeee\"><th colspan=\"2\">").append(s)
-	    .append("</th></tr>\n");
-    }
-
-    private static void headRow(final StringBuilder sb, final String s) {
-	// adds 37 characters to the string
-	sb.append("<tr bgcolor=\"#eeeeee\"><th>").append(s)
 	    .append("</th></tr>\n");
     }
 
