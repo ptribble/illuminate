@@ -28,8 +28,8 @@ LICENSES/LGPL-2.1-or-later.txt - and can be obtained from
 https://www.jfree.org/jfreechart/.
 
 illuminate incorporates a couple of sets of utility classes. See
-http://www.petertribble.co.uk/Solaris/jingle.html
-http://www.petertribble.co.uk/Solaris/jumble.html
+https://www.petertribble.co.uk/Solaris/jingle.html
+https://www.petertribble.co.uk/Solaris/jumble.html
 
 illuminate incorporates openjson https://github.com/openjson/openjson
 See the file LICENSES/Apache-2.0.txt for the details of the license
