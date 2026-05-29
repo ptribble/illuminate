@@ -92,7 +92,6 @@ public final class SummaryPanel extends InfoPanel {
 	int nchips = proctree.numChips();
 	int ncores = proctree.numCores();
 	int nthreads = proctree.numThreads();
-	String sbrand = proctree.getBrand();
 
 	StringBuilder sb2 = new StringBuilder(64);
 	if (nchips == 1) {
@@ -124,6 +123,7 @@ public final class SummaryPanel extends InfoPanel {
 	}
 	jl.setAlignmentX(CENTER_ALIGNMENT);
 	jp.add(jl);
+	String sbrand = proctree.getBrand();
 	jp.setBorder(BorderFactory.createTitledBorder(sbrand));
 	addComponent(jp);
     }
