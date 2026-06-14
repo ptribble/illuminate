@@ -42,14 +42,14 @@ import uk.co.petertribble.jumble.JumbleFile;
  */
 public class PackageHandler {
 
-    private final String altroot;
-
     /*
      * These define the various packaging locations for this system.
      */
     private static final String PKG_ROOT = "/var/sadm/pkg";
     private static final String OVL_ROOT = "/var/sadm/overlays";
     private static final String ZAP_ROOT = "/etc/zap";
+
+    private final String altroot;
 
     /*
      * These are File objects corresponding to the above locations,

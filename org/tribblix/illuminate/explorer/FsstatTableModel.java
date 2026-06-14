@@ -49,10 +49,24 @@ public final class FsstatTableModel extends AbstractTableModel
 
     private static final String VOP_PREFIX = "vopstats_";
 
+    private static final Map<String, String[]> COLUMN_MAP;
+
     // standard choices for columns
     // read/write
     private static String deftitle;
     private static String[] defnames;
+
+    // don't include anything with the ignore option
+    private static final int MASK_IGNORE = 1;
+    // only show those in the shown zone list
+    // private static final int MASK_BYZONE = 2;
+    // only show those in the shown fstype list
+    private static final int MASK_BYTYPE = 4;
+    // don't show aggregates which have no filesystems
+    // private static final int MASK_MINAGGR = 8;
+    // don't show any filesystem aggregates at all
+    private static final int MASK_ALLAGGR = 16;
+
     /**
      * The currently displaying columns.
      */
@@ -62,7 +76,6 @@ public final class FsstatTableModel extends AbstractTableModel
      */
     private String columnTitle;
 
-    private static final Map<String, String[]> COLUMN_MAP;
     private final transient List<ChartableKstat> allfsdata = new ArrayList<>();
     private final transient List<ChartableKstat> fsdata = new ArrayList<>();
     private final transient Map<ChartableKstat, String> fsnames
@@ -84,16 +97,6 @@ public final class FsstatTableModel extends AbstractTableModel
      * Display mask, for filtering.
      */
     private int filtermask;
-    // don't include anything with the ignore option
-    private static final int MASK_IGNORE = 1;
-    // only show those in the shown zone list
-    // private static final int MASK_BYZONE = 2;
-    // only show those in the shown fstype list
-    private static final int MASK_BYTYPE = 4;
-    // don't show aggregates which have no filesystems
-    // private static final int MASK_MINAGGR = 8;
-    // don't show any filesystem aggregates at all
-    private static final int MASK_ALLAGGR = 16;
     // Lists to hold lists of zones, fstypes to show
     private final transient List<String> showzones = new ArrayList<>();
     private final transient List<String> showfstypes = new ArrayList<>();

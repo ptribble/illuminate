@@ -51,7 +51,19 @@ public final class CpuInfoPanel extends InfoPanel {
 
     private static final long serialVersionUID = 1L;
 
+    /**
+     * The names of the statistics we display.
+     */
+    private static final List<String> MYSTATS =
+		Arrays.asList("kernel", "user", "idle");
+    /**
+     * And the corresponding colours.
+     */
+    private static final List<Color> MYCOLORS =
+		Arrays.asList(Color.YELLOW, Color.GREEN, Color.BLUE);
+
     private final transient ProcessorTree proctree;
+
     /**
      * A table to show mpstat data.
      */
@@ -62,10 +74,6 @@ public final class CpuInfoPanel extends InfoPanel {
     private KstatAccessoryPanel kap;
     private transient KstatBaseChart kbc;
     private final transient JKstat jkstat;
-    private static final List<String> MYSTATS =
-		Arrays.asList("kernel", "user", "idle");
-    private static final List<Color> MYCOLORS =
-		Arrays.asList(Color.YELLOW, Color.GREEN, Color.BLUE);
 
     /**
      * Display a Cpu information panel.

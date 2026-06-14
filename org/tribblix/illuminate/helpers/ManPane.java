@@ -48,6 +48,13 @@ public final class ManPane extends JEditorPane
     private static final long serialVersionUID = 1L;
 
     /**
+     * The list of directories searched for manual pages.
+     * This is hard-coded, unfortunately.
+     */
+    private static final String[] MANPATH = {"/usr/share/man",
+					     "/usr/gnu/share/man"};
+
+    /**
      * A JLabel with the name of the manual page being displayed.
      */
     private final JLabel manLabel;
@@ -64,12 +71,6 @@ public final class ManPane extends JEditorPane
      * list of opened pages for history.
      */
     private final transient List<File> historyList = new ArrayList<>();
-
-    /*
-     * This is hard-coded, unfortunately
-     */
-    private static final String[] MANPATH = {"/usr/share/man",
-					     "/usr/gnu/share/man"};
 
     /**
      * Create a Scrollable panel containing the text of a man page.

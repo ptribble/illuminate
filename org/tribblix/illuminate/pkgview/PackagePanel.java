@@ -42,14 +42,14 @@ public final class PackagePanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
     /**
+     * A JTable to show the list of packages.
+     */
+    final JTable ptable;
+    /**
      * A panel to show the package information.
      */
     private final PackageInformationPanel pip;
     private transient SVR4Package currentPackage;
-    /**
-     * A JTable to show the list of packages.
-     */
-    final JTable ptable;
 
     /**
      * Create a new PackagePanel allowing the details of any of a list

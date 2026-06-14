@@ -47,6 +47,32 @@ public final class SmfPanel extends JPanel {
     private static final long serialVersionUID = 1L;
 
     /**
+     * A MouseListener so that clicking on a service in the menu will show its
+     * information.
+     */
+    MouseListener mouseListener = new MouseAdapter() {
+	@Override
+	public void mouseClicked(final MouseEvent e) {
+	    SmfList source = (SmfList) e.getSource();
+	    setInfo(source.getSelectedValue());
+	}
+    };
+
+    /**
+     * A KeyListener so that selecting a service in the menu will show its
+     * information.
+     */
+    KeyListener keyListener = new KeyAdapter() {
+	@Override
+	public void keyPressed(final KeyEvent e) {
+	    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+		SmfList source = (SmfList) e.getSource();
+		setInfo(source.getSelectedValue());
+	    }
+	}
+    };
+
+    /**
      * The panel showing the information for services.
      */
     private final SmfInfoPanel sip;
@@ -98,30 +124,4 @@ public final class SmfPanel extends JPanel {
 	sip.setInfo(svc);
 	setCursor(c);
     }
-
-    /**
-     * A MouseListener so that clicking on a service in the menu will show its
-     * information.
-     */
-    MouseListener mouseListener = new MouseAdapter() {
-	@Override
-	public void mouseClicked(final MouseEvent e) {
-	    SmfList source = (SmfList) e.getSource();
-	    setInfo(source.getSelectedValue());
-	}
-    };
-
-    /**
-     * A KeyListener so that selecting a service in the menu will show its
-     * information.
-     */
-    KeyListener keyListener = new KeyAdapter() {
-	@Override
-	public void keyPressed(final KeyEvent e) {
-	    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-		SmfList source = (SmfList) e.getSource();
-		setInfo(source.getSelectedValue());
-	    }
-	}
-    };
 }

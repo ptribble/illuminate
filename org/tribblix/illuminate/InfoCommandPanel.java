@@ -50,6 +50,35 @@ public final class InfoCommandPanel extends JPanel implements ActionListener {
     private static final long serialVersionUID = 1L;
 
     /**
+     * A MouseListener so that clicking on a command in the menu will show its
+     * output.
+     */
+    MouseListener mouseListener = new MouseAdapter() {
+	@Override
+	public void mouseClicked(final MouseEvent e) {
+	    @SuppressWarnings("unchecked")
+	    JList<InfoCommand> source = (JList<InfoCommand>) e.getSource();
+	    setInfo(source.getSelectedValue());
+	}
+    };
+
+    /**
+     * A KeyListener so that selecting a command in the menu will show its
+     * output.
+     */
+    KeyListener keyListener = new KeyAdapter() {
+	@Override
+	public void keyPressed(final KeyEvent e) {
+	    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
+		@SuppressWarnings("unchecked")
+		JList<InfoCommand> source =
+			(JList<InfoCommand>) e.getSource();
+		setInfo(source.getSelectedValue());
+	    }
+	}
+    };
+
+    /**
      * The JingleTextPane where we send output.
      */
     private final JingleTextPane tp;
@@ -114,35 +143,6 @@ public final class InfoCommandPanel extends JPanel implements ActionListener {
 	    new ManFrame(currentCmd.getManpage());
 	}
     }
-
-    /**
-     * A MouseListener so that clicking on a command in the menu will show its
-     * output.
-     */
-    MouseListener mouseListener = new MouseAdapter() {
-	@Override
-	public void mouseClicked(final MouseEvent e) {
-	    @SuppressWarnings("unchecked")
-	    JList<InfoCommand> source = (JList<InfoCommand>) e.getSource();
-	    setInfo(source.getSelectedValue());
-	}
-    };
-
-    /**
-     * A KeyListener so that selecting a command in the menu will show its
-     * output.
-     */
-    KeyListener keyListener = new KeyAdapter() {
-	@Override
-	public void keyPressed(final KeyEvent e) {
-	    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
-		@SuppressWarnings("unchecked")
-		JList<InfoCommand> source =
-			(JList<InfoCommand>) e.getSource();
-		setInfo(source.getSelectedValue());
-	    }
-	}
-    };
 
     @Override
     public void actionPerformed(final ActionEvent e) {

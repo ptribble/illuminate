@@ -41,10 +41,13 @@ import java.util.Set;
  */
 public final class ContentsParser {
 
+    /**
+     * The name of the contents file.
+     */
+    private static final String CONTENTS_FILE = "/var/sadm/install/contents";
+
     private final Map<String, ContentsFileDetail> fileHash = new HashMap<>();
     private final Map<String, ContentsPackage> pkgHash = new HashMap<>();
-
-    private static final String CONTENTS_FILE = "/var/sadm/install/contents";
 
     /**
      * Parse a contents file.
