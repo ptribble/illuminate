@@ -37,6 +37,43 @@ public final class PkgUtils {
     }
 
     /**
+     * Describe an overlay.
+     *
+     * @param ovl the overlay to describe
+     *
+     * @return a formatted table describing the given overlay
+     */
+    public static String infoTable(final Overlay ovl) {
+	// the fixed text here varies from 37 to 51 characters
+	// overlay names are between 3 and 20 characters
+	StringBuilder sbh = new StringBuilder(70);
+	sbh.append("Overlay ").append(ovl.getName());
+	if (ovl.isInstalled()) {
+	    if (ovl.isComplete()) {
+		sbh.append(" is installed and complete.");
+	    } else {
+		sbh.append(" is marked as installed but incomplete.");
+	    }
+	} else {
+	    if (ovl.isComplete()) {
+		sbh.append(" is complete but not marked as installed.");
+	    } else {
+		sbh.append(" is uninstalled and incomplete.");
+	    }
+	}
+	// the fixed text here is 35 characters
+	// headrow is 45, each addrow is 27, wraptable adds 29
+	// minimum length 200, max 256
+	StringBuilder sb = new StringBuilder(256);
+	headRow(sb, PkgResources.getString("PKGUTILS.PROPERTY"),
+			PkgResources.getString("PKGUTILS.VALUE"));
+	addRow(sb, "Name", ovl.getName());
+	addRow(sb, "Description", ovl.getDescription());
+	addRow(sb, "Version", ovl.getVersion());
+	return sbh.toString() + wrapTable(sb);
+    }
+
+    /**
      * Returns the pkginfo file as a html table.
      *
      * @param pkg the package to display
@@ -106,43 +143,6 @@ public final class PkgUtils {
 	    }
 	}
 	return wrapTable(sb);
-    }
-
-    /**
-     * Describe an overlay.
-     *
-     * @param ovl the overlay to describe
-     *
-     * @return a formatted table describing the given overlay
-     */
-    public static String infoTable(final Overlay ovl) {
-	// the fixed text here varies from 37 to 51 characters
-	// overlay names are between 3 and 20 characters
-	StringBuilder sbh = new StringBuilder(70);
-	sbh.append("Overlay ").append(ovl.getName());
-	if (ovl.isInstalled()) {
-	    if (ovl.isComplete()) {
-		sbh.append(" is installed and complete.");
-	    } else {
-		sbh.append(" is marked as installed but incomplete.");
-	    }
-	} else {
-	    if (ovl.isComplete()) {
-		sbh.append(" is complete but not marked as installed.");
-	    } else {
-		sbh.append(" is uninstalled and incomplete.");
-	    }
-	}
-	// the fixed text here is 35 characters
-	// headrow is 45, each addrow is 27, wraptable adds 29
-	// minimum length 200, max 256
-	StringBuilder sb = new StringBuilder(256);
-	headRow(sb, PkgResources.getString("PKGUTILS.PROPERTY"),
-			PkgResources.getString("PKGUTILS.VALUE"));
-	addRow(sb, "Name", ovl.getName());
-	addRow(sb, "Description", ovl.getDescription());
-	addRow(sb, "Version", ovl.getVersion());
-	return sbh.toString() + wrapTable(sb);
     }
 
     /**

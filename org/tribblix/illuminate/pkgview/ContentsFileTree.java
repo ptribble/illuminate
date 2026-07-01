@@ -70,8 +70,8 @@ public final class ContentsFileTree extends JTree {
 	    public void treeExpanded(final TreeExpansionEvent e) {
 		TreePath path = e.getPath();
 		if (path != null) {
-		    ContentsFileTreeNode node =
-			(ContentsFileTreeNode) path.getLastPathComponent();
+		    ContentsFileTreeNode node
+			= (ContentsFileTreeNode) path.getLastPathComponent();
 
 		    if (!node.isExplored()) {
 			explore(node);

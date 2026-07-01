@@ -31,8 +31,8 @@ import javax.swing.tree.TreeNode;
  */
 public final class SmfComparator<T extends TreeNode>
         implements Comparator<TreeNode> {
-    private static final SmfComparator INSTANCE =
-	new SmfComparator<>();
+
+    private static final SmfComparator INSTANCE = new SmfComparator<>();
 
     private SmfComparator() {
     }

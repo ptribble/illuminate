@@ -159,8 +159,8 @@ public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
     private void displayZoneNet() {
 	ZoneEntry ze = (ZoneEntry) hi.getAttribute("zoneentry");
 	@SuppressWarnings("unchecked")
-	Map<String, Kstat> netMap =
-	    (Map<String, Kstat>) hi.getAttribute("netmap");
+	Map<String, Kstat> netMap
+	    = (Map<String, Kstat>) hi.getAttribute("netmap");
 	for (ZoneNet znet : ze.getNetworks()) {
 	    Kstat ks = netMap.get(znet.getPhysical());
 	    if (ks == null) {
@@ -178,8 +178,8 @@ public final class ZoneInfoPanel extends InfoPanel implements ActionListener {
 		// panel for row of sparkcharts
 		JPanel npanel = new JPanel();
 		npanel.add(new JLabel("In: "));
-		SparkRateAccessory kap =
-		    new SparkRateAccessory(ks, -1, jkstat, "rbytes64");
+		SparkRateAccessory kap
+		    = new SparkRateAccessory(ks, -1, jkstat, "rbytes64");
 		kap.enableTips("Current kb/s in:", 1.0 / 1024.0);
 		npanel.add(kap);
 		kaplist.add(kap);

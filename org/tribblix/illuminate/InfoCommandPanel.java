@@ -71,8 +71,8 @@ public final class InfoCommandPanel extends JPanel implements ActionListener {
 	public void keyPressed(final KeyEvent e) {
 	    if (e.getKeyCode() == KeyEvent.VK_ENTER) {
 		@SuppressWarnings("unchecked")
-		JList<InfoCommand> source =
-			(JList<InfoCommand>) e.getSource();
+		JList<InfoCommand> source
+			= (JList<InfoCommand>) e.getSource();
 		setInfo(source.getSelectedValue());
 	    }
 	}

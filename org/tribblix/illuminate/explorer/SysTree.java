@@ -453,8 +453,8 @@ public final class SysTree extends JTree {
 		SysTreeNode zptn = new SysTreeNode(zitem,
 				IlluminateResources.getString("HARD.PS"));
 		ztn.add(zptn);
-		Kstat ks =
-		    jkstat.getKstat("zones", ze.getZoneid(), ze.getName());
+		Kstat ks
+		    = jkstat.getKstat("zones", ze.getZoneid(), ze.getName());
 		if (ks != null) {
 		    zitem = new SysItem(SysItem.ZONE_KSTAT);
 		    zitem.addAttribute("zoneentry", ze);

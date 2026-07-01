@@ -211,8 +211,8 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
 	if (proctree.isMulticore()) {
 	    // iterate over chips, showing aggregates over cores
 	    for (ProcessorChip chip : proctree.getProcessorChips()) {
-		Set<Kstat> kschip =
-		    ProcessorTree.makeCpuKstats(chip.infoStats());
+		Set<Kstat> kschip
+		    = ProcessorTree.makeCpuKstats(chip.infoStats());
 		JPanel cpanl = new JPanel(new BorderLayout());
 		cpanl.setBackground(cpanl.getBackground().darker());
 		addChipNew(kschip, dchip, cpanl);
@@ -224,8 +224,8 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
 		    // tpanl holds all the core panels
 		    JPanel tpnl = new JPanel(new GridLayout());
 		    for (ProcessorCore core : chip.getCores()) {
-			Set<Kstat> kscore =
-			    ProcessorTree.makeCpuKstats(core.infoStats());
+			Set<Kstat> kscore
+			    = ProcessorTree.makeCpuKstats(core.infoStats());
 			// mpanl is the outer panel for this core
 			JPanel mpanl = new JPanel(new BorderLayout());
 			mpanl.setBackground(mpanl.getBackground().brighter());
@@ -254,8 +254,8 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
 	    // iterate over chips, showing aggregates over threads
 	    for (ProcessorChip chip : proctree.getProcessorChips()) {
 		JPanel cpanl = new JPanel(new BorderLayout());
-		Set<Kstat> kschip =
-		    ProcessorTree.makeCpuKstats(chip.infoStats());
+		Set<Kstat> kschip
+		    = ProcessorTree.makeCpuKstats(chip.infoStats());
 		addChipNew(kschip, dchip, cpanl);
 		JLabel clabel = new JLabel(chipText + chip.getChipid(),
 					   JLabel.CENTER);
@@ -323,8 +323,8 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     private void addProcessor(final Kstat ks, final JPanel ppanel,
 			      final GridBagConstraints c) {
 	String scpu = ks.getInstance();
-	KstatAccessoryPanel acp =
-	    new AccessoryCpuPanel(ks, 1, jkstat, orientation);
+	KstatAccessoryPanel acp
+	    = new AccessoryCpuPanel(ks, 1, jkstat, orientation);
 	kaplist.add(acp);
 	// make wider and thinner than normal
 	acp.setMinimumSize(dthread);
@@ -357,8 +357,8 @@ public final class CpuStatePanel extends JPanel implements ActionListener {
     private void addChipNew(final Set<Kstat> ksc, final Dimension d,
 			    final JPanel panl) {
 	KstatAggregate ksa = new KstatAggregate(jkstat, ksc);
-	KstatAccessoryPanel agp =
-	    new AggregateCpuPanel(ksa, 1, jkstat, orientation);
+	KstatAccessoryPanel agp
+	    = new AggregateCpuPanel(ksa, 1, jkstat, orientation);
 	kaplist.add(agp);
 	agp.setMinimumSize(d);
 	agp.setPreferredSize(d);

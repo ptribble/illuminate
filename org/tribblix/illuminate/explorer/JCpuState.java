@@ -318,8 +318,8 @@ public final class JCpuState extends JKdemo {
 	    // iterate over chips, showing aggregates over cores
 	    int nchips = 0;
 	    for (ProcessorChip chip : proctree.getProcessorChips()) {
-		Set<Kstat> kschip =
-		    ProcessorTree.makeCpuKstats(chip.infoStats());
+		Set<Kstat> kschip
+		    = ProcessorTree.makeCpuKstats(chip.infoStats());
 		JPanel cpanl = new JPanel(new BorderLayout());
 		cpanl.setBackground(cpanl.getBackground().darker());
 		nchips++;
@@ -332,8 +332,8 @@ public final class JCpuState extends JKdemo {
 		    // tpanl holds all the core panels
 		    JPanel tpnl = new JPanel(new GridLayout());
 		    for (ProcessorCore core : chip.getCores()) {
-			Set<Kstat> kscore =
-			    ProcessorTree.makeCpuKstats(core.infoStats());
+			Set<Kstat> kscore
+			    = ProcessorTree.makeCpuKstats(core.infoStats());
 			// mpanl is the outer panel for this core
 			JPanel mpanl = new JPanel(new BorderLayout());
 			mpanl.setBackground(mpanl.getBackground().brighter());
@@ -365,8 +365,8 @@ public final class JCpuState extends JKdemo {
 	    for (ProcessorChip chip : proctree.getProcessorChips()) {
 		JPanel cpanl = new JPanel(new BorderLayout());
 		nchips++;
-		Set<Kstat> kschip =
-		    ProcessorTree.makeCpuKstats(chip.infoStats());
+		Set<Kstat> kschip
+		    = ProcessorTree.makeCpuKstats(chip.infoStats());
 		addChipNew(kschip, dchip, cpanl);
 		JLabel clabel = new JLabel(chipText + chip.getChipid(),
 					   JLabel.CENTER);
@@ -427,15 +427,15 @@ public final class JCpuState extends JKdemo {
 	if (proctree.isMulticore()) {
 	    // iterate over chips, showing aggregates over cores
 	    for (ProcessorChip chip : proctree.getProcessorChips()) {
-		Set<Kstat> kschip =
-		    ProcessorTree.makeCpuKstats(chip.infoStats());
+		Set<Kstat> kschip
+		    = ProcessorTree.makeCpuKstats(chip.infoStats());
 		if (showChips) {
 		    addChip(kschip, chipText, chip.getChipid(), dchip);
 		}
 		if (proctree.isThreaded()) {
 		    for (ProcessorCore core : chip.getCores()) {
-			Set<Kstat> kscore =
-			    ProcessorTree.makeCpuKstats(core.infoStats());
+			Set<Kstat> kscore
+			    = ProcessorTree.makeCpuKstats(core.infoStats());
 			if (showCores) {
 			    addChip(kscore, coreText, core.getCoreid(), dcore);
 			}
@@ -460,8 +460,8 @@ public final class JCpuState extends JKdemo {
 	    // single core cpus
 	    // iterate over chips, showing aggregates over threads
 	    for (ProcessorChip chip : proctree.getProcessorChips()) {
-		Set<Kstat> kschip =
-		    ProcessorTree.makeCpuKstats(chip.infoStats());
+		Set<Kstat> kschip
+		    = ProcessorTree.makeCpuKstats(chip.infoStats());
 		if (showChips) {
 		    addChip(kschip, chipText, chip.getChipid(), dchip);
 		}
@@ -634,8 +634,8 @@ public final class JCpuState extends JKdemo {
     private void addChipNew(final Set<Kstat> ksc, final Dimension d,
 			    final JPanel panl) {
 	KstatAggregate ksa = new KstatAggregate(jkstat, ksc);
-	KstatAccessoryPanel agp =
-	    new AggregateCpuPanel(ksa, 1, jkstat, orientation);
+	KstatAccessoryPanel agp
+	    = new AggregateCpuPanel(ksa, 1, jkstat, orientation);
 	kaplist.add(agp);
 	agp.setMinimumSize(d);
 	agp.setPreferredSize(d);

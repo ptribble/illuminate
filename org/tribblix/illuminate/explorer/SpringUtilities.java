@@ -1,6 +1,6 @@
 /*
  * Copyright (c) 1995, 2008, Oracle and/or its affiliates. All rights reserved.
- * Copyright 2025 Peter Tribble.
+ * Copyright 2026 Peter Tribble.
  *
  * SPDX-License-Identifier: LicenseRef-JavaTutorial
  *
@@ -210,8 +210,8 @@ public final class SpringUtilities {
                                        .getWidth());
             }
             for (int r = 0; r < rows; r++) {
-                SpringLayout.Constraints constraints =
-                        getConstraintsForCell(r, c, parent, cols);
+                SpringLayout.Constraints constraints
+                        = getConstraintsForCell(r, c, parent, cols);
                 constraints.setX(x);
                 constraints.setWidth(width);
             }
@@ -228,8 +228,8 @@ public final class SpringUtilities {
                                         .getHeight());
             }
             for (int c = 0; c < cols; c++) {
-                SpringLayout.Constraints constraints =
-                        getConstraintsForCell(r, c, parent, cols);
+                SpringLayout.Constraints constraints
+                        = getConstraintsForCell(r, c, parent, cols);
                 constraints.setY(y);
                 constraints.setHeight(height);
             }

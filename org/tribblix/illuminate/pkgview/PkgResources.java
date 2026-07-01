@@ -29,8 +29,8 @@ import java.util.ResourceBundle;
  */
 public final class PkgResources {
 
-    private static final ResourceBundle PKGRES =
-			ResourceBundle.getBundle("properties/pkgview");
+    private static final ResourceBundle PKGRES
+			= ResourceBundle.getBundle("properties/pkgview");
 
     private PkgResources() {
     }

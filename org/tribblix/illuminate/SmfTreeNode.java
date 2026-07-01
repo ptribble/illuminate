@@ -49,6 +49,15 @@ public final class SmfTreeNode extends DefaultMutableTreeNode
     private final String node;
 
     /**
+     * An intermediate node in a tree of SMF services.
+     *
+     * @param nodename The display name of this SmfTreeNode
+     */
+    public SmfTreeNode(final String nodename) {
+	node = nodename;
+    }
+
+    /**
      * A leaf node in a tree of SMF services.
      *
      * @param nsvc The SmfService represented by this SmfTreeNode
@@ -56,15 +65,6 @@ public final class SmfTreeNode extends DefaultMutableTreeNode
      */
     public SmfTreeNode(final SmfService nsvc, final String nodename) {
 	svc = nsvc;
-	node = nodename;
-    }
-
-    /**
-     * An intermediate node in a tree of SMF services.
-     *
-     * @param nodename The display name of this SmfTreeNode
-     */
-    public SmfTreeNode(final String nodename) {
 	node = nodename;
     }
 

@@ -89,8 +89,8 @@ public final class JFSstat extends JKdemo {
 	String curtitle = mainPanel.currentTitle();
 	ButtonGroup displayGroup = new ButtonGroup();
 	for (String title : mainPanel.titles()) {
-	    JRadioButtonMenuItem jmis =
-		new JRadioButtonMenuItem(title, title.equals(curtitle));
+	    JRadioButtonMenuItem jmis
+		= new JRadioButtonMenuItem(title, title.equals(curtitle));
 	    displayMenu.add(jmis);
 	    displayGroup.add(jmis);
 	    displayset.add(jmis);

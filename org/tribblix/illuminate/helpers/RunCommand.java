@@ -49,11 +49,11 @@ public final class RunCommand {
 	    Process p = Runtime.getRuntime().exec(cmdarray,
 				(String[]) null, new File("/tmp"));
 
-	    try (BufferedReader reader1 =
-		new BufferedReader(new InputStreamReader(p.getInputStream(),
+	    try (BufferedReader reader1
+		= new BufferedReader(new InputStreamReader(p.getInputStream(),
 						StandardCharsets.UTF_8));
-		    BufferedReader reader2 =
-		 new BufferedReader(new InputStreamReader(p.getErrorStream(),
+		    BufferedReader reader2
+		 = new BufferedReader(new InputStreamReader(p.getErrorStream(),
 						StandardCharsets.UTF_8))) {
 
 		String s;

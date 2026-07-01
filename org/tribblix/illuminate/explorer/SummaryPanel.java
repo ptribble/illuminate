@@ -153,8 +153,8 @@ public final class SummaryPanel extends InfoPanel {
 	for (Kstat ks : ksf.getKstats(true)) {
 	    JPanel npanel = new JPanel();
 	    npanel.add(new JLabel("In: "));
-	    SparkRateAccessory kap =
-		new SparkRateAccessory(ks, -1, jkstat, "rbytes64");
+	    SparkRateAccessory kap
+		= new SparkRateAccessory(ks, -1, jkstat, "rbytes64");
 	    kap.enableTips("Current kb/s in:", 1.0 / 1024.0);
 	    npanel.add(kap);
 	    kaplist.add(kap);
@@ -178,8 +178,8 @@ public final class SummaryPanel extends InfoPanel {
 	// 1 and 15 minute load averages
 	JPanel lpanel = new JPanel();
 	lpanel.add(new JLabel("1min: "));
-	SparkValueAccessory kap =
-		new SparkValueAccessory(ks, -1, jkstat, "avenrun_1min");
+	SparkValueAccessory kap
+		= new SparkValueAccessory(ks, -1, jkstat, "avenrun_1min");
 	kap.enableTips("Current load:", 1.0 / 256.0);
 	lpanel.add(kap);
 	kaplist.add(kap);

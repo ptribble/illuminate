@@ -54,13 +54,13 @@ public final class CpuInfoPanel extends InfoPanel {
     /**
      * The names of the statistics we display.
      */
-    private static final List<String> MYSTATS =
-		Arrays.asList("kernel", "user", "idle");
+    private static final List<String> MYSTATS
+		= Arrays.asList("kernel", "user", "idle");
     /**
      * And the corresponding colours.
      */
-    private static final List<Color> MYCOLORS =
-		Arrays.asList(Color.YELLOW, Color.GREEN, Color.BLUE);
+    private static final List<Color> MYCOLORS
+		= Arrays.asList(Color.YELLOW, Color.GREEN, Color.BLUE);
 
     private final transient ProcessorTree proctree;
 

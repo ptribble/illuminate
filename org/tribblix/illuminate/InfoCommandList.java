@@ -41,8 +41,8 @@ public final class InfoCommandList extends Vector<InfoCommand> {
     public InfoCommandList() {
 	boolean inglobal = ZoneConfig.getInstance().isGlobalZone();
 	// add all the possible commands here
-	InfoCommand ic =
-	    new InfoCommand(IlluminateResources.getString("INFO.BEADM"),
+	InfoCommand ic
+	    = new InfoCommand(IlluminateResources.getString("INFO.BEADM"),
 		"/usr/sbin/beadm", "list");
 	addCommand(ic, "beadm.8");
 	if (inglobal) {
@@ -158,14 +158,14 @@ public final class InfoCommandList extends Vector<InfoCommand> {
 	}
     }
 
-    private void addCommand(final InfoCommand ic, final String manpage) {
-	ic.setManpage(manpage);
-	addCommand(ic);
-    }
-
     private void addCommand(final InfoCommand ic) {
 	if (ic.exists()) {
 	    add(ic);
 	}
+    }
+
+    private void addCommand(final InfoCommand ic, final String manpage) {
+	ic.setManpage(manpage);
+	addCommand(ic);
     }
 }

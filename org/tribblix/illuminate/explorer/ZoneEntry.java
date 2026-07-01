@@ -74,8 +74,8 @@ public final class ZoneEntry {
      * @return The output of zonecfg info for this zone
      */
     public String getConfig() {
-	InfoCommand ic = new
-	    InfoCommand("zc", "/usr/sbin/zonecfg", "-z " + zname + " info");
+	InfoCommand ic = new InfoCommand("zc", "/usr/sbin/zonecfg",
+					 "-z " + zname + " info");
 	return ic.getOutput();
     }
 
@@ -191,8 +191,8 @@ public final class ZoneEntry {
 	String physical = null;
 	String defrouter = null;
 	boolean needtosave = false;
-	InfoCommand ic = new
-	    InfoCommand("zc", "/usr/sbin/zonecfg", "-z " + zname + " info net");
+	InfoCommand ic = new InfoCommand("zc", "/usr/sbin/zonecfg",
+					 "-z " + zname + " info net");
 	for (String line : ic.getOutputLines()) {
 	    String[] ds = line.trim().split("\\s+", 2);
 	    if (ds[0].startsWith("net:")) {
