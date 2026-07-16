@@ -83,8 +83,6 @@ public final class SysPanel extends JPanel {
 		}
 	    }
 	});
-	// end of tree listener
-
 
 	hip = new SysInfoPanel(jkstat);
 

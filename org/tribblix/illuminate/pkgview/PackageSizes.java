@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -40,7 +40,7 @@ public final class PackageSizes {
 	}
 	PackageHandler pkghdl = new PackageHandler(altroot);
 	ContentsParser cp = pkghdl.getContentsParser();
-	for (String pkg :  pkghdl.getPkgList().getPackageNames()) {
+	for (String pkg : pkghdl.getPkgList().getPackageNames()) {
 	    ContentsPackage cc = cp.getPackage(pkg);
 	    if (cc == null) {
 		System.out.println("0 | 0 | " + pkg);

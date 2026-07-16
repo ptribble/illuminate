@@ -450,6 +450,6 @@ public final class FsstatTableModel extends AbstractTableModel
 
     @Override
     public Class<?> getColumnClass(final int c) {
-	return (c ==  columnNames.length) ? String.class : Double.class;
+	return (c == columnNames.length) ? String.class : Double.class;
     }
 }
