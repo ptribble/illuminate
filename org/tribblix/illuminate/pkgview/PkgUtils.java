@@ -399,7 +399,8 @@ public final class PkgUtils {
 	headRow2(sb, "This " + cfd.getBasicType()
 			+ " is part of the following overlays");
 	for (Overlay ovl : ovlist.containingOverlays(cfd.getPackages())) {
-	    addRow(sb, ovl.toString(), ovl.getDescription());
+	    String sst = ovl.isInstalled() ? " (installed)" : " (uninstalled)";
+	    addRow(sb, ovl.toString() + sst, ovl.getDescription());
 	}
 	return wrapTable(sb);
     }
@@ -419,7 +420,8 @@ public final class PkgUtils {
 
 	headRow2(sb, PkgResources.getString("PKGUTILS.OVL"));
 	for (Overlay ovl : ovlist.containingOverlays(pkg)) {
-	    addRow(sb, ovl.toString(), ovl.getDescription());
+	    String sst = ovl.isInstalled() ? " (installed)" : " (uninstalled)";
+	    addRow(sb, ovl.toString() + sst, ovl.getDescription());
 	}
 
 	return wrapTable(sb);
