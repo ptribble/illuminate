@@ -39,13 +39,12 @@ public final class Updates {
 	    altroot = args[1];
 	}
 	PackageHandler pkghdl = new PackageHandler(altroot);
-	PkgList plist = pkghdl.getPkgList();
 	ZapConfig zc = pkghdl.getZapConfig();
 	/*
 	 * Go through installed packages and list those that need updating.
 	 * The format here is identical to 'zap verify-packages'.
 	 */
-	for (SVR4Package pkg : plist) {
+	for (SVR4Package pkg : pkghdl.getPkgList()) {
 	    String cver = zc.currentVersion(pkg.getName());
 	    if (!pkg.getVersion().equals(cver)) {
 		System.out.println("WARN: package " + pkg.getName()
