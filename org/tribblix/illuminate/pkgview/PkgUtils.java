@@ -47,18 +47,42 @@ public final class PkgUtils {
 	// the fixed text here varies from 37 to 51 characters
 	// overlay names are between 3 and 20 characters
 	StringBuilder sbh = new StringBuilder(70);
-	sbh.append("Overlay ").append(ovl.getName());
+	sbh.append("Overlay ").append(ovl.getName()).append(" is ");;
 	if (ovl.isInstalled()) {
 	    if (ovl.isComplete()) {
-		sbh.append(" is installed and complete.");
+		sbh.append("installed and complete.");
 	    } else {
-		sbh.append(" is marked as installed but incomplete.");
+		sbh.append("marked as installed but is incomplete."
+			   + "<br><br>To fix, install the ");
+		// explain why this overlay isn't properly installed
+		Set<Overlay> omiss = ovl.missingOverlays();
+		Set<SVR4Package> pmiss = ovl.missingPackages();
+		int osize = omiss.size();
+		int psize = pmiss.size();
+		if (osize > 0) {
+		    sbh.append(osize > 1 ? "overlays" : "overlay");
+		    for (Overlay movl : omiss) {
+			sbh.append(' ').append(movl.getName());
+		    }
+		    if (psize > 1) {
+			sbh.append(", and install the ");
+			sbh.append(psize > 1 ? "packages" : "package");
+			for (SVR4Package mpkg : pmiss) {
+			    sbh.append(' ').append(mpkg.getName());
+			}
+		    }
+		} else {
+		    sbh.append(psize > 1 ? "packages" : "package");
+		    for (SVR4Package mpkg : pmiss) {
+			sbh.append(' ').append(mpkg.getName());
+		    }
+		}
 	    }
 	} else {
 	    if (ovl.isComplete()) {
-		sbh.append(" is complete but not marked as installed.");
+		sbh.append("complete but not marked as installed.");
 	    } else {
-		sbh.append(" is uninstalled and incomplete.");
+		sbh.append("uninstalled and incomplete.");
 	    }
 	}
 	// the fixed text here is 35 characters
