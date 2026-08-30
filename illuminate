@@ -2,7 +2,7 @@
 #
 # SPDX-License-Identifier: CDDL-1.0
 #
-# Copyright 2025 Peter Tribble
+# Copyright 2026 Peter Tribble
 #
 # run illuminate
 #
@@ -119,6 +119,12 @@ man)
 check|pkgchk)
     shift
     $JAVA ${PKGFLAGS} ${EXTRAMEMFLAGS} -cp "${PKGJARS}" org.tribblix.illuminate.pkgview.PkgCheck "$@"
+    exit 0
+    ;;
+
+updates)
+    shift
+    $JAVA -cp "${PKGJARS}" org.tribblix.illuminate.pkgview.Updates "$@"
     exit 0
     ;;
 
