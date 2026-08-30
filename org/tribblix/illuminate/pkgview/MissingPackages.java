@@ -65,8 +65,42 @@ public final class MissingPackages {
 	plist.createRevDependencies();
 
 	for (String s : deps) {
-	    System.out.print("missing package " + s);
-	    System.out.println(" needed by " + plist.getDependantSet(s));
+	    System.out.println("Missing package " + s);
+	    System.out.println("  Needed by " + plist.getDependantSet(s));
+	}
+
+	/*
+	 * Now do overlays
+	 */
+	for (Overlay ovl : pkghdl.getOverlayList().getOverlays()) {
+	    if (ovl.isInstalled()) {
+		if (!ovl.isComplete()) {
+		    System.out.println("Incomplete overlay " + ovl);
+		    Set<Overlay> omiss = ovl.missingOverlays();
+		    Set<SVR4Package> pmiss = ovl.missingPackages();
+		    StringBuilder sbh = new StringBuilder(80);
+		    int osize = omiss.size();
+		    int psize = pmiss.size();
+		    if (osize > 0) {
+			sbh.append("  Missing: ")
+			    .append(osize > 1 ? "overlays" : "overlay");
+			for (Overlay movl : omiss) {
+			    sbh.append(' ').append(movl.getName());
+			}
+			if (psize > 1) {
+			    sbh.append('\n');
+			}
+		    }
+		    if (psize > 0) {
+			sbh.append("  Missing: ")
+			    .append(psize > 1 ? "packages" : "package");
+			for (SVR4Package mpkg : pmiss) {
+			    sbh.append(' ').append(mpkg.getName());
+			}
+		    }
+		    System.out.println(sbh);
+		}
+	    }
 	}
     }
 }
