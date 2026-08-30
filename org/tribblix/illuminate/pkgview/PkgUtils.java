@@ -46,8 +46,8 @@ public final class PkgUtils {
     public static String infoTable(final Overlay ovl) {
 	// the fixed text here varies from 37 to 51 characters
 	// overlay names are between 3 and 20 characters
-	StringBuilder sbh = new StringBuilder(70);
-	sbh.append("Overlay ").append(ovl.getName()).append(" is ");;
+	StringBuilder sbh = new StringBuilder(80);
+	sbh.append("Overlay ").append(ovl.getName()).append(" is ");
 	if (ovl.isInstalled()) {
 	    if (ovl.isComplete()) {
 		sbh.append("installed and complete.");
@@ -66,12 +66,9 @@ public final class PkgUtils {
 		    }
 		    if (psize > 1) {
 			sbh.append(", and install the ");
-			sbh.append(psize > 1 ? "packages" : "package");
-			for (SVR4Package mpkg : pmiss) {
-			    sbh.append(' ').append(mpkg.getName());
-			}
 		    }
-		} else {
+		}
+		if (psize > 0) {
 		    sbh.append(psize > 1 ? "packages" : "package");
 		    for (SVR4Package mpkg : pmiss) {
 			sbh.append(' ').append(mpkg.getName());
