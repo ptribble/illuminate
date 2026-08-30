@@ -78,6 +78,17 @@ public final class PkgList extends TreeSet<SVR4Package> {
     }
 
     /**
+     * Return the SVR4Package of the given name.
+     *
+     * @param name the name of the requested package
+     *
+     * @return true if the package of that name is installed.
+     */
+    public boolean isInstalled(final String name) {
+	return pkgMap.containsKey(name);
+    }
+
+    /**
      * Get the dependants of the given package.
      *
      * @param pkg the package to query

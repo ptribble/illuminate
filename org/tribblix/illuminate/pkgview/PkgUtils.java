@@ -167,19 +167,6 @@ public final class PkgUtils {
     }
 
     /**
-     * Produce a html table displaying the dependencies of the requested
-     * package.
-     *
-     * @param pkg the package to display
-     *
-     * @return a formatted html table
-     */
-    public static String dependencyTable(final SVR4Package pkg) {
-	return dependencyTable(pkg.getDependencySet(), pkg.getRDependencySet(),
-			pkg.getIncompatibleSet());
-    }
-
-    /**
      * Produce a html table displaying the overlays that the requested
      * overlay depends on.
      *
@@ -196,17 +183,33 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
+    /**
+     * Produce a html table displaying the dependencies of the requested
+     * package.
+     *
+     * @param pkg the package to display
+     * @param plist a PkgList for installation validation
+     *
+     * @return a formatted html table
+     */
+    public static String dependencyTable(final SVR4Package pkg,
+					 final PkgList plist) {
+	return dependencyTable(pkg.getDependencySet(), pkg.getRDependencySet(),
+			       pkg.getIncompatibleSet(), plist);
+    }
+
     /*
      * Common dependency tree code
      */
     private static String dependencyTable(final Set<String> depset,
-			final Set<String> rdepset, final Set<String> idepset) {
+			final Set<String> rdepset, final Set<String> idepset,
+			final PkgList plist) {
 	StringBuilder sb = new StringBuilder(256);
 
 	headRow(sb, PkgResources.getString("PKGUTILS.PACKAGE"),
 		PkgResources.getString("PKGUTILS.DEPENDENCY"));
 	innerdeptable(sb, depset,
-		PkgResources.getString("PKGUTILS.PREREQ"));
+		      PkgResources.getString("PKGUTILS.PREREQ"), plist);
 	innerdeptable(sb, rdepset,
 		PkgResources.getString("PKGUTILS.REQ"));
 	innerdeptable(sb, idepset,
@@ -214,11 +217,30 @@ public final class PkgUtils {
 	return wrapTable(sb);
     }
 
+    /*
+     * Add a set of rows to the table with 2 cells.
+     */
     private static void innerdeptable(final StringBuilder sb,
 				      final Set<String> depset,
 				      final String deptype) {
 	for (String s : depset) {
 	    addRow(sb, s, deptype);
+	}
+    }
+
+    /*
+     * A variant to mark whether the packages listed are installed.
+     */
+    private static void innerdeptable(final StringBuilder sb,
+				      final Set<String> depset,
+				      final String deptype,
+				      final PkgList plist) {
+	for (String s : depset) {
+	    if (plist.isInstalled(s)) {
+		addRow(sb, s, deptype);
+	    } else {
+		addRow(sb, s, deptype + " (missing)");
+	    }
 	}
     }
 

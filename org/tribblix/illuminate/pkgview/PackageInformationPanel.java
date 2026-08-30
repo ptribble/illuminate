@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -76,6 +76,7 @@ public final class PackageInformationPanel extends JTabbedPane {
     private transient OverlayList ovlist;
     private transient ContentsParser cp;
     private transient ZapConfig zc;
+    private transient PkgList plist;
 
     /**
      * Create a default PackageInformationPanel showing the default tabs.
@@ -97,6 +98,7 @@ public final class PackageInformationPanel extends JTabbedPane {
 	pkghdl = phdl;
 	ovlist = pkghdl.getOverlayList();
 	zc = pkghdl.getZapConfig();
+	plist = pkghdl.getPkgList();
 
 	infoPane = new PackageTextPane();
 	dependPane = new PackageTextPane();
@@ -124,7 +126,7 @@ public final class PackageInformationPanel extends JTabbedPane {
 	setOvlTab(PkgResources.getString("PKG.OVERLAYS"));
 	if (pkg.isInstalled()) {
 	    setInfoText(PkgUtils.infoTable(pkg, zc),
-		    PkgUtils.dependencyTable(pkg),
+			PkgUtils.dependencyTable(pkg, plist),
 		    PkgUtils.revDeps(pkg.getDependantSet()));
 	} else {
 	    setInfoText("Not installed", "", "");
