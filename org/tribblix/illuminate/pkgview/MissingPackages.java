@@ -14,7 +14,7 @@
  *
  * CDDL HEADER END
  *
- * Copyright 2025 Peter Tribble
+ * Copyright 2026 Peter Tribble
  *
  */
 
@@ -56,50 +56,49 @@ public final class MissingPackages {
 	 * Remove the installed packages from the list, this should give
 	 * the set of unsatisfied dependencies.
 	 */
-	for (SVR4Package pkg : plist) {
-	    deps.remove(pkg.getName());
-	}
-	/*
-	 * Map the reverse dependencies.
-	 */
-	plist.createRevDependencies();
+	deps.removeAll(plist.getPackageNames());
 
-	for (String s : deps) {
-	    System.out.println("Missing package " + s);
-	    System.out.println("  Needed by " + plist.getDependantSet(s));
+	if (!deps.isEmpty()) {
+	    /*
+	     * Map the reverse dependencies.
+	     */
+	    plist.createRevDependencies();
+
+	    for (String s : deps) {
+		System.out.println("Missing package " + s);
+		System.out.println("  Needed by " + plist.getDependantSet(s));
+	    }
 	}
 
 	/*
 	 * Now do overlays
 	 */
-	for (Overlay ovl : pkghdl.getOverlayList().getOverlays()) {
-	    if (ovl.isInstalled()) {
-		if (!ovl.isComplete()) {
-		    System.out.println("Incomplete overlay " + ovl);
-		    Set<Overlay> omiss = ovl.missingOverlays();
-		    Set<SVR4Package> pmiss = ovl.missingPackages();
-		    StringBuilder sbh = new StringBuilder(80);
-		    int osize = omiss.size();
-		    int psize = pmiss.size();
-		    if (osize > 0) {
-			sbh.append("  Missing: ")
-			    .append(osize > 1 ? "overlays" : "overlay");
-			for (Overlay movl : omiss) {
-			    sbh.append(' ').append(movl.getName());
-			}
-			if (psize > 1) {
-			    sbh.append('\n');
-			}
+	for (Overlay ovl : pkghdl.getOverlayList().getInstalledOverlays()) {
+	    if (!ovl.isComplete()) {
+		System.out.println("Incomplete overlay " + ovl);
+		Set<Overlay> omiss = ovl.missingOverlays();
+		Set<SVR4Package> pmiss = ovl.missingPackages();
+		StringBuilder sbh = new StringBuilder(80);
+		int osize = omiss.size();
+		int psize = pmiss.size();
+		if (osize > 0) {
+		    sbh.append("  Missing: ")
+			.append(osize > 1 ? "overlays" : "overlay");
+		    for (Overlay movl : omiss) {
+			sbh.append(' ').append(movl.getName());
 		    }
-		    if (psize > 0) {
-			sbh.append("  Missing: ")
-			    .append(psize > 1 ? "packages" : "package");
-			for (SVR4Package mpkg : pmiss) {
-			    sbh.append(' ').append(mpkg.getName());
-			}
+		    if (psize > 1) {
+			sbh.append('\n');
 		    }
-		    System.out.println(sbh);
 		}
+		if (psize > 0) {
+		    sbh.append("  Missing: ")
+			.append(psize > 1 ? "packages" : "package");
+		    for (SVR4Package mpkg : pmiss) {
+			sbh.append(' ').append(mpkg.getName());
+		    }
+		}
+		System.out.println(sbh);
 	    }
 	}
     }

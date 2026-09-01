@@ -83,6 +83,21 @@ public final class OverlayList {
     }
 
     /**
+     * Return a Set of the system's installed overlays.
+     *
+     * @return a Set of the system's installed overlays
+     */
+    public Set<Overlay> getInstalledOverlays() {
+	Set<Overlay> h = new TreeSet<>();
+	for (Overlay ov1 : ovlist) {
+	    if (ov1.isInstalled()) {
+		h.add(ov1);
+	    }
+	}
+	return h;
+    }
+
+    /**
      * Get the overlay of the given name.
      *
      * @param name the name of the Overlay to be retrieved
