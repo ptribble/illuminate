@@ -38,18 +38,6 @@ public final class Updates {
 	if (args.length == 2 && "-R".equals(args[0])) {
 	    altroot = args[1];
 	}
-	PackageHandler pkghdl = new PackageHandler(altroot);
-	ZapConfig zc = pkghdl.getZapConfig();
-	/*
-	 * Go through installed packages and list those that need updating.
-	 * The format here is identical to 'zap verify-packages'.
-	 */
-	for (SVR4Package pkg : pkghdl.getPkgList()) {
-	    String cver = zc.currentVersion(pkg.getName());
-	    if (!pkg.getVersion().equals(cver)) {
-		System.out.println("WARN: package " + pkg.getName()
-				   + " needs updating to " + cver);
-	    }
-	}
+	System.out.println(PkgUtils.getUpdates(new PackageHandler(altroot)));
     }
 }
