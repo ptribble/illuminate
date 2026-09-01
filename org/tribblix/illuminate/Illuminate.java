@@ -36,6 +36,8 @@ import javax.swing.JTabbedPane;
 import org.tribblix.illuminate.explorer.SysPanel;
 import org.tribblix.illuminate.pkgview.IPSSoftwarePanel;
 import org.tribblix.illuminate.pkgview.InstalledSoftwarePanel;
+import org.tribblix.illuminate.pkgview.PackageHandler;
+import org.tribblix.illuminate.pkgview.PkgUtils;
 import uk.co.petertribble.jingle.JingleInfoFrame;
 import uk.co.petertribble.jingle.JingleMultiFrame;
 import uk.co.petertribble.jkstat.api.NativeJKstat;
@@ -71,6 +73,18 @@ public final class Illuminate extends JFrame implements ActionListener {
      * A menu item to show the license window.
      */
     private final JMenuItem licenseItem;
+    /**
+     * A menu item to show window listing available software updates.
+     */
+    private final JMenuItem updatesItem;
+    /**
+     * A menu item to show errors with installed software.
+     */
+    private final JMenuItem problemsItem;
+    /**
+     * A PackageHandler for software queries.
+     */
+    private transient PackageHandler pkghdl;
 
     /**
      * Instantiate a copy of Illuminate.
@@ -78,7 +92,10 @@ public final class Illuminate extends JFrame implements ActionListener {
     public Illuminate() {
 	super("Illuminate");
 
+	boolean isTribblix = true;
+
 	addWindowListener(new WinExit());
+	pkghdl = new PackageHandler();
 
 	JTabbedPane jtp = new JTabbedPane();
 	getContentPane().add(jtp, BorderLayout.CENTER);
@@ -92,6 +109,7 @@ public final class Illuminate extends JFrame implements ActionListener {
 	jtp.add(IlluminateResources.getString("ILLUMINATE.SERV.TEXT"),
 		new SmfPanel());
 	if (new File("/usr/bin/pkg").exists()) {
+	    isTribblix = false;
 	    jtp.add(IlluminateResources.getString("ILLUMINATE.SOFT.TEXT"),
 		new IPSSoftwarePanel());
 	} else {
@@ -142,6 +160,24 @@ public final class Illuminate extends JFrame implements ActionListener {
 	jmh.add(licenseItem);
 
 	jm.add(jmh);
+
+	updatesItem = new JMenuItem(
+			IlluminateResources.getString("SOFTWARE.UPDATES"),
+			KeyEvent.VK_U);
+	problemsItem = new JMenuItem(
+			IlluminateResources.getString("SOFTWARE.PROBLEMS"),
+			KeyEvent.VK_P);
+	if (isTribblix) {
+	    JMenu jms = new JMenu(
+			IlluminateResources.getString("SOFTWARE.TITLE"));
+	    jms.setMnemonic(KeyEvent.VK_S);
+	    jms.add(updatesItem);
+	    updatesItem.addActionListener(this);
+	    jms.add(problemsItem);
+	    problemsItem.addActionListener(this);
+	    jm.add(jms);
+	}
+
 	setJMenuBar(jm);
 
 	setIconImage(new ImageIcon(this.getClass().getClassLoader()
@@ -168,6 +204,12 @@ public final class Illuminate extends JFrame implements ActionListener {
 	}
 	if (e.getSource() == exitItem) {
 	    System.exit(0);
+	}
+	if (e.getSource() == updatesItem) {
+	    new JingleInfoFrame(PkgUtils.getUpdates(pkghdl), "text/plain");
+	}
+	if (e.getSource() == problemsItem) {
+	    new JingleInfoFrame(PkgUtils.getProblems(pkghdl), "text/plain");
 	}
 	if (e.getSource() == helpItem) {
 	    new JingleInfoFrame(this.getClass().getClassLoader(),

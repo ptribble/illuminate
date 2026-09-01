@@ -24,6 +24,7 @@ import java.text.DecimalFormat;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
+import java.util.TreeSet;
 
 /**
  * PkgUtils - utility methods to format information.
@@ -164,6 +165,102 @@ public final class PkgUtils {
 	    }
 	}
 	return wrapTable(sb);
+    }
+
+    /**
+     * Return a String containing details of package updates.
+     *
+     * @param pkghdl a PackageHandler to query
+     *
+     * @return a list of packages that can be updated
+     */
+    public static String getUpdates(final PackageHandler pkghdl) {
+	ZapConfig zc = pkghdl.getZapConfig();
+	StringBuilder sb = new StringBuilder(80);
+	for (SVR4Package pkg : pkghdl.getPkgList()) {
+	    String cver = zc.currentVersion(pkg.getName());
+	    if (!pkg.getVersion().equals(cver)) {
+		sb.append("Package ")
+		    .append(pkg.getName())
+		    .append(" needs updating to ")
+		    .append(cver);
+	    }
+	}
+	return sb.length() > 0 ? sb.toString() : "No updates needed";
+    }
+
+    /**
+     * Return a String containing details of any problems with
+     * installed packages and overlays.
+     *
+     * @param pkghdl a PackageHandler to query
+     *
+     * @return a description of any software issues
+     */
+    public static String getProblems(final PackageHandler pkghdl) {
+	StringBuilder sb = new StringBuilder(80);
+	PkgList plist = pkghdl.getPkgList();
+	/*
+	 * Go through installed packages and create a complete list
+	 * of their dependencies.
+	 */
+	Set<String> deps = new TreeSet<>();
+	for (SVR4Package pkg : plist) {
+	    deps.addAll(pkg.getDependencySet());
+	}
+	/*
+	 * Remove the installed packages from the list, this should give
+	 * the set of unsatisfied dependencies.
+	 */
+	deps.removeAll(plist.getPackageNames());
+
+	if (!deps.isEmpty()) {
+	    /*
+	     * Map the reverse dependencies.
+	     */
+	    plist.createRevDependencies();
+
+	    for (String s : deps) {
+		sb.append("Missing package ")
+		    .append(s)
+		    .append("\n  Needed by ")
+		    .append(plist.getDependantSet(s))
+		    .append('\n');
+	    }
+	}
+
+	/*
+	 * Now do overlays
+	 */
+	for (Overlay ovl : pkghdl.getOverlayList().getInstalledOverlays()) {
+	    if (!ovl.isComplete()) {
+		sb.append("Incomplete overlay ").append(ovl).append('\n');
+		Set<Overlay> omiss = ovl.missingOverlays();
+		Set<SVR4Package> pmiss = ovl.missingPackages();
+		StringBuilder sbh = new StringBuilder(80);
+		int osize = omiss.size();
+		int psize = pmiss.size();
+		if (osize > 0) {
+		    sbh.append("  Missing: ")
+			.append(osize > 1 ? "overlays" : "overlay");
+		    for (Overlay movl : omiss) {
+			sbh.append(' ').append(movl.getName());
+		    }
+		    if (psize > 1) {
+			sbh.append('\n');
+		    }
+		}
+		if (psize > 0) {
+		    sbh.append("  Missing: ")
+			.append(psize > 1 ? "packages" : "package");
+		    for (SVR4Package mpkg : pmiss) {
+			sbh.append(' ').append(mpkg.getName());
+		    }
+		}
+		sb.append(sbh).append('\n');
+	    }
+	}
+	return sb.length() > 0 ? sb.toString() : "No problems found";
     }
 
     /**
