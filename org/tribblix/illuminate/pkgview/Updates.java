@@ -38,6 +38,7 @@ public final class Updates {
 	if (args.length == 2 && "-R".equals(args[0])) {
 	    altroot = args[1];
 	}
-	System.out.println(PkgUtils.getUpdates(new PackageHandler(altroot)));
+	// getUpdates already includes the newline
+	System.out.print(PkgUtils.getUpdates(new PackageHandler(altroot)));
     }
 }

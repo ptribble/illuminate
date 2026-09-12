@@ -183,7 +183,8 @@ public final class PkgUtils {
 		sb.append("Package ")
 		    .append(pkg.getName())
 		    .append(" needs updating to ")
-		    .append(cver);
+		    .append(cver)
+		    .append('\n');
 	    }
 	}
 	return sb.length() > 0 ? sb.toString() : "No updates needed";
